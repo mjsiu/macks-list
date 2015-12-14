@@ -18,13 +18,13 @@ Users will be able to:
 - [ ] Use Google Maps to view ad locations
 
 ## Design Docs
-* [View Wireframes][view]
+* Wireframes drawn by hand
 * [DB schema][schema]
 
-[view]: ./docs/views.md
 [schema]: ./docs/schema.md
 
 ## Implementation Timeline
+
 Total time: 10 days
 Total phases: 7 + bonus phase
 
@@ -35,12 +35,14 @@ In Phase 1, I will implement the entire auth process. You will be able to login/
 
 I will also set up the model for the ads as well as implementing an API interface to interact with Ad data, which the rest of my project will depend on. This will rely on properly setting up my backend to support Ads.
 
+[Details][phase-one]
 
 ### Phase 2: Setup Flux
 [ 1 day(s) ]
 
 I will take one day to plan out the Flux architecture for my project. I will also take the time to set up my React routers before proceeding to the rest of my project. It is also in this phase that I'll set up the Ad store, which will make use of the JSON API I created from the day before. My goal is to set up everything necessary to allow me to implement the component features that I want for my Ads.
 
+[Details][phase-two]
 
 ## Phase 3: Setup Ad CRUD
 [ 2 day(s) ]
@@ -49,11 +51,14 @@ Phase 3 will focus on implementing Ad CRUD which is the main data type for my pr
 
 For the last portion of the 2 days, I will also create empty templates for implementing future features. This includes 1) starring ads, 2) rendering a Google Maps component to show the location of the ads.
 
+[Details][phase-three]
 
 ## Phase 4: Starring Ads
 [ 1.5 day(s) ]
 
 This phase will be spent implementing the ability to "star" ads and have them show up on a users show page. This allows users to keep track of ads and provides them with a UI to interact with starred listings. I will also be creating a React component which users will be able to interact with on their show page.
+
+[Details][phase-four]
 
 
 ## Phase 5: Searching through Ads and Search Map
@@ -63,6 +68,7 @@ Two days will be spent implementing the search portion of my app. In this sectio
 
 On the same page as the search, there will be a Google Maps React component which will have pins that will show the location of the results.
 
+[Details][phase-five]
 
 ## Phase 6: Database Seeding and UI testing
 [ 1 day(s) ]  
@@ -78,13 +84,13 @@ UI Compatibility Checklist:
 - [ ] Note necessary styling changes for next day
 
 
-## Phase 7: Styling and cleanup
+## Phase 7: Styling and Cleanup
 [ 1 day(s) ]
 
 I will spend the last day of my project making any additional styling changes that are necessary. I will also do minor refactoring of code, being sure to make use of git branching (as to not permanently break anything), and clean up my code to be more presentable. The primary goal is to clean up my code and this serves as more of a final check.
 
 
-### Bonus Features
+## Bonus Features
 [ ? day(s) ]
 
 Checklist of ideas to keep in mind. These are not absolute and are not ordered in priority.
@@ -94,3 +100,9 @@ Checklist of ideas to keep in mind. These are not absolute and are not ordered i
 - [ ] Add Google Maps component to each individual listing
 - [ ] Garbage collection for old Ads
 - [ ] Email notifications for changes to starred Ads
+
+[phase-one]: ./docs/phases/phase1.md
+[phase-two]: ./docs/phases/phase2.md
+[phase-three]: ./docs/phases/phase3.md
+[phase-four]: ./docs/phases/phase4.md
+[phase-five]: ./docs/phases/phase5.md

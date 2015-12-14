@@ -1,38 +1,25 @@
-# Phase 2: Flux Architecture and Note CRUD (2 days)
-
-## Rails
-### Models
-
-### Controllers
-
-### Views
-
-## Flux
-### Views (React Components)
-* NotesIndex
-  - NotesIndexItem
-* NoteForm
+# Phase 2: Setup Flux
 
 ### Stores
-* Note
+* Ads
 
 ### Actions
-* ApiActions.receiveAllNotes -> triggered by ApiUtil
-* ApiActions.receiveSingleNote
-* ApiActions.deleteNote
-* NoteActions.fetchAllNotes -> triggers ApiUtil
-* NoteActions.fetchSingleNote 
-* NoteActions.createNote
-* NoteActions.editNote 
-* NoteActions.destroyNote
+* ApiActions.receiveAllAds -> triggered by ApiUtil
+* ApiActions.receiveSingleAd
+* ApiActions.deleteAd
+* NoteActions.fetchAllAds -> triggers ApiUtil
+* NoteActions.fetchSingleAd
+* NoteActions.createAd
+* NoteActions.editAd
+* NoteActions.destroyAd
 
 ### ApiUtil
-* ApiUtil.fetchAllNotes
-* ApiUtil.fetchSingleNote
-* ApiUtil.createNote
-* ApiUtil.editNote
-* ApiUtil.destroyNote
+* ApiUtil.fetchAllAds
+* ApiUtil.fetchSingleAd
+* ApiUtil.createAd
+* ApiUtil.editAd
+* ApiUtil.destroyAd
 
 ## Gems/Libraries
 * Flux Dispatcher (npm)
-* Twitter Bootstrap
+* Bootstrap
