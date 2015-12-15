@@ -5,8 +5,11 @@ module.exports = {
   entry: "./frontend/mackslist.jsx",
   output: {
     path: path.join(__dirname, 'app', 'assets', 'javascripts'),
-    filename: "bundle.js"
+    filename: "bundle.js",
+    devtoolModuleFilenameTemplate: '[resourcePath]',
+    devtoolFallbackModuleFilenameTemplate: '[resourcePath]?[hash]'
   },
+  devtool: 'source-maps',
   resolve: {
     extensions: ["", ".js", ".jsx"]
   },
