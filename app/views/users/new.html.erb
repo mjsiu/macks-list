@@ -1,0 +1,26 @@
+<div>
+  <div class="row">
+  <div class="col-md-4">
+  <h1>Sign Up</h1>
+
+    <form action=" <%=users_url%>" method="post">
+
+      <%=form_token %>
+      <label for="Username">Username</label>
+      <input type="text" name="user[username]">
+      <br/>
+      <label for="Username">Email</label>
+      <input type="text" name="user[email]">
+      <br/>
+      <label for="user_password">Password</label>
+      <input type="password" name="user[password]">
+      <br/>
+      <label for="user_city_id">City</label>
+      <input type="city_id" name="user[city_id]">
+      <br/>
+      <input type="submit" value="Sign Up">
+
+    </form>
+  </div>
+  <div>
+<div>
