@@ -12,9 +12,9 @@ Users will be able to:
 
 - [ ] Create an account
 - [ ] Log in / Log out
-- [ ] Create, view, edit, and delete ads
-- [ ] "Star" listings to keep track of ads
-- [ ] Search through ads by location/category
+- [ ] Create, view, edit, and delete listings
+- [ ] "Star" listings to keep track of listings
+- [ ] Search through listings by location/category
 - [ ] Use Google Maps to view ad locations
 
 ## Design Docs
@@ -28,35 +28,35 @@ Users will be able to:
 Total time: 10 days
 Total phases: 7 + bonus phase
 
-### Phase 1: User Authentication, Ad Model and JSON API
+### Phase 1: User Authentication, Listing Model and JSON API
 [ 1.5 day(s) ]
 
 In Phase 1, I will implement the entire auth process. You will be able to login/sign up. Upon login, you will be redirected to a user show page, which will contain will just contain empty templates for future features.
 
-I will also set up the model for the ads as well as implementing an API interface to interact with Ad data, which the rest of my project will depend on. This will rely on properly setting up my backend to support Ads.
+I will also set up the model for the listings as well as implementing an API interface to interact with Listing data, which the rest of my project will depend on. This will rely on properly setting up my backend to support Ads.
 
 [Details][phase-one]
 
 ### Phase 2: Setup Flux
 [ 1 day(s) ]
 
-I will take one day to plan out the Flux architecture for my project. I will also take the time to set up my React routers before proceeding to the rest of my project. It is also in this phase that I'll set up the Ad store, which will make use of the JSON API I created from the day before. My goal is to set up everything necessary to allow me to implement the component features that I want for my Ads.
+I will take one day to plan out the Flux architecture for my project. I will also take the time to set up my React routers before proceeding to the rest of my project. It is also in this phase that I'll set up the Listing store, which will make use of the JSON API I created from the day before. My goal is to set up everything necessary to allow me to implement the component features that I want for my Ads.
 
 [Details][phase-two]
 
-## Phase 3: Setup Ad CRUD
+## Phase 3: Setup Listing CRUD
 [ 2 day(s) ]
 
-Phase 3 will focus on implementing Ad CRUD which is the main data type for my project. I will spend the first day and a half implementing Ad CRUD into my project and generating all of the UI necessary to CRUD Ads.
+Phase 3 will focus on implementing Listing CRUD which is the main data type for my project. I will spend the first day and a half implementing Listing CRUD into my project and generating all of the UI necessary to CRUD Ads.
 
-For the last portion of the 2 days, I will also create empty templates for implementing future features. This includes 1) starring ads, 2) rendering a Google Maps component to show the location of the ads.
+For the last portion of the 2 days, I will also create empty templates for implementing future features. This includes 1) starring listings, 2) rendering a Google Maps component to show the location of the listings.
 
 [Details][phase-three]
 
 ## Phase 4: Starring Ads
 [ 1.5 day(s) ]
 
-This phase will be spent implementing the ability to "star" ads and have them show up on a users show page. This allows users to keep track of ads and provides them with a UI to interact with starred listings. I will also be creating a React component which users will be able to interact with on their show page.
+This phase will be spent implementing the ability to "star" listings and have them show up on a users show page. This allows users to keep track of listings and provides them with a UI to interact with starred listings. I will also be creating a React component which users will be able to interact with on their show page.
 
 [Details][phase-four]
 
@@ -64,7 +64,7 @@ This phase will be spent implementing the ability to "star" ads and have them sh
 ## Phase 5: Searching through Ads and Search Map
 [ 2 day(s) ]
 
-Two days will be spent implementing the search portion of my app. In this section, users will have the ability to search through ads with filters primarily based on location/category. More filter options will be added in the bonus phase portion if time permits.
+Two days will be spent implementing the search portion of my app. In this section, users will have the ability to search through listings with filters primarily based on location/category. More filter options will be added in the bonus phase portion if time permits.
 
 On the same page as the search, there will be a Google Maps React component which will have pins that will show the location of the results.
 
@@ -73,7 +73,7 @@ On the same page as the search, there will be a Google Maps React component whic
 ## Phase 6: Database Seeding and UI testing
 [ 1 day(s) ]  
 
-One day will be dedicated entirely to setting up the seed database with presentable data. The database will need to include a variety of ads from different cities and categories.
+One day will be dedicated entirely to setting up the seed database with presentable data. The database will need to include a variety of listings from different cities and categories.
 
 The latter part of the day will also be spent checking overall UI compatibility. I will use the following checklist, which is ordered by priority.
 
@@ -96,7 +96,7 @@ I will spend the last day of my project making any additional styling changes th
 Checklist of ideas to keep in mind. These are not absolute and are not ordered in priority.
 
 - [ ] Mobile compatibility
-- [ ] Advanced filtering options in Ad search
+- [ ] Advanced filtering options in Listing search
 - [ ] Add Google Maps component to each individual listing
 - [ ] Garbage collection for old Ads
 - [ ] Email notifications for changes to starred Ads
