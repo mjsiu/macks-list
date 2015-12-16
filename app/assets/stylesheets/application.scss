@@ -28,19 +28,30 @@
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
  /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+ .listing-title {
+   text-align: center;
+ }
+
+ .map {
+   width: 500px;
+   height: 500px;
+ }
 
  .login-form {
    float: right;
  }
 
- .index-items .col {
+ .index-items {
    float: left;
    padding: 3px;
    text-align: center;
+   position:relative;
+   display: inline-block;
  }
 
  .index-items:hover {
-   transform: scale(1.05)
+   transform: scale(1.05);
+   z-index:999;
  }
  html {
    -ms-text-size-adjust: 100%;

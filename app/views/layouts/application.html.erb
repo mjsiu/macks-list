@@ -6,15 +6,16 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <script type="text/javascript">
-    window.API_KEYS = {
-      cloudinary_key: "<=%ENV['CLOUDINARY_KEY']%>",
-      cloudinary_cloud: "<=% ENV['CLOUDINARY_CLOUD']%>",
-      googlemaps_key: "<=% ENV['GOOGLEMAPS_KEY'] %>"
+    window.CLOUDINARY = {
+      upload_preset: "<%=ENV['_FIGARO_CLOUDINARY_KEY']%>",
+      cloud_name: "<%=ENV['_FIGARO_CLOUDINARY_CLOUD']%>",
     };
   </script>
   <script
-    src="https://maps.googleapis.com/maps/api/js?key=" + API_KEYS['googlemaps_key']>
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9356iMs9Pkskmp4qMD6fT__2knEk-lu8">
   </script>
+  <script src="//widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+  <link rel="shortcut icon" href="http://res.cloudinary.com/mackslist/image/upload/v1450309602/logo_jrqgi0.jpg">
 </head>
 <body>
   <%= yield %>

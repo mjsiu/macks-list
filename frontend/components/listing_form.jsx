@@ -18,6 +18,15 @@ var ListingForm = React.createClass({
     };
   },
 
+  upload: function (e) {
+    e.preventDefault();
+    cloudinary.openUploadWidget(CLOUDINARY, function(error, results){
+      if(!error){
+        this.props.postImage(results[0]);
+      }
+    }.bind(this));
+  },
+
   handleSubmit: function(event){
    event.preventDefault();
    var listing = {};
@@ -89,6 +98,10 @@ var ListingForm = React.createClass({
                      valueLink={this.linkState('image_url')}/>
             <br/>
             <button>Create</button>
+
+        <div className="upload-form">
+          <button onClick={this.upload}>Upload new image!</button>
+        </div>
           </form>
 
         </div>
