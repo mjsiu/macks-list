@@ -33,13 +33,13 @@
    float: right;
  }
 
- .rows .col {
+ .index-items .col {
    float: left;
    padding: 3px;
    text-align: center;
  }
 
- .rows:hover {
+ .index-items:hover {
    transform: scale(1.05)
  }
  html {
@@ -1991,6 +1991,8 @@
    }
    .col-md-6 {
      width: 50%;
+     -webkit-align-content: center;
+     align-content: center;
    }
    .col-md-5 {
      width: 41.66666667%;

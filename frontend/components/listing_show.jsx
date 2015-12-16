@@ -51,7 +51,7 @@ var ListingShow = React.createClass ({
 
     return (
       <div>
-        <Listing listing={this.state.listing} className="list" onClick={this.handleClick}/>
+        <Listing listing={this.state.listing}></Listing>
       </div>
     );
   }

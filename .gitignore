@@ -2,3 +2,6 @@
 
 node_modules
 app/assets/javascripts/bundle.js
+
+# Ignore application configuration
+/config/application.yml

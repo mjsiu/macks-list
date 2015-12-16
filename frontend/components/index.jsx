@@ -1,7 +1,7 @@
 var React = require('react');
 var ListingStore = require('../stores/listing');
 var ApiUtil = require('../util/api_utils');
-var Listing = require('./listing');
+var ListingIndex = require('./listing_index');
 var History = require('react-router').History;
 
 
@@ -35,7 +35,7 @@ var Index = React.createClass({
     var handleListingClick = this.handleListingClick;
     var listings = this.state.listings.map(function(listing, idx) {
       var boundClick = handleListingClick.bind(null,listing)
-      return <Listing key={listing.id} listing={listing} onClick={boundClick}></Listing>
+      return <ListingIndex key={listing.id} listing={listing} onClick={boundClick}></ListingIndex>
     });
 
     return (
