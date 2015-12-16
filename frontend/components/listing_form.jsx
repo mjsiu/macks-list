@@ -1,8 +1,8 @@
 var React = require('react');
-var ApiUtil = require('../util/api_util');
+var ApiUtil = require('../util/api_utils');
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
 
-var BenchForm = React.createClass({
+var ListingForm = React.createClass({
   mixins: [LinkedStateMixin],
 
   getInitialState: function(){
@@ -13,7 +13,7 @@ var BenchForm = React.createClass({
       address: "",
       author_id: "",
       city_id: "",
-      category_id "",
+      category_id: ""
     };
   },
 
@@ -21,7 +21,7 @@ var BenchForm = React.createClass({
    event.preventDefault();
    var listing = {};
 
-   ApiUtil.createBench(bench);
+   ApiUtil.createListing(listing);
   },
 
   render: function() {
@@ -46,4 +46,4 @@ var BenchForm = React.createClass({
 
 });
 
-module.exports = BenchForm;
+module.exports = ListingForm;

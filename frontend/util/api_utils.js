@@ -1,9 +1,9 @@
 var ApiActions = require('../actions/api_actions.js');
 
 var ApiUtil = {
-  fetchListings: function(){
+  fetchAllListings: function(){
     $.get('api/listings', function(listings){
-      ApiActions.receiveAll(listings);
+      ApiActions.receiveAllListings(listings);
     });
   },
 }
