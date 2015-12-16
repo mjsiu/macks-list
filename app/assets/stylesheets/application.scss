@@ -28,10 +28,24 @@
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
  /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+
+ .login-form {
+   float: right;
+ }
+
+ .rows .col {
+   float: left;
+   padding: 3px;
+   text-align: center;
+ }
+
+ .rows:hover {
+   transform: scale(1.05)
+ }
  html {
-   font-family: sans-serif;
    -ms-text-size-adjust: 100%;
    -webkit-text-size-adjust: 100%;
+  //  background-image: image-url("sf3.jpg")
  }
  body {
    margin: 0;
@@ -2618,6 +2632,8 @@
  }
  textarea.form-control {
    height: auto;
+   resize: none;
+   height: 200px;
  }
  input[type="search"] {
    -webkit-appearance: none;

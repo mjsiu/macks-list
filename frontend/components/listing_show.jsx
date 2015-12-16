@@ -25,8 +25,7 @@ var ListingShow = React.createClass ({
    },
 
   handleClick: function() {
-     debugger
-     this.history.pushState(null, "/listing/" + listing.id, {})
+     this.history.pushState(null, "/listings/" + listing.id, {})
   },
 
   componentDidMount: function () {

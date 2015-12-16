@@ -1,7 +1,7 @@
 var React = require('react');
 var ListingStore = require('../stores/listing');
 var ApiUtil = require('../util/api_utils');
-var Listing= require('./listing');
+var Listing = require('./listing');
 var History = require('react-router').History;
 
 
@@ -19,7 +19,7 @@ var Index = React.createClass({
   },
 
   handleListingClick: function (listing) {
-    this.props.history.pushState(null, "/listing/" + listing.id, {})
+    this.props.history.pushState(null, "/listings/" + listing.id, {})
   },
 
   componentDidMount: function() {

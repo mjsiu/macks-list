@@ -6,6 +6,14 @@ var ApiUtil = {
       ApiActions.receiveAllListings(listings);
     });
   },
-}
+
+  createNewListing: function(listing){
+    $.ajax({
+      url: "api/listings",
+      method: "POST",
+      data: { listing: listing }
+    });
+  }
+};
 
 module.exports = ApiUtil;

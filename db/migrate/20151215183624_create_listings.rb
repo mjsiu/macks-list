@@ -11,6 +11,7 @@ class CreateListings < ActiveRecord::Migration
       t.integer :author_id, null: false
       t.integer :city_id, null: false
       t.integer :category_id, null: false
+      t.string :image_url, null: false
 
       t.timestamps null: false
     end

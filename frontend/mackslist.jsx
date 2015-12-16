@@ -23,8 +23,8 @@ var App = React.createClass({
 var routes = (
     <Route path="/" component={App}>
       <IndexRoute component={Index}/>
-      <Route path="listing/:listingId" component={ListingShow}/>
-      <Route path="listing/new" component={ListingForm}/>
+      <Route path="listings/new" component={ListingForm}/>
+      <Route path="listings/:listingId" component={ListingShow}/>
     </Route>
 );
 

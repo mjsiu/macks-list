@@ -17,7 +17,8 @@ class Api::ListingsController < ApplicationController
       :price, :address,
       :latitude, :longitude,
       :author_id, :city_id,
-      :category_id
+      :category_id,
+      :image_url
     )
   end
 

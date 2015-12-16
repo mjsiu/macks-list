@@ -5,10 +5,18 @@ var Listing = React.createClass({
   mixins: [ReactRouter.history],
 
   render: function () {
-    var Link = ReactRouter.Link;
     return (
-      <div onClick={this.props.onClick}>
-          <li>Title: {this.props.listing.title}</li>
+      <div className="rows"onClick={this.props.onClick}>
+          <div className="col">
+          <img src={this.props.listing.image_url}/>
+
+          <br/>
+          <b>{this.props.listing.title} - ${this.props.listing.price}</b>
+          <br/>
+          {this.props.listing.description}
+          <br/>
+          <br/>
+          </div>
       </div>
     );
   }
