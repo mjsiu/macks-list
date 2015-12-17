@@ -1,9 +1,10 @@
 var React = require('react');
 var ApiUtil = require('../util/api_utils');
+var History = require('react-router').History;
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
 
 var ListingForm = React.createClass({
-  mixins: [LinkedStateMixin],
+  mixins: [LinkedStateMixin, History],
 
   getInitialState: function(){
     return {
@@ -14,7 +15,9 @@ var ListingForm = React.createClass({
       author_id: "",
       city_id: "",
       category_id: "",
-      image_url: ""
+      image_url: "",
+      latitude: this.props.location.query.lat,
+      longitude: this.props.location.query.lng
     };
   },
 
@@ -38,6 +41,7 @@ var ListingForm = React.createClass({
   },
 
   render: function() {
+    debugger
     return (
       <div className="row">
         <div className="col-md-4">
@@ -92,16 +96,13 @@ var ListingForm = React.createClass({
                      <option value={4}>Sports</option>
               </select>
             <br/>
-            <label>Img-Url</label>
-              <input className="form-control"
-                     type="text"
-                     valueLink={this.linkState('image_url')}/>
+            <div className="upload-form">
+              <button onClick={this.upload}>Upload new image!</button>
+            </div>
             <br/>
             <button>Create</button>
 
-        <div className="upload-form">
-          <button onClick={this.upload}>Upload new image!</button>
-        </div>
+
           </form>
 
         </div>

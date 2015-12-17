@@ -1,11 +1,12 @@
 var React = require('react');
-var ReactRouter = require('react-router');
+var History = require('react-router').History;
 var Map = require('./map.jsx');
 
 var Listing= React.createClass({
-  mixins: [ReactRouter.history],
+  mixins: [History],
 
   render: function () {
+    debugger
     return (
       <div>
 
@@ -13,6 +14,7 @@ var Listing= React.createClass({
         <div className="col-md-12">
           <div className="listing-title">
             <h2>{this.props.listing.title} - ${this.props.listing.price}</h2>
+            <br/>
           </div>
         </div>
       </div>
@@ -23,24 +25,16 @@ var Listing= React.createClass({
             <div className="listing-image">
               <img src={this.props.listing.image_url}/>
             </div>
-          </div>
-          <div className="col-md-5">
-            <Map></Map>
-          </div>
-          <div className="col-md-1"></div>
-      </div>
-
-      <div className="row">
-          <br/>
-          <div className="col-md-1"></div>
-          <div className="col-md-5">
+            <br/>
             <div clasName="listing-details">
               {this.props.listing.description}
               <br/>
               {this.props.listing.address}
             </div>
           </div>
-          <div className="col-md-5"></div>
+          <div className="col-md-5">
+            <Map listing={this.props.listing}></Map>
+          </div>
           <div className="col-md-1"></div>
       </div>
 

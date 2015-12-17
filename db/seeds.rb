@@ -43,7 +43,8 @@ image_url: "http://res.cloudinary.com/mackslist/image/upload/c_scale,h_267,w_400
 Listing.create(title: "Limited Edition Book", description: "Unused iPhone 6s for sale",
 price: 79, address: "Powell Street, San Francisco, California", author_id:
 1, city_id: 1, category_id: 1,
-image_url: "http://res.cloudinary.com/mackslist/image/upload/c_scale,h_267,w_400/v1450242541/pexels-photo_tfopmu.jpg")
+image_url: "http://res.cloudinary.com/mackslist/image/upload/c_scale,h_267,w_400/v1450242541/pexels-photo_tfopmu.jpg",
+latitude: 37.774733, longitude: -122.418702)
 
 
 City.create(name: "San Francisco", latitude: 37.774733, longitude: -122.418702)

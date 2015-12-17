@@ -9,6 +9,7 @@ var ApiUtil = require('./util/api_utils.js');
 var Index = require('./components/index.jsx');
 var ListingForm = require('./components/listing_form.jsx');
 var ListingShow = require('./components/listing_show.jsx');
+var ListingLocation = require('./components/listing_location.jsx');
 
 var App = React.createClass({
   render: function(){
@@ -23,6 +24,7 @@ var App = React.createClass({
 var routes = (
     <Route path="/" component={App}>
       <IndexRoute component={Index}/>
+      <Route path="listings/create/location" component={ListingLocation}/>
       <Route path="listings/new" component={ListingForm}/>
       <Route path="listings/:listingId" component={ListingShow}/>
     </Route>

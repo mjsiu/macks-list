@@ -58,8 +58,17 @@
         <label for="user_password">Password</label>
         <input class="form-control" type="password" name="user[password]">
         <br/>
-        <label for="user_city_id">City</label>
-        <input class="form-control" type="city_id" name="user[city_id]">
+        <label>City</label>
+          <select class="form-control"
+                 type="text"
+                 name="user[city_id]">
+                 <option></option>
+                 <option value='<%=1%>'San Francisco</option>
+                 <option value='<%=2%>'>Oakland</option>
+                 <option value='<%=3%>'>Berkeley</option>
+                 <option value='<%=4%>'>San Mateo</option>
+                 <option value='<%=5%>'>San Jose</option>
+          </select>
         <br/>
         <input class="btn btn-primary" type="submit" value="Sign Up">
       </fieldset>

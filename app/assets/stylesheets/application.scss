@@ -28,6 +28,44 @@
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
  /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+
+ .divider {
+   min-height: 100px;
+ }
+
+ .footer {
+   background-color: #3e3f3a;
+   min-height: 200px;
+ }
+
+ .footer-content {
+   position: absolute;
+   left: 30%;
+   top: 50%;
+   color: #FFFFFF;
+ }
+
+ .splash-content {
+   position: absolute;
+   left: 30%;
+   top: 50%;
+ }
+
+ .splash-area {
+   position: relative;
+   display: block;
+   margin-left: 0;
+   margin-right: 0;
+   max-width: 1920px;
+   height: 369px;
+   background: url('http://res.cloudinary.com/mackslist/image/upload/v1450311359/sf_ejtwgj.jpg')
+   no-repeat center center;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+ }
+
  .listing-title {
    text-align: center;
  }

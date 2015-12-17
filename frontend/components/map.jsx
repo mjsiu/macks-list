@@ -4,11 +4,6 @@ var ListingStore = require('../stores/listing');
 var ApiUtil = require('../util/api_utils');
 
 var Map = React.createClass ({
-  getInitialState: function() {
-    return {
-    listings: ListingStore.all()
-    }
-  },
 
   clickMapHandler: function (e) {
     var lat = e.latLng.lat();
@@ -16,11 +11,28 @@ var Map = React.createClass ({
     var coords = {};
     coords.lat = lat;
     coords.lng = lng;
-    this.props.clickMapHandler(coords);
+    this.props.onMapClick(coords);
   },
 
   onChange: function () {
     this.setState({listings: ListingStore.all() });
+  },
+
+  setMap: function () {
+    if (this.props.listing) {
+    var listing = this.props.listing;
+    var myLatLng = {
+      lat: listing.latitude,
+      lng: listing.longitude
+    };
+
+    var marker = new google.maps.Marker({
+      position: myLatLng,
+      map: this.map,
+      title: listing.title
+    });
+    marker.setMap(this.map);
+    }
   },
 
   componentDidMount: function(){
@@ -30,10 +42,11 @@ var Map = React.createClass ({
        zoom: 13
      };
      this.map = new google.maps.Map(mapDOMNode, mapOptions);
+     this.mapClickListener = google.maps.event.addListener(this.map, "click", this.clickMapHandler);
    },
 
   render: function () {
-    debugger
+    this.setMap();
     return (
       <div className="map" ref="map">
       </div>
