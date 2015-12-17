@@ -29,16 +29,9 @@
   */
  /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
- .listing-image {
-   position:relative;
-   left: 30%;
-   top: 50%;
- }
-
- .listing-details {
-   position:relative;
-   
- }
+.location-map {
+  text-align: center;
+}
 
  .divider {
    min-height: 100px;
@@ -48,6 +41,7 @@
    position: absolute;
    left: 30%;
    top: 50%;
+   float: left;
  }
 
  .splash-area {
@@ -70,8 +64,9 @@
  }
 
  .map {
-   width: 500px;
-   height: 500px;
+   width: 675px;
+   height: 450px;
+   padding: 2px;
  }
 
  .login-form {

@@ -5,7 +5,7 @@ var Login = React.createClass({
   render: function() {
     var login;
     var signup;
-    if (window.user) {
+    if (window.user.username) {
       login = (
         <li className="dropdown">
             <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{window.user.username}<span className="caret"></span></a>

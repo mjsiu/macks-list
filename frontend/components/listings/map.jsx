@@ -1,7 +1,8 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var ListingStore = require('../stores/listing');
-var ApiUtil = require('../util/api_utils');
+
+var ListingStore = require('../../stores/listing');
+var ApiUtil = require('../../util/api_utils');
 
 var Map = React.createClass ({
 

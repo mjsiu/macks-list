@@ -1,6 +1,7 @@
 var React = require('react');
-var Map = require('./map');
-var NavBar = require('./navbar');
+
+var Map = require('../map');
+var NavBar = require('../../navigation/navbar');
 
 var ListingLocation = React.createClass ({
 
@@ -13,11 +14,14 @@ var ListingLocation = React.createClass ({
       <div>
         <NavBar history={this.props.history}/>
         <div className="row">
-          <div className="col-md-4"></div>
-          <div className="col-md-6">
+          <div className="col-md-3"></div>
+          <div className="col-md-5">
+          <div className="location-map">
           <h2>Click Listing Location!</h2>
             <Map onMapClick={this.handleMapClick}/>
           </div>
+          </div>
+          <div className="col-md-3"></div>
         </div>
      </div>
     );

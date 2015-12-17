@@ -1,15 +1,15 @@
 <% if current_user %>
 <% username = current_user.username %>
-<% user_id = current_user.id %>
   <script type="text/javascript">
     window.user = {
       username: "<%=username%>",
-      user_id: "<%=user_id%>"
     };
   </script>
 <% else %>
   <script type="text/javascript">
-    window.user = undefined;
+    window.user = {
+      username: undefined,
+    };
   </script>
 <% end %>
 

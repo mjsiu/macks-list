@@ -1,6 +1,7 @@
 var React = require('react');
 var History = require('react-router').History;
-var NavBar = require('./navbar');
+
+var NavBar = require('../navigation/navbar');
 var Map = require('./map');
 
 var Listing= React.createClass({
@@ -25,7 +26,7 @@ var Listing= React.createClass({
           <div className="col-md-1"></div>
           <div className="col-md-5">
             <div className="listing-image">
-              <img src={this.props.listing.image_url}/>
+              <img src='http://res.cloudinary.com/mackslist/image/upload/c_scale,h_450/v1450306654/yorvkvyaz4ow3ylvav04.jpg'/>
             </div>
           </div>
           <div className="col-md-5">

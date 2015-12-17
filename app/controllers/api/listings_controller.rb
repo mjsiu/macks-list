@@ -7,7 +7,12 @@ class Api::ListingsController < ApplicationController
 
   def create
     listing = Listing.create!(listing_params)
-    render json: listing
+    listing.author_id = current_user.id
+
+    if listing.save
+      render json: listing
+    end
+
   end
 
   private

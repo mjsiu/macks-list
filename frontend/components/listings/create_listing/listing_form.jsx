@@ -1,8 +1,11 @@
 var React = require('react');
-var ApiUtil = require('../util/api_utils');
-var NavBar = require('./navbar');
 var History = require('react-router').History;
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
+
+var ApiUtil = require('../../../util/api_utils');
+var NavBar = require('../../navigation/navbar');
+var ImageUploadButton = require('./image_upload_button');
+
 
 var ListingForm = React.createClass({
   mixins: [LinkedStateMixin, History],
@@ -37,8 +40,12 @@ var ListingForm = React.createClass({
    Object.keys(this.state).forEach(function (key) {
      { listing[key] = this.state[key]; }
    }.bind(this));
-   debugger
    ApiUtil.createNewListing(listing);
+   this.returnToHome();
+  },
+
+  returnToHome: function(){
+    this.props.history.pushState(null, "/");
   },
 
   render: function() {
@@ -95,11 +102,10 @@ var ListingForm = React.createClass({
               </select>
             <br/>
             <div className="upload-form">
-              <button onClick={this.upload}>Upload new image!</button>
+              <button className="btn btn-default" type="button" onClick={this.upload}>Add Images</button>
+              <ImageUploadButton/>
             </div>
             <br/>
-            <button>Create</button>
-
 
           </form>
 

@@ -8,9 +8,9 @@ var Splash = React.createClass({
       <span className="splash-content">
         Search
         Category: <input type="text"/>
-        City: <input type="text"/>
-        <button>Search</button>
+        City: <input type="text"/>  <button className="btn btn-default" type="button">Search</button>
       </span>
+
       </div>
     );
   }

@@ -1,10 +1,12 @@
 var React = require('react');
-var ListingStore = require('../stores/listing');
-var ApiUtil = require('../util/api_utils');
-var ListingIndex = require('./listing_index');
+var History = require('react-router').History;
+
+var ListingStore = require('../../stores/listing');
+var ApiUtil = require('../../util/api_utils');
+var ListingIndex = require('../listings/listing_index');
 var NavBar = require('./navbar');
 var Splash = require('./splash');
-var History = require('react-router').History;
+
 
 
 var Index = React.createClass({
@@ -47,6 +49,7 @@ var Index = React.createClass({
       <ul>
         {listings}
       </ul>
+
       </div>
     );
   }

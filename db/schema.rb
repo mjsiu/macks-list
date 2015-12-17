@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20151215192624) do
     t.integer  "author_id",                 null: false
     t.integer  "city_id",                   null: false
     t.integer  "category_id",               null: false
-    t.string   "image_url",                 null: false
+    t.string   "image_url"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end

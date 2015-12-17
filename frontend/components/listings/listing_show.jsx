@@ -1,9 +1,11 @@
 var React = require('react');
-var ListingStore = require('../stores/listing');
 var ReactRouter = require('react-router');
-var Listing = require('./listing');
-var ApiUtil = require('../util/api_utils');
 var History = require('react-router').History;
+
+var ListingStore = require('../../stores/listing');
+var Listing = require('./listing');
+var ApiUtil = require('../../util/api_utils');
+
 
 var ListingShow = React.createClass ({
   mixins: [History],
