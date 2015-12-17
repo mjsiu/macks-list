@@ -24,8 +24,8 @@ var App = React.createClass({
 var routes = (
     <Route path="/" component={App}>
       <IndexRoute component={Index}/>
-      <Route path="listings/create/location" component={ListingLocation}/>
-      <Route path="listings/new" component={ListingForm}/>
+      <Route path="listings/new" component={ListingLocation}/>
+      <Route path="listings/new/form" component={ListingForm}/>
       <Route path="listings/:listingId" component={ListingShow}/>
     </Route>
 );

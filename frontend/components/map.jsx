@@ -20,7 +20,11 @@ var Map = React.createClass ({
 
   setMap: function () {
     if (this.props.listing) {
+    var map = this.map
     var listing = this.props.listing;
+    var infowindow = new google.maps.InfoWindow({
+      content: listing.address
+    });
     var myLatLng = {
       lat: listing.latitude,
       lng: listing.longitude
@@ -28,11 +32,16 @@ var Map = React.createClass ({
 
     var marker = new google.maps.Marker({
       position: myLatLng,
-      map: this.map,
+      map: map,
       title: listing.title
     });
-    marker.setMap(this.map);
+    marker.setMap(map);
+
+    marker.addListener('click', function() {
+      infowindow.open(map, marker);
+    });
     }
+
   },
 
   componentDidMount: function(){
@@ -42,7 +51,7 @@ var Map = React.createClass ({
        zoom: 13
      };
      this.map = new google.maps.Map(mapDOMNode, mapOptions);
-     this.mapClickListener = google.maps.event.addListener(this.map, "click", this.clickMapHandler);
+     this.mapClickListener = google.maps.event.addListener(this.map, "dblclick", this.clickMapHandler);
    },
 
   render: function () {

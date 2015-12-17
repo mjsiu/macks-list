@@ -51,7 +51,7 @@ var ListingShow = React.createClass ({
 
     return (
       <div>
-        <Listing listing={this.state.listing}></Listing>
+        <Listing history={this.props.history} listing={this.state.listing}></Listing>
       </div>
     );
   }

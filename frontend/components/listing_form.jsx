@@ -1,5 +1,6 @@
 var React = require('react');
 var ApiUtil = require('../util/api_utils');
+var NavBar = require('./navbar');
 var History = require('react-router').History;
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
 
@@ -12,7 +13,7 @@ var ListingForm = React.createClass({
       description: "",
       price: "",
       address: "",
-      author_id: "",
+      author_id: window.user.user_id,
       city_id: "",
       category_id: "",
       image_url: "",
@@ -41,9 +42,11 @@ var ListingForm = React.createClass({
   },
 
   render: function() {
-    debugger
     return (
+      <div>
+      <NavBar history={this.props.history}/>
       <div className="row">
+        <div className="col-md-4"/>
         <div className="col-md-4">
           <h3>Create a Listing</h3>
           <form onSubmit={this.handleSubmit}>
@@ -67,11 +70,6 @@ var ListingForm = React.createClass({
               <input className="form-control"
                      type="text"
                      valueLink={this.linkState('address')}/>
-            <br/>
-            <label>Author</label>
-              <input className="form-control"
-                     type="text"
-                     valueLink={this.linkState('author_id')}/>
             <br/>
             <label>City</label>
               <select className="form-control"
@@ -107,6 +105,7 @@ var ListingForm = React.createClass({
 
         </div>
       </div>
+    </div>
     )
   }
 

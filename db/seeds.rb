@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+bike = "This bike is cool. This bike is cool.This bike is cool.This bike is cool.This bike is cool.This bike is cool.This bike is cool.This bike is cool. "
+
 ActiveRecord::Base.connection.reset_pk_sequence!('User')
 ActiveRecord::Base.connection.reset_pk_sequence!('Listing')
 ActiveRecord::Base.connection.reset_pk_sequence!('City')
@@ -17,7 +19,7 @@ Listing.create(title: "iPhone 6s", description: "Unused iPhone 6s for sale",
 price: 699.99, address: "Powell Street, San Francisco, California", author_id:
 1, city_id: 1, category_id: 1,
 image_url: "http://res.cloudinary.com/mackslist/image/upload/c_scale,w_400/v1450239811/DBYDOD6O96_jex3gw.jpg")
-Listing.create(title: "Designer cluthing", description: "Three-hundred-dollar T-shirt",
+Listing.create(title: "Bike", description: bike,
 price: 300, address: "3rd Street, San Mateo, California", author_id: 2, city_id: 4,
 category_id: 2,
 image_url: "http://res.cloudinary.com/mackslist/image/upload/c_scale,w_400/v1450239818/245H_mxolvq.jpg")

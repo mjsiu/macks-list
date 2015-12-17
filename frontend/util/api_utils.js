@@ -13,7 +13,14 @@ var ApiUtil = {
       method: "POST",
       data: { listing: listing }
     });
+  },
+
+  fetchAllUserListings: function() {
+    $.get('api/listings', function (listings){
+      
+    });
   }
+
 };
 
 module.exports = ApiUtil;

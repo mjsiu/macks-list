@@ -29,20 +29,19 @@
   */
  /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
- .divider {
-   min-height: 100px;
- }
-
- .footer {
-   background-color: #3e3f3a;
-   min-height: 200px;
- }
-
- .footer-content {
-   position: absolute;
+ .listing-image {
+   position:relative;
    left: 30%;
    top: 50%;
-   color: #FFFFFF;
+ }
+
+ .listing-details {
+   position:relative;
+   
+ }
+
+ .divider {
+   min-height: 100px;
  }
 
  .splash-content {
