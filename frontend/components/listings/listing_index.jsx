@@ -10,7 +10,7 @@ var ListingIndex = React.createClass({
           <div className="col">
           <b>{this.props.listing.title} - ${this.props.listing.price}</b>
           <br/>
-          <img src={this.props.listing.image_url}/>
+          <img src="http://res.cloudinary.com/mackslist/image/upload/v1450309841/logo_k5fymd.png"/>
           <br/>
           </div>
       </div>

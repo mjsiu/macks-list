@@ -8,15 +8,14 @@ class CreateListings < ActiveRecord::Migration
       t.float :latitude
       t.float :longitude
       t.string :archived, null: false, default: false
-      t.integer :author_id, null: false
+      t.integer :user_id, null: false
       t.integer :city_id, null: false
       t.integer :category_id, null: false
-      t.string :image_url
 
       t.timestamps null: false
     end
 
-    add_index :listings, :author_id
+    add_index :listings, :user_id
     add_index :listings, :city_id
     add_index :listings, :category_id
   end

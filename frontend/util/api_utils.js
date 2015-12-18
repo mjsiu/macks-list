@@ -17,7 +17,7 @@ var ApiUtil = {
 
   fetchAllUserListings: function() {
     $.get('api/listings', function (listings){
-      
+
     });
   }
 

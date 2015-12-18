@@ -6,7 +6,6 @@ var ApiUtil = require('../../../util/api_utils');
 var NavBar = require('../../navigation/navbar');
 var ImageUploadButton = require('./image_upload_button');
 
-
 var ListingForm = React.createClass({
   mixins: [LinkedStateMixin, History],
 
@@ -16,32 +15,30 @@ var ListingForm = React.createClass({
       description: "",
       price: "",
       address: "",
-      author_id: window.user.user_id,
       city_id: "",
       category_id: "",
-      image_url: "",
       latitude: this.props.location.query.lat,
-      longitude: this.props.location.query.lng
+      longitude: this.props.location.query.lng,
+      images : []
     };
   },
 
-  upload: function (e) {
-    e.preventDefault();
-    cloudinary.openUploadWidget(CLOUDINARY, function(error, results){
-      if(!error){
-        this.props.postImage(results[0]);
-      }
-    }.bind(this));
+  storeListingImages: function (image_array) {
+    var temp_imgs = [];
+    image_array.forEach(function(image){
+      temp_imgs.push(image.url.slice(61));
+    });
+    this.state.images = temp_imgs;
   },
 
   handleSubmit: function(event){
-   event.preventDefault();
-   var listing = {};
-   Object.keys(this.state).forEach(function (key) {
-     { listing[key] = this.state[key]; }
-   }.bind(this));
-   ApiUtil.createNewListing(listing);
-   this.returnToHome();
+    event.preventDefault();
+    var listing = {};
+    Object.keys(this.state).forEach(function (key) {
+      { listing[key] = this.state[key]; }
+    }.bind(this));
+    ApiUtil.createNewListing(listing);
+    this.returnToHome();
   },
 
   returnToHome: function(){
@@ -101,14 +98,10 @@ var ListingForm = React.createClass({
                      <option value={4}>Sports</option>
               </select>
             <br/>
-            <div className="upload-form">
-              <button className="btn btn-default" type="button" onClick={this.upload}>Add Images</button>
-              <ImageUploadButton/>
-            </div>
+              <ImageUploadButton storeListingImages={this.storeListingImages}/>
             <br/>
-
+              <input type="submit" className="btn btn-default" value="Create Listing"/>
           </form>
-
         </div>
       </div>
     </div>

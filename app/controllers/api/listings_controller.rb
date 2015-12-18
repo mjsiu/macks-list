@@ -6,8 +6,7 @@ class Api::ListingsController < ApplicationController
   end
 
   def create
-    listing = Listing.create!(listing_params)
-    listing.author_id = current_user.id
+    listing = current_user.listings.create!(listing_params)
 
     if listing.save
       render json: listing
@@ -21,9 +20,7 @@ class Api::ListingsController < ApplicationController
       :title, :description,
       :price, :address,
       :latitude, :longitude,
-      :author_id, :city_id,
-      :category_id,
-      :image_url
+      :city_id, :category_id
     )
   end
 

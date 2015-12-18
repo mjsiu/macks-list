@@ -16,36 +16,28 @@ ActiveRecord::Base.connection.reset_pk_sequence!('Category')
 User.create(username: "Escobar", email: "ecobar@gmail.com", password: "password", city_id: 1)
 
 Listing.create(title: "iPhone 6s", description: "Unused iPhone 6s for sale",
-price: 699.99, address: "Powell Street, San Francisco, California", author_id:
-1, city_id: 1, category_id: 1,
-image_url: "http://res.cloudinary.com/mackslist/image/upload/c_scale,w_400/v1450239811/DBYDOD6O96_jex3gw.jpg")
+price: 699.99, address: "Powell Street, San Francisco, California", user_id:
+1, city_id: 1, category_id: 1)
 Listing.create(title: "Bike", description: bike,
-price: 300, address: "3rd Street, San Mateo, California", author_id: 2, city_id: 4,
-category_id: 2,
-image_url: "http://res.cloudinary.com/mackslist/image/upload/c_scale,w_400/v1450239818/245H_mxolvq.jpg")
+price: 300, address: "3rd Street, San Mateo, California", user_id: 2, city_id: 4,
+category_id: 2)
 Listing.create(title: "Briefcase", description: "Vintage", price: 50, address:
-"Berkeley, Berkeley, California", author_id: 3, city_id: 3, category_id: 3,
-image_url: "http://res.cloudinary.com/mackslist/image/upload/c_scale,w_400/v1450239805/186H_ogcqm9.jpg")
+"Berkeley, Berkeley, California", user_id: 3, city_id: 3, category_id: 3)
 Listing.create(title: "Motorcycle", description: "Super vintage cycle",
-price: 100, address: "Powell Street, San Francisco, California", author_id:
-1, city_id: 1, category_id: 1,
-image_url: "http://res.cloudinary.com/mackslist/image/upload/c_scale,w_400/v1450239782/257_1_fkjtwf.jpg")
+price: 100, address: "Powell Street, San Francisco, California", user_id:
+1, city_id: 1, category_id: 1)
 Listing.create(title: "Laptop", description: "Unused iPhone 6s for sale",
-price: 1200, address: "Powell Street, San Francisco, California", author_id:
-1, city_id: 1, category_id: 1,
-image_url: "http://res.cloudinary.com/mackslist/image/upload/c_scale,h_267,w_400/v1450239798/negativespace-13_uvkh4j.jpg")
+price: 1200, address: "Powell Street, San Francisco, California", user_id:
+1, city_id: 1, category_id: 1)
 Listing.create(title: "Boat", description: "Unused iPhone 6s for sale",
-price: 450, address: "Powell Street, San Francisco, California", author_id:
-1, city_id: 1, category_id: 1,
-image_url: "http://res.cloudinary.com/mackslist/image/upload/c_scale,w_400/v1450239812/206H_auh8dd.jpg")
+price: 450, address: "Powell Street, San Francisco, California", user_id:
+1, city_id: 1, category_id: 1)
 Listing.create(title: "Homemade Pasta", description: "Unused iPhone 6s for sale",
-price: 15, address: "Powell Street, San Francisco, California", author_id:
-1, city_id: 1, category_id: 1,
-image_url: "http://res.cloudinary.com/mackslist/image/upload/c_scale,h_267,w_400/v1450242515/food-pasta-spinach_edtjyx.jpg")
+price: 15, address: "Powell Street, San Francisco, California", user_id:
+1, city_id: 1, category_id: 1)
 Listing.create(title: "Limited Edition Book", description: "Unused iPhone 6s for sale",
-price: 79, address: "Powell Street, San Francisco, California", author_id:
+price: 79, address: "Powell Street, San Francisco, California", user_id:
 1, city_id: 1, category_id: 1,
-image_url: "http://res.cloudinary.com/mackslist/image/upload/c_scale,h_267,w_400/v1450242541/pexels-photo_tfopmu.jpg",
 latitude: 37.774733, longitude: -122.418702)
 
 

@@ -6,7 +6,7 @@ var ImageUploadButton = React.createClass({
     e.preventDefault();
     cloudinary.openUploadWidget(CLOUDINARY, function(error, result){
       if (!error) {
-        this.props.postImage(result[0]);
+        this.props.storeListingImages(result);
       }
     }.bind(this));
   },
@@ -14,7 +14,7 @@ var ImageUploadButton = React.createClass({
   render: function () {
     return (
       <div className="upload-form">
-        <button onClick={this.uploadImage}>Add Image</button>
+        <button className="btn-default"onClick={this.uploadImage}>Add Image</button>
       </div>
     );
   }
