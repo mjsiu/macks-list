@@ -7,8 +7,6 @@ var ListingIndex = require('../listings/listing_index');
 var NavBar = require('./navbar');
 var Splash = require('./splash');
 
-
-
 var Index = React.createClass({
   mixins: [History],
 
@@ -22,10 +20,6 @@ var Index = React.createClass({
     this.setState({listings: ListingStore.all() })
   },
 
-  handleListingClick: function (listing) {
-    this.props.history.pushState(null, "/listings/" + listing.id, {})
-  },
-
   componentDidMount: function() {
     this.listingListener = ListingStore.addListener(this.onChange);
     ApiUtil.fetchAllListings();
@@ -33,6 +27,10 @@ var Index = React.createClass({
 
   componentWillUnmount: function () {
     this.listingListener.remove();
+  },
+
+  handleListingClick: function (listing) {
+    this.props.history.pushState(null, "/listings/" + listing.id, {})
   },
 
   render: function() {

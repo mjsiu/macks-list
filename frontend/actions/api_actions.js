@@ -24,10 +24,10 @@ ApiActions = {
     });
   },
 
-  receiveAllUserListings: function(listings){
+  receiveAllUserListings: function(users_listings){
     AppDispatcher.dispatch({
       actionType: UserConstants.USERS_RECEIVED,
-      listings: listings
+      user_listings: users_listings
     });
   },
 

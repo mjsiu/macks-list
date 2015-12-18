@@ -5,8 +5,12 @@ var ApiUtil = require('../../util/api_utils')
 var UserListingTable = React.createClass({
   getInitialState: function() {
     return {
-      listings: UserStore.all()
+      user_listings: UserStore.all()
     }
+  },
+
+  onChange: function () {
+    this.setState({user_listings: UserStore.all()})
   },
 
   componentDidMount: function() {
@@ -19,53 +23,41 @@ var UserListingTable = React.createClass({
   },
 
   render: function() {
-    debugger
-    var listings = this.state.listings.map(function(listing, idx) {
-        return <li key={listing.id}>{listing.title}</li>
-      });
+    var user_listings = this.state.user_listings.map(function(listing, idx) {
+      return (
+      <tr>
+        <td>{listing.title}</td>
+        <td></td>
+        <td></td>
+        <td>{listing.create_date}</td>
+        <td>${listing.price}</td>
+        <td>{listing.description.slice(0,50) + "..."}</td>
+      </tr>
+      )
+    }.bind(this));
+
     return (
       <div>
-      {listings}
-    </div>
-    )
+        <h2>Your Listings</h2>
 
-    // return (
-    //   <div>
-    //     <h2>Your Listings</h2>
-    //
-    //     <table className="table table-hover">
-    //       <thead>
-    //         <tr>
-    //           <th>Title</th>
-    //           <th>Description</th>
-    //           <th>Price</th>
-    //           <th>Post Date</th>
-    //           <th>Edit</th>
-    //           <th>Delete</th>
-    //           <th>Link</th>
-    //         </tr>
-    //       </thead>
-    //       <tbody>
-    //         <tr>
-    //           <td>John</td>
-    //           <td>Doe</td>
-    //           <td>john@example.com</td>
-    //         </tr>
-    //         <tr>
-    //           <td>Mary</td>
-    //           <td>Moe</td>
-    //           <td>mary@example.com</td>
-    //         </tr>
-    //         <tr>
-    //           <td>July</td>
-    //           <td>Dooley</td>
-    //           <td>july@example.com</td>
-    //         </tr>
-    //       </tbody>
-    //     </table>
-    //
-    //   </div>
-    // );
+        <table className="table table-hover">
+          <thead>
+            <tr>
+              <th>Link</th>
+              <th>Edit</th>
+              <th>Delete</th>
+              <th>Date</th>
+              <th>Price</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+              {user_listings}
+          </tbody>
+        </table>
+
+      </div>
+    );
   }
 
 });

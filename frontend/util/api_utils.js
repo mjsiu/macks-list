@@ -22,12 +22,10 @@ var ApiUtil = {
         if (listing.id === parseInt(window.user.user_id)){
           userListings.push(listing);
         }
-      })
-      debugger
-      ApiActions.receiveAllListings(userListings);
+      });
+      ApiActions.receiveAllUserListings(userListings);
     });
   }
-
 };
 
 module.exports = ApiUtil;

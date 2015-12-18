@@ -2,6 +2,17 @@ var React = require('react');
 
 var Login = React.createClass({
 
+  handleSignOutClick: function() {
+    $.ajax({
+      url: "/session",
+      method: "DELETE"
+    });
+  },
+
+  handleProfileClick: function () {
+    this.props.history.pushState(null, "/user", {});
+  },
+
   render: function() {
     var login;
     var signup;
@@ -10,8 +21,8 @@ var Login = React.createClass({
         <li className="dropdown">
             <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{window.user.username}<span className="caret"></span></a>
             <ul className="dropdown-menu">
-              <li><a href="#">User Profile</a></li>
-              <li><a href="http://localhost:3000/session/delete">Log Out</a></li>
+              <li><a onClick={this.handleProfileClick}>User Profile</a></li>
+              <li onClick={this.handleSignOutClick}><a>Log Out</a></li>
             </ul>
           </li>);
     } else {
@@ -24,8 +35,8 @@ var Login = React.createClass({
     }
     return (
       <ul className="nav navbar-nav navbar-right">
-        {login}
         {signup}
+        {login}
       </ul>
     );
   }

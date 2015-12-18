@@ -10,8 +10,8 @@ var User = React.createClass ({
     return (
       <div>
         <NavBar history={this.props.history}/>
-        <UserListingTable/>
-        <UserStarredTable/>
+        <UserListingTable history={this.props.history}/>
+        <UserStarredTable history={this.props.history}/>
       </div>
 
     );

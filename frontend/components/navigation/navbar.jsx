@@ -42,7 +42,7 @@ var NavBar = React.createClass({
               </li>
             </ul>
 
-            <Login/>
+            <Login history={this.props.history}/>
 
           </div>
         </div>
