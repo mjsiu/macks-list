@@ -5,10 +5,9 @@ var ListingStore = new Store(AppDispatcher);
 
 var _listings = [];
 
-var resetListings  = function(listings) {
+var resetListings = function(listings) {
   _listings = listings;
 };
-
 
 ListingStore.all = function(listings) {
   return _listings.slice(0);

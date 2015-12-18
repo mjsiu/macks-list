@@ -17,7 +17,14 @@ var ApiUtil = {
 
   fetchAllUserListings: function() {
     $.get('api/listings', function (listings){
-
+      var userListings = [];
+      listings.forEach(function(listing){
+        if (listing.id === parseInt(window.user.user_id)){
+          userListings.push(listing);
+        }
+      })
+      debugger
+      ApiActions.receiveAllListings(userListings);
     });
   }
 

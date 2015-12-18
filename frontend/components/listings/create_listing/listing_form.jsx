@@ -19,7 +19,7 @@ var ListingForm = React.createClass({
       category_id: "",
       latitude: this.props.location.query.lat,
       longitude: this.props.location.query.lng,
-      images : []
+      image_array: []
     };
   },
 
@@ -28,7 +28,7 @@ var ListingForm = React.createClass({
     image_array.forEach(function(image){
       temp_imgs.push(image.url.slice(61));
     });
-    this.state.images = temp_imgs;
+    this.state.image_array = temp_imgs;
   },
 
   handleSubmit: function(event){

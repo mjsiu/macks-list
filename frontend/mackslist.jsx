@@ -26,7 +26,7 @@ var routes = (
       <Route path="listings/new" component={ListingLocation}/>
       <Route path="listings/new/form" component={ListingForm}/>
       <Route path="listings/:listingId" component={ListingShow}/>
-      <Route path="user/:userId" component={UserShow}/>
+      <Route path="user" component={UserShow}/>
     </Route>
 );
 
