@@ -15,7 +15,8 @@ json.array! @listings do |listing|
   json.create_date distance_of_time_in_words_to_now(listing.created_at)
 
 
-  listing.images.each_with_index do |image,idx|
-    json.idx image
+  json.images listing.images do |image|
+    json.id image.id
+    json.url image.url
   end
 end

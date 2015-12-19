@@ -19,26 +19,28 @@ var ListingForm = React.createClass({
       category_id: "",
       latitude: this.props.location.query.lat,
       longitude: this.props.location.query.lng,
-      image_array: []
+      images_attributes: []
     };
   },
 
-  storeListingImages: function (image_array) {
+  storeListingImages: function (images_attributes) {
     var temp_imgs = [];
-    image_array.forEach(function(image){
-      temp_imgs.push(image.url.slice(61));
+    images_attributes.forEach(function(image){
+      temp_imgs.push({url: image.url.slice(61)});
     });
-    this.state.image_array = temp_imgs;
+    this.state.images_attributes = temp_imgs;
   },
 
   handleSubmit: function(event){
     event.preventDefault();
+
     var listing = {};
     Object.keys(this.state).forEach(function (key) {
       { listing[key] = this.state[key]; }
     }.bind(this));
     ApiUtil.createNewListing(listing);
     this.returnToHome();
+    debugger
   },
 
   returnToHome: function(){
@@ -107,7 +109,6 @@ var ListingForm = React.createClass({
     </div>
     )
   }
-
 });
 
 module.exports = ListingForm;

@@ -6,11 +6,16 @@ class Api::ListingsController < ApplicationController
   end
 
   def create
-    listing = current_user.listings.create!(listing_params)
-
-    listing_params[:image_array].each do |image_url|
-      listing.images.create!(img_url: image_url)
-    end
+    temp_params = params[:listing]
+    listing = current_user.listings.create!(
+    :title => temp_params[:title],
+    :description => temp_params[:description],
+    :price => temp_params[:price],
+    :address => temp_params[:address],
+    :city_id => temp_params[:city_id],
+    :category_id => temp_params[:category_id],
+    :images_attributes => temp_params[:images_attributes]
+    )
 
     if listing.save
       render json: listing
@@ -18,15 +23,15 @@ class Api::ListingsController < ApplicationController
 
   end
 
-  private
-  def listing_params
-    params.require(:listing).permit(
-      :title, :description,
-      :price, :address,
-      :latitude, :longitude,
-      :city_id, :category_id,
-      {:image_params => [{}]}
-    )
-  end
+  # private
+  # def listing_params
+  #   params.require(:listing).permit(
+  #     :title, :description,
+  #     :price, :address,
+  #     :latitude, :longitude,
+  #     :city_id, :category_id,
+  #     :images_attributes
+  #   )
+  # end
 
 end
