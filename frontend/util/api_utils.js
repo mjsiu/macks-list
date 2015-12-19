@@ -23,8 +23,16 @@ var ApiUtil = {
 
   deleteListing: function (listing) {
     $.ajax({
-      url: "api/listings" + listing.id,
+      url: "api/listings/" + listing.id,
       method: "DELETE",
+      data: { listing: listing }
+    });
+  },
+
+  archiveListing: function (listing) {
+    $.ajax({
+      url: "api/listings/" + listing.id,
+      method: "PATCH",
       data: { listing: listing }
     });
   },
@@ -33,7 +41,8 @@ var ApiUtil = {
     $.get('api/listings', function (listings){
       var userListings = [];
       listings.forEach(function(listing){
-        if (listing.id === parseInt(window.user.user_id)){
+
+        if (listing.user_id === parseInt(window.user.user_id)){
           userListings.push(listing);
         }
       });

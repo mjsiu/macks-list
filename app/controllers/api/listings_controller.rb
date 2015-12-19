@@ -22,7 +22,18 @@ class Api::ListingsController < ApplicationController
     if listing.save
       render json: listing
     end
+  end
 
+  def update
+    listing = Listing.find(params[:listing][:id])
+  end
+
+  def destroy
+    listing = Listing.find(params[:listing][:id])
+
+    if (listing.user_id === current_user.id)
+      listing.destroy
+    end
   end
 
 end

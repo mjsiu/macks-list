@@ -17,8 +17,8 @@ var ListingForm = React.createClass({
       address: "",
       city_id: "",
       category_id: "",
-      latitude: this.props.location.query.lat,
-      longitude: this.props.location.query.lng,
+      latitude: "",
+      longitude: "",
       images_attributes: []
     };
   },
@@ -29,6 +29,26 @@ var ListingForm = React.createClass({
       temp_imgs.push({url: image.url.slice(61)});
     });
     this.state.images_attributes = temp_imgs;
+  },
+
+  componentDidMount: function () {
+    this.setLatLng();
+    this.findIntialAttributes();
+  },
+
+  setLatLng: function (){
+    if (this.props.location) {
+      this.state.latitude = this.props.location.query.lat;
+      this.state.longitude = this.props.location.query.lng;
+    }
+  },
+
+  findIntialAttributes: function () {
+    if (this.props.listing) {
+      Object.keys(this.state).forEach(function(key) {
+        { this.state[key] = this.props.listing[key] }
+    }.bind(this));
+    }
   },
 
   handleSubmit: function(event){

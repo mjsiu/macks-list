@@ -9,6 +9,7 @@ var ListingForm = require('./components/listings/create_listing/listing_form');
 var ListingShow = require('./components/listings/listing_show');
 var ListingLocation = require('./components/listings/create_listing/listing_location');
 var UserShow = require('./components/user/user_show');
+var ListingEdit = require('./components/listings/listing_edit');
 
 var App = React.createClass({
   render: function(){
@@ -26,6 +27,7 @@ var routes = (
       <Route path="listings/new" component={ListingLocation}/>
       <Route path="listings/new/form" component={ListingForm}/>
       <Route path="listings/:listingId" component={ListingShow}/>
+      <Route path="listings/edit/:listingId" component={ListingEdit}/>
       <Route path="user" component={UserShow}/>
     </Route>
 );
