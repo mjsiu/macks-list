@@ -39,6 +39,10 @@ Listing.create(title: "Limited Edition Book", description: "Unused iPhone 6s for
 price: 79, address: "Powell Street, San Francisco, California", user_id:
 1, city_id: 1, category_id: 1,
 latitude: 37.774733, longitude: -122.418702)
+Listing.create(title: "TESTING ARCHIVED", description: "Unused iPhone 6s for sale",
+price: 79, address: "Powell Street, San Francisco, California", user_id:
+1, city_id: 1, category_id: 1, archived: true,
+latitude: 37.774733, longitude: -122.418702)
 
 
 City.create(name: "San Francisco", latitude: 37.774733, longitude: -122.418702)
@@ -51,5 +55,16 @@ Category.create(category_name: "Electronics")
 Category.create(category_name: "Clothing")
 Category.create(category_name: "Home")
 Category.create(category_name: "Sports")
+
+Image.create(listing_id: 1, url: "v1450239818/245H_mxolvq.jpg")
+Image.create(listing_id: 2, url: "v1450239818/245H_mxolvq.jpg")
+Image.create(listing_id: 3, url: "v1450239818/245H_mxolvq.jpg")
+Image.create(listing_id: 4, url: "v1450239818/245H_mxolvq.jpg")
+Image.create(listing_id: 5, url: "v1450239818/245H_mxolvq.jpg")
+Image.create(listing_id: 6, url: "v1450239818/245H_mxolvq.jpg")
+Image.create(listing_id: 7, url: "v1450239818/245H_mxolvq.jpg")
+Image.create(listing_id: 8, url: "v1450239818/245H_mxolvq.jpg")
+Image.create(listing_id: 9, url: "v1450239818/245H_mxolvq.jpg")
+
 
 # rake db:drop db:create db:migrate db:seed

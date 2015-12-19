@@ -37,11 +37,13 @@ var Map = React.createClass ({
       title: listing.title
     });
     marker.setMap(map);
+    marker.setIcon('http://res.cloudinary.com/mackslist/image/upload/c_scale,h_40,w_40/v1450309841/logo_k5fymd.png')
 
     marker.addListener('click', function() {
       infowindow.open(map, marker);
     });
     }
+
 
   },
 

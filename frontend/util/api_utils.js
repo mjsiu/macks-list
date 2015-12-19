@@ -3,7 +3,13 @@ var ApiActions = require('../actions/api_actions.js');
 var ApiUtil = {
   fetchAllListings: function(){
     $.get('api/listings', function(listings){
-      ApiActions.receiveAllListings(listings);
+      var activeListings = [];
+      listings.forEach(function(listing){
+        if (listing.archived === "f") {
+          activeListings.push(listing);
+        }
+      });
+      ApiActions.receiveAllListings(activeListings);
     });
   },
 
@@ -11,6 +17,14 @@ var ApiUtil = {
     $.ajax({
       url: "api/listings",
       method: "POST",
+      data: { listing: listing }
+    });
+  },
+
+  deleteListing: function (listing) {
+    $.ajax({
+      url: "api/listings" + listing.id,
+      method: "DELETE",
       data: { listing: listing }
     });
   },

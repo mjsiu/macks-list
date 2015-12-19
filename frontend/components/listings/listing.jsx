@@ -8,6 +8,10 @@ var Listing= React.createClass({
   mixins: [History],
 
   render: function () {
+    var image = "http://res.cloudinary.com/mackslist/image/upload/c_scale,h_450/";
+
+    image += this.props.listing.images[0].url
+
     return (
       <div>
 
@@ -26,7 +30,7 @@ var Listing= React.createClass({
           <div className="col-md-1"></div>
           <div className="col-md-5">
             <div className="listing-image">
-              <img src='http://res.cloudinary.com/mackslist/image/upload/c_scale,h_450/v1450306654/yorvkvyaz4ow3ylvav04.jpg'/>
+              <img src={image}/>
             </div>
           </div>
           <div className="col-md-5">

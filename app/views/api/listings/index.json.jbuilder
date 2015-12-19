@@ -13,6 +13,7 @@ json.array! @listings do |listing|
   json.id listing.id
   json.user_id listing.user_id
   json.create_date distance_of_time_in_words_to_now(listing.created_at)
+  json.archived listing.archived
 
 
   json.images listing.images do |image|
