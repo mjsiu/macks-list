@@ -9,6 +9,7 @@ var ListingForm = React.createClass({
 
   getInitialState: function(){
     return {
+      id: "",
       title: "",
       description: "",
       price: "",
@@ -29,9 +30,12 @@ var ListingForm = React.createClass({
     this.state.images_attributes = temp_imgs;
   },
 
+  componentWillMount: function() {
+    this.findIntialAttributes();
+  },
+
   componentDidMount: function () {
     this.setLatLng();
-    this.findIntialAttributes();
   },
 
   setLatLng: function (){
@@ -42,9 +46,9 @@ var ListingForm = React.createClass({
   },
 
   findIntialAttributes: function () {
-    if (this.props.listing) {
+    if (this.props.location.query) {
       Object.keys(this.state).forEach(function(key) {
-        { this.state[key] = this.props.listing[key] }
+        { this.state[key] = this.props.location.query[key] }
     }.bind(this));
     }
   },
@@ -56,20 +60,18 @@ var ListingForm = React.createClass({
     Object.keys(this.state).forEach(function (key) {
       { listing[key] = this.state[key]; }
     }.bind(this));
-
+    debugger
     ApiUtil.createNewListing(listing);
     this.returnToProfile();
   },
 
   handleEditClick: function(event) {
-    debugger
     event.preventDefault();
 
     var listing = {};
     Object.keys(this.state).forEach(function (key) {
       { listing[key] = this.state[key]; }
     }.bind(this));
-
     ApiUtil.editListing(listing);
     this.returnToProfile();
   },
@@ -92,11 +94,11 @@ var ListingForm = React.createClass({
         <div className="col-md-4"/>
         <div className="col-md-4">
           <h2>{this.props.type}</h2>
-          <form onSubmit={ handleSubmit}>
+          <form onSubmit={handleSubmit}>
             <label>Title</label>
               <input className="form-control"
                      type="text"
-                    valueLink={this.linkState('title')}/>
+                     valueLink={this.linkState('title')}/>
             <br/>
             <label>Description</label>
               <textarea className="form-control"

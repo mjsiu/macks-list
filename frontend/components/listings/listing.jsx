@@ -1,16 +1,30 @@
 var React = require('react');
-var History = require('react-router').History;
 
 var NavBar = require('../navigation/navbar');
 var Map = require('./map');
 
-var Listing= React.createClass({
-  mixins: [History],
+var Listing = React.createClass({
+  getInitialState: function() {
+    return {
+      primary_image: ''
+    }
+  },
+
+  componentWillMount: function() {
+    this.imageCheck();
+  },
+
+  imageCheck: function() {
+    var partial = "http://res.cloudinary.com/mackslist/image/upload/c_scale,h_450/";
+
+    if (this.props.listing.images[0]) {
+      this.setState({primary_image: partial + this.props.listing.images[0].url})
+    } else {
+      this.setState({primary_image: partial + "v1450309841/logo_k5fymd.png"})
+    }
+  },
 
   render: function () {
-    var image = "http://res.cloudinary.com/mackslist/image/upload/c_scale,h_450/";
-
-    image += this.props.listing.images[0].url
 
     return (
       <div>
@@ -30,7 +44,7 @@ var Listing= React.createClass({
           <div className="col-md-1"></div>
           <div className="col-md-5">
             <div className="listing-image">
-              <img src={image}/>
+              <img src={this.state.primary_image}/>
             </div>
           </div>
           <div className="col-md-5">

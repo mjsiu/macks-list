@@ -13,10 +13,11 @@ class Api::ListingsController < ApplicationController
   end
 
   def update
-    listing = Listing.find(params[:listing][:id])
+    listing = Listing.find(params[:id])
 
     if (listing.user_id === current_user.id)
       listing.update(listing_params)
+      render json: listing
     end
   end
 

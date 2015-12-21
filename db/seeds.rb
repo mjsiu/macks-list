@@ -18,28 +18,28 @@ User.create(username: "Escobar", email: "ecobar@gmail.com", password: "password"
 Listing.create(title: "iPhone 6s", description: "Unused iPhone 6s for sale",
 price: 699.99, address: "Powell Street, San Francisco, California", user_id:
 1, city_id: 1, category_id: 1)
-Listing.create(title: "Bike", description: bike,
+Listing.create(title: "Bike", description: "bike for sale",
 price: 300, address: "3rd Street, San Mateo, California", user_id: 2, city_id: 4,
 category_id: 2)
-Listing.create(title: "Briefcase", description: "Vintage", price: 50, address:
+Listing.create(title: "Briefcase", description: "Vintage briefcase", price: 50, address:
 "Berkeley, Berkeley, California", user_id: 3, city_id: 3, category_id: 3)
 Listing.create(title: "Motorcycle", description: "Super vintage cycle",
 price: 100, address: "Powell Street, San Francisco, California", user_id:
 1, city_id: 1, category_id: 1)
-Listing.create(title: "Laptop", description: "Unused iPhone 6s for sale",
+Listing.create(title: "Laptop", description: "Good condition laptop",
 price: 1200, address: "Powell Street, San Francisco, California", user_id:
 1, city_id: 1, category_id: 1)
-Listing.create(title: "Boat", description: "Unused iPhone 6s for sale",
+Listing.create(title: "Boat", description: "New and unused boat",
 price: 450, address: "Powell Street, San Francisco, California", user_id:
 1, city_id: 1, category_id: 1)
-Listing.create(title: "Homemade Pasta", description: "Unused iPhone 6s for sale",
+Listing.create(title: "Homemade Pasta", description: "Freshly made pasta",
 price: 15, address: "Powell Street, San Francisco, California", user_id:
 1, city_id: 1, category_id: 1)
-Listing.create(title: "Limited Edition Book", description: "Unused iPhone 6s for sale",
+Listing.create(title: "Limited Edition Book", description: "Book that is really cool",
 price: 79, address: "Powell Street, San Francisco, California", user_id:
 1, city_id: 1, category_id: 1,
 latitude: 37.774733, longitude: -122.418702)
-Listing.create(title: "TESTING ARCHIVED", description: "Unused iPhone 6s for sale",
+Listing.create(title: "TESTING ARCHIVED", description: "A testing archive example",
 price: 79, address: "Powell Street, San Francisco, California", user_id:
 1, city_id: 1, category_id: 1, archived: true,
 latitude: 37.774733, longitude: -122.418702)

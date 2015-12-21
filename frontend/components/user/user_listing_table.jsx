@@ -7,7 +7,6 @@ var UserListingTable = React.createClass({
   getInitialState: function() {
     return {
       user_listings: UserStore.all(),
-      target_listing: {}
     }
   },
 
@@ -17,13 +16,11 @@ var UserListingTable = React.createClass({
 
   componentDidMount: function() {
     this.userListener = UserStore.addListener(this.onChange);
-    this.listingListener = ListingStore.addListener(this.onChange);
     ApiUtil.fetchAllUserListings();
   },
 
   componentWillUnmount: function() {
     this.userListener.remove();
-    this.listingListener.remove();
   },
 
   handleDeleteClick: function (listing) {
@@ -31,8 +28,7 @@ var UserListingTable = React.createClass({
   },
 
   handleEditClick: function (listing) {
-    this.setState({target_listing: listing});
-    this.props.history.pushState(null, "/listings/edit/" + listing.id, {});
+    this.props.history.pushState(null, "/listings/edit/" + listing.id, listing);
   },
 
   render: function() {

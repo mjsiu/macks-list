@@ -12,10 +12,10 @@ var resetUserListings = function(user_listings) {
 var removeListing = function(listing){
   var idx = _user_listings.indexOf(listing)
 
-  _user_listings.splice(idx);
+  _user_listings.splice(idx, 1);
 }
 
-UserStore.all = function(user_listings) {
+UserStore.all = function() {
   return _user_listings.slice(0);
 };
 

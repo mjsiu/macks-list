@@ -7,7 +7,6 @@ var ListingLocation = React.createClass ({
 
   handleMapClick: function(coords){
     this.props.history.pushState(null, "listings/new/form", coords);
-    debugger
   },
 
   render: function(){
