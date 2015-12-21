@@ -19,6 +19,10 @@ switch(payload.actionType) {
     resetListings(payload.listings);
     ListingStore.__emitChange();
     break;
+  case ListingConstants.LISTING_DELETE:
+       resetListings(payload.listings);
+       ListingStore.__emitChange();
+    break;
   }
 };
 

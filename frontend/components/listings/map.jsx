@@ -43,8 +43,6 @@ var Map = React.createClass ({
       infowindow.open(map, marker);
     });
     }
-
-
   },
 
   componentDidMount: function(){

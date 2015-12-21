@@ -17,6 +17,13 @@ ApiActions = {
     });
   },
 
+  receiveDeletedListing: function(listing){
+    AppDispatcher.dispatch({
+      actionType: ListingConstants.LISTING_DELETE,
+      listing: listing
+    });
+  },
+
   receiveAllUserListings: function(users_listings){
     AppDispatcher.dispatch({
       actionType: UserConstants.USERS_RECEIVED,

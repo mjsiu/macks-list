@@ -3,7 +3,6 @@ var History = require('react-router').History;
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
 
 var ApiUtil = require('../../../util/api_utils');
-var NavBar = require('../../navigation/navbar');
 var ImageUploadButton = require('./image_upload_button');
 
 var ListingForm = React.createClass({
@@ -51,7 +50,7 @@ var ListingForm = React.createClass({
     }
   },
 
-  handleSubmit: function(event){
+  handleClickCreate: function(event){
     event.preventDefault();
 
     var listing = {};
@@ -60,22 +59,41 @@ var ListingForm = React.createClass({
     }.bind(this));
 
     ApiUtil.createNewListing(listing);
-    this.returnToHome();
+    this.returnToProfile();
   },
 
-  returnToHome: function(){
-    this.props.history.pushState(null, "/");
+  handleEditClick: function(event) {
+    debugger
+    event.preventDefault();
+
+    var listing = {};
+    Object.keys(this.state).forEach(function (key) {
+      { listing[key] = this.state[key]; }
+    }.bind(this));
+
+    ApiUtil.editListing(listing);
+    this.returnToProfile();
+  },
+
+  returnToProfile: function(){
+    this.props.history.pushState(null, "/user", {});
   },
 
   render: function() {
+    var handleSubmit;
+    if (this.props.type === "New Listing") {
+      handleSubmit = this.handleClickCreate;
+    } else {
+      handleSubmit = this.handleEditClick;
+    }
+
     return (
       <div>
-      <NavBar history={this.props.history}/>
       <div className="row">
         <div className="col-md-4"/>
         <div className="col-md-4">
-          <h3>Create a Listing</h3>
-          <form onSubmit={this.handleSubmit}>
+          <h2>{this.props.type}</h2>
+          <form onSubmit={ handleSubmit}>
             <label>Title</label>
               <input className="form-control"
                      type="text"
@@ -122,7 +140,7 @@ var ListingForm = React.createClass({
             <br/>
               <ImageUploadButton storeListingImages={this.storeListingImages}/>
             <br/>
-              <input type="submit" className="btn btn-default" value="Create Listing"/>
+              <input type="submit" className="btn btn-default" value={this.props.type}/>
           </form>
         </div>
       </div>

@@ -2,8 +2,8 @@ var React = require("react");
 
 var ImageUploadButton = React.createClass({
 
-  uploadImage: function (e) {
-    e.preventDefault();
+  uploadImage: function (event) {
+    event.preventDefault();
     cloudinary.openUploadWidget(CLOUDINARY, function(error, result){
       if (!error) {
         this.props.storeListingImages(result);

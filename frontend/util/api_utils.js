@@ -1,6 +1,7 @@
 var ApiActions = require('../actions/api_actions.js');
 
 var ApiUtil = {
+
   fetchAllListings: function(){
     $.get('api/listings', function(listings){
       var activeListings = [];
@@ -11,6 +12,10 @@ var ApiUtil = {
       });
       ApiActions.receiveAllListings(activeListings);
     });
+  },
+
+  fetchSingleListing: function(target_listing) {
+    ApiActions.receiveAllListings([target_listing]);
   },
 
   createNewListing: function(listing){
@@ -25,11 +30,14 @@ var ApiUtil = {
     $.ajax({
       url: "api/listings/" + listing.id,
       method: "DELETE",
-      data: { listing: listing }
+      data: { listing: listing },
+      success: function (listing) {
+        ApiActions.receiveDeletedListing(listing);
+      }
     });
   },
 
-  archiveListing: function (listing) {
+  editListing: function (listing) {
     $.ajax({
       url: "api/listings/" + listing.id,
       method: "PATCH",

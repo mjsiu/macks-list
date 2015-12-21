@@ -5,19 +5,7 @@ class Api::ListingsController < ApplicationController
   end
 
   def create
-    temp_params = params[:listing]
-
-    listing = current_user.listings.create!(
-    :title => temp_params[:title],
-    :description => temp_params[:description],
-    :price => temp_params[:price],
-    :address => temp_params[:address],
-    :latitude => temp_params[:latitude],
-    :longitude => temp_params[:longitude],
-    :city_id => temp_params[:city_id],
-    :category_id => temp_params[:category_id],
-    :images_attributes => temp_params[:images_attributes]
-    )
+    listing = current_user.listings.create!(listing_params)
 
     if listing.save
       render json: listing
@@ -26,6 +14,10 @@ class Api::ListingsController < ApplicationController
 
   def update
     listing = Listing.find(params[:listing][:id])
+
+    if (listing.user_id === current_user.id)
+      listing.update(listing_params)
+    end
   end
 
   def destroy
@@ -33,7 +25,19 @@ class Api::ListingsController < ApplicationController
 
     if (listing.user_id === current_user.id)
       listing.destroy
+      render json: listing
     end
+  end
+
+  private
+  def listing_params
+    params.require(:listing).permit(
+      :title, :description,
+      :price, :address,
+      :latitude, :longitude,
+      :city_id, :category_id,
+      {images_attributes: :url }
+      )
   end
 
 end

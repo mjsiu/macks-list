@@ -1,16 +1,18 @@
 var React = require('react');
 var UserStore = require('../../stores/user');
+var ListingStore = require('../../stores/listing');
 var ApiUtil = require('../../util/api_utils');
 
 var UserListingTable = React.createClass({
   getInitialState: function() {
     return {
-      user_listings: UserStore.all()
+      user_listings: UserStore.all(),
+      target_listing: {}
     }
   },
 
-  onChange: function () {
-    this.setState({user_listings: UserStore.all()})
+  onChange: function() {
+    this.setState({user_listings: UserStore.all()});
   },
 
   componentDidMount: function() {
@@ -18,16 +20,17 @@ var UserListingTable = React.createClass({
     ApiUtil.fetchAllUserListings();
   },
 
-  componentWillUnmount: function () {
+  componentWillUnmount: function() {
     this.userListener.remove();
   },
 
-  handleDeleteClick: function(listing) {
+  handleDeleteClick: function (listing) {
     ApiUtil.deleteListing(listing);
   },
 
-  handleEditClick: function(listing) {
-    this.props.history.pushState(null, "/listings/edit/" + listing.id, {})
+  handleEditClick: function (listing) {
+    this.setState({target_listing: listing});
+    this.props.history.pushState(null, "/listings/edit/" + listing.id, {});
   },
 
   render: function() {
@@ -41,7 +44,7 @@ var UserListingTable = React.createClass({
         <td>{listing.title}</td>
         <td><a onClick={boundEditClick}>Edit</a></td>
         <td><a onClick={boundDeleteClick}>Delete</a></td>
-        <td>{listing.create_dat1e}</td>
+        <td>{listing.create_date}</td>
         <td>${listing.price}</td>
         <td>{listing.description.slice(0,50) + "..."}</td>
       </tr>

@@ -5,11 +5,11 @@ var Router = ReactRouter.Router;
 var Route = ReactRouter.Route;
 var IndexRoute = ReactRouter.IndexRoute;
 var Index = require('./components/navigation/index');
-var ListingForm = require('./components/listings/create_listing/listing_form');
+var ListingNew = require('./components/listings/crud_listing/listing_new');
+var ListingEdit = require('./components/listings/crud_listing/listing_edit');
 var ListingShow = require('./components/listings/listing_show');
-var ListingLocation = require('./components/listings/create_listing/listing_location');
+var ListingLocation = require('./components/listings/crud_listing/listing_location');
 var UserShow = require('./components/user/user_show');
-var ListingEdit = require('./components/listings/listing_edit');
 
 var App = React.createClass({
   render: function(){
@@ -25,7 +25,7 @@ var routes = (
     <Route path="/" component={App}>
       <IndexRoute component={Index}/>
       <Route path="listings/new" component={ListingLocation}/>
-      <Route path="listings/new/form" component={ListingForm}/>
+      <Route path="listings/new/form" component={ListingNew}/>
       <Route path="listings/:listingId" component={ListingShow}/>
       <Route path="listings/edit/:listingId" component={ListingEdit}/>
       <Route path="user" component={UserShow}/>
