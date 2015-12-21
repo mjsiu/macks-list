@@ -2,15 +2,21 @@ var ApiActions = require('../actions/api_actions.js');
 
 var ApiUtil = {
 
+  // fetchAllListings: function(){
+  //   $.get('api/listings', function(listings){
+  //     var activeListings = [];
+  //     listings.forEach(function(listing){
+  //       if (listing.archived === "f") {
+  //         activeListings.push(listing);
+  //       }
+  //     });
+  //     ApiActions.receiveAllListings(activeListings);
+  //   });
+  // },
+
   fetchAllListings: function(){
     $.get('api/listings', function(listings){
-      var activeListings = [];
-      listings.forEach(function(listing){
-        if (listing.archived === "f") {
-          activeListings.push(listing);
-        }
-      });
-      ApiActions.receiveAllListings(activeListings);
+      ApiActions.receiveAllListings(listings);
     });
   },
 

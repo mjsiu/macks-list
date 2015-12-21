@@ -34,6 +34,7 @@ var UserListingTable = React.createClass({
   render: function() {
     var handleDeleteClick = this.handleDeleteClick;
     var handleEditClick = this.handleEditClick;
+    debugger
     var user_listings = this.state.user_listings.map(function(listing, idx) {
       var boundDeleteClick = handleDeleteClick.bind(null,listing);
       var boundEditClick = handleEditClick.bind(null,listing);

@@ -5,7 +5,10 @@ var Login = React.createClass({
   handleSignOutClick: function() {
     $.ajax({
       url: "/session",
-      method: "DELETE"
+      method: "DELETE",
+      success: function() {
+        window.location='session/new'
+      }
     });
   },
 

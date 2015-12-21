@@ -13,7 +13,7 @@ ActiveRecord::Base.connection.reset_pk_sequence!('Listing')
 ActiveRecord::Base.connection.reset_pk_sequence!('City')
 ActiveRecord::Base.connection.reset_pk_sequence!('Category')
 
-User.create(username: "Escobar", email: "ecobar@gmail.com", password: "password", city_id: 1)
+User.create(username: "escobar", email: "ecobar@gmail.com", password: "password", city_id: 1)
 
 Listing.create(title: "iPhone 6s", description: "Unused iPhone 6s for sale",
 price: 699.99, address: "Powell Street, San Francisco, California", user_id:

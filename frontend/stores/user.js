@@ -9,10 +9,12 @@ var resetUserListings = function(user_listings) {
   _user_listings = user_listings;
 };
 
-var removeListing = function(listing){
-  var idx = _user_listings.indexOf(listing)
-
-  _user_listings.splice(idx, 1);
+var removeListing = function(target_listing){
+  _user_listings.forEach(function(listing, idx){
+    if (listing.id === target_listing.id){
+      _user_listings.splice(idx,1);
+    }
+  });
 }
 
 UserStore.all = function() {
@@ -26,8 +28,8 @@ UserStore.__onDispatch = function (payload) {
       UserStore.__emitChange();
       break;
     case UserConstants.USER_DELETE_LISTING:
-         removeListing(payload.listing);
-         UserStore.__emitChange();
+      removeListing(payload.listing);
+      UserStore.__emitChange();
       break;
   }
 };
