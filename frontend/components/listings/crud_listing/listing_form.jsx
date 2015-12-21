@@ -1,12 +1,11 @@
 var React = require('react');
-var History = require('react-router').History;
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
 
 var ApiUtil = require('../../../util/api_utils');
 var ImageUploadButton = require('./image_upload_button');
 
 var ListingForm = React.createClass({
-  mixins: [LinkedStateMixin, History],
+  mixins: [LinkedStateMixin],
 
   getInitialState: function(){
     return {

@@ -9,6 +9,12 @@ var resetUserListings = function(user_listings) {
   _user_listings = user_listings;
 };
 
+var removeListing = function(listing){
+  var idx = _user_listings.indexOf(listing)
+
+  _user_listings.splice(idx);
+}
+
 UserStore.all = function(user_listings) {
   return _user_listings.slice(0);
 };
@@ -18,6 +24,10 @@ UserStore.__onDispatch = function (payload) {
     case UserConstants.USERS_RECEIVED:
       resetUserListings(payload.user_listings);
       UserStore.__emitChange();
+      break;
+    case UserConstants.USER_DELETE_LISTING:
+         removeListing(payload.listing);
+         UserStore.__emitChange();
       break;
   }
 };

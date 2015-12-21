@@ -17,11 +17,13 @@ var UserListingTable = React.createClass({
 
   componentDidMount: function() {
     this.userListener = UserStore.addListener(this.onChange);
+    this.listingListener = ListingStore.addListener(this.onChange);
     ApiUtil.fetchAllUserListings();
   },
 
   componentWillUnmount: function() {
     this.userListener.remove();
+    this.listingListener.remove();
   },
 
   handleDeleteClick: function (listing) {

@@ -19,7 +19,7 @@ ApiActions = {
 
   receiveDeletedListing: function(listing){
     AppDispatcher.dispatch({
-      actionType: ListingConstants.LISTING_DELETE,
+      actionType: UserConstants.USER_DELETE_LISTING,
       listing: listing
     });
   },
