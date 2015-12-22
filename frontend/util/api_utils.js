@@ -2,18 +2,6 @@ var ApiActions = require('../actions/api_actions.js');
 
 var ApiUtil = {
 
-  // fetchAllListings: function(){
-  //   $.get('api/listings', function(listings){
-  //     var activeListings = [];
-  //     listings.forEach(function(listing){
-  //       if (listing.archived === "f") {
-  //         activeListings.push(listing);
-  //       }
-  //     });
-  //     ApiActions.receiveAllListings(activeListings);
-  //   });
-  // },
-
   fetchAllListings: function(){
     $.get('api/listings', function(listings){
       ApiActions.receiveAllListings(listings);
@@ -52,15 +40,8 @@ var ApiUtil = {
   },
 
   fetchAllUserListings: function() {
-    $.get('api/listings', function (listings){
-      var userListings = [];
-      listings.forEach(function(listing){
-
-        if (listing.user_id === parseInt(window.user.user_id)){
-          userListings.push(listing);
-        }
-      });
-      ApiActions.receiveAllUserListings(userListings);
+    $.get('api/users', function (listings){
+      ApiActions.receiveAllUserListings(listings);
     });
   }
 };
