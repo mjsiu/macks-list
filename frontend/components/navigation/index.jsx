@@ -1,15 +1,13 @@
 var React = require('react');
-var History = require('react-router').History;
 
 var ListingStore = require('../../stores/listing');
 var ApiUtil = require('../../util/api_utils');
 var ListingIndex = require('../listings/listing_index');
 var NavBar = require('./navbar');
+var Footer = require('./footer');
 var Splash = require('./splash');
 
 var Index = React.createClass({
-  mixins: [History],
-
   getInitialState: function() {
     return {
       listings: ListingStore.all()
@@ -43,12 +41,15 @@ var Index = React.createClass({
     return (
       <div>
         <NavBar history={this.props.history}/>
+
         <Splash/>
-      <ul>
-        {listings}
-      </ul>
+
+        <ul>
+          {listings}
+        </ul>
 
       </div>
+
     );
   }
 });

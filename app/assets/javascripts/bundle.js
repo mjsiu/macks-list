@@ -54,8 +54,8 @@
 	var ListingNew = __webpack_require__(241);
 	var ListingEdit = __webpack_require__(248);
 	var ListingShow = __webpack_require__(249);
-	var ListingLocation = __webpack_require__(253);
-	var UserShow = __webpack_require__(254);
+	var ListingLocation = __webpack_require__(254);
+	var UserShow = __webpack_require__(255);
 	
 	var App = React.createClass({
 	  displayName: 'App',
@@ -24446,18 +24446,16 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-	var History = __webpack_require__(159).History;
 	
 	var ListingStore = __webpack_require__(211);
 	var ApiUtil = __webpack_require__(233);
 	var ListingIndex = __webpack_require__(237);
 	var NavBar = __webpack_require__(238);
+	var Footer = __webpack_require__(259);
 	var Splash = __webpack_require__(240);
 	
 	var Index = React.createClass({
 	  displayName: 'Index',
-	
-	  mixins: [History],
 	
 	  getInitialState: function () {
 	    return {
@@ -31404,8 +31402,6 @@
 	var ListingIndex = React.createClass({
 	  displayName: 'ListingIndex',
 	
-	  mixins: [ReactRouter.history],
-	
 	  render: function () {
 	    var thumbnail = "http://res.cloudinary.com/mackslist/image/upload/";
 	
@@ -31418,17 +31414,18 @@
 	      { className: 'index-items', onClick: this.props.onClick },
 	      React.createElement(
 	        'div',
-	        { className: 'col' },
-	        React.createElement(
-	          'b',
-	          null,
-	          this.props.listing.title,
-	          ' - $',
-	          this.props.listing.price
-	        ),
-	        React.createElement('br', null),
-	        React.createElement('img', { src: thumbnail }),
-	        React.createElement('br', null)
+	        null,
+	        this.props.listing.title
+	      ),
+	      React.createElement(
+	        'div',
+	        null,
+	        React.createElement('img', { src: thumbnail })
+	      ),
+	      React.createElement(
+	        'div',
+	        null,
+	        this.props.listing.description
 	      )
 	    );
 	  }
@@ -31442,12 +31439,9 @@
 
 	var React = __webpack_require__(1);
 	var Login = __webpack_require__(239);
-	var History = __webpack_require__(159).History;
 	
 	var NavBar = React.createClass({
 	  displayName: 'NavBar',
-	
-	  mixins: [History],
 	
 	  handleHomeClick: function () {
 	    this.props.history.pushState(null, "/", {});
@@ -32496,7 +32490,7 @@
 
 	var React = __webpack_require__(1);
 	
-	var StarredStore = __webpack_require__(258);
+	var StarredStore = __webpack_require__(253);
 	var ApiUtil = __webpack_require__(233);
 	var LinkedStateMixin = __webpack_require__(243);
 	
@@ -32562,6 +32556,57 @@
 /* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var Store = __webpack_require__(212).Store;
+	var StarredConstants = __webpack_require__(236);
+	var AppDispatcher = __webpack_require__(230);
+	var StarredStore = new Store(AppDispatcher);
+	
+	var _starred_listings = [];
+	
+	var resetStarredListings = function (starred_listings) {
+	  _starred_listings = starred_listings;
+	};
+	
+	var removeListing = function (target_listing) {
+	  _starred_listings.forEach(function (listing, idx) {
+	    if (listing.id === target_listing.listing_id) {
+	      _starred_listings.splice(idx, 1);
+	    }
+	  });
+	};
+	
+	StarredStore.all = function () {
+	  return _starred_listings.slice(0);
+	};
+	
+	StarredStore.checkStarred = function (check_listing) {
+	  var found = false;
+	  _starred_listings.forEach(function (listing) {
+	
+	    if (listing.id === check_listing.id) {
+	      found = true;
+	    }
+	  });
+	  return found;
+	}, StarredStore.__onDispatch = function (payload) {
+	  switch (payload.actionType) {
+	    case StarredConstants.STARRED_RECEIVE:
+	      resetStarredListings(payload.starred_listings);
+	      StarredStore.__emitChange();
+	      break;
+	    case StarredConstants.STARRED_DELETE_LISTING:
+	      removeListing(payload.starred_listing);
+	      StarredStore.__emitChange();
+	      break;
+	  }
+	};
+	
+	module.exports = StarredStore;
+
+/***/ },
+/* 254 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var React = __webpack_require__(1);
 	
 	var Map = __webpack_require__(251);
@@ -32607,14 +32652,14 @@
 	module.exports = ListingLocation;
 
 /***/ },
-/* 254 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	
 	var NavBar = __webpack_require__(238);
-	var UserListingTable = __webpack_require__(255);
-	var UserStarredTable = __webpack_require__(257);
+	var UserListingTable = __webpack_require__(256);
+	var UserStarredTable = __webpack_require__(258);
 	
 	var User = React.createClass({
 	  displayName: 'User',
@@ -32633,12 +32678,12 @@
 	module.exports = User;
 
 /***/ },
-/* 255 */
+/* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	
-	var UserStore = __webpack_require__(256);
+	var UserStore = __webpack_require__(257);
 	var ApiUtil = __webpack_require__(233);
 	
 	var UserListingTable = React.createClass({
@@ -32786,7 +32831,7 @@
 	module.exports = UserListingTable;
 
 /***/ },
-/* 256 */
+/* 257 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Store = __webpack_require__(212).Store;
@@ -32828,12 +32873,12 @@
 	module.exports = UserStore;
 
 /***/ },
-/* 257 */
+/* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	
-	var StarredStore = __webpack_require__(258);
+	var StarredStore = __webpack_require__(253);
 	var ApiUtil = __webpack_require__(233);
 	
 	var UserStarredTable = React.createClass({
@@ -32961,55 +33006,21 @@
 	module.exports = UserStarredTable;
 
 /***/ },
-/* 258 */
+/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Store = __webpack_require__(212).Store;
-	var StarredConstants = __webpack_require__(236);
-	var AppDispatcher = __webpack_require__(230);
-	var StarredStore = new Store(AppDispatcher);
+	var React = __webpack_require__(1);
 	
-	var _starred_listings = [];
+	var Footer = React.createClass({
+	  displayName: "Footer",
 	
-	var resetStarredListings = function (starred_listings) {
-	  _starred_listings = starred_listings;
-	};
-	
-	var removeListing = function (target_listing) {
-	  _starred_listings.forEach(function (listing, idx) {
-	    if (listing.id === target_listing.listing_id) {
-	      _starred_listings.splice(idx, 1);
-	    }
-	  });
-	};
-	
-	StarredStore.all = function () {
-	  return _starred_listings.slice(0);
-	};
-	
-	StarredStore.checkStarred = function (check_listing) {
-	  var found = false;
-	  _starred_listings.forEach(function (listing) {
-	
-	    if (listing.id === check_listing.id) {
-	      found = true;
-	    }
-	  });
-	  return found;
-	}, StarredStore.__onDispatch = function (payload) {
-	  switch (payload.actionType) {
-	    case StarredConstants.STARRED_RECEIVE:
-	      resetStarredListings(payload.starred_listings);
-	      StarredStore.__emitChange();
-	      break;
-	    case StarredConstants.STARRED_DELETE_LISTING:
-	      removeListing(payload.starred_listing);
-	      StarredStore.__emitChange();
-	      break;
+	  render: function () {
+	    return React.createElement("div", { className: "footer" });
 	  }
-	};
 	
-	module.exports = StarredStore;
+	});
+	
+	module.exports = Footer;
 
 /***/ }
 /******/ ]);

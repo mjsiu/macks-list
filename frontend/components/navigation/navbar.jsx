@@ -1,9 +1,7 @@
 var React = require('react');
 var Login = require('./login');
-var History = require('react-router').History;
 
 var NavBar = React.createClass({
-  mixins: [History],
 
   handleHomeClick: function () {
     this.props.history.pushState(null, "/", {});

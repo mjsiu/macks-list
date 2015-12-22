@@ -2,7 +2,6 @@ var React = require('react');
 var ReactRouter = require('react-router');
 
 var ListingIndex = React.createClass({
-  mixins: [ReactRouter.history],
 
   render: function () {
     var thumbnail = "http://res.cloudinary.com/mackslist/image/upload/";
@@ -13,12 +12,16 @@ var ListingIndex = React.createClass({
 
     return (
       <div className="index-items" onClick={this.props.onClick}>
-          <div className="col">
-          <b>{this.props.listing.title} - ${this.props.listing.price}</b>
-          <br/>
-          <img src={thumbnail}/>
-          <br/>
-          </div>
+        <div>
+          {this.props.listing.title}
+        </div>
+        <div>
+          <img src={thumbnail}></img>
+        </div>
+        <div>
+          {this.props.listing.description}
+        </div>
+
       </div>
     );
   }
