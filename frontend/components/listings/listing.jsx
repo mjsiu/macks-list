@@ -11,13 +11,13 @@ var Listing = React.createClass({
     }
   },
 
-  componentWillMount: function() {
+  componentDidMount: function() {
     this.imageCheck();
   },
 
   imageCheck: function() {
     var partial = "http://res.cloudinary.com/mackslist/image/upload/c_scale,h_450/";
-
+    
     if (this.props.listing.images[0]) {
       this.setState({primary_image: partial + this.props.listing.images[0].url})
     } else {

@@ -15,31 +15,31 @@ ActiveRecord::Base.connection.reset_pk_sequence!('Category')
 
 User.create(username: "escobar", email: "ecobar@gmail.com", password: "password", city_id: 1)
 
-Listing.create(title: "iPhone 6s", description: "Unused iPhone 6s for sale",
-price: 699.99, address: "Powell Street, San Francisco, California", user_id:
+Listing.create(title: "Limited Edition Book", description: "Very cool book",
+price: 50, address: "Powell Street, San Francisco, California", user_id:
 1, city_id: 1, category_id: 1)
-Listing.create(title: "Bike", description: "bike for sale",
+Listing.create(title: "Homeade Pasta", description: "Very fresh",
 price: 300, address: "3rd Street, San Mateo, California", user_id: 2, city_id: 4,
 category_id: 2)
-Listing.create(title: "Briefcase", description: "Vintage briefcase", price: 50, address:
+Listing.create(title: "Boat", description: "Good condition boat", price: 50, address:
 "Berkeley, Berkeley, California", user_id: 3, city_id: 3, category_id: 3)
-Listing.create(title: "Motorcycle", description: "Super vintage cycle",
+Listing.create(title: "Radio", description: "Super vintage",
 price: 100, address: "Powell Street, San Francisco, California", user_id:
 1, city_id: 1, category_id: 1)
-Listing.create(title: "Laptop", description: "Good condition laptop",
+Listing.create(title: "Briefcase", description: "Super vintage good condition",
 price: 1200, address: "Powell Street, San Francisco, California", user_id:
 1, city_id: 1, category_id: 1)
-Listing.create(title: "Boat", description: "New and unused boat",
+Listing.create(title: "Motorcycle", description: "Motorcycle thing",
 price: 450, address: "Powell Street, San Francisco, California", user_id:
 1, city_id: 1, category_id: 1)
-Listing.create(title: "Homemade Pasta", description: "Freshly made pasta",
+Listing.create(title: "Camera", description: "Set of really cool cameras",
 price: 15, address: "Powell Street, San Francisco, California", user_id:
 1, city_id: 1, category_id: 1)
-Listing.create(title: "Limited Edition Book", description: "Book that is really cool",
+Listing.create(title: "Laptop", description: "Reall expensive laptop",
 price: 79, address: "Powell Street, San Francisco, California", user_id:
 1, city_id: 1, category_id: 1,
 latitude: 37.774733, longitude: -122.418702)
-Listing.create(title: "TESTING ARCHIVED", description: "A testing archive example",
+Listing.create(title: "Bike", description: "It's a bike",
 price: 79, address: "Powell Street, San Francisco, California", user_id:
 1, city_id: 1, category_id: 1, archived: true,
 latitude: 37.774733, longitude: -122.418702)
@@ -56,14 +56,14 @@ Category.create(category_name: "Clothing")
 Category.create(category_name: "Home")
 Category.create(category_name: "Sports")
 
-Image.create(listing_id: 1, url: "v1450239818/245H_mxolvq.jpg")
-Image.create(listing_id: 2, url: "v1450239818/245H_mxolvq.jpg")
-Image.create(listing_id: 3, url: "v1450239818/245H_mxolvq.jpg")
-Image.create(listing_id: 4, url: "v1450239818/245H_mxolvq.jpg")
-Image.create(listing_id: 5, url: "v1450239818/245H_mxolvq.jpg")
-Image.create(listing_id: 6, url: "v1450239818/245H_mxolvq.jpg")
-Image.create(listing_id: 7, url: "v1450239818/245H_mxolvq.jpg")
-Image.create(listing_id: 8, url: "v1450239818/245H_mxolvq.jpg")
+Image.create(listing_id: 1, url: "v1450242541/pexels-photo_tfopmu.jpg")
+Image.create(listing_id: 2, url: "/v1450242515/food-pasta-spinach_edtjyx.jpg")
+Image.create(listing_id: 3, url: "v1450239812/206H_auh8dd.jpg")
+Image.create(listing_id: 4, url: "v1450239811/DBYDOD6O96_jex3gw.jpg")
+Image.create(listing_id: 5, url: "v1450239805/186H_ogcqm9.jpg")
+Image.create(listing_id: 6, url: "v1450239782/257_1_fkjtwf.jpg")
+Image.create(listing_id: 7, url: "v1450231337/photographer-analog-camera-cameras-teleobjective_hiksqi.jpg")
+Image.create(listing_id: 8, url: "v1450239798/negativespace-13_uvkh4j.jpg")
 Image.create(listing_id: 9, url: "v1450239818/245H_mxolvq.jpg")
 
 StarredListing.create(user_id: 1, listing_id: 9)

@@ -31289,7 +31289,10 @@
 	    $.ajax({
 	      url: "api/starred_listings",
 	      method: "POST",
-	      data: { starred_listing: starred_listing }
+	      data: { starred_listing: starred_listing },
+	      success: function (starred_listing) {
+	        ApiActions.receiveStarredListing(starred_listing);
+	      }
 	    });
 	  },
 	
@@ -32335,7 +32338,7 @@
 	    };
 	  },
 	
-	  componentWillMount: function () {
+	  componentDidMount: function () {
 	    this.imageCheck();
 	  },
 	
@@ -32448,6 +32451,7 @@
 	      var infowindow = new google.maps.InfoWindow({
 	        content: listing.address
 	      });
+	
 	      var myLatLng = {
 	        lat: listing.latitude,
 	        lng: listing.longitude
@@ -32494,23 +32498,26 @@
 	
 	var StarredStore = __webpack_require__(258);
 	var ApiUtil = __webpack_require__(233);
+	var LinkedStateMixin = __webpack_require__(243);
 	
 	var StarButton = React.createClass({
 	  displayName: 'StarButton',
 	
+	  mixins: [LinkedStateMixin],
+	
 	  getInitialState: function () {
 	    return {
-	      starred: "false"
+	      starred: StarredStore.checkStarred(this.props.listing)
 	    };
 	  },
 	
 	  onChange: function () {
-	    this.setState({ starred: StarredStore.checkStarred(this.props.listing).toString() });
-	    debugger;
+	    this.setState({ starred: StarredStore.checkStarred(this.props.listing) });
 	  },
 	
 	  componentDidMount: function () {
 	    this.starredListener = StarredStore.addListener(this.onChange);
+	    ApiUtil.fetchStarredUserListings();
 	  },
 	
 	  componentWillUnmount: function () {
@@ -32519,6 +32526,7 @@
 	
 	  handleStarredClick: function () {
 	    ApiUtil.starListing(this.props.listing);
+	    ApiUtil.fetchStarredUserListings();
 	  },
 	
 	  handleUnstarClick: function () {
@@ -32526,15 +32534,24 @@
 	  },
 	
 	  render: function () {
-	    debugger;
+	    var button;
+	    if (this.state.starred) {
+	      button = React.createElement(
+	        'button',
+	        { onClick: this.handleUnstarClick, type: 'button', className: 'btn btn-default' },
+	        'Unstar'
+	      );
+	    } else {
+	      button = React.createElement(
+	        'button',
+	        { onClick: this.handleStarredClick, type: 'button', className: 'btn btn-default', valueLink: this.linkState('starred') },
+	        'Star'
+	      );
+	    }
 	    return React.createElement(
 	      'div',
 	      null,
-	      React.createElement(
-	        'button',
-	        { onClick: this.handleStarredClick, type: 'button', className: 'btn btn-default' },
-	        this.state.starred
-	      )
+	      button
 	    );
 	  }
 	});
@@ -32971,12 +32988,14 @@
 	};
 	
 	StarredStore.checkStarred = function (check_listing) {
+	  var found = false;
 	  _starred_listings.forEach(function (listing) {
-	    if (listing.id === check_listing) {
-	      return true;
+	
+	    if (listing.id === check_listing.id) {
+	      found = true;
 	    }
-	    return false;
 	  });
+	  return found;
 	}, StarredStore.__onDispatch = function (payload) {
 	  switch (payload.actionType) {
 	    case StarredConstants.STARRED_RECEIVE:

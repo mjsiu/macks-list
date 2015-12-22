@@ -26,6 +26,7 @@ var Map = React.createClass ({
     var infowindow = new google.maps.InfoWindow({
       content: listing.address
     });
+    
     var myLatLng = {
       lat: listing.latitude,
       lng: listing.longitude

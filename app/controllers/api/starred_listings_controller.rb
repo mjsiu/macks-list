@@ -13,7 +13,8 @@ class Api::StarredListingsController < ApplicationController
   end
 
   def destroy
-    starred_listing = StarredListing.find_by(user_id: params[:starred_listing][:user_id], listing_id: params[:starred_listing][:id])
+    # starred_listing = StarredListing.find_by(user_id: params[:starred_listing][:user_id], listing_id: params[:starred_listing][:id])
+    starred_listing = current_user.starred_listings.find_by(listing_id: params[:starred_listing][:id])
 
     if (starred_listing.user_id === current_user.id)
       starred_listing.destroy

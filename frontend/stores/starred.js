@@ -22,12 +22,14 @@ StarredStore.all = function() {
 };
 
 StarredStore.checkStarred = function (check_listing) {
+  var found = false;
   _starred_listings.forEach(function(listing) {
-    if (listing.id === check_listing) {
-      return true;
+
+    if (listing.id === check_listing.id) {
+      found = true;
     }
-    return false;
   });
+  return found;
 },
 
 StarredStore.__onDispatch = function (payload) {

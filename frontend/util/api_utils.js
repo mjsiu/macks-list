@@ -55,7 +55,10 @@ var ApiUtil = {
     $.ajax({
       url: "api/starred_listings",
       method: "POST",
-      data: { starred_listing: starred_listing }
+      data: { starred_listing: starred_listing },
+      success: function (starred_listing) {
+        ApiActions.receiveStarredListing(starred_listing);
+      }
     });
   },
 
