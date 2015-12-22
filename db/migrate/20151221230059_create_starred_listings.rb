@@ -8,5 +8,6 @@ class CreateStarredListings < ActiveRecord::Migration
     end
     add_index :starred_listings, :listing_id
     add_index :starred_listings, :user_id
+    add_index :starred_listings, [:listing_id, :user_id], unique: true
   end
 end

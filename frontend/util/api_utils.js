@@ -51,6 +51,14 @@ var ApiUtil = {
     });
   },
 
+  starListing: function(starred_listing) {
+    $.ajax({
+      url: "api/starred_listings",
+      method: "POST",
+      data: { starred_listing: starred_listing }
+    });
+  },
+
   unstarListing: function(starred_listing) {
     $.ajax({
       url: "api/starred_listings/" + starred_listing.id,

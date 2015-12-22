@@ -39,6 +39,13 @@ ApiActions = {
     });
   },
 
+  receiveStarredListing: function(starred_listing){
+    AppDispatcher.dispatch({
+      actionType: StarredConstants.STARRED_DELETE_LISTING,
+      starred_listing: starred_listing
+    });
+  },
+
   receiveUnstarredListing: function(starred_listing){
     AppDispatcher.dispatch({
       actionType: StarredConstants.STARRED_DELETE_LISTING,

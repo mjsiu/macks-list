@@ -21,6 +21,15 @@ StarredStore.all = function() {
   return _starred_listings.slice(0);
 };
 
+StarredStore.checkStarred = function (check_listing) {
+  _starred_listings.forEach(function(listing) {
+    if (listing.id === check_listing) {
+      return true;
+    }
+    return false;
+  });
+},
+
 StarredStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
     case StarredConstants.STARRED_RECEIVE:

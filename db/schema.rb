@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20151221230059) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "starred_listings", ["listing_id", "user_id"], name: "index_starred_listings_on_listing_id_and_user_id", unique: true, using: :btree
   add_index "starred_listings", ["listing_id"], name: "index_starred_listings_on_listing_id", using: :btree
   add_index "starred_listings", ["user_id"], name: "index_starred_listings_on_user_id", using: :btree
 

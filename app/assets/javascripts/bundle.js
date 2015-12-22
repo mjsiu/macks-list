@@ -51,11 +51,11 @@
 	var Route = ReactRouter.Route;
 	var IndexRoute = ReactRouter.IndexRoute;
 	var Index = __webpack_require__(210);
-	var ListingNew = __webpack_require__(238);
-	var ListingEdit = __webpack_require__(245);
-	var ListingShow = __webpack_require__(246);
-	var ListingLocation = __webpack_require__(249);
-	var UserShow = __webpack_require__(250);
+	var ListingNew = __webpack_require__(241);
+	var ListingEdit = __webpack_require__(248);
+	var ListingShow = __webpack_require__(249);
+	var ListingLocation = __webpack_require__(253);
+	var UserShow = __webpack_require__(254);
 	
 	var App = React.createClass({
 	  displayName: 'App',
@@ -24450,9 +24450,9 @@
 	
 	var ListingStore = __webpack_require__(211);
 	var ApiUtil = __webpack_require__(233);
-	var ListingIndex = __webpack_require__(234);
-	var NavBar = __webpack_require__(235);
-	var Splash = __webpack_require__(237);
+	var ListingIndex = __webpack_require__(237);
+	var NavBar = __webpack_require__(238);
+	var Splash = __webpack_require__(240);
 	
 	var Index = React.createClass({
 	  displayName: 'Index',
@@ -31232,7 +31232,7 @@
 /* 233 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var ApiActions = __webpack_require__(256);
+	var ApiActions = __webpack_require__(234);
 	
 	var ApiUtil = {
 	
@@ -31285,6 +31285,14 @@
 	    });
 	  },
 	
+	  starListing: function (starred_listing) {
+	    $.ajax({
+	      url: "api/starred_listings",
+	      method: "POST",
+	      data: { starred_listing: starred_listing }
+	    });
+	  },
+	
 	  unstarListing: function (starred_listing) {
 	    $.ajax({
 	      url: "api/starred_listings/" + starred_listing.id,
@@ -31301,6 +31309,90 @@
 
 /***/ },
 /* 234 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var AppDispatcher = __webpack_require__(230);
+	var ListingConstants = __webpack_require__(229);
+	var UserConstants = __webpack_require__(235);
+	var StarredConstants = __webpack_require__(236);
+	
+	ApiActions = {
+	  receiveAllListings: function (listings) {
+	    AppDispatcher.dispatch({
+	      actionType: ListingConstants.LISTINGS_RECEIVED,
+	      listings: listings
+	    });
+	  },
+	
+	  receiveSingleListings: function (listing) {
+	    AppDispatcher.dispatch({
+	      actionType: ListingConstants.LISTINGS_RECEIVED,
+	      listings: listing
+	    });
+	  },
+	
+	  receiveDeletedListing: function (listing) {
+	    AppDispatcher.dispatch({
+	      actionType: UserConstants.USER_DELETE_LISTING,
+	      listing: listing
+	    });
+	  },
+	
+	  receiveAllUserListings: function (users_listings) {
+	    AppDispatcher.dispatch({
+	      actionType: UserConstants.USERS_RECEIVED,
+	      user_listings: users_listings
+	    });
+	  },
+	
+	  receiveAllStarredListings: function (starred_listings) {
+	    AppDispatcher.dispatch({
+	      actionType: StarredConstants.STARRED_RECEIVE,
+	      starred_listings: starred_listings
+	    });
+	  },
+	
+	  receiveStarredListing: function (starred_listing) {
+	    AppDispatcher.dispatch({
+	      actionType: StarredConstants.STARRED_DELETE_LISTING,
+	      starred_listing: starred_listing
+	    });
+	  },
+	
+	  receiveUnstarredListing: function (starred_listing) {
+	    AppDispatcher.dispatch({
+	      actionType: StarredConstants.STARRED_DELETE_LISTING,
+	      starred_listing: starred_listing
+	    });
+	  }
+	};
+	
+	module.exports = ApiActions;
+
+/***/ },
+/* 235 */
+/***/ function(module, exports) {
+
+	var UserConstants = {
+	  USERS_RECEIVED: "USERS_RECEIVED",
+	  USERS_DELETE_LISTING: "USERS_DELETE_LISTING"
+	};
+	
+	module.exports = UserConstants;
+
+/***/ },
+/* 236 */
+/***/ function(module, exports) {
+
+	var StarredConstants = {
+	  STARRED_RECEIVE: "STARRED_RECEIVE",
+	  STARRED_DELETE_LISTING: "STARRED_DELETE_LISTING"
+	};
+	
+	module.exports = StarredConstants;
+
+/***/ },
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
@@ -31342,11 +31434,11 @@
 	module.exports = ListingIndex;
 
 /***/ },
-/* 235 */
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-	var Login = __webpack_require__(236);
+	var Login = __webpack_require__(239);
 	var History = __webpack_require__(159).History;
 	
 	var NavBar = React.createClass({
@@ -31466,7 +31558,7 @@
 	module.exports = NavBar;
 
 /***/ },
-/* 236 */
+/* 239 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
@@ -31569,7 +31661,7 @@
 	module.exports = Login;
 
 /***/ },
-/* 237 */
+/* 240 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
@@ -31602,12 +31694,12 @@
 	module.exports = Splash;
 
 /***/ },
-/* 238 */
+/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-	var ListingForm = __webpack_require__(239);
-	var NavBar = __webpack_require__(235);
+	var ListingForm = __webpack_require__(242);
+	var NavBar = __webpack_require__(238);
 	
 	var ListingNew = React.createClass({
 	  displayName: 'ListingNew',
@@ -31628,14 +31720,14 @@
 	module.exports = ListingNew;
 
 /***/ },
-/* 239 */
+/* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-	var LinkedStateMixin = __webpack_require__(240);
+	var LinkedStateMixin = __webpack_require__(243);
 	
 	var ApiUtil = __webpack_require__(233);
-	var ImageUploadButton = __webpack_require__(244);
+	var ImageUploadButton = __webpack_require__(247);
 	
 	var ListingForm = React.createClass({
 	  displayName: 'ListingForm',
@@ -31868,13 +31960,13 @@
 	module.exports = ListingForm;
 
 /***/ },
-/* 240 */
+/* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(241);
+	module.exports = __webpack_require__(244);
 
 /***/ },
-/* 241 */
+/* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -31891,8 +31983,8 @@
 	
 	'use strict';
 	
-	var ReactLink = __webpack_require__(242);
-	var ReactStateSetters = __webpack_require__(243);
+	var ReactLink = __webpack_require__(245);
+	var ReactStateSetters = __webpack_require__(246);
 	
 	/**
 	 * A simple mixin around ReactLink.forState().
@@ -31915,7 +32007,7 @@
 	module.exports = LinkedStateMixin;
 
 /***/ },
-/* 242 */
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -31989,7 +32081,7 @@
 	module.exports = ReactLink;
 
 /***/ },
-/* 243 */
+/* 246 */
 /***/ function(module, exports) {
 
 	/**
@@ -32098,7 +32190,7 @@
 	module.exports = ReactStateSetters;
 
 /***/ },
-/* 244 */
+/* 247 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
@@ -32131,12 +32223,12 @@
 	module.exports = ImageUploadButton;
 
 /***/ },
-/* 245 */
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-	var ListingForm = __webpack_require__(239);
-	var NavBar = __webpack_require__(235);
+	var ListingForm = __webpack_require__(242);
+	var NavBar = __webpack_require__(238);
 	
 	var ListingEdit = React.createClass({
 	  displayName: 'ListingEdit',
@@ -32156,7 +32248,7 @@
 	module.exports = ListingEdit;
 
 /***/ },
-/* 246 */
+/* 249 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
@@ -32164,7 +32256,7 @@
 	var History = __webpack_require__(159).History;
 	
 	var ListingStore = __webpack_require__(211);
-	var Listing = __webpack_require__(247);
+	var Listing = __webpack_require__(250);
 	var ApiUtil = __webpack_require__(233);
 	
 	var ListingShow = React.createClass({
@@ -32225,14 +32317,14 @@
 	module.exports = ListingShow;
 
 /***/ },
-/* 247 */
+/* 250 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	
-	var NavBar = __webpack_require__(235);
-	var Map = __webpack_require__(248);
-	var StarredButton = __webpack_require__(258);
+	var NavBar = __webpack_require__(238);
+	var Map = __webpack_require__(251);
+	var StarredButton = __webpack_require__(252);
 	
 	var Listing = React.createClass({
 	  displayName: 'Listing',
@@ -32279,7 +32371,8 @@
 	              ' - $',
 	              this.props.listing.price
 	            ),
-	            React.createElement('br', null)
+	            React.createElement('br', null),
+	            React.createElement(StarredButton, { listing: this.props.listing })
 	          )
 	        )
 	      ),
@@ -32323,7 +32416,7 @@
 	module.exports = Listing;
 
 /***/ },
-/* 248 */
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
@@ -32394,13 +32487,68 @@
 	module.exports = Map;
 
 /***/ },
-/* 249 */
+/* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	
-	var Map = __webpack_require__(248);
-	var NavBar = __webpack_require__(235);
+	var StarredStore = __webpack_require__(258);
+	var ApiUtil = __webpack_require__(233);
+	
+	var StarButton = React.createClass({
+	  displayName: 'StarButton',
+	
+	  getInitialState: function () {
+	    return {
+	      starred: "false"
+	    };
+	  },
+	
+	  onChange: function () {
+	    this.setState({ starred: StarredStore.checkStarred(this.props.listing).toString() });
+	    debugger;
+	  },
+	
+	  componentDidMount: function () {
+	    this.starredListener = StarredStore.addListener(this.onChange);
+	  },
+	
+	  componentWillUnmount: function () {
+	    this.starredListener.remove();
+	  },
+	
+	  handleStarredClick: function () {
+	    ApiUtil.starListing(this.props.listing);
+	  },
+	
+	  handleUnstarClick: function () {
+	    ApiUtil.unstarListing(this.props.listing);
+	  },
+	
+	  render: function () {
+	    debugger;
+	    return React.createElement(
+	      'div',
+	      null,
+	      React.createElement(
+	        'button',
+	        { onClick: this.handleStarredClick, type: 'button', className: 'btn btn-default' },
+	        this.state.starred
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = StarButton;
+
+/***/ },
+/* 253 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	
+	var Map = __webpack_require__(251);
+	var NavBar = __webpack_require__(238);
 	
 	var ListingLocation = React.createClass({
 	  displayName: 'ListingLocation',
@@ -32442,14 +32590,14 @@
 	module.exports = ListingLocation;
 
 /***/ },
-/* 250 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	
-	var NavBar = __webpack_require__(235);
-	var UserListingTable = __webpack_require__(251);
-	var UserStarredTable = __webpack_require__(255);
+	var NavBar = __webpack_require__(238);
+	var UserListingTable = __webpack_require__(255);
+	var UserStarredTable = __webpack_require__(257);
 	
 	var User = React.createClass({
 	  displayName: 'User',
@@ -32468,12 +32616,12 @@
 	module.exports = User;
 
 /***/ },
-/* 251 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	
-	var UserStore = __webpack_require__(252);
+	var UserStore = __webpack_require__(256);
 	var ApiUtil = __webpack_require__(233);
 	
 	var UserListingTable = React.createClass({
@@ -32621,11 +32769,11 @@
 	module.exports = UserListingTable;
 
 /***/ },
-/* 252 */
+/* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Store = __webpack_require__(212).Store;
-	var UserConstants = __webpack_require__(253);
+	var UserConstants = __webpack_require__(235);
 	var AppDispatcher = __webpack_require__(230);
 	var UserStore = new Store(AppDispatcher);
 	
@@ -32663,65 +32811,12 @@
 	module.exports = UserStore;
 
 /***/ },
-/* 253 */
-/***/ function(module, exports) {
-
-	var UserConstants = {
-	  USERS_RECEIVED: "USERS_RECEIVED",
-	  USERS_DELETE_LISTING: "USERS_DELETE_LISTING"
-	};
-	
-	module.exports = UserConstants;
-
-/***/ },
-/* 254 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var Store = __webpack_require__(212).Store;
-	var StarredConstants = __webpack_require__(257);
-	var AppDispatcher = __webpack_require__(230);
-	var StarredStore = new Store(AppDispatcher);
-	
-	var _starred_listings = [];
-	
-	var resetStarredListings = function (starred_listings) {
-	  _starred_listings = starred_listings;
-	};
-	
-	var removeListing = function (target_listing) {
-	  _starred_listings.forEach(function (listing, idx) {
-	    if (listing.id === target_listing.listing_id) {
-	      _starred_listings.splice(idx, 1);
-	    }
-	  });
-	};
-	
-	StarredStore.all = function () {
-	  return _starred_listings.slice(0);
-	};
-	
-	StarredStore.__onDispatch = function (payload) {
-	  switch (payload.actionType) {
-	    case StarredConstants.STARRED_RECEIVE:
-	      resetStarredListings(payload.starred_listings);
-	      StarredStore.__emitChange();
-	      break;
-	    case StarredConstants.STARRED_DELETE_LISTING:
-	      removeListing(payload.starred_listing);
-	      StarredStore.__emitChange();
-	      break;
-	  }
-	};
-	
-	module.exports = StarredStore;
-
-/***/ },
-/* 255 */
+/* 257 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	
-	var StarredStore = __webpack_require__(254);
+	var StarredStore = __webpack_require__(258);
 	var ApiUtil = __webpack_require__(233);
 	
 	var UserStarredTable = React.createClass({
@@ -32849,94 +32944,53 @@
 	module.exports = UserStarredTable;
 
 /***/ },
-/* 256 */
+/* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var Store = __webpack_require__(212).Store;
+	var StarredConstants = __webpack_require__(236);
 	var AppDispatcher = __webpack_require__(230);
-	var ListingConstants = __webpack_require__(229);
-	var UserConstants = __webpack_require__(253);
-	var StarredConstants = __webpack_require__(257);
+	var StarredStore = new Store(AppDispatcher);
 	
-	ApiActions = {
-	  receiveAllListings: function (listings) {
-	    AppDispatcher.dispatch({
-	      actionType: ListingConstants.LISTINGS_RECEIVED,
-	      listings: listings
-	    });
-	  },
+	var _starred_listings = [];
 	
-	  receiveSingleListings: function (listing) {
-	    AppDispatcher.dispatch({
-	      actionType: ListingConstants.LISTINGS_RECEIVED,
-	      listings: listing
-	    });
-	  },
+	var resetStarredListings = function (starred_listings) {
+	  _starred_listings = starred_listings;
+	};
 	
-	  receiveDeletedListing: function (listing) {
-	    AppDispatcher.dispatch({
-	      actionType: UserConstants.USER_DELETE_LISTING,
-	      listing: listing
-	    });
-	  },
+	var removeListing = function (target_listing) {
+	  _starred_listings.forEach(function (listing, idx) {
+	    if (listing.id === target_listing.listing_id) {
+	      _starred_listings.splice(idx, 1);
+	    }
+	  });
+	};
 	
-	  receiveAllUserListings: function (users_listings) {
-	    AppDispatcher.dispatch({
-	      actionType: UserConstants.USERS_RECEIVED,
-	      user_listings: users_listings
-	    });
-	  },
+	StarredStore.all = function () {
+	  return _starred_listings.slice(0);
+	};
 	
-	  receiveAllStarredListings: function (starred_listings) {
-	    AppDispatcher.dispatch({
-	      actionType: StarredConstants.STARRED_RECEIVE,
-	      starred_listings: starred_listings
-	    });
-	  },
-	
-	  receiveUnstarredListing: function (starred_listing) {
-	    AppDispatcher.dispatch({
-	      actionType: StarredConstants.STARRED_DELETE_LISTING,
-	      starred_listing: starred_listing
-	    });
+	StarredStore.checkStarred = function (check_listing) {
+	  _starred_listings.forEach(function (listing) {
+	    if (listing.id === check_listing) {
+	      return true;
+	    }
+	    return false;
+	  });
+	}, StarredStore.__onDispatch = function (payload) {
+	  switch (payload.actionType) {
+	    case StarredConstants.STARRED_RECEIVE:
+	      resetStarredListings(payload.starred_listings);
+	      StarredStore.__emitChange();
+	      break;
+	    case StarredConstants.STARRED_DELETE_LISTING:
+	      removeListing(payload.starred_listing);
+	      StarredStore.__emitChange();
+	      break;
 	  }
 	};
 	
-	module.exports = ApiActions;
-
-/***/ },
-/* 257 */
-/***/ function(module, exports) {
-
-	var StarredConstants = {
-	  STARRED_RECEIVE: "STARRED_RECEIVE",
-	  STARRED_DELETE_LISTING: "STARRED_DELETE_LISTING"
-	};
-	
-	module.exports = StarredConstants;
-
-/***/ },
-/* 258 */
-/***/ function(module, exports) {
-
-	// var React = require('react');
-	//
-	// var StarredStore = require('../listings/user/star_button');
-	//
-	// var StarredStore = React.createClass({
-	//   getInitialState: function() {
-	//     starred: false;
-	//   },
-	//
-	//   render: function() {
-	//     return (
-	//       <div>
-	//         <button
-	//       </div>
-	//     )
-	//   }
-	// });
-	//
-	// module.exports = StarredStore;
+	module.exports = StarredStore;
 
 /***/ }
 /******/ ]);

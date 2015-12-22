@@ -37,6 +37,7 @@ var Listing = React.createClass({
           <div className="listing-title">
             <h2>{this.props.listing.title} - ${this.props.listing.price}</h2>
             <br/>
+            <StarredButton listing={this.props.listing}/>
           </div>
         </div>
       </div>
