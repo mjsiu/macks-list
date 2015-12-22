@@ -2,6 +2,7 @@ var React = require('react');
 
 var NavBar = require('../navigation/navbar');
 var Map = require('./map');
+var StarredButton = require('../user/star_button');
 
 var Listing = React.createClass({
   getInitialState: function() {

@@ -6,7 +6,7 @@ var ListingNew = React.createClass({
 
   render: function() {
     var type = "New Listing";
-  
+
     return (
       <div>
         <NavBar history={this.props.history}/>
