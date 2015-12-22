@@ -66,5 +66,12 @@ Image.create(listing_id: 7, url: "v1450239818/245H_mxolvq.jpg")
 Image.create(listing_id: 8, url: "v1450239818/245H_mxolvq.jpg")
 Image.create(listing_id: 9, url: "v1450239818/245H_mxolvq.jpg")
 
+StarredListing.create(user_id: 1, listing_id: 9)
+StarredListing.create(user_id: 1, listing_id: 8)
+StarredListing.create(user_id: 1, listing_id: 7)
+StarredListing.create(user_id: 1, listing_id: 6)
+
+
+
 
 # rake db:drop db:create db:migrate db:seed

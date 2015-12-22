@@ -49,7 +49,18 @@ var ApiUtil = {
     $.get('api/starred_listings', function (listings){
       ApiActions.receiveAllStarredListings(listings);
     });
-  }
+  },
+
+  unstarListing: function(starred_listing) {
+    $.ajax({
+      url: "api/starred_listings/" + starred_listing.id,
+      method: "DELETE",
+      data: { starred_listing: starred_listing },
+      success: function (starred_listing) {
+        ApiActions.receiveUnstarredListing(starred_listing);
+      }
+    });
+  },
 };
 
 module.exports = ApiUtil;

@@ -11,7 +11,7 @@ var resetStarredListings = function(starred_listings) {
 
 var removeListing = function(target_listing){
   _starred_listings.forEach(function(listing, idx){
-    if (listing.id === target_listing.id){
+    if (listing.id === target_listing.listing_id){
       _starred_listings.splice(idx,1);
     }
   });
@@ -28,7 +28,7 @@ StarredStore.__onDispatch = function (payload) {
       StarredStore.__emitChange();
       break;
     case StarredConstants.STARRED_DELETE_LISTING:
-      removeListing(payload.listing);
+      removeListing(payload.starred_listing);
       StarredStore.__emitChange();
       break;
   }

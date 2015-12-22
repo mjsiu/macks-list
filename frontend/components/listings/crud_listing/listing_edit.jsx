@@ -5,7 +5,6 @@ var NavBar = require('../../navigation/navbar');
 var ListingEdit = React.createClass({
 
   render: function() {
-    debugger
     var type = "Edit Listing";
     return (
       <div>
