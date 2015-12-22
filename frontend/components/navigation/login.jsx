@@ -12,6 +12,18 @@ var Login = React.createClass({
     });
   },
 
+  handleLoginClick: function() {
+    $.get('session/new', function(){
+      window.location='session/new'
+    })
+  },
+
+  handleSignUpClick: function() {
+    $.get('user/new', function(){
+      window.location='user/new'
+    })
+  },
+
   handleProfileClick: function () {
     this.props.history.pushState(null, "/user", {});
   },
@@ -30,12 +42,13 @@ var Login = React.createClass({
           </li>);
     } else {
       login = (
-        <li><a href="http://localhost:3000/session/new">Login</a></li>
+        <li><a onClick={this.handleLoginClick}>Login</a></li>
       )
       signup = (
-        <li><a href="http://localhost:3000/users/new">Sign Up</a></li>
+        <li><a onClick={this.handleSignUpClick}>Sign Up</a></li>
       )
     }
+
     return (
       <ul className="nav navbar-nav navbar-right">
         {signup}

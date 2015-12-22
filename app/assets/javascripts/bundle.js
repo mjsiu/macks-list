@@ -31484,6 +31484,18 @@
 	    });
 	  },
 	
+	  handleLoginClick: function () {
+	    $.get('session/new', function () {
+	      window.location = 'session/new';
+	    });
+	  },
+	
+	  handleSignUpClick: function () {
+	    $.get('user/new', function () {
+	      window.location = 'user/new';
+	    });
+	  },
+	
 	  handleProfileClick: function () {
 	    this.props.history.pushState(null, "/user", {});
 	  },
@@ -31530,7 +31542,7 @@
 	        null,
 	        React.createElement(
 	          "a",
-	          { href: "http://localhost:3000/session/new" },
+	          { onClick: this.handleLoginClick },
 	          "Login"
 	        )
 	      );
@@ -31539,11 +31551,12 @@
 	        null,
 	        React.createElement(
 	          "a",
-	          { href: "http://localhost:3000/users/new" },
+	          { onClick: this.handleSignUpClick },
 	          "Sign Up"
 	        )
 	      );
 	    }
+	
 	    return React.createElement(
 	      "ul",
 	      { className: "nav navbar-nav navbar-right" },
