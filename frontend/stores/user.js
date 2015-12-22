@@ -15,7 +15,7 @@ var removeListing = function(target_listing){
       _user_listings.splice(idx,1);
     }
   });
-}
+};
 
 UserStore.all = function() {
   return _user_listings.slice(0);

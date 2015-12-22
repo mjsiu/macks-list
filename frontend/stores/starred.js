@@ -1,7 +1,7 @@
 var Store = require('flux/utils').Store;
-var StarredConstants = require('../constants/user_constants');
+var StarredConstants = require('../constants/starred_constants');
 var AppDispatcher = require('../dispatcher/dispatcher');
-var UserStore = new Store(AppDispatcher);
+var StarredStore = new Store(AppDispatcher);
 
 var _starred_listings = [];
 
@@ -21,10 +21,10 @@ StarredStore.all = function() {
   return _starred_listings.slice(0);
 };
 
-StaredStore.__onDispatch = function (payload) {
+StarredStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
     case StarredConstants.STARRED_RECEIVE:
-      resetUserListings(payload.user_listings);
+      resetStarredListings(payload.starred_listings);
       StarredStore.__emitChange();
       break;
     case StarredConstants.STARRED_DELETE_LISTING:
@@ -34,4 +34,4 @@ StaredStore.__onDispatch = function (payload) {
   }
 };
 
-module.exports = UserStore;
+module.exports = StarredStore;

@@ -43,6 +43,12 @@ var ApiUtil = {
     $.get('api/users', function (listings){
       ApiActions.receiveAllUserListings(listings);
     });
+  },
+
+  fetchStarredUserListings: function() {
+    $.get('api/starred_listings', function (listings){
+      ApiActions.receiveAllStarredListings(listings);
+    });
   }
 };
 

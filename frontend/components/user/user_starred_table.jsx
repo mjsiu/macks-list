@@ -1,6 +1,17 @@
 var React = require('react');
 
 var UserStarredTable = React.createClass({
+  getInitialState: function() {
+    return {
+      starred_listings: StarredStore.all()
+    }
+  },
+
+  onChange: function() {
+    this.setState({starred_listings: StarredStore.all()});
+  },
+
+
 
   render: function() {
     return (
@@ -28,3 +39,4 @@ var UserStarredTable = React.createClass({
 });
 
 module.exports = UserStarredTable;
+1
