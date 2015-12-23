@@ -10,6 +10,7 @@ var ListingEdit = require('./components/listings/crud_listing/listing_edit');
 var ListingShow = require('./components/listings/listing_show');
 var ListingLocation = require('./components/listings/crud_listing/listing_location');
 var UserShow = require('./components/user/user_show');
+var SearchListings = require('./components/search/search_index')
 
 // TODO refactor the routes
 
@@ -28,6 +29,7 @@ var routes = (
       <IndexRoute component={Index}/>
       <Route path="listings/new" component={ListingLocation}/>
       <Route path="listings/new/form" component={ListingNew}/>
+      <Route path="listings/search" component={SearchListings}/>
       <Route path="listings/:listingId" component={ListingShow}/>
       <Route path="listings/edit/:listingId" component={ListingEdit}/>
       <Route path="user" component={UserShow}/>

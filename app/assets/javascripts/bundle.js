@@ -51,11 +51,12 @@
 	var Route = ReactRouter.Route;
 	var IndexRoute = ReactRouter.IndexRoute;
 	var Index = __webpack_require__(210);
-	var ListingNew = __webpack_require__(241);
-	var ListingEdit = __webpack_require__(248);
-	var ListingShow = __webpack_require__(249);
-	var ListingLocation = __webpack_require__(254);
-	var UserShow = __webpack_require__(255);
+	var ListingNew = __webpack_require__(244);
+	var ListingEdit = __webpack_require__(251);
+	var ListingShow = __webpack_require__(252);
+	var ListingLocation = __webpack_require__(257);
+	var UserShow = __webpack_require__(258);
+	var SearchListings = __webpack_require__(262);
 	
 	// TODO refactor the routes
 	
@@ -77,6 +78,7 @@
 	  React.createElement(IndexRoute, { component: Index }),
 	  React.createElement(Route, { path: 'listings/new', component: ListingLocation }),
 	  React.createElement(Route, { path: 'listings/new/form', component: ListingNew }),
+	  React.createElement(Route, { path: 'listings/search', component: SearchListings }),
 	  React.createElement(Route, { path: 'listings/:listingId', component: ListingShow }),
 	  React.createElement(Route, { path: 'listings/edit/:listingId', component: ListingEdit }),
 	  React.createElement(Route, { path: 'user', component: UserShow })
@@ -24451,10 +24453,10 @@
 	
 	var ListingStore = __webpack_require__(211);
 	var ApiUtil = __webpack_require__(233);
-	var ListingIndex = __webpack_require__(237);
-	var NavBar = __webpack_require__(238);
-	var Footer = __webpack_require__(259);
-	var Splash = __webpack_require__(240);
+	var ListingIndex = __webpack_require__(239);
+	var NavBar = __webpack_require__(240);
+	var Footer = __webpack_require__(242);
+	var Splash = __webpack_require__(243);
 	
 	var Index = React.createClass({
 	  displayName: 'Index',
@@ -24495,19 +24497,23 @@
 	      React.createElement(NavBar, { history: this.props.history }),
 	      React.createElement(Splash, null),
 	      React.createElement(
-	        'br',
-	        null,
-	        ' '
-	      ),
-	      React.createElement(
-	        'br',
-	        null,
-	        ' '
-	      ),
-	      React.createElement(
-	        'ul',
-	        null,
-	        listings
+	        'div',
+	        { className: 'container' },
+	        React.createElement(
+	          'br',
+	          null,
+	          ' '
+	        ),
+	        React.createElement(
+	          'br',
+	          null,
+	          ' '
+	        ),
+	        React.createElement(
+	          'ul',
+	          null,
+	          listings
+	        )
 	      )
 	    );
 	  }
@@ -31243,11 +31249,14 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var ApiActions = __webpack_require__(234);
+	var FilterParamsStore = __webpack_require__(237);
 	
 	var ApiUtil = {
 	
 	  fetchAllListings: function () {
-	    $.get('api/listings', function (listings) {
+	    debugger;
+	    var filter = FilterParamsStore.params();
+	    $.get('api/listings', filter, function (listings) {
 	      ApiActions.receiveAllListings(listings);
 	    });
 	  },
@@ -31409,6 +31418,56 @@
 /* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var Store = __webpack_require__(212).Store;
+	var FilterConstants = __webpack_require__(238);
+	var AppDispatcher = __webpack_require__(230);
+	var FilterParamsStore = new Store(AppDispatcher);
+	
+	var _params = {};
+	
+	FilterParamsStore.params = function () {
+	  return Object.assign({}, _params);
+	};
+	
+	FilterParamsStore.reset = function () {
+	  _params = {};
+	};
+	
+	FilterParamsStore.__onDispatch = function (payload) {
+	  switch (payload.actionType) {
+	    case FilterConstants.UPDATE_CITY:
+	      _params.city = payload.city;
+	      FilterParamsStore.__emitChange();
+	      break;
+	    case FilterConstants.UPDATE_CATEGORY:
+	      _params.category = payload.category;
+	      FilterParamsStore.__emitChange();
+	      break;
+	    case FilterConstants.UPDATE_FILTERS:
+	      _params.filters = payload.filters;
+	      FilterParamsStore.__emitChange();
+	      break;
+	  }
+	};
+	
+	module.exports = FilterParamsStore;
+
+/***/ },
+/* 238 */
+/***/ function(module, exports) {
+
+	var FilterConstants = {
+	  UPDATE_FILTERS: "UPDATE_FILTERS",
+	  UPDATE_CITY: "UPDATE_CITY",
+	  UPDATE_CATEGORY: "UPDATE_CATEGORY"
+	};
+	
+	module.exports = FilterConstants;
+
+/***/ },
+/* 239 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var React = __webpack_require__(1);
 	var ReactRouter = __webpack_require__(159);
 	
@@ -31452,21 +31511,25 @@
 	module.exports = ListingIndex;
 
 /***/ },
-/* 238 */
+/* 240 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-	var Login = __webpack_require__(239);
+	var Login = __webpack_require__(241);
 	
 	var NavBar = React.createClass({
 	  displayName: 'NavBar',
 	
 	  handleHomeClick: function () {
-	    this.props.history.pushState(null, "/", {});
+	    this.props.history.pushState(null, "/");
 	  },
 	
 	  handleCreateClick: function () {
-	    this.props.history.pushState(null, "listings/new", {});
+	    this.props.history.pushState(null, "listings/new");
+	  },
+	
+	  handleSearchClick: function () {
+	    this.props.history.pushState(null, "listings/search");
 	  },
 	
 	  render: function () {
@@ -31531,34 +31594,11 @@
 	              ),
 	              React.createElement(
 	                'li',
-	                { className: 'dropdown' },
+	                null,
 	                React.createElement(
 	                  'a',
-	                  { className: 'dropdown-toggle', 'data-toggle': 'dropdown', role: 'button', 'aria-haspopup': 'true', 'aria-expanded': 'false' },
-	                  'Search ',
-	                  React.createElement('span', { className: 'caret' })
-	                ),
-	                React.createElement(
-	                  'ul',
-	                  { className: 'dropdown-menu' },
-	                  React.createElement(
-	                    'li',
-	                    null,
-	                    React.createElement(
-	                      'a',
-	                      { href: '#' },
-	                      'City'
-	                    )
-	                  ),
-	                  React.createElement(
-	                    'li',
-	                    null,
-	                    React.createElement(
-	                      'a',
-	                      { href: '#' },
-	                      'Advanced Search'
-	                    )
-	                  )
+	                  { onClick: this.handleSearchClick },
+	                  'Search'
 	                )
 	              )
 	            ),
@@ -31573,7 +31613,7 @@
 	module.exports = NavBar;
 
 /***/ },
-/* 239 */
+/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
@@ -31676,7 +31716,24 @@
 	module.exports = Login;
 
 /***/ },
-/* 240 */
+/* 242 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	
+	var Footer = React.createClass({
+	  displayName: "Footer",
+	
+	  render: function () {
+	    return React.createElement("div", { className: "footer" });
+	  }
+	
+	});
+	
+	module.exports = Footer;
+
+/***/ },
+/* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
@@ -31692,12 +31749,12 @@
 	module.exports = Splash;
 
 /***/ },
-/* 241 */
+/* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-	var ListingForm = __webpack_require__(242);
-	var NavBar = __webpack_require__(238);
+	var ListingForm = __webpack_require__(245);
+	var NavBar = __webpack_require__(240);
 	
 	var ListingNew = React.createClass({
 	  displayName: 'ListingNew',
@@ -31718,14 +31775,14 @@
 	module.exports = ListingNew;
 
 /***/ },
-/* 242 */
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-	var LinkedStateMixin = __webpack_require__(243);
+	var LinkedStateMixin = __webpack_require__(246);
 	
 	var ApiUtil = __webpack_require__(233);
-	var ImageUploadButton = __webpack_require__(247);
+	var ImageUploadButton = __webpack_require__(250);
 	
 	var ListingForm = React.createClass({
 	  displayName: 'ListingForm',
@@ -31958,13 +32015,13 @@
 	module.exports = ListingForm;
 
 /***/ },
-/* 243 */
+/* 246 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(244);
+	module.exports = __webpack_require__(247);
 
 /***/ },
-/* 244 */
+/* 247 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -31981,8 +32038,8 @@
 	
 	'use strict';
 	
-	var ReactLink = __webpack_require__(245);
-	var ReactStateSetters = __webpack_require__(246);
+	var ReactLink = __webpack_require__(248);
+	var ReactStateSetters = __webpack_require__(249);
 	
 	/**
 	 * A simple mixin around ReactLink.forState().
@@ -32005,7 +32062,7 @@
 	module.exports = LinkedStateMixin;
 
 /***/ },
-/* 245 */
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -32079,7 +32136,7 @@
 	module.exports = ReactLink;
 
 /***/ },
-/* 246 */
+/* 249 */
 /***/ function(module, exports) {
 
 	/**
@@ -32188,7 +32245,7 @@
 	module.exports = ReactStateSetters;
 
 /***/ },
-/* 247 */
+/* 250 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
@@ -32221,12 +32278,12 @@
 	module.exports = ImageUploadButton;
 
 /***/ },
-/* 248 */
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-	var ListingForm = __webpack_require__(242);
-	var NavBar = __webpack_require__(238);
+	var ListingForm = __webpack_require__(245);
+	var NavBar = __webpack_require__(240);
 	
 	var ListingEdit = React.createClass({
 	  displayName: 'ListingEdit',
@@ -32246,7 +32303,7 @@
 	module.exports = ListingEdit;
 
 /***/ },
-/* 249 */
+/* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
@@ -32254,7 +32311,7 @@
 	var History = __webpack_require__(159).History;
 	
 	var ListingStore = __webpack_require__(211);
-	var Listing = __webpack_require__(250);
+	var Listing = __webpack_require__(253);
 	var ApiUtil = __webpack_require__(233);
 	
 	var ListingShow = React.createClass({
@@ -32315,14 +32372,14 @@
 	module.exports = ListingShow;
 
 /***/ },
-/* 250 */
+/* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	
-	var NavBar = __webpack_require__(238);
-	var Map = __webpack_require__(251);
-	var StarredButton = __webpack_require__(252);
+	var NavBar = __webpack_require__(240);
+	var Map = __webpack_require__(254);
+	var StarredButton = __webpack_require__(255);
 	
 	var Listing = React.createClass({
 	  displayName: 'Listing',
@@ -32382,7 +32439,11 @@
 	                      { 'data-toggle': 'collapse', href: '#collapse1' },
 	                      this.props.listing.title
 	                    ),
-	                    React.createElement(StarredButton, { listing: this.props.listing })
+	                    React.createElement(
+	                      'span',
+	                      { 'class': 'badge' },
+	                      React.createElement(StarredButton, { listing: this.props.listing })
+	                    )
 	                  )
 	                ),
 	                React.createElement(
@@ -32434,7 +32495,7 @@
 	module.exports = Listing;
 
 /***/ },
-/* 251 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
@@ -32506,14 +32567,14 @@
 	module.exports = Map;
 
 /***/ },
-/* 252 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	
-	var StarredStore = __webpack_require__(253);
+	var StarredStore = __webpack_require__(256);
 	var ApiUtil = __webpack_require__(233);
-	var LinkedStateMixin = __webpack_require__(243);
+	var LinkedStateMixin = __webpack_require__(246);
 	
 	var StarButton = React.createClass({
 	  displayName: 'StarButton',
@@ -32582,7 +32643,7 @@
 	module.exports = StarButton;
 
 /***/ },
-/* 253 */
+/* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Store = __webpack_require__(212).Store;
@@ -32633,13 +32694,13 @@
 	module.exports = StarredStore;
 
 /***/ },
-/* 254 */
+/* 257 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	
-	var Map = __webpack_require__(251);
-	var NavBar = __webpack_require__(238);
+	var Map = __webpack_require__(254);
+	var NavBar = __webpack_require__(240);
 	
 	var ListingLocation = React.createClass({
 	  displayName: 'ListingLocation',
@@ -32681,14 +32742,14 @@
 	module.exports = ListingLocation;
 
 /***/ },
-/* 255 */
+/* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	
-	var NavBar = __webpack_require__(238);
-	var UserListingTable = __webpack_require__(256);
-	var UserStarredTable = __webpack_require__(258);
+	var NavBar = __webpack_require__(240);
+	var UserListingTable = __webpack_require__(259);
+	var UserStarredTable = __webpack_require__(261);
 	
 	var User = React.createClass({
 	  displayName: 'User',
@@ -32737,12 +32798,12 @@
 	module.exports = User;
 
 /***/ },
-/* 256 */
+/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	
-	var UserStore = __webpack_require__(257);
+	var UserStore = __webpack_require__(260);
 	var ApiUtil = __webpack_require__(233);
 	
 	var UserListingTable = React.createClass({
@@ -32890,7 +32951,7 @@
 	module.exports = UserListingTable;
 
 /***/ },
-/* 257 */
+/* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Store = __webpack_require__(212).Store;
@@ -32932,12 +32993,12 @@
 	module.exports = UserStore;
 
 /***/ },
-/* 258 */
+/* 261 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	
-	var StarredStore = __webpack_require__(253);
+	var StarredStore = __webpack_require__(256);
 	var ApiUtil = __webpack_require__(233);
 	
 	var UserStarredTable = React.createClass({
@@ -33065,21 +33126,339 @@
 	module.exports = UserStarredTable;
 
 /***/ },
-/* 259 */
+/* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	
-	var Footer = React.createClass({
-	  displayName: "Footer",
+	var ListingStore = __webpack_require__(211);
+	var FilterParamsStore = __webpack_require__(237);
+	var FilterParamsStore = __webpack_require__(237);
+	var ApiUtil = __webpack_require__(233);
+	var Filter = __webpack_require__(263);
+	var ListingIndex = __webpack_require__(239);
+	var NavBar = __webpack_require__(240);
+	
+	var SearchIndex = React.createClass({
+	  displayName: 'SearchIndex',
+	
+	  getInitialState: function () {
+	    return {
+	      listings: ListingStore.all(),
+	      filterParams: FilterParamsStore.params()
+	    };
+	  },
+	
+	  componentDidMount: function () {
+	    this.listingListener = ListingStore.addListener(this.listingsChanged);
+	    this.filterListener = FilterParamsStore.addListener(this.filtersChanged);
+	    ApiUtil.fetchAllListings();
+	  },
+	
+	  componentWillUnmount: function () {
+	    this.listingListener.remove();
+	    this.filterListener.remove();
+	  },
+	
+	  filtersChanged: function () {
+	    var newParams = FilterParamsStore.params();
+	    this.setState({ filterParams: newParams });
+	    // FilterParamsStore.reset();
+	    ApiUtil.fetchAllListings();
+	  },
+	
+	  listingsChanged: function () {
+	    this.setState({ listings: ListingStore.all() });
+	  },
+	
+	  handleListingClick: function (listing) {
+	    this.props.history.pushState(null, "/listings/" + listing.id, {});
+	  },
 	
 	  render: function () {
-	    return React.createElement("div", { className: "footer" });
+	    var handleListingClick = this.handleListingClick;
+	    var listings = this.state.listings.map(function (listing, idx) {
+	      var boundClick = handleListingClick.bind(null, listing);
+	      return React.createElement(ListingIndex, { key: listing.id, listing: listing, onClick: boundClick });
+	    });
+	
+	    return React.createElement(
+	      'div',
+	      null,
+	      React.createElement(NavBar, { history: this.props.history }),
+	      React.createElement(
+	        'div',
+	        { className: 'container' },
+	        React.createElement(
+	          'div',
+	          { className: 'row' },
+	          React.createElement(
+	            'div',
+	            { className: 'col-md-3' },
+	            React.createElement(Filter, { filterParams: this.state.filterParams })
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'col-md-9' },
+	            React.createElement(
+	              'ul',
+	              null,
+	              listings
+	            )
+	          )
+	        )
+	      )
+	    );
 	  }
 	
 	});
 	
-	module.exports = Footer;
+	module.exports = SearchIndex;
+
+/***/ },
+/* 263 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	var FilterActions = __webpack_require__(264);
+	
+	var Filters = React.createClass({
+	  displayName: 'Filters',
+	
+	  cityChanged: function (e) {
+	    debugger;
+	    FilterActions.updateCity(e.target.id);
+	  },
+	
+	  categoryChanged: function (e) {
+	    FilterActions.updateCategory(e.target.id);
+	  },
+	
+	  updateFilters: function (city, category) {
+	    FilterActions.updateParams({
+	      filters: { city: city, category: category }
+	    });
+	  },
+	
+	  render: function () {
+	    return React.createElement(
+	      'div',
+	      { className: 'container' },
+	      React.createElement(
+	        'div',
+	        { className: 'row' },
+	        React.createElement(
+	          'div',
+	          { className: 'col-md-3' },
+	          React.createElement(
+	            'div',
+	            { className: 'panel-group' },
+	            React.createElement(
+	              'div',
+	              { className: 'panel panel-default' },
+	              React.createElement(
+	                'div',
+	                { className: 'panel-heading' },
+	                React.createElement(
+	                  'h4',
+	                  { className: 'panel-title' },
+	                  React.createElement(
+	                    'a',
+	                    { 'data-toggle': 'collapse', href: '#collapse1' },
+	                    'City'
+	                  )
+	                )
+	              ),
+	              React.createElement(
+	                'div',
+	                { id: 'collapse1', className: 'panel-collapse collapse-in' },
+	                React.createElement(
+	                  'ul',
+	                  { className: 'list-group' },
+	                  React.createElement(
+	                    'li',
+	                    { className: 'list-group-item' },
+	                    React.createElement(
+	                      'a',
+	                      { onClick: this.cityChanged, id: 1 },
+	                      'San Francisco'
+	                    ),
+	                    React.createElement(
+	                      'span',
+	                      { className: 'badge' },
+	                      '# of listings'
+	                    )
+	                  ),
+	                  React.createElement(
+	                    'li',
+	                    { className: 'list-group-item' },
+	                    React.createElement(
+	                      'a',
+	                      { onClick: this.cityChanged, id: 2 },
+	                      'Oakland'
+	                    ),
+	                    React.createElement(
+	                      'span',
+	                      { className: 'badge' },
+	                      '# of listings'
+	                    )
+	                  ),
+	                  React.createElement(
+	                    'li',
+	                    { className: 'list-group-item' },
+	                    React.createElement(
+	                      'a',
+	                      { onClick: this.cityChanged, id: 3 },
+	                      'Berkeley'
+	                    ),
+	                    React.createElement(
+	                      'span',
+	                      { className: 'badge' },
+	                      '# of listings'
+	                    )
+	                  ),
+	                  React.createElement(
+	                    'li',
+	                    { className: 'list-group-item' },
+	                    React.createElement(
+	                      'a',
+	                      { onClick: this.cityChanged, id: 4 },
+	                      'San Mateo'
+	                    ),
+	                    React.createElement(
+	                      'span',
+	                      { className: 'badge' },
+	                      '# of listings'
+	                    )
+	                  ),
+	                  React.createElement(
+	                    'li',
+	                    { className: 'list-group-item' },
+	                    React.createElement(
+	                      'a',
+	                      { onClick: this.cityChanged, id: 5 },
+	                      'San Jose'
+	                    ),
+	                    React.createElement(
+	                      'span',
+	                      { className: 'badge' },
+	                      '# of listings'
+	                    )
+	                  )
+	                )
+	              )
+	            )
+	          )
+	        )
+	      ),
+	      React.createElement(
+	        'div',
+	        { className: 'row' },
+	        React.createElement(
+	          'div',
+	          { className: 'col-md-3' },
+	          React.createElement(
+	            'div',
+	            { className: 'panel-group' },
+	            React.createElement(
+	              'div',
+	              { className: 'panel panel-default' },
+	              React.createElement(
+	                'div',
+	                { className: 'panel-heading' },
+	                React.createElement(
+	                  'h4',
+	                  { className: 'panel-title' },
+	                  React.createElement(
+	                    'a',
+	                    { 'data-toggle': 'collapse', href: '#collapse1' },
+	                    'Category'
+	                  )
+	                )
+	              ),
+	              React.createElement(
+	                'div',
+	                { id: 'collapse1', className: 'panel-collapse collapse-in' },
+	                React.createElement(
+	                  'ul',
+	                  { className: 'list-group' },
+	                  React.createElement(
+	                    'li',
+	                    { className: 'list-group-item' },
+	                    React.createElement(
+	                      'a',
+	                      { onClick: this.categoryChanged, id: 1 },
+	                      'Electronics'
+	                    )
+	                  ),
+	                  React.createElement(
+	                    'li',
+	                    { className: 'list-group-item' },
+	                    React.createElement(
+	                      'a',
+	                      { onClick: this.categoryChanged, id: 2 },
+	                      'Clothing'
+	                    )
+	                  ),
+	                  React.createElement(
+	                    'li',
+	                    { className: 'list-group-item' },
+	                    React.createElement(
+	                      'a',
+	                      { onClick: this.categoryChanged, id: 3 },
+	                      'Home'
+	                    )
+	                  ),
+	                  React.createElement(
+	                    'li',
+	                    { className: 'list-group-item' },
+	                    React.createElement(
+	                      'a',
+	                      { onClick: this.categoryChanged, id: 4 },
+	                      'Sports'
+	                    )
+	                  )
+	                )
+	              )
+	            )
+	          )
+	        )
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = Filters;
+
+/***/ },
+/* 264 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var AppDispatcher = __webpack_require__(230);
+	var FilterConstants = __webpack_require__(238);
+	
+	var FilterActions = {
+	  updateFilters: function (filters) {
+	    AppDispatcher.dispatch({
+	      actionType: FilterConstants.UPDATE_FILTERS,
+	      bounds: bounds
+	    });
+	  },
+	  updateCity: function (value) {
+	    AppDispatcher.dispatch({
+	      actionType: FilterConstants.UPDATE_CITY,
+	      city: value
+	    });
+	  },
+	  updateCategory: function (value) {
+	    AppDispatcher.dispatch({
+	      actionType: FilterConstants.UPDATE_CATEGORY,
+	      category: value
+	    });
+	  }
+	};
+	
+	module.exports = FilterActions;
 
 /***/ }
 /******/ ]);

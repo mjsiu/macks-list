@@ -8,16 +8,16 @@ var FilterActions = {
       bounds: bounds
     });
   },
-  updateCityId: function (value){
+  updateCity: function (value){
     AppDispatcher.dispatch({
-      actionType: FilterConstants.UPDATE_CITY_ID,
-      city_id: value,
+      actionType: FilterConstants.UPDATE_CITY,
+      city: value,
     });
   },
-  updateCategoryId: function (value){
+  updateCategory: function (value){
     AppDispatcher.dispatch({
-      actionType: FilterConstants.UPDATE_CATEGORY_ID,
-      category_id: value,
+      actionType: FilterConstants.UPDATE_CATEGORY,
+      category: value,
     });
   }
 };

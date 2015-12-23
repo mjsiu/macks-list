@@ -43,6 +43,7 @@ var Index = React.createClass({
         <NavBar history={this.props.history}/>
 
         <Splash/>
+        <div className="container">
 
       <br> </br>
       <br> </br>
@@ -51,6 +52,7 @@ var Index = React.createClass({
         </ul>
 
       </div>
+    </div>
     );
   }
 });

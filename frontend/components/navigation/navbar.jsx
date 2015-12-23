@@ -4,11 +4,15 @@ var Login = require('./login');
 var NavBar = React.createClass({
 
   handleHomeClick: function () {
-    this.props.history.pushState(null, "/", {});
+    this.props.history.pushState(null, "/");
   },
 
   handleCreateClick: function () {
-    this.props.history.pushState(null, "listings/new", {});
+    this.props.history.pushState(null, "listings/new");
+  },
+
+  handleSearchClick: function() {
+    this.props.history.pushState(null, "listings/search");
   },
 
   render: function() {
@@ -31,15 +35,8 @@ var NavBar = React.createClass({
             <ul className="nav navbar-nav">
               <li><a onClick={this.handleHomeClick}>Home</a></li>
               <li className="active"><a onClick={this.handleCreateClick}>Create Listing <span className="sr-only">(current)</span></a></li>
-              <li className="dropdown">
-                <a className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Search <span className="caret"></span></a>
-                <ul className="dropdown-menu">
-                  <li><a href="#">City</a></li>
-                  <li><a href="#">Advanced Search</a></li>
-                </ul>
-              </li>
+              <li><a onClick={this.handleSearchClick}>Search</a></li>
             </ul>
-
             <Login history={this.props.history}/>
 
           </div>

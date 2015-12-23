@@ -1,11 +1,15 @@
 var ApiActions = require('../actions/api_actions.js');
+var FilterParamsStore = require('../stores/filter_params');
 
 var ApiUtil = {
 
   fetchAllListings: function(){
-    $.get('api/listings', function(listings){
+    debugger
+    var filter = FilterParamsStore.params();
+    $.get('api/listings', filter, function(listings){
       ApiActions.receiveAllListings(listings);
     });
+
   },
 
   fetchSingleListing: function(target_listing) {

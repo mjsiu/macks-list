@@ -48,7 +48,7 @@ var Listing = React.createClass({
         <div className="panel-heading">
           <h4 className="panel-title">
             <a data-toggle="collapse" href="#collapse1">{this.props.listing.title}</a>
-            <StarredButton listing={this.props.listing}/>
+              <span class="badge"><StarredButton listing={this.props.listing}/></span>
           </h4>
         </div>
         <div id="collapse1" className="panel-collapse collapse-in">

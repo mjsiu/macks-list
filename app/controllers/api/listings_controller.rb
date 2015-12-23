@@ -2,6 +2,12 @@ class Api::ListingsController < ApplicationController
 
   def index
     @listings = Listing.all
+
+
+    if (params[:city])
+      @listings = Listing.where(city_id: params[:city], category_id: params[:category])
+    end
+
   end
 
   def create
