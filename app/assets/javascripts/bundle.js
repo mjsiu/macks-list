@@ -24495,6 +24495,16 @@
 	      React.createElement(NavBar, { history: this.props.history }),
 	      React.createElement(Splash, null),
 	      React.createElement(
+	        'br',
+	        null,
+	        ' '
+	      ),
+	      React.createElement(
+	        'br',
+	        null,
+	        ' '
+	      ),
+	      React.createElement(
 	        'ul',
 	        null,
 	        listings
@@ -31417,18 +31427,23 @@
 	      { className: 'index-items', onClick: this.props.onClick },
 	      React.createElement(
 	        'div',
-	        null,
-	        this.props.listing.title
-	      ),
-	      React.createElement(
-	        'div',
-	        null,
-	        React.createElement('img', { src: thumbnail })
-	      ),
-	      React.createElement(
-	        'div',
-	        null,
-	        this.props.listing.description
+	        { className: 'panel panel-default' },
+	        React.createElement(
+	          'div',
+	          { className: 'panel-heading' },
+	          this.props.listing.title
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'panel-body' },
+	          React.createElement('img', { src: thumbnail })
+	        ),
+	        React.createElement(
+	          'div',
+	          { 'class': 'panel-footer' },
+	          '$',
+	          this.props.listing.price
+	        )
 	      )
 	    );
 	  }
@@ -32357,57 +32372,77 @@
 	      React.createElement(NavBar, { history: this.props.history }),
 	      React.createElement(
 	        'div',
-	        { className: 'row' },
+	        { className: 'container' },
 	        React.createElement(
 	          'div',
-	          { className: 'col-md-12' },
+	          { className: 'row' },
 	          React.createElement(
 	            'div',
-	            { className: 'listing-title' },
+	            { className: 'col-md-3' },
+	            React.createElement(Map, { listing: this.props.listing }),
+	            React.createElement('br', null),
+	            React.createElement('br', null),
 	            React.createElement(
-	              'h2',
-	              null,
-	              this.props.listing.title,
-	              ' - $',
-	              this.props.listing.price
+	              'div',
+	              { className: 'panel-group' },
+	              React.createElement(
+	                'div',
+	                { className: 'panel panel-default' },
+	                React.createElement(
+	                  'div',
+	                  { className: 'panel-heading' },
+	                  React.createElement(
+	                    'h4',
+	                    { className: 'panel-title' },
+	                    React.createElement(
+	                      'a',
+	                      { 'data-toggle': 'collapse', href: '#collapse1' },
+	                      this.props.listing.title
+	                    ),
+	                    React.createElement(StarredButton, { listing: this.props.listing })
+	                  )
+	                ),
+	                React.createElement(
+	                  'div',
+	                  { id: 'collapse1', className: 'panel-collapse collapse-in' },
+	                  React.createElement(
+	                    'ul',
+	                    { className: 'list-group' },
+	                    React.createElement(
+	                      'li',
+	                      { className: 'list-group-item' },
+	                      '$',
+	                      this.props.listing.price
+	                    ),
+	                    React.createElement(
+	                      'li',
+	                      { className: 'list-group-item' },
+	                      this.props.listing.address
+	                    )
+	                  )
+	                )
+	              )
+	            )
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'col-md-6' },
+	            React.createElement(
+	              'div',
+	              { className: 'listing-image' },
+	              React.createElement('img', { src: this.state.primary_image })
 	            ),
 	            React.createElement('br', null),
-	            React.createElement(StarredButton, { listing: this.props.listing })
-	          )
-	        )
-	      ),
-	      React.createElement(
-	        'div',
-	        { className: 'row' },
-	        React.createElement('div', { className: 'col-md-1' }),
-	        React.createElement(
-	          'div',
-	          { className: 'col-md-5' },
-	          React.createElement(
-	            'div',
-	            { className: 'listing-image' },
-	            React.createElement('img', { src: this.state.primary_image })
+	            React.createElement('br', null),
+	            React.createElement(
+	              'div',
+	              null,
+	              this.props.listing.description
+	            )
 	          )
 	        ),
-	        React.createElement(
-	          'div',
-	          { className: 'col-md-5' },
-	          React.createElement(Map, { listing: this.props.listing })
-	        ),
-	        React.createElement('div', { className: 'col-md-1' })
-	      ),
-	      React.createElement('br', null),
-	      React.createElement('br', null),
-	      React.createElement(
-	        'div',
-	        { className: 'row' },
-	        React.createElement('div', { className: 'col-md-4' }),
-	        React.createElement(
-	          'div',
-	          { className: 'col-md-4' },
-	          this.props.listing.description
-	        ),
-	        React.createElement('div', { className: 'col-md-4' })
+	        React.createElement('br', null),
+	        React.createElement('br', null)
 	      )
 	    );
 	  }
@@ -32538,7 +32573,7 @@
 	        {
 	          onClick: this.handleUnstarClick,
 	          type: 'button',
-	          className: 'btn btn-default' },
+	          className: 'btn btn-primary btn-xs' },
 	        'Unstar'
 	      );
 	    } else {
@@ -32547,7 +32582,7 @@
 	        {
 	          onClick: this.handleStarredClick,
 	          type: 'button',
-	          className: 'btn btn-default',
+	          className: 'btn btn-default btn-xs',
 	          valueLink: this.linkState('starred') },
 	        'Star'
 	      );
@@ -32680,8 +32715,38 @@
 	      'div',
 	      null,
 	      React.createElement(NavBar, { history: this.props.history }),
-	      React.createElement(UserListingTable, { history: this.props.history }),
-	      React.createElement(UserStarredTable, { history: this.props.history })
+	      React.createElement(
+	        'div',
+	        { className: 'container' },
+	        React.createElement(
+	          'div',
+	          { className: 'row' },
+	          React.createElement(
+	            'div',
+	            { className: 'col-md-6' },
+	            React.createElement(UserListingTable, { history: this.props.history })
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'col-md-6' },
+	            React.createElement(UserStarredTable, { history: this.props.history })
+	          )
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'row' },
+	          React.createElement(
+	            'div',
+	            { className: 'col-md-6' },
+	            React.createElement(UserListingTable, { history: this.props.history })
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'col-md-6' },
+	            React.createElement(UserStarredTable, { history: this.props.history })
+	          )
+	        )
+	      )
 	    );
 	  }
 	});
@@ -32994,7 +33059,7 @@
 	            React.createElement(
 	              'th',
 	              null,
-	              'Post Date'
+	              'Date'
 	            ),
 	            React.createElement(
 	              'th',

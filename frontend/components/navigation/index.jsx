@@ -44,6 +44,8 @@ var Index = React.createClass({
 
         <Splash/>
 
+      <br> </br>
+      <br> </br>
         <ul>
           {listings}
         </ul>

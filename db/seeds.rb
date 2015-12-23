@@ -15,31 +15,31 @@ ActiveRecord::Base.connection.reset_pk_sequence!('Category')
 
 User.create(username: "escobar", email: "ecobar@gmail.com", password: "password", city_id: 1)
 
-Listing.create(title: "Limited Edition Book", description: "Very cool book",
+Listing.create(title: "Limited Edition Book", description: Faker::Hipster.paragraphs(3, false),
 price: 50, address: "Powell Street, San Francisco, California", user_id:
 1, city_id: 1, category_id: 1)
-Listing.create(title: "Homeade Pasta", description: "Very fresh",
+Listing.create(title: "Homeade Pasta", description: Faker::Hipster.paragraphs(3, false),
 price: 300, address: "3rd Street, San Mateo, California", user_id: 2, city_id: 4,
 category_id: 2)
-Listing.create(title: "Boat", description: "Good condition boat", price: 50, address:
+Listing.create(title: "Boat", description: Faker::Hipster.paragraphs(3, false), price: 50, address:
 "Berkeley, Berkeley, California", user_id: 3, city_id: 3, category_id: 3)
-Listing.create(title: "Radio", description: "Super vintage",
+Listing.create(title: "Radio", description: Faker::Hipster.paragraphs(3, false),
 price: 100, address: "Powell Street, San Francisco, California", user_id:
 1, city_id: 1, category_id: 1)
-Listing.create(title: "Briefcase", description: "Super vintage good condition",
+Listing.create(title: "Briefcase", description: Faker::Hipster.paragraphs(3, false),
 price: 1200, address: "Powell Street, San Francisco, California", user_id:
 1, city_id: 1, category_id: 1)
-Listing.create(title: "Motorcycle", description: "Motorcycle thing",
+Listing.create(title: "Motorcycle", description: Faker::Hipster.paragraphs(3, false),
 price: 450, address: "Powell Street, San Francisco, California", user_id:
 1, city_id: 1, category_id: 1)
-Listing.create(title: "Camera", description: "Set of really cool cameras",
+Listing.create(title: "Camera", description: Faker::Hipster.paragraphs(3, false),
 price: 15, address: "Powell Street, San Francisco, California", user_id:
 1, city_id: 1, category_id: 1)
-Listing.create(title: "Laptop", description: "Reall expensive laptop",
+Listing.create(title: "Laptop", description: Faker::Hipster.paragraphs(3, false),
 price: 79, address: "Powell Street, San Francisco, California", user_id:
 1, city_id: 1, category_id: 1,
 latitude: 37.774733, longitude: -122.418702)
-Listing.create(title: "Bike", description: "It's a bike",
+Listing.create(title: "Bike", description: Faker::Hipster.paragraphs(3, false),
 price: 79, address: "Powell Street, San Francisco, California", user_id:
 1, city_id: 1, category_id: 1, archived: true,
 latitude: 37.774733, longitude: -122.418702)

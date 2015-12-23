@@ -17,7 +17,7 @@ var Listing = React.createClass({
 
   imageCheck: function() {
     var partial = "http://res.cloudinary.com/mackslist/image/upload/c_scale,h_450/";
-    
+
     if (this.props.listing.images[0]) {
       this.setState({primary_image: partial + this.props.listing.images[0].url})
     } else {
@@ -32,39 +32,57 @@ var Listing = React.createClass({
 
       <NavBar history={this.props.history}/>
 
+    <div className="container">
+
+
       <div className="row">
-        <div className="col-md-12">
-          <div className="listing-title">
-            <h2>{this.props.listing.title} - ${this.props.listing.price}</h2>
-            <br/>
+
+        <div className="col-md-3">
+          <Map listing={this.props.listing}></Map>
+            <br></br>
+            <br></br>
+
+
+    <div className="panel-group">
+      <div className="panel panel-default">
+        <div className="panel-heading">
+          <h4 className="panel-title">
+            <a data-toggle="collapse" href="#collapse1">{this.props.listing.title}</a>
             <StarredButton listing={this.props.listing}/>
-          </div>
+          </h4>
+        </div>
+        <div id="collapse1" className="panel-collapse collapse-in">
+          <ul className="list-group">
+            <li className="list-group-item">${this.props.listing.price}</li>
+            <li className="list-group-item">{this.props.listing.address}</li>
+          </ul>
+
         </div>
       </div>
 
-      <div className="row">
-          <div className="col-md-1"></div>
-          <div className="col-md-5">
+  </div>
+
+        </div>
+
+          <div className="col-md-6">
             <div className="listing-image">
               <img src={this.state.primary_image}/>
             </div>
+            <br></br>
+            <br></br>
+            <div>
+              {this.props.listing.description}
+            </div>
           </div>
-          <div className="col-md-5">
-            <Map listing={this.props.listing}></Map>
-          </div>
-          <div className="col-md-1"></div>
+
       </div>
 
       <br/>
       <br/>
 
-      <div className="row">
-        <div className="col-md-4"></div>
-        <div className="col-md-4">{this.props.listing.description}</div>
-        <div className="col-md-4"></div>
-      </div>
 
       </div>
+    </div>
     );
   }
 });

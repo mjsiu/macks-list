@@ -28,6 +28,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt'
 gem 'geocoder'
 gem 'figaro'
+gem 'faker'
 
 gem 'bootstrap-sass'
 # Use Unicorn as the app server

@@ -53,7 +53,7 @@ var UserStarredTable = React.createClass({
               <th>Link</th>
               <th>Unstar</th>
               <th>Price</th>
-              <th>Post Date</th>
+              <th>Date</th>
               <th>Description</th>
             </tr>
           </thead>
