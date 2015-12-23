@@ -49,7 +49,6 @@ var Index = React.createClass({
         </ul>
 
       </div>
-
     );
   }
 });

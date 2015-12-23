@@ -1,4 +1,5 @@
 var AppDispatcher = require('../dispatcher/dispatcher');
+
 var ListingConstants = require('../constants/listing_constants');
 var UserConstants = require('../constants/user_constants');
 var StarredConstants = require('../constants/starred_constants');

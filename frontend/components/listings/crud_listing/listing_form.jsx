@@ -60,7 +60,7 @@ var ListingForm = React.createClass({
     Object.keys(this.state).forEach(function (key) {
       { listing[key] = this.state[key]; }
     }.bind(this));
-    
+
     ApiUtil.createNewListing(listing);
     this.returnToProfile();
   },

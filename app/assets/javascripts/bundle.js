@@ -57,6 +57,8 @@
 	var ListingLocation = __webpack_require__(254);
 	var UserShow = __webpack_require__(255);
 	
+	// TODO refactor the routes
+	
 	var App = React.createClass({
 	  displayName: 'App',
 	
@@ -31313,6 +31315,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var AppDispatcher = __webpack_require__(230);
+	
 	var ListingConstants = __webpack_require__(229);
 	var UserConstants = __webpack_require__(235);
 	var StarredConstants = __webpack_require__(236);
@@ -32532,16 +32535,24 @@
 	    if (this.state.starred) {
 	      button = React.createElement(
 	        'button',
-	        { onClick: this.handleUnstarClick, type: 'button', className: 'btn btn-default' },
+	        {
+	          onClick: this.handleUnstarClick,
+	          type: 'button',
+	          className: 'btn btn-default' },
 	        'Unstar'
 	      );
 	    } else {
 	      button = React.createElement(
 	        'button',
-	        { onClick: this.handleStarredClick, type: 'button', className: 'btn btn-default', valueLink: this.linkState('starred') },
+	        {
+	          onClick: this.handleStarredClick,
+	          type: 'button',
+	          className: 'btn btn-default',
+	          valueLink: this.linkState('starred') },
 	        'Star'
 	      );
 	    }
+	
 	    return React.createElement(
 	      'div',
 	      null,

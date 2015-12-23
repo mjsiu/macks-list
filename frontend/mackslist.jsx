@@ -11,6 +11,8 @@ var ListingShow = require('./components/listings/listing_show');
 var ListingLocation = require('./components/listings/crud_listing/listing_location');
 var UserShow = require('./components/user/user_show');
 
+// TODO refactor the routes
+
 var App = React.createClass({
   render: function(){
     return (
