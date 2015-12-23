@@ -31685,24 +31685,7 @@
 	  displayName: "Splash",
 	
 	  render: function () {
-	    return React.createElement(
-	      "div",
-	      { className: "splash-area" },
-	      React.createElement(
-	        "span",
-	        { className: "splash-content" },
-	        "Search Category: ",
-	        React.createElement("input", { type: "text" }),
-	        "City: ",
-	        React.createElement("input", { type: "text" }),
-	        "  ",
-	        React.createElement(
-	          "button",
-	          { className: "btn btn-default", type: "button" },
-	          "Search"
-	        )
-	      )
-	    );
+	    return React.createElement("div", { className: "splash-area" });
 	  }
 	});
 	
