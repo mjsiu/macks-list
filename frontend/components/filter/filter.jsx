@@ -33,6 +33,10 @@ var Filters = React.createClass({
             <div id="collapse1" className="panel-collapse collapse-in">
               <ul className="list-group">
                 <li className="list-group-item">
+                  <a onClick={this.cityChanged} id={0}>All Cities</a>
+                  <span className="badge"># of listings</span>
+                </li>
+                <li className="list-group-item">
                   <a onClick={this.cityChanged} id={1}>San Francisco</a>
                   <span className="badge"># of listings</span>
                 </li>
@@ -71,20 +75,19 @@ var Filters = React.createClass({
             <div id="collapse1" className="panel-collapse collapse-in">
               <ul className="list-group">
                 <li className="list-group-item">
+                  <a onClick={this.categoryChanged} id={0}>All Categories</a>
+                </li>
+                <li className="list-group-item">
                   <a onClick={this.categoryChanged} id={1}>Electronics</a>
-
                 </li>
                 <li className="list-group-item">
                   <a onClick={this.categoryChanged} id={2}>Clothing</a>
-
                 </li>
                 <li className="list-group-item">
                   <a onClick={this.categoryChanged} id={3}>Home</a>
-
                 </li>
                 <li className="list-group-item">
                   <a onClick={this.categoryChanged} id={4}>Sports</a>
-
                 </li>
               </ul>
             </div>

@@ -3,11 +3,25 @@ class Api::ListingsController < ApplicationController
   def index
     @listings = Listing.all
 
-
-    if (params[:city])
-      @listings = Listing.where(city_id: params[:city], category_id: params[:category])
+    if (params[:city] === "0")
+      params.delete(:city)
     end
 
+    if (params[:category] === "0")
+      params.delete(:category)
+    end
+
+    if (params[:city])
+      @listings = Listing.where(city_id: params[:city])
+    end
+
+    if (params[:category])
+      @listings = Listing.where(category_id: params[:category])
+    end
+
+    if (params[:city] && params[:category])
+      @listings = Listing.where(city_id: params[:city], category_id: params[:category])
+    end
   end
 
   def create

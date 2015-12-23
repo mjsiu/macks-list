@@ -33280,6 +33280,20 @@
 	                    { className: 'list-group-item' },
 	                    React.createElement(
 	                      'a',
+	                      { onClick: this.cityChanged, id: 0 },
+	                      'All Cities'
+	                    ),
+	                    React.createElement(
+	                      'span',
+	                      { className: 'badge' },
+	                      '# of listings'
+	                    )
+	                  ),
+	                  React.createElement(
+	                    'li',
+	                    { className: 'list-group-item' },
+	                    React.createElement(
+	                      'a',
 	                      { onClick: this.cityChanged, id: 1 },
 	                      'San Francisco'
 	                    ),
@@ -33382,6 +33396,15 @@
 	                React.createElement(
 	                  'ul',
 	                  { className: 'list-group' },
+	                  React.createElement(
+	                    'li',
+	                    { className: 'list-group-item' },
+	                    React.createElement(
+	                      'a',
+	                      { onClick: this.categoryChanged, id: 0 },
+	                      'All Categories'
+	                    )
+	                  ),
 	                  React.createElement(
 	                    'li',
 	                    { className: 'list-group-item' },
