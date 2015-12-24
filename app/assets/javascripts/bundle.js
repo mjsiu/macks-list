@@ -24449,7 +24449,11 @@
 	      'div',
 	      null,
 	      React.createElement(NavBar, { history: this.props.history }),
-	      this.props.children,
+	      React.createElement(
+	        'div',
+	        null,
+	        this.props.children
+	      ),
 	      React.createElement(Footer, null)
 	    );
 	  }
@@ -24715,38 +24719,60 @@
 	    return cities;
 	  },
 	
+	  createCategories: function () {
+	    var category_list = [{ "category": "Appliances", "url": "v1450981839/fridge3_1_nnofvd.png" }, { "category": "Automotive", "url": "v1450982231/car80_leqiqv.png" }, { "category": "Clothing", "url": "v1450982232/winter-clothes_hs6lj4.png" }, { "category": "Electronics", "url": "v1450982231/computer197_wjk3dj.png" }, { "category": "Farm and Garden", "url": "v1450982231/flowers12_eo6eal.png" }, { "category": "Health and Beauty", "url": "v1450982232/heart8_tnjrlb.png" }, { "category": "Home", "url": "v1450982232/home168_aqifxo.png" }, { "category": "Jewelry", "url": "v1450982231/diamond4_xqeqwg.png" }, { "category": "Misc", "url": "v1450982231/bald_qhpjiv.png" }, { "category": "Musical Instruments", "url": "v1450982232/guitars_t5zlgf.png" }, { "category": "Pets", "url": "v1450982231/dog50_g8mrlb.png" }, { "category": "Sports", "url": "v1450982232/soccer19_fn5icv.png" }];
+	
+	    var categories = category_list.map(function (category, idx) {
+	      var partial_url = "http://res.cloudinary.com/mackslist/image/upload/";
+	      return React.createElement(
+	        "div",
+	        { key: idx, className: "col-centered" },
+	        React.createElement(
+	          "div",
+	          { className: "panel panel-default" },
+	          React.createElement(
+	            "div",
+	            { className: "panel-body" },
+	            React.createElement("img", { src: partial_url + category["url"] })
+	          )
+	        )
+	      );
+	    });
+	    return categories;
+	  },
 	  render: function () {
 	    var cities = this.createCities();
+	    var categories = this.createCategories();
 	
 	    return React.createElement(
 	      "div",
 	      { className: "row-centered" },
-	      React.createElement("div", { className: "splash-area1" }),
+	      React.createElement(
+	        "div",
+	        { className: "splash-area1" },
+	        React.createElement(
+	          "div",
+	          { className: "splash-area1-content" },
+	          React.createElement(
+	            "h1",
+	            null,
+	            "MACKSLIST"
+	          )
+	        )
+	      ),
 	      React.createElement(
 	        "div",
 	        { className: "splash-area2" },
 	        React.createElement(
 	          "div",
-	          { className: "container" },
-	          React.createElement("br", null),
-	          React.createElement("br", null),
-	          React.createElement("br", null),
-	          React.createElement("br", null),
-	          React.createElement("br", null),
-	          React.createElement("br", null),
-	          React.createElement("br", null),
-	          React.createElement("br", null),
-	          React.createElement("br", null),
-	          React.createElement("br", null),
-	          React.createElement("br", null),
-	          React.createElement("br", null),
+	          { className: "splash-area2-content" },
 	          React.createElement(
 	            "h1",
 	            null,
 	            "ABOUT"
 	          ),
 	          React.createElement(
-	            "text",
+	            "p",
 	            null,
 	            "\"In this article, I’d like to reacquaint you with the humble workhorse of communication that is the paragraph. Paragraphs are everywhere. In fact, at the high risk of stating the obvious, you are reading one now. Despite their ubiquity, we frequently neglect their presentation. This is a mistake. Here, we’ll refer to some time-honored typesetting conventions, with an emphasis on readability, and offer guidance on adapting them effectively for devices and screens. We’ll see that the ability to embed fonts with @font-face is not by itself a solution to all of our typographic challenges.\""
 	          )
@@ -24760,26 +24786,38 @@
 	          "div",
 	          { className: "container" },
 	          React.createElement("br", null),
-	          React.createElement("br", null),
-	          React.createElement("br", null),
-	          React.createElement("br", null),
-	          React.createElement("br", null),
-	          React.createElement("br", null),
-	          React.createElement("br", null),
 	          React.createElement(
 	            "h1",
 	            null,
-	            "SUPPORT"
+	            "SEARCH"
 	          ),
 	          React.createElement(
 	            "h4",
 	            null,
-	            "For major bay area cities"
+	            "MAJOR BAY AREA CITIES"
 	          ),
 	          React.createElement(
 	            "div",
 	            null,
 	            cities
+	          )
+	        )
+	      ),
+	      React.createElement(
+	        "div",
+	        { className: "splash-area5" },
+	        React.createElement(
+	          "div",
+	          { className: "container" },
+	          React.createElement(
+	            "h1",
+	            null,
+	            "CATEGORIES"
+	          ),
+	          React.createElement(
+	            "div",
+	            { className: "col-md-11" },
+	            categories
 	          )
 	        )
 	      )

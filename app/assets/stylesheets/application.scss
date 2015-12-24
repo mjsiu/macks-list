@@ -29,6 +29,13 @@
   */
  /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
+ .navbar-fixed-bottom {
+   background-color: #000000;
+   height: 200px;
+   position: absolute;
+   bottom: 0%;
+ }
+
  .row-centered {
      text-align:center;
  }
@@ -51,8 +58,13 @@
  min-height: 100px;
 }
 
-.splash-area1-text {
-  top-margin: 450px;
+.splash-area1-content > h1 {
+  position: absolute;
+  top: 35%;
+  font-size: 100px;
+  color: #FFFFFF;
+  font-weight: 700;
+  width: 100%;
 }
 
 .splash-area1 {
@@ -62,7 +74,6 @@
  margin-right: 0;
  max-width: 1920px;
  height: 975px;
- text-align: center;
  background: url('http://res.cloudinary.com/mackslist/image/upload/v1450937916/sf_cxayxy.jpg')
  no-repeat center center;
  -webkit-background-size: cover;
@@ -71,13 +82,41 @@
  background-size: cover;
 }
 
+.splash-area2-content > h1 {
+  position: absolute;
+  top: 20%;
+  width: 100%;
+  font-weight: 500;
+  font-size: 60px;
+}
+
+.splash-area2-content > p {
+  position: absolute;
+  top: 35%;
+  left: 25%;
+  font-size: 25px;
+  text-align: center;
+  width: 50%;
+}
+
+.splash-area2 {
+ position: relative;
+ display: block;
+ margin-left: 0;
+ margin-right: 0;
+ text-align: center;
+ max-width: 1920px;
+ height: 1025px;
+ background-color: #FFFFFF;
+}
+
 .splash-area3 {
  position: relative;
  display: block;
  margin-left: 0;
  margin-right: 0;
  max-width: 1920px;
- height: 975px;
+ height: 600px;
  background: url('http://res.cloudinary.com/mackslist/image/upload/v1450939246/sf2_qwpsqj.jpg')
  no-repeat center center;
  -webkit-background-size: cover;
@@ -86,27 +125,41 @@
  background-size: cover;
 }
 
-.splash-area2 {
- position: relative;
- display: block;
- margin-left: 0;
- margin-right: 0;
- max-width: 1920px;
- height: 975px;
- background-color: #FFFFFF;
-}
-
 .splash-area4 {
  position: relative;
  display: block;
  margin-left: 0;
  margin-right: 0;
  max-width: 1920px;
- height: 975px;
+ height: 900px;
  background-color: 	#D8D8D8;
 }
 
+.splash-area5 > .container > h1 {
+  position: absolute;
+  top: 15%;
+  left: 40%;
+  font-weight: 500;
+  font-size: 60px;
+}
 
+.splash-area5 > .container > .col-md-11 {
+  position: absolute;
+  top: 35%;
+  left: 25%;
+  width: 50%;
+}
+
+
+.splash-area5 {
+ position: relative;
+ display: block;
+ margin-left: 0;
+ margin-right: 0;
+ max-width: 1920px;
+ height: 900px;
+ background-color: 	#FFFFFF;
+}
 
 .listing-title {
  text-align: center;
