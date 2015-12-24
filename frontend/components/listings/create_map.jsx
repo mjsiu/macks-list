@@ -27,8 +27,7 @@ var Map = React.createClass ({
 
   render: function () {
     return (
-      <div className="create-map" ref="map">
-      </div>
+      <div className="create-map" ref="map"/>
     );
   }
 

@@ -24452,6 +24452,7 @@
 	      this.props.children
 	    );
 	  }
+	
 	});
 	
 	module.exports = App;
@@ -24736,6 +24737,7 @@
 	    });
 	    return categories;
 	  },
+	
 	  render: function () {
 	    var cities = this.createCities();
 	    var categories = this.createCategories();
@@ -24824,6 +24826,7 @@
 	      )
 	    );
 	  }
+	
 	});
 	
 	module.exports = Splash;
@@ -32422,10 +32425,12 @@
 	  },
 	
 	  render: function () {
-	    debugger;
+	
 	    return React.createElement(
 	      'div',
 	      null,
+	      React.createElement('br', null),
+	      React.createElement('br', null),
 	      React.createElement(
 	        'div',
 	        { className: 'container' },
@@ -32500,12 +32505,11 @@
 	              this.props.listing.description
 	            )
 	          )
-	        ),
-	        React.createElement('br', null),
-	        React.createElement('br', null)
+	        )
 	      )
 	    );
 	  }
+	
 	});
 	
 	module.exports = Listing;
@@ -32756,20 +32760,8 @@
 	    return React.createElement(
 	      'div',
 	      { className: 'container' },
-	      React.createElement(
-	        'div',
-	        { className: 'row' },
-	        React.createElement(
-	          'div',
-	          { className: 'col-md-6' },
-	          React.createElement(UserListingTable, { history: this.props.history })
-	        ),
-	        React.createElement(
-	          'div',
-	          { className: 'col-md-6' },
-	          React.createElement(UserStarredTable, { history: this.props.history })
-	        )
-	      ),
+	      React.createElement('br', null),
+	      React.createElement('br', null),
 	      React.createElement(
 	        'div',
 	        { className: 'row' },
@@ -33173,9 +33165,23 @@
 	
 	  getInitialState: function () {
 	    return {
-	      listings: ListingStore.all(),
+	      listings: this.getListings(),
 	      filterParams: FilterParamsStore.params()
 	    };
+	  },
+	
+	  getListings: function () {
+	    return ListingStore.all();
+	  },
+	
+	  filtersChanged: function () {
+	    var newParams = FilterParamsStore.params();
+	    this.setState({ filterParams: newParams });
+	    ApiUtil.fetchAllListings();
+	  },
+	
+	  listingsChanged: function () {
+	    this.setState({ listings: this.getListings() });
 	  },
 	
 	  componentDidMount: function () {
@@ -33189,30 +33195,24 @@
 	    this.filterListener.remove();
 	  },
 	
-	  filtersChanged: function () {
-	    var newParams = FilterParamsStore.params();
-	    this.setState({ filterParams: newParams });
-	    ApiUtil.fetchAllListings();
-	  },
-	
-	  listingsChanged: function () {
-	    this.setState({ listings: ListingStore.all() });
-	  },
-	
 	  handleListingClick: function (listing) {
 	    this.props.history.pushState(null, "/listings/" + listing.id);
 	  },
 	
 	  render: function () {
 	    var handleListingClick = this.handleListingClick;
+	
 	    var listings = this.state.listings.map(function (listing, idx) {
 	      var boundClick = handleListingClick.bind(null, listing);
+	
 	      return React.createElement(ListingIndex, { key: listing.id, listing: listing, onClick: boundClick });
 	    });
 	
 	    return React.createElement(
 	      'div',
 	      { className: 'container' },
+	      React.createElement('br', null),
+	      React.createElement('br', null),
 	      React.createElement(
 	        'div',
 	        { className: 'row row-centered' },

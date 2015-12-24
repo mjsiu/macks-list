@@ -11,10 +11,10 @@ var App = React.createClass({
         <NavBar history={this.props.history}/>
 
         {this.props.children}
-
-    </div>
+      </div>
     );
   }
+  
 });
 
 module.exports = App;

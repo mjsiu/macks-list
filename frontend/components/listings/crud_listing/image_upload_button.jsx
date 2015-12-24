@@ -1,7 +1,6 @@
 var React = require("react");
 
 var ImageUploadButton = React.createClass({
-
   uploadImage: function (event) {
     event.preventDefault();
     cloudinary.openUploadWidget(CLOUDINARY, function(error, result){

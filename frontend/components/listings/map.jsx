@@ -45,11 +45,10 @@ var Map = React.createClass ({
   render: function () {
     this.setMap();
     return (
-      <div className="map" ref="map">
-      </div>
+      <div className="map" ref="map"/>
     );
   }
-  
+
 });
 
 module.exports = Map;

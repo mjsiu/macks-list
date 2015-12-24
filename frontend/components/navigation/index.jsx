@@ -2,7 +2,6 @@ var React = require('react');
 var Footer = require('./footer');
 
 var Splash = React.createClass({
-
   createCities: function() {
     var city_list = [
       {"name": "San Francisco", "url": "v1450936881/sanfrancisco_qpvztc.png"},
@@ -55,6 +54,7 @@ var Splash = React.createClass({
     });
     return categories;
   },
+
   render: function() {
     var cities = this.createCities();
     var categories = this.createCategories();
@@ -72,47 +72,41 @@ var Splash = React.createClass({
           <div className="splash-area2-content">
             <h1>ABOUT</h1>
             <p>"In this article, I’d like to reacquaint you with the humble workhorse of communication that is the paragraph. Paragraphs are everywhere. In fact, at the high risk of stating the obvious, you are reading one now. Despite their ubiquity, we frequently neglect their presentation. This is a mistake. Here, we’ll refer to some time-honored typesetting conventions, with an emphasis on readability, and offer guidance on adapting them effectively for devices and screens. We’ll see that the ability to embed fonts with @font-face is not by itself a solution to all of our typographic challenges."</p>
-
           </div>
         </div>
 
-        <div className="splash-area3">
-        </div>
+        <div className="splash-area3"/>
 
         <div className="splash-area4">
           <div className="container">
           <br></br>
+
           <h1>SEARCH</h1>
           <h4>MAJOR BAY AREA CITIES</h4>
-          <div >
-              {cities}
-          </div>
-        </div>
-      </div>
-
-      <div className="splash-area5">
-
-          <div className="container">
-          <h1>CATEGORIES</h1>
-          <div className="col-md-11">
-
-              {categories}
-
+            <div >
+                {cities}
+            </div>
           </div>
         </div>
 
-      </div>
+        <div className="splash-area5">
+            <div className="container">
+            <h1>CATEGORIES</h1>
 
-      <div className="col-md-12">
-        <div className="footer">
-          
+            <div className="col-md-11">
+                {categories}
+            </div>
+          </div>
         </div>
 
+        <div className="col-md-12">
+          <div className="footer">
+          </div>
+        </div>
       </div>
-
-    </div>
     );
   }
+  
 });
 
 module.exports = Splash;

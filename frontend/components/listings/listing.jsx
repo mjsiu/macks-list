@@ -28,41 +28,37 @@ var Listing = React.createClass({
   },
 
   render: function () {
-    debugger
+
     return (
       <div>
+      <br/>
+      <br/>
 
-    <div className="container">
-
-
-      <div className="row">
-
-        <div className="col-md-3">
-          <Map listing={this.props.listing}></Map>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-3">
+            <Map listing={this.props.listing}></Map>
             <br></br>
             <br></br>
 
+            <div className="panel-group">
+              <div className="panel panel-default">
+                <div className="panel-heading">
+                  <h4 className="panel-title">
+                    <a data-toggle="collapse" href="#collapse1">{this.props.listing.title}</a>
+                      <span class="badge"><StarredButton listing={this.props.listing}/></span>
+                  </h4>
+                </div>
 
-    <div className="panel-group">
-      <div className="panel panel-default">
-        <div className="panel-heading">
-          <h4 className="panel-title">
-            <a data-toggle="collapse" href="#collapse1">{this.props.listing.title}</a>
-              <span class="badge"><StarredButton listing={this.props.listing}/></span>
-          </h4>
-        </div>
-        <div id="collapse1" className="panel-collapse collapse-in">
-          <ul className="list-group">
-            <li className="list-group-item">${this.props.listing.price}</li>
-            <li className="list-group-item">{this.props.listing.address}</li>
-          </ul>
-
-        </div>
-      </div>
-
-  </div>
-
-        </div>
+                <div id="collapse1" className="panel-collapse collapse-in">
+                  <ul className="list-group">
+                    <li className="list-group-item">${this.props.listing.price}</li>
+                    <li className="list-group-item">{this.props.listing.address}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <div className="col-md-6">
             <div className="listing-image">
@@ -70,21 +66,17 @@ var Listing = React.createClass({
             </div>
             <br></br>
             <br></br>
+
             <div>
               {this.props.listing.description}
             </div>
           </div>
-
-      </div>
-
-      <br/>
-      <br/>
-
-
+        </div>
       </div>
     </div>
     );
   }
+
 });
 
 module.exports = Listing;

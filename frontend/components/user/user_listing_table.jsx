@@ -82,11 +82,11 @@ var UserListingTable = React.createClass({
               <th>Description</th>
             </tr>
           </thead>
+          
           <tbody>
-              {user_listings}
+            {user_listings}
           </tbody>
         </table>
-
       </div>
     );
   }
