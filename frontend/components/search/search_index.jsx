@@ -50,7 +50,7 @@ var SearchIndex = React.createClass ({
 
     return (
       <div className="container">
-        <div className="row">
+        <div className="row row-centered">
           <div className="col-md-3">
             <Filter filterParams={this.state.filterParams}/>
             </div>

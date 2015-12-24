@@ -29,6 +29,20 @@
   */
  /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
+ .row-centered {
+     text-align:center;
+ }
+ .col-centered {
+     display:inline-block;
+     float: none;
+     margin: 4px;
+     position: relative;
+ }
+
+.splash-cities {
+  text-align: center;
+}
+
 .location-map {
   text-align: center;
 }
@@ -37,20 +51,62 @@
  min-height: 100px;
 }
 
-.splash-area {
+.splash-area1-text {
+  top-margin: 450px;
+}
+
+.splash-area1 {
  position: relative;
  display: block;
  margin-left: 0;
  margin-right: 0;
  max-width: 1920px;
- height: 369px;
- background: url('http://res.cloudinary.com/mackslist/image/upload/v1450311359/sf_ejtwgj.jpg')
+ height: 975px;
+ text-align: center;
+ background: url('http://res.cloudinary.com/mackslist/image/upload/v1450937916/sf_cxayxy.jpg')
  no-repeat center center;
  -webkit-background-size: cover;
  -moz-background-size: cover;
  -o-background-size: cover;
  background-size: cover;
 }
+
+.splash-area3 {
+ position: relative;
+ display: block;
+ margin-left: 0;
+ margin-right: 0;
+ max-width: 1920px;
+ height: 975px;
+ background: url('http://res.cloudinary.com/mackslist/image/upload/v1450939246/sf2_qwpsqj.jpg')
+ no-repeat center center;
+ -webkit-background-size: cover;
+ -moz-background-size: cover;
+ -o-background-size: cover;
+ background-size: cover;
+}
+
+.splash-area2 {
+ position: relative;
+ display: block;
+ margin-left: 0;
+ margin-right: 0;
+ max-width: 1920px;
+ height: 975px;
+ background-color: #FFFFFF;
+}
+
+.splash-area4 {
+ position: relative;
+ display: block;
+ margin-left: 0;
+ margin-right: 0;
+ max-width: 1920px;
+ height: 975px;
+ background-color: 	#D8D8D8;
+}
+
+
 
 .listing-title {
  text-align: center;
@@ -4250,7 +4306,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar {
  position: relative;
  min-height: 60px;
- margin-bottom: 20px;
+ margin-bottom: 0px;
  border: 1px solid transparent;
 }
 @media (min-width: 768px) {
