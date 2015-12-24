@@ -6,7 +6,6 @@ var FilterParamsStore = require('../../stores/filter_params');
 var ApiUtil = require('../../util/api_utils');
 var Filter = require('../filter/filter');
 var ListingIndex = require('../listings/listing_index');
-var NavBar = require('../navigation/navbar');
 
 var SearchIndex = React.createClass ({
 
@@ -31,7 +30,6 @@ var SearchIndex = React.createClass ({
   filtersChanged: function () {
     var newParams = FilterParamsStore.params();
     this.setState({ filterParams: newParams });
-    // FilterParamsStore.reset();
     ApiUtil.fetchAllListings();
   },
 
@@ -51,28 +49,20 @@ var SearchIndex = React.createClass ({
     });
 
     return (
-      <div>
-        <NavBar history={this.props.history}/>
-
-        <div className="container">
+      <div className="container">
         <div className="row">
-        <div className="col-md-3">
-        <Filter filterParams={this.state.filterParams}/>
+          <div className="col-md-3">
+            <Filter filterParams={this.state.filterParams}/>
+            </div>
+            <div className="col-md-9">
+            <ul>
+            {listings}
+            </ul>
+          </div>
         </div>
-        <div className="col-md-9">
-        <ul>
-          {listings}
-        </ul>
-      </div>
-    </div>
-  </div>
-
-
       </div>
     );
   }
-
-
 });
 
 module.exports = SearchIndex;

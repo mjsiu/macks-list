@@ -1,7 +1,6 @@
 var React = require('react');
 
 var Map = require('../map');
-var NavBar = require('../../navigation/navbar');
 
 var ListingLocation = React.createClass ({
 
@@ -12,7 +11,6 @@ var ListingLocation = React.createClass ({
   render: function(){
     return (
       <div>
-        <NavBar history={this.props.history}/>
         <div className="row">
           <div className="col-md-3"></div>
           <div className="col-md-5">

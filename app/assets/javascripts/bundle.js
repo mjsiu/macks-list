@@ -50,27 +50,14 @@
 	var Router = ReactRouter.Router;
 	var Route = ReactRouter.Route;
 	var IndexRoute = ReactRouter.IndexRoute;
-	var Index = __webpack_require__(210);
-	var ListingNew = __webpack_require__(244);
-	var ListingEdit = __webpack_require__(251);
-	var ListingShow = __webpack_require__(252);
-	var ListingLocation = __webpack_require__(257);
-	var UserShow = __webpack_require__(258);
-	var SearchListings = __webpack_require__(262);
-	
-	// TODO refactor the routes
-	
-	var App = React.createClass({
-	  displayName: 'App',
-	
-	  render: function () {
-	    return React.createElement(
-	      'div',
-	      null,
-	      this.props.children
-	    );
-	  }
-	});
+	var App = __webpack_require__(210);
+	var Index = __webpack_require__(214);
+	var ListingNew = __webpack_require__(215);
+	var ListingEdit = __webpack_require__(249);
+	var ListingShow = __webpack_require__(250);
+	var ListingLocation = __webpack_require__(256);
+	var UserShow = __webpack_require__(257);
+	var SearchListings = __webpack_require__(261);
 	
 	var routes = React.createElement(
 	  Route,
@@ -24451,108 +24438,969 @@
 
 	var React = __webpack_require__(1);
 	
-	var ListingStore = __webpack_require__(211);
-	var ApiUtil = __webpack_require__(233);
-	var ListingIndex = __webpack_require__(239);
-	var NavBar = __webpack_require__(240);
-	var Footer = __webpack_require__(242);
-	var Splash = __webpack_require__(243);
+	var NavBar = __webpack_require__(211);
+	var Footer = __webpack_require__(213);
 	
-	var Index = React.createClass({
-	  displayName: 'Index',
-	
-	  getInitialState: function () {
-	    return {
-	      listings: ListingStore.all()
-	    };
-	  },
-	
-	  onChange: function () {
-	    this.setState({ listings: ListingStore.all() });
-	  },
-	
-	  componentDidMount: function () {
-	    this.listingListener = ListingStore.addListener(this.onChange);
-	    ApiUtil.fetchAllListings();
-	  },
-	
-	  componentWillUnmount: function () {
-	    this.listingListener.remove();
-	  },
-	
-	  handleListingClick: function (listing) {
-	    this.props.history.pushState(null, "/listings/" + listing.id, {});
-	  },
+	var App = React.createClass({
+	  displayName: 'App',
 	
 	  render: function () {
-	    var handleListingClick = this.handleListingClick;
-	    var listings = this.state.listings.map(function (listing, idx) {
-	      var boundClick = handleListingClick.bind(null, listing);
-	      return React.createElement(ListingIndex, { key: listing.id, listing: listing, onClick: boundClick });
-	    });
-	
 	    return React.createElement(
 	      'div',
 	      null,
 	      React.createElement(NavBar, { history: this.props.history }),
-	      React.createElement(Splash, null),
+	      this.props.children,
+	      React.createElement(Footer, null)
+	    );
+	  }
+	});
+	
+	module.exports = App;
+
+/***/ },
+/* 211 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	var Login = __webpack_require__(212);
+	
+	var NavBar = React.createClass({
+	  displayName: 'NavBar',
+	
+	  handleHomeClick: function () {
+	    this.props.history.pushState(null, "/");
+	  },
+	
+	  handleCreateClick: function () {
+	    this.props.history.pushState(null, "listings/new");
+	  },
+	
+	  handleSearchClick: function () {
+	    this.props.history.pushState(null, "listings/search");
+	  },
+	
+	  render: function () {
+	    return React.createElement(
+	      'div',
+	      null,
 	      React.createElement(
-	        'div',
-	        { className: 'container' },
+	        'nav',
+	        { className: 'navbar navbar-default' },
 	        React.createElement(
-	          'br',
-	          null,
-	          ' '
-	        ),
-	        React.createElement(
-	          'br',
-	          null,
-	          ' '
-	        ),
-	        React.createElement(
-	          'ul',
-	          null,
-	          listings
+	          'div',
+	          { className: 'container-fluid' },
+	          React.createElement(
+	            'div',
+	            { className: 'navbar-header' },
+	            React.createElement(
+	              'button',
+	              { type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#bs-example-navbar-collapse-1', 'aria-expanded': 'false' },
+	              React.createElement(
+	                'span',
+	                { className: 'sr-only' },
+	                'Toggle navigation'
+	              ),
+	              React.createElement('span', { className: 'icon-bar' }),
+	              React.createElement('span', { className: 'icon-bar' }),
+	              React.createElement('span', { className: 'icon-bar' })
+	            ),
+	            React.createElement(
+	              'a',
+	              { className: 'navbar-brand', onClick: this.handleHomeClick },
+	              'MacksList'
+	            )
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'collapse navbar-collapse', id: 'bs-example-navbar-collapse-1' },
+	            React.createElement(
+	              'ul',
+	              { className: 'nav navbar-nav' },
+	              React.createElement(
+	                'li',
+	                null,
+	                React.createElement(
+	                  'a',
+	                  { onClick: this.handleHomeClick },
+	                  'Home'
+	                )
+	              ),
+	              React.createElement(
+	                'li',
+	                { className: 'active' },
+	                React.createElement(
+	                  'a',
+	                  { onClick: this.handleCreateClick },
+	                  'Create Listing ',
+	                  React.createElement(
+	                    'span',
+	                    { className: 'sr-only' },
+	                    '(current)'
+	                  )
+	                )
+	              ),
+	              React.createElement(
+	                'li',
+	                null,
+	                React.createElement(
+	                  'a',
+	                  { onClick: this.handleSearchClick },
+	                  'Search'
+	                )
+	              )
+	            ),
+	            React.createElement(Login, { history: this.props.history })
+	          )
 	        )
 	      )
 	    );
 	  }
 	});
 	
-	module.exports = Index;
-
-/***/ },
-/* 211 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var Store = __webpack_require__(212).Store;
-	var ListingConstants = __webpack_require__(229);
-	var AppDispatcher = __webpack_require__(230);
-	var ListingStore = new Store(AppDispatcher);
-	
-	var _listings = [];
-	
-	var resetListings = function (listings) {
-	  _listings = listings;
-	};
-	
-	ListingStore.all = function (listings) {
-	  return _listings.slice(0);
-	};
-	
-	ListingStore.__onDispatch = function (payload) {
-	  switch (payload.actionType) {
-	    case ListingConstants.LISTINGS_RECEIVED:
-	      resetListings(payload.listings);
-	      ListingStore.__emitChange();
-	      break;
-	  }
-	};
-	
-	module.exports = ListingStore;
+	module.exports = NavBar;
 
 /***/ },
 /* 212 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	
+	var Login = React.createClass({
+	  displayName: "Login",
+	
+	  handleSignOutClick: function () {
+	    $.ajax({
+	      url: "/session",
+	      method: "DELETE",
+	      success: function () {
+	        window.location = 'session/new';
+	      }
+	    });
+	  },
+	
+	  handleLoginClick: function () {
+	    $.get('session/new', function () {
+	      window.location = 'session/new';
+	    });
+	  },
+	
+	  handleSignUpClick: function () {
+	    $.get('user/new', function () {
+	      window.location = 'user/new';
+	    });
+	  },
+	
+	  handleProfileClick: function () {
+	    this.props.history.pushState(null, "/user", {});
+	  },
+	
+	  render: function () {
+	    var login;
+	    var signup;
+	    if (window.user.username) {
+	      login = React.createElement(
+	        "li",
+	        { className: "dropdown" },
+	        React.createElement(
+	          "a",
+	          { href: "#", className: "dropdown-toggle", "data-toggle": "dropdown", role: "button", "aria-haspopup": "true", "aria-expanded": "false" },
+	          window.user.username,
+	          React.createElement("span", { className: "caret" })
+	        ),
+	        React.createElement(
+	          "ul",
+	          { className: "dropdown-menu" },
+	          React.createElement(
+	            "li",
+	            null,
+	            React.createElement(
+	              "a",
+	              { onClick: this.handleProfileClick },
+	              "User Profile"
+	            )
+	          ),
+	          React.createElement(
+	            "li",
+	            { onClick: this.handleSignOutClick },
+	            React.createElement(
+	              "a",
+	              null,
+	              "Log Out"
+	            )
+	          )
+	        )
+	      );
+	    } else {
+	      login = React.createElement(
+	        "li",
+	        null,
+	        React.createElement(
+	          "a",
+	          { onClick: this.handleLoginClick },
+	          "Login"
+	        )
+	      );
+	      signup = React.createElement(
+	        "li",
+	        null,
+	        React.createElement(
+	          "a",
+	          { onClick: this.handleSignUpClick },
+	          "Sign Up"
+	        )
+	      );
+	    }
+	
+	    return React.createElement(
+	      "ul",
+	      { className: "nav navbar-nav navbar-right" },
+	      signup,
+	      login
+	    );
+	  }
+	});
+	
+	module.exports = Login;
+
+/***/ },
+/* 213 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	
+	var Footer = React.createClass({
+	  displayName: "Footer",
+	
+	  render: function () {
+	    return React.createElement("div", { className: "navbar-fixed-bottom" });
+	  }
+	
+	});
+	
+	module.exports = Footer;
+
+/***/ },
+/* 214 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	
+	var Splash = React.createClass({
+	  displayName: "Splash",
+	
+	  createCities: function () {
+	    var city_names = ["San Francisco", "San Mateo", "Oakland", "San Jose"];
+	
+	    var cities = city_names.map(function (city_name) {
+	      return React.createElement(
+	        "div",
+	        { className: "index-items" },
+	        React.createElement(
+	          "div",
+	          { className: "panel panel-default" },
+	          React.createElement(
+	            "div",
+	            { className: "panel-heading" },
+	            city_name
+	          ),
+	          React.createElement(
+	            "div",
+	            { className: "panel-body" },
+	            React.createElement("img", { src: "" })
+	          ),
+	          React.createElement(
+	            "div",
+	            { "class": "panel-footer" },
+	            "footer"
+	          )
+	        )
+	      );
+	    });
+	    return cities;
+	  },
+	
+	  render: function () {
+	    var cities = this.createCities();
+	
+	    return React.createElement(
+	      "div",
+	      null,
+	      React.createElement(
+	        "div",
+	        { className: "splash-area" },
+	        React.createElement(
+	          "h2",
+	          null,
+	          "Search through popular Bay Area Cities"
+	        )
+	      ),
+	      React.createElement(
+	        "div",
+	        { className: "row" },
+	        React.createElement(
+	          "div",
+	          { className: "col-md-12" },
+	          cities
+	        )
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = Splash;
+
+/***/ },
+/* 215 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	var ListingForm = __webpack_require__(216);
+	
+	var ListingNew = React.createClass({
+	  displayName: 'ListingNew',
+	
+	  render: function () {
+	    var type = "New Listing";
+	
+	    return React.createElement(
+	      'div',
+	      { className: 'container' },
+	      React.createElement(ListingForm, { location: this.props.location, history: this.props.history, type: type })
+	    );
+	  }
+	
+	});
+	
+	module.exports = ListingNew;
+
+/***/ },
+/* 216 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	var LinkedStateMixin = __webpack_require__(217);
+	
+	var ApiUtil = __webpack_require__(221);
+	var ImageUploadButton = __webpack_require__(248);
+	
+	var ListingForm = React.createClass({
+	  displayName: 'ListingForm',
+	
+	  mixins: [LinkedStateMixin],
+	
+	  getInitialState: function () {
+	    return {
+	      id: "",
+	      title: "",
+	      description: "",
+	      price: "",
+	      address: "",
+	      city_id: "",
+	      category_id: "",
+	      latitude: "",
+	      longitude: "",
+	      images_attributes: []
+	    };
+	  },
+	
+	  storeListingImages: function (images_attributes) {
+	    var temp_imgs = [];
+	    images_attributes.forEach(function (image) {
+	      temp_imgs.push({ url: image.url.slice(61) });
+	    });
+	    this.state.images_attributes = temp_imgs;
+	  },
+	
+	  componentWillMount: function () {
+	    this.findIntialAttributes();
+	  },
+	
+	  componentDidMount: function () {
+	    this.setLatLng();
+	  },
+	
+	  setLatLng: function () {
+	    if (this.props.location) {
+	      this.state.latitude = this.props.location.query.lat;
+	      this.state.longitude = this.props.location.query.lng;
+	    }
+	  },
+	
+	  findIntialAttributes: function () {
+	    if (this.props.location.query) {
+	      Object.keys(this.state).forEach((function (key) {
+	        {
+	          this.state[key] = this.props.location.query[key];
+	        }
+	      }).bind(this));
+	    }
+	  },
+	
+	  handleClickCreate: function (event) {
+	    event.preventDefault();
+	
+	    var listing = {};
+	    Object.keys(this.state).forEach((function (key) {
+	      {
+	        listing[key] = this.state[key];
+	      }
+	    }).bind(this));
+	
+	    ApiUtil.createNewListing(listing);
+	    this.returnToProfile();
+	  },
+	
+	  handleEditClick: function (event) {
+	    event.preventDefault();
+	
+	    var listing = {};
+	    Object.keys(this.state).forEach((function (key) {
+	      {
+	        listing[key] = this.state[key];
+	      }
+	    }).bind(this));
+	    ApiUtil.editListing(listing);
+	    this.returnToProfile();
+	  },
+	
+	  returnToProfile: function () {
+	    this.props.history.pushState(null, "/user", {});
+	  },
+	
+	  render: function () {
+	    var handleSubmit;
+	    if (this.props.type === "New Listing") {
+	      handleSubmit = this.handleClickCreate;
+	    } else {
+	      handleSubmit = this.handleEditClick;
+	    }
+	
+	    return React.createElement(
+	      'div',
+	      null,
+	      React.createElement(
+	        'div',
+	        { className: 'row' },
+	        React.createElement('div', { className: 'col-md-4' }),
+	        React.createElement(
+	          'div',
+	          { className: 'col-md-4' },
+	          React.createElement(
+	            'h2',
+	            null,
+	            this.props.type
+	          ),
+	          React.createElement(
+	            'form',
+	            { onSubmit: handleSubmit },
+	            React.createElement(
+	              'label',
+	              null,
+	              'Title'
+	            ),
+	            React.createElement('input', { className: 'form-control',
+	              type: 'text',
+	              valueLink: this.linkState('title') }),
+	            React.createElement('br', null),
+	            React.createElement(
+	              'label',
+	              null,
+	              'Description'
+	            ),
+	            React.createElement('textarea', { className: 'form-control',
+	              type: 'text',
+	              valueLink: this.linkState('description') }),
+	            React.createElement('br', null),
+	            React.createElement(
+	              'label',
+	              null,
+	              'Price'
+	            ),
+	            React.createElement('input', { className: 'form-control',
+	              min: '0',
+	              type: 'number',
+	              valueLink: this.linkState('price') }),
+	            React.createElement('br', null),
+	            React.createElement(
+	              'label',
+	              null,
+	              'Address'
+	            ),
+	            React.createElement('input', { className: 'form-control',
+	              type: 'text',
+	              valueLink: this.linkState('address') }),
+	            React.createElement('br', null),
+	            React.createElement(
+	              'label',
+	              null,
+	              'City'
+	            ),
+	            React.createElement(
+	              'select',
+	              { className: 'form-control',
+	                type: 'text',
+	                valueLink: this.linkState('city_id') },
+	              React.createElement('option', null),
+	              React.createElement(
+	                'option',
+	                { value: 1 },
+	                'San Francisco'
+	              ),
+	              React.createElement(
+	                'option',
+	                { value: 2 },
+	                'Oakland'
+	              ),
+	              React.createElement(
+	                'option',
+	                { value: 3 },
+	                'Berkeley'
+	              ),
+	              React.createElement(
+	                'option',
+	                { value: 4 },
+	                'San Mateo'
+	              ),
+	              React.createElement(
+	                'option',
+	                { value: 5 },
+	                'San Jose'
+	              )
+	            ),
+	            React.createElement('br', null),
+	            React.createElement(
+	              'label',
+	              null,
+	              'Category'
+	            ),
+	            React.createElement(
+	              'select',
+	              { className: 'form-control',
+	                type: 'text',
+	                valueLink: this.linkState('category_id') },
+	              React.createElement('option', null),
+	              React.createElement(
+	                'option',
+	                { value: 1 },
+	                'Electronics'
+	              ),
+	              React.createElement(
+	                'option',
+	                { value: 2 },
+	                'Clothing'
+	              ),
+	              React.createElement(
+	                'option',
+	                { value: 3 },
+	                'Home'
+	              ),
+	              React.createElement(
+	                'option',
+	                { value: 4 },
+	                'Sports'
+	              )
+	            ),
+	            React.createElement('br', null),
+	            React.createElement(ImageUploadButton, { storeListingImages: this.storeListingImages }),
+	            React.createElement('br', null),
+	            React.createElement('input', { type: 'submit', className: 'btn btn-default', value: this.props.type })
+	          )
+	        )
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = ListingForm;
+
+/***/ },
+/* 217 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(218);
+
+/***/ },
+/* 218 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule LinkedStateMixin
+	 * @typechecks static-only
+	 */
+	
+	'use strict';
+	
+	var ReactLink = __webpack_require__(219);
+	var ReactStateSetters = __webpack_require__(220);
+	
+	/**
+	 * A simple mixin around ReactLink.forState().
+	 */
+	var LinkedStateMixin = {
+	  /**
+	   * Create a ReactLink that's linked to part of this component's state. The
+	   * ReactLink will have the current value of this.state[key] and will call
+	   * setState() when a change is requested.
+	   *
+	   * @param {string} key state key to update. Note: you may want to use keyOf()
+	   * if you're using Google Closure Compiler advanced mode.
+	   * @return {ReactLink} ReactLink instance linking to the state.
+	   */
+	  linkState: function (key) {
+	    return new ReactLink(this.state[key], ReactStateSetters.createStateKeySetter(this, key));
+	  }
+	};
+	
+	module.exports = LinkedStateMixin;
+
+/***/ },
+/* 219 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule ReactLink
+	 * @typechecks static-only
+	 */
+	
+	'use strict';
+	
+	/**
+	 * ReactLink encapsulates a common pattern in which a component wants to modify
+	 * a prop received from its parent. ReactLink allows the parent to pass down a
+	 * value coupled with a callback that, when invoked, expresses an intent to
+	 * modify that value. For example:
+	 *
+	 * React.createClass({
+	 *   getInitialState: function() {
+	 *     return {value: ''};
+	 *   },
+	 *   render: function() {
+	 *     var valueLink = new ReactLink(this.state.value, this._handleValueChange);
+	 *     return <input valueLink={valueLink} />;
+	 *   },
+	 *   _handleValueChange: function(newValue) {
+	 *     this.setState({value: newValue});
+	 *   }
+	 * });
+	 *
+	 * We have provided some sugary mixins to make the creation and
+	 * consumption of ReactLink easier; see LinkedValueUtils and LinkedStateMixin.
+	 */
+	
+	var React = __webpack_require__(2);
+	
+	/**
+	 * @param {*} value current value of the link
+	 * @param {function} requestChange callback to request a change
+	 */
+	function ReactLink(value, requestChange) {
+	  this.value = value;
+	  this.requestChange = requestChange;
+	}
+	
+	/**
+	 * Creates a PropType that enforces the ReactLink API and optionally checks the
+	 * type of the value being passed inside the link. Example:
+	 *
+	 * MyComponent.propTypes = {
+	 *   tabIndexLink: ReactLink.PropTypes.link(React.PropTypes.number)
+	 * }
+	 */
+	function createLinkTypeChecker(linkType) {
+	  var shapes = {
+	    value: typeof linkType === 'undefined' ? React.PropTypes.any.isRequired : linkType.isRequired,
+	    requestChange: React.PropTypes.func.isRequired
+	  };
+	  return React.PropTypes.shape(shapes);
+	}
+	
+	ReactLink.PropTypes = {
+	  link: createLinkTypeChecker
+	};
+	
+	module.exports = ReactLink;
+
+/***/ },
+/* 220 */
+/***/ function(module, exports) {
+
+	/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule ReactStateSetters
+	 */
+	
+	'use strict';
+	
+	var ReactStateSetters = {
+	  /**
+	   * Returns a function that calls the provided function, and uses the result
+	   * of that to set the component's state.
+	   *
+	   * @param {ReactCompositeComponent} component
+	   * @param {function} funcReturningState Returned callback uses this to
+	   *                                      determine how to update state.
+	   * @return {function} callback that when invoked uses funcReturningState to
+	   *                    determined the object literal to setState.
+	   */
+	  createStateSetter: function (component, funcReturningState) {
+	    return function (a, b, c, d, e, f) {
+	      var partialState = funcReturningState.call(component, a, b, c, d, e, f);
+	      if (partialState) {
+	        component.setState(partialState);
+	      }
+	    };
+	  },
+	
+	  /**
+	   * Returns a single-argument callback that can be used to update a single
+	   * key in the component's state.
+	   *
+	   * Note: this is memoized function, which makes it inexpensive to call.
+	   *
+	   * @param {ReactCompositeComponent} component
+	   * @param {string} key The key in the state that you should update.
+	   * @return {function} callback of 1 argument which calls setState() with
+	   *                    the provided keyName and callback argument.
+	   */
+	  createStateKeySetter: function (component, key) {
+	    // Memoize the setters.
+	    var cache = component.__keySetters || (component.__keySetters = {});
+	    return cache[key] || (cache[key] = createStateKeySetter(component, key));
+	  }
+	};
+	
+	function createStateKeySetter(component, key) {
+	  // Partial state is allocated outside of the function closure so it can be
+	  // reused with every call, avoiding memory allocation when this function
+	  // is called.
+	  var partialState = {};
+	  return function stateKeySetter(value) {
+	    partialState[key] = value;
+	    component.setState(partialState);
+	  };
+	}
+	
+	ReactStateSetters.Mixin = {
+	  /**
+	   * Returns a function that calls the provided function, and uses the result
+	   * of that to set the component's state.
+	   *
+	   * For example, these statements are equivalent:
+	   *
+	   *   this.setState({x: 1});
+	   *   this.createStateSetter(function(xValue) {
+	   *     return {x: xValue};
+	   *   })(1);
+	   *
+	   * @param {function} funcReturningState Returned callback uses this to
+	   *                                      determine how to update state.
+	   * @return {function} callback that when invoked uses funcReturningState to
+	   *                    determined the object literal to setState.
+	   */
+	  createStateSetter: function (funcReturningState) {
+	    return ReactStateSetters.createStateSetter(this, funcReturningState);
+	  },
+	
+	  /**
+	   * Returns a single-argument callback that can be used to update a single
+	   * key in the component's state.
+	   *
+	   * For example, these statements are equivalent:
+	   *
+	   *   this.setState({x: 1});
+	   *   this.createStateKeySetter('x')(1);
+	   *
+	   * Note: this is memoized function, which makes it inexpensive to call.
+	   *
+	   * @param {string} key The key in the state that you should update.
+	   * @return {function} callback of 1 argument which calls setState() with
+	   *                    the provided keyName and callback argument.
+	   */
+	  createStateKeySetter: function (key) {
+	    return ReactStateSetters.createStateKeySetter(this, key);
+	  }
+	};
+	
+	module.exports = ReactStateSetters;
+
+/***/ },
+/* 221 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var ApiActions = __webpack_require__(222);
+	var FilterParamsStore = __webpack_require__(230);
+	
+	var ApiUtil = {
+	
+	  fetchAllListings: function () {
+	    debugger;
+	    var filter = FilterParamsStore.params();
+	    $.get('api/listings', filter, function (listings) {
+	      ApiActions.receiveAllListings(listings);
+	    });
+	  },
+	
+	  fetchSingleListing: function (target_listing) {
+	    ApiActions.receiveAllListings([target_listing]);
+	  },
+	
+	  createNewListing: function (listing) {
+	    $.ajax({
+	      url: "api/listings",
+	      method: "POST",
+	      data: { listing: listing }
+	    });
+	  },
+	
+	  deleteListing: function (listing) {
+	    $.ajax({
+	      url: "api/listings/" + listing.id,
+	      method: "DELETE",
+	      data: { listing: listing },
+	      success: function (listing) {
+	        ApiActions.receiveDeletedListing(listing);
+	      }
+	    });
+	  },
+	
+	  editListing: function (listing) {
+	    $.ajax({
+	      url: "api/listings/" + listing.id,
+	      method: "PATCH",
+	      data: { listing: listing }
+	    });
+	  },
+	
+	  fetchAllUserListings: function () {
+	    $.get('api/users', function (listings) {
+	      ApiActions.receiveAllUserListings(listings);
+	    });
+	  },
+	
+	  fetchStarredUserListings: function () {
+	    $.get('api/starred_listings', function (listings) {
+	      ApiActions.receiveAllStarredListings(listings);
+	    });
+	  },
+	
+	  starListing: function (starred_listing) {
+	    $.ajax({
+	      url: "api/starred_listings",
+	      method: "POST",
+	      data: { starred_listing: starred_listing },
+	      success: function (starred_listing) {
+	        ApiActions.receiveStarredListing(starred_listing);
+	      }
+	    });
+	  },
+	
+	  unstarListing: function (starred_listing) {
+	    $.ajax({
+	      url: "api/starred_listings/" + starred_listing.id,
+	      method: "DELETE",
+	      data: { starred_listing: starred_listing },
+	      success: function (starred_listing) {
+	        ApiActions.receiveUnstarredListing(starred_listing);
+	      }
+	    });
+	  }
+	};
+	
+	module.exports = ApiUtil;
+
+/***/ },
+/* 222 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var AppDispatcher = __webpack_require__(223);
+	
+	var ListingConstants = __webpack_require__(227);
+	var UserConstants = __webpack_require__(228);
+	var StarredConstants = __webpack_require__(229);
+	
+	ApiActions = {
+	  receiveAllListings: function (listings) {
+	    AppDispatcher.dispatch({
+	      actionType: ListingConstants.LISTINGS_RECEIVED,
+	      listings: listings
+	    });
+	  },
+	
+	  receiveSingleListings: function (listing) {
+	    AppDispatcher.dispatch({
+	      actionType: ListingConstants.LISTINGS_RECEIVED,
+	      listings: listing
+	    });
+	  },
+	
+	  receiveDeletedListing: function (listing) {
+	    AppDispatcher.dispatch({
+	      actionType: UserConstants.USER_DELETE_LISTING,
+	      listing: listing
+	    });
+	  },
+	
+	  receiveAllUserListings: function (users_listings) {
+	    AppDispatcher.dispatch({
+	      actionType: UserConstants.USERS_RECEIVED,
+	      user_listings: users_listings
+	    });
+	  },
+	
+	  receiveAllStarredListings: function (starred_listings) {
+	    AppDispatcher.dispatch({
+	      actionType: StarredConstants.STARRED_RECEIVE,
+	      starred_listings: starred_listings
+	    });
+	  },
+	
+	  receiveStarredListing: function (starred_listing) {
+	    AppDispatcher.dispatch({
+	      actionType: StarredConstants.STARRED_DELETE_LISTING,
+	      starred_listing: starred_listing
+	    });
+	  },
+	
+	  receiveUnstarredListing: function (starred_listing) {
+	    AppDispatcher.dispatch({
+	      actionType: StarredConstants.STARRED_DELETE_LISTING,
+	      starred_listing: starred_listing
+	    });
+	  }
+	};
+	
+	module.exports = ApiActions;
+
+/***/ },
+/* 223 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Dispatcher = __webpack_require__(224).Dispatcher;
+	
+	module.exports = new Dispatcher();
+
+/***/ },
+/* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -24564,15 +25412,393 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 */
 	
-	module.exports.Container = __webpack_require__(213);
-	module.exports.MapStore = __webpack_require__(217);
-	module.exports.Mixin = __webpack_require__(228);
-	module.exports.ReduceStore = __webpack_require__(218);
-	module.exports.Store = __webpack_require__(219);
+	module.exports.Dispatcher = __webpack_require__(225);
 
 
 /***/ },
-/* 213 */
+/* 225 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {/**
+	 * Copyright (c) 2014-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule Dispatcher
+	 * 
+	 * @preventMunge
+	 */
+	
+	'use strict';
+	
+	exports.__esModule = true;
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+	
+	var invariant = __webpack_require__(226);
+	
+	var _prefix = 'ID_';
+	
+	/**
+	 * Dispatcher is used to broadcast payloads to registered callbacks. This is
+	 * different from generic pub-sub systems in two ways:
+	 *
+	 *   1) Callbacks are not subscribed to particular events. Every payload is
+	 *      dispatched to every registered callback.
+	 *   2) Callbacks can be deferred in whole or part until other callbacks have
+	 *      been executed.
+	 *
+	 * For example, consider this hypothetical flight destination form, which
+	 * selects a default city when a country is selected:
+	 *
+	 *   var flightDispatcher = new Dispatcher();
+	 *
+	 *   // Keeps track of which country is selected
+	 *   var CountryStore = {country: null};
+	 *
+	 *   // Keeps track of which city is selected
+	 *   var CityStore = {city: null};
+	 *
+	 *   // Keeps track of the base flight price of the selected city
+	 *   var FlightPriceStore = {price: null}
+	 *
+	 * When a user changes the selected city, we dispatch the payload:
+	 *
+	 *   flightDispatcher.dispatch({
+	 *     actionType: 'city-update',
+	 *     selectedCity: 'paris'
+	 *   });
+	 *
+	 * This payload is digested by `CityStore`:
+	 *
+	 *   flightDispatcher.register(function(payload) {
+	 *     if (payload.actionType === 'city-update') {
+	 *       CityStore.city = payload.selectedCity;
+	 *     }
+	 *   });
+	 *
+	 * When the user selects a country, we dispatch the payload:
+	 *
+	 *   flightDispatcher.dispatch({
+	 *     actionType: 'country-update',
+	 *     selectedCountry: 'australia'
+	 *   });
+	 *
+	 * This payload is digested by both stores:
+	 *
+	 *   CountryStore.dispatchToken = flightDispatcher.register(function(payload) {
+	 *     if (payload.actionType === 'country-update') {
+	 *       CountryStore.country = payload.selectedCountry;
+	 *     }
+	 *   });
+	 *
+	 * When the callback to update `CountryStore` is registered, we save a reference
+	 * to the returned token. Using this token with `waitFor()`, we can guarantee
+	 * that `CountryStore` is updated before the callback that updates `CityStore`
+	 * needs to query its data.
+	 *
+	 *   CityStore.dispatchToken = flightDispatcher.register(function(payload) {
+	 *     if (payload.actionType === 'country-update') {
+	 *       // `CountryStore.country` may not be updated.
+	 *       flightDispatcher.waitFor([CountryStore.dispatchToken]);
+	 *       // `CountryStore.country` is now guaranteed to be updated.
+	 *
+	 *       // Select the default city for the new country
+	 *       CityStore.city = getDefaultCityForCountry(CountryStore.country);
+	 *     }
+	 *   });
+	 *
+	 * The usage of `waitFor()` can be chained, for example:
+	 *
+	 *   FlightPriceStore.dispatchToken =
+	 *     flightDispatcher.register(function(payload) {
+	 *       switch (payload.actionType) {
+	 *         case 'country-update':
+	 *         case 'city-update':
+	 *           flightDispatcher.waitFor([CityStore.dispatchToken]);
+	 *           FlightPriceStore.price =
+	 *             getFlightPriceStore(CountryStore.country, CityStore.city);
+	 *           break;
+	 *     }
+	 *   });
+	 *
+	 * The `country-update` payload will be guaranteed to invoke the stores'
+	 * registered callbacks in order: `CountryStore`, `CityStore`, then
+	 * `FlightPriceStore`.
+	 */
+	
+	var Dispatcher = (function () {
+	  function Dispatcher() {
+	    _classCallCheck(this, Dispatcher);
+	
+	    this._callbacks = {};
+	    this._isDispatching = false;
+	    this._isHandled = {};
+	    this._isPending = {};
+	    this._lastID = 1;
+	  }
+	
+	  /**
+	   * Registers a callback to be invoked with every dispatched payload. Returns
+	   * a token that can be used with `waitFor()`.
+	   */
+	
+	  Dispatcher.prototype.register = function register(callback) {
+	    var id = _prefix + this._lastID++;
+	    this._callbacks[id] = callback;
+	    return id;
+	  };
+	
+	  /**
+	   * Removes a callback based on its token.
+	   */
+	
+	  Dispatcher.prototype.unregister = function unregister(id) {
+	    !this._callbacks[id] ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Dispatcher.unregister(...): `%s` does not map to a registered callback.', id) : invariant(false) : undefined;
+	    delete this._callbacks[id];
+	  };
+	
+	  /**
+	   * Waits for the callbacks specified to be invoked before continuing execution
+	   * of the current callback. This method should only be used by a callback in
+	   * response to a dispatched payload.
+	   */
+	
+	  Dispatcher.prototype.waitFor = function waitFor(ids) {
+	    !this._isDispatching ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Dispatcher.waitFor(...): Must be invoked while dispatching.') : invariant(false) : undefined;
+	    for (var ii = 0; ii < ids.length; ii++) {
+	      var id = ids[ii];
+	      if (this._isPending[id]) {
+	        !this._isHandled[id] ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Dispatcher.waitFor(...): Circular dependency detected while ' + 'waiting for `%s`.', id) : invariant(false) : undefined;
+	        continue;
+	      }
+	      !this._callbacks[id] ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Dispatcher.waitFor(...): `%s` does not map to a registered callback.', id) : invariant(false) : undefined;
+	      this._invokeCallback(id);
+	    }
+	  };
+	
+	  /**
+	   * Dispatches a payload to all registered callbacks.
+	   */
+	
+	  Dispatcher.prototype.dispatch = function dispatch(payload) {
+	    !!this._isDispatching ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Dispatch.dispatch(...): Cannot dispatch in the middle of a dispatch.') : invariant(false) : undefined;
+	    this._startDispatching(payload);
+	    try {
+	      for (var id in this._callbacks) {
+	        if (this._isPending[id]) {
+	          continue;
+	        }
+	        this._invokeCallback(id);
+	      }
+	    } finally {
+	      this._stopDispatching();
+	    }
+	  };
+	
+	  /**
+	   * Is this Dispatcher currently dispatching.
+	   */
+	
+	  Dispatcher.prototype.isDispatching = function isDispatching() {
+	    return this._isDispatching;
+	  };
+	
+	  /**
+	   * Call the callback stored with the given id. Also do some internal
+	   * bookkeeping.
+	   *
+	   * @internal
+	   */
+	
+	  Dispatcher.prototype._invokeCallback = function _invokeCallback(id) {
+	    this._isPending[id] = true;
+	    this._callbacks[id](this._pendingPayload);
+	    this._isHandled[id] = true;
+	  };
+	
+	  /**
+	   * Set up bookkeeping needed when dispatching.
+	   *
+	   * @internal
+	   */
+	
+	  Dispatcher.prototype._startDispatching = function _startDispatching(payload) {
+	    for (var id in this._callbacks) {
+	      this._isPending[id] = false;
+	      this._isHandled[id] = false;
+	    }
+	    this._pendingPayload = payload;
+	    this._isDispatching = true;
+	  };
+	
+	  /**
+	   * Clear bookkeeping used for dispatching.
+	   *
+	   * @internal
+	   */
+	
+	  Dispatcher.prototype._stopDispatching = function _stopDispatching() {
+	    delete this._pendingPayload;
+	    this._isDispatching = false;
+	  };
+	
+	  return Dispatcher;
+	})();
+	
+	module.exports = Dispatcher;
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+
+/***/ },
+/* 226 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule invariant
+	 */
+	
+	"use strict";
+	
+	/**
+	 * Use invariant() to assert state which your program assumes to be true.
+	 *
+	 * Provide sprintf-style format (only %s is supported) and arguments
+	 * to provide information about what broke and what you were
+	 * expecting.
+	 *
+	 * The invariant message will be stripped in production, but the invariant
+	 * will remain to ensure logic does not differ in production.
+	 */
+	
+	var invariant = function (condition, format, a, b, c, d, e, f) {
+	  if (process.env.NODE_ENV !== 'production') {
+	    if (format === undefined) {
+	      throw new Error('invariant requires an error message argument');
+	    }
+	  }
+	
+	  if (!condition) {
+	    var error;
+	    if (format === undefined) {
+	      error = new Error('Minified exception occurred; use the non-minified dev environment ' + 'for the full error message and additional helpful warnings.');
+	    } else {
+	      var args = [a, b, c, d, e, f];
+	      var argIndex = 0;
+	      error = new Error('Invariant Violation: ' + format.replace(/%s/g, function () {
+	        return args[argIndex++];
+	      }));
+	    }
+	
+	    error.framesToPop = 1; // we don't care about invariant's own frame
+	    throw error;
+	  }
+	};
+	
+	module.exports = invariant;
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+
+/***/ },
+/* 227 */
+/***/ function(module, exports) {
+
+	var ListingConstants = {
+	  LISTINGS_RECEIVED: "LISTINGS_RECEIVED"
+	};
+	
+	module.exports = ListingConstants;
+
+/***/ },
+/* 228 */
+/***/ function(module, exports) {
+
+	var UserConstants = {
+	  USERS_RECEIVED: "USERS_RECEIVED",
+	  USERS_DELETE_LISTING: "USERS_DELETE_LISTING"
+	};
+	
+	module.exports = UserConstants;
+
+/***/ },
+/* 229 */
+/***/ function(module, exports) {
+
+	var StarredConstants = {
+	  STARRED_RECEIVE: "STARRED_RECEIVE",
+	  STARRED_DELETE_LISTING: "STARRED_DELETE_LISTING"
+	};
+	
+	module.exports = StarredConstants;
+
+/***/ },
+/* 230 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Store = __webpack_require__(231).Store;
+	var FilterConstants = __webpack_require__(247);
+	var AppDispatcher = __webpack_require__(223);
+	var FilterParamsStore = new Store(AppDispatcher);
+	
+	var _params = {};
+	
+	FilterParamsStore.params = function () {
+	  return Object.assign({}, _params);
+	};
+	
+	FilterParamsStore.reset = function () {
+	  _params = {};
+	};
+	
+	FilterParamsStore.__onDispatch = function (payload) {
+	  switch (payload.actionType) {
+	    case FilterConstants.UPDATE_CITY:
+	      _params.city = payload.city;
+	      FilterParamsStore.__emitChange();
+	      break;
+	    case FilterConstants.UPDATE_CATEGORY:
+	      _params.category = payload.category;
+	      FilterParamsStore.__emitChange();
+	      break;
+	    case FilterConstants.UPDATE_FILTERS:
+	      _params.filters = payload.filters;
+	      FilterParamsStore.__emitChange();
+	      break;
+	  }
+	};
+	
+	module.exports = FilterParamsStore;
+
+/***/ },
+/* 231 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright (c) 2014-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 */
+	
+	module.exports.Container = __webpack_require__(232);
+	module.exports.MapStore = __webpack_require__(235);
+	module.exports.Mixin = __webpack_require__(246);
+	module.exports.ReduceStore = __webpack_require__(236);
+	module.exports.Store = __webpack_require__(237);
+
+
+/***/ },
+/* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -24594,10 +25820,10 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var FluxStoreGroup = __webpack_require__(214);
+	var FluxStoreGroup = __webpack_require__(233);
 	
-	var invariant = __webpack_require__(215);
-	var shallowEqual = __webpack_require__(216);
+	var invariant = __webpack_require__(226);
+	var shallowEqual = __webpack_require__(234);
 	
 	var DEFAULT_OPTIONS = {
 	  pure: true,
@@ -24755,7 +25981,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 214 */
+/* 233 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -24774,7 +26000,7 @@
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
-	var invariant = __webpack_require__(215);
+	var invariant = __webpack_require__(226);
 	
 	/**
 	 * FluxStoreGroup allows you to execute a callback on every dispatch after
@@ -24836,62 +26062,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 215 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule invariant
-	 */
-	
-	"use strict";
-	
-	/**
-	 * Use invariant() to assert state which your program assumes to be true.
-	 *
-	 * Provide sprintf-style format (only %s is supported) and arguments
-	 * to provide information about what broke and what you were
-	 * expecting.
-	 *
-	 * The invariant message will be stripped in production, but the invariant
-	 * will remain to ensure logic does not differ in production.
-	 */
-	
-	var invariant = function (condition, format, a, b, c, d, e, f) {
-	  if (process.env.NODE_ENV !== 'production') {
-	    if (format === undefined) {
-	      throw new Error('invariant requires an error message argument');
-	    }
-	  }
-	
-	  if (!condition) {
-	    var error;
-	    if (format === undefined) {
-	      error = new Error('Minified exception occurred; use the non-minified dev environment ' + 'for the full error message and additional helpful warnings.');
-	    } else {
-	      var args = [a, b, c, d, e, f];
-	      var argIndex = 0;
-	      error = new Error('Invariant Violation: ' + format.replace(/%s/g, function () {
-	        return args[argIndex++];
-	      }));
-	    }
-	
-	    error.framesToPop = 1; // we don't care about invariant's own frame
-	    throw error;
-	  }
-	};
-	
-	module.exports = invariant;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
-
-/***/ },
-/* 216 */
+/* 234 */
 /***/ function(module, exports) {
 
 	/**
@@ -24946,7 +26117,7 @@
 	module.exports = shallowEqual;
 
 /***/ },
-/* 217 */
+/* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -24967,10 +26138,10 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var FluxReduceStore = __webpack_require__(218);
-	var Immutable = __webpack_require__(227);
+	var FluxReduceStore = __webpack_require__(236);
+	var Immutable = __webpack_require__(245);
 	
-	var invariant = __webpack_require__(215);
+	var invariant = __webpack_require__(226);
 	
 	/**
 	 * This is a simple store. It allows caching key value pairs. An implementation
@@ -25096,7 +26267,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 218 */
+/* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -25117,10 +26288,10 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var FluxStore = __webpack_require__(219);
+	var FluxStore = __webpack_require__(237);
 	
-	var abstractMethod = __webpack_require__(226);
-	var invariant = __webpack_require__(215);
+	var abstractMethod = __webpack_require__(244);
+	var invariant = __webpack_require__(226);
 	
 	var FluxReduceStore = (function (_FluxStore) {
 	  _inherits(FluxReduceStore, _FluxStore);
@@ -25203,7 +26374,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 219 */
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -25222,11 +26393,11 @@
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
-	var _require = __webpack_require__(220);
+	var _require = __webpack_require__(238);
 	
 	var EventEmitter = _require.EventEmitter;
 	
-	var invariant = __webpack_require__(215);
+	var invariant = __webpack_require__(226);
 	
 	/**
 	 * This class should be extended by the stores in your application, like so:
@@ -25386,7 +26557,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 220 */
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -25399,14 +26570,14 @@
 	 */
 	
 	var fbemitter = {
-	  EventEmitter: __webpack_require__(221)
+	  EventEmitter: __webpack_require__(239)
 	};
 	
 	module.exports = fbemitter;
 
 
 /***/ },
-/* 221 */
+/* 239 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -25425,11 +26596,11 @@
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
-	var EmitterSubscription = __webpack_require__(222);
-	var EventSubscriptionVendor = __webpack_require__(224);
+	var EmitterSubscription = __webpack_require__(240);
+	var EventSubscriptionVendor = __webpack_require__(242);
 	
-	var emptyFunction = __webpack_require__(225);
-	var invariant = __webpack_require__(215);
+	var emptyFunction = __webpack_require__(243);
+	var invariant = __webpack_require__(226);
 	
 	/**
 	 * @class BaseEventEmitter
@@ -25603,7 +26774,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 222 */
+/* 240 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -25624,7 +26795,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var EventSubscription = __webpack_require__(223);
+	var EventSubscription = __webpack_require__(241);
 	
 	/**
 	 * EmitterSubscription represents a subscription with listener and context data.
@@ -25656,7 +26827,7 @@
 	module.exports = EmitterSubscription;
 
 /***/ },
-/* 223 */
+/* 241 */
 /***/ function(module, exports) {
 
 	/**
@@ -25707,7 +26878,7 @@
 	module.exports = EventSubscription;
 
 /***/ },
-/* 224 */
+/* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -25726,7 +26897,7 @@
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
-	var invariant = __webpack_require__(215);
+	var invariant = __webpack_require__(226);
 	
 	/**
 	 * EventSubscriptionVendor stores a set of EventSubscriptions that are
@@ -25816,7 +26987,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 225 */
+/* 243 */
 /***/ function(module, exports) {
 
 	/**
@@ -25859,7 +27030,7 @@
 	module.exports = emptyFunction;
 
 /***/ },
-/* 226 */
+/* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -25876,7 +27047,7 @@
 	
 	'use strict';
 	
-	var invariant = __webpack_require__(215);
+	var invariant = __webpack_require__(226);
 	
 	function abstractMethod(className, methodName) {
 	   true ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Subclasses of %s must override %s() with their own implementation.', className, methodName) : invariant(false) : undefined;
@@ -25886,7 +27057,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 227 */
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -30851,7 +32022,7 @@
 	}));
 
 /***/ },
-/* 228 */
+/* 246 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -30868,9 +32039,9 @@
 	
 	'use strict';
 	
-	var FluxStoreGroup = __webpack_require__(214);
+	var FluxStoreGroup = __webpack_require__(233);
 	
-	var invariant = __webpack_require__(215);
+	var invariant = __webpack_require__(226);
 	
 	/**
 	 * `FluxContainer` should be preferred over this mixin, but it requires using
@@ -30974,486 +32145,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 229 */
-/***/ function(module, exports) {
-
-	var ListingConstants = {
-	  LISTINGS_RECEIVED: "LISTINGS_RECEIVED"
-	};
-	
-	module.exports = ListingConstants;
-
-/***/ },
-/* 230 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var Dispatcher = __webpack_require__(231).Dispatcher;
-	
-	module.exports = new Dispatcher();
-
-/***/ },
-/* 231 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright (c) 2014-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 */
-	
-	module.exports.Dispatcher = __webpack_require__(232);
-
-
-/***/ },
-/* 232 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {/**
-	 * Copyright (c) 2014-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule Dispatcher
-	 * 
-	 * @preventMunge
-	 */
-	
-	'use strict';
-	
-	exports.__esModule = true;
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-	
-	var invariant = __webpack_require__(215);
-	
-	var _prefix = 'ID_';
-	
-	/**
-	 * Dispatcher is used to broadcast payloads to registered callbacks. This is
-	 * different from generic pub-sub systems in two ways:
-	 *
-	 *   1) Callbacks are not subscribed to particular events. Every payload is
-	 *      dispatched to every registered callback.
-	 *   2) Callbacks can be deferred in whole or part until other callbacks have
-	 *      been executed.
-	 *
-	 * For example, consider this hypothetical flight destination form, which
-	 * selects a default city when a country is selected:
-	 *
-	 *   var flightDispatcher = new Dispatcher();
-	 *
-	 *   // Keeps track of which country is selected
-	 *   var CountryStore = {country: null};
-	 *
-	 *   // Keeps track of which city is selected
-	 *   var CityStore = {city: null};
-	 *
-	 *   // Keeps track of the base flight price of the selected city
-	 *   var FlightPriceStore = {price: null}
-	 *
-	 * When a user changes the selected city, we dispatch the payload:
-	 *
-	 *   flightDispatcher.dispatch({
-	 *     actionType: 'city-update',
-	 *     selectedCity: 'paris'
-	 *   });
-	 *
-	 * This payload is digested by `CityStore`:
-	 *
-	 *   flightDispatcher.register(function(payload) {
-	 *     if (payload.actionType === 'city-update') {
-	 *       CityStore.city = payload.selectedCity;
-	 *     }
-	 *   });
-	 *
-	 * When the user selects a country, we dispatch the payload:
-	 *
-	 *   flightDispatcher.dispatch({
-	 *     actionType: 'country-update',
-	 *     selectedCountry: 'australia'
-	 *   });
-	 *
-	 * This payload is digested by both stores:
-	 *
-	 *   CountryStore.dispatchToken = flightDispatcher.register(function(payload) {
-	 *     if (payload.actionType === 'country-update') {
-	 *       CountryStore.country = payload.selectedCountry;
-	 *     }
-	 *   });
-	 *
-	 * When the callback to update `CountryStore` is registered, we save a reference
-	 * to the returned token. Using this token with `waitFor()`, we can guarantee
-	 * that `CountryStore` is updated before the callback that updates `CityStore`
-	 * needs to query its data.
-	 *
-	 *   CityStore.dispatchToken = flightDispatcher.register(function(payload) {
-	 *     if (payload.actionType === 'country-update') {
-	 *       // `CountryStore.country` may not be updated.
-	 *       flightDispatcher.waitFor([CountryStore.dispatchToken]);
-	 *       // `CountryStore.country` is now guaranteed to be updated.
-	 *
-	 *       // Select the default city for the new country
-	 *       CityStore.city = getDefaultCityForCountry(CountryStore.country);
-	 *     }
-	 *   });
-	 *
-	 * The usage of `waitFor()` can be chained, for example:
-	 *
-	 *   FlightPriceStore.dispatchToken =
-	 *     flightDispatcher.register(function(payload) {
-	 *       switch (payload.actionType) {
-	 *         case 'country-update':
-	 *         case 'city-update':
-	 *           flightDispatcher.waitFor([CityStore.dispatchToken]);
-	 *           FlightPriceStore.price =
-	 *             getFlightPriceStore(CountryStore.country, CityStore.city);
-	 *           break;
-	 *     }
-	 *   });
-	 *
-	 * The `country-update` payload will be guaranteed to invoke the stores'
-	 * registered callbacks in order: `CountryStore`, `CityStore`, then
-	 * `FlightPriceStore`.
-	 */
-	
-	var Dispatcher = (function () {
-	  function Dispatcher() {
-	    _classCallCheck(this, Dispatcher);
-	
-	    this._callbacks = {};
-	    this._isDispatching = false;
-	    this._isHandled = {};
-	    this._isPending = {};
-	    this._lastID = 1;
-	  }
-	
-	  /**
-	   * Registers a callback to be invoked with every dispatched payload. Returns
-	   * a token that can be used with `waitFor()`.
-	   */
-	
-	  Dispatcher.prototype.register = function register(callback) {
-	    var id = _prefix + this._lastID++;
-	    this._callbacks[id] = callback;
-	    return id;
-	  };
-	
-	  /**
-	   * Removes a callback based on its token.
-	   */
-	
-	  Dispatcher.prototype.unregister = function unregister(id) {
-	    !this._callbacks[id] ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Dispatcher.unregister(...): `%s` does not map to a registered callback.', id) : invariant(false) : undefined;
-	    delete this._callbacks[id];
-	  };
-	
-	  /**
-	   * Waits for the callbacks specified to be invoked before continuing execution
-	   * of the current callback. This method should only be used by a callback in
-	   * response to a dispatched payload.
-	   */
-	
-	  Dispatcher.prototype.waitFor = function waitFor(ids) {
-	    !this._isDispatching ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Dispatcher.waitFor(...): Must be invoked while dispatching.') : invariant(false) : undefined;
-	    for (var ii = 0; ii < ids.length; ii++) {
-	      var id = ids[ii];
-	      if (this._isPending[id]) {
-	        !this._isHandled[id] ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Dispatcher.waitFor(...): Circular dependency detected while ' + 'waiting for `%s`.', id) : invariant(false) : undefined;
-	        continue;
-	      }
-	      !this._callbacks[id] ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Dispatcher.waitFor(...): `%s` does not map to a registered callback.', id) : invariant(false) : undefined;
-	      this._invokeCallback(id);
-	    }
-	  };
-	
-	  /**
-	   * Dispatches a payload to all registered callbacks.
-	   */
-	
-	  Dispatcher.prototype.dispatch = function dispatch(payload) {
-	    !!this._isDispatching ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Dispatch.dispatch(...): Cannot dispatch in the middle of a dispatch.') : invariant(false) : undefined;
-	    this._startDispatching(payload);
-	    try {
-	      for (var id in this._callbacks) {
-	        if (this._isPending[id]) {
-	          continue;
-	        }
-	        this._invokeCallback(id);
-	      }
-	    } finally {
-	      this._stopDispatching();
-	    }
-	  };
-	
-	  /**
-	   * Is this Dispatcher currently dispatching.
-	   */
-	
-	  Dispatcher.prototype.isDispatching = function isDispatching() {
-	    return this._isDispatching;
-	  };
-	
-	  /**
-	   * Call the callback stored with the given id. Also do some internal
-	   * bookkeeping.
-	   *
-	   * @internal
-	   */
-	
-	  Dispatcher.prototype._invokeCallback = function _invokeCallback(id) {
-	    this._isPending[id] = true;
-	    this._callbacks[id](this._pendingPayload);
-	    this._isHandled[id] = true;
-	  };
-	
-	  /**
-	   * Set up bookkeeping needed when dispatching.
-	   *
-	   * @internal
-	   */
-	
-	  Dispatcher.prototype._startDispatching = function _startDispatching(payload) {
-	    for (var id in this._callbacks) {
-	      this._isPending[id] = false;
-	      this._isHandled[id] = false;
-	    }
-	    this._pendingPayload = payload;
-	    this._isDispatching = true;
-	  };
-	
-	  /**
-	   * Clear bookkeeping used for dispatching.
-	   *
-	   * @internal
-	   */
-	
-	  Dispatcher.prototype._stopDispatching = function _stopDispatching() {
-	    delete this._pendingPayload;
-	    this._isDispatching = false;
-	  };
-	
-	  return Dispatcher;
-	})();
-	
-	module.exports = Dispatcher;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
-
-/***/ },
-/* 233 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var ApiActions = __webpack_require__(234);
-	var FilterParamsStore = __webpack_require__(237);
-	
-	var ApiUtil = {
-	
-	  fetchAllListings: function () {
-	    debugger;
-	    var filter = FilterParamsStore.params();
-	    $.get('api/listings', filter, function (listings) {
-	      ApiActions.receiveAllListings(listings);
-	    });
-	  },
-	
-	  fetchSingleListing: function (target_listing) {
-	    ApiActions.receiveAllListings([target_listing]);
-	  },
-	
-	  createNewListing: function (listing) {
-	    $.ajax({
-	      url: "api/listings",
-	      method: "POST",
-	      data: { listing: listing }
-	    });
-	  },
-	
-	  deleteListing: function (listing) {
-	    $.ajax({
-	      url: "api/listings/" + listing.id,
-	      method: "DELETE",
-	      data: { listing: listing },
-	      success: function (listing) {
-	        ApiActions.receiveDeletedListing(listing);
-	      }
-	    });
-	  },
-	
-	  editListing: function (listing) {
-	    $.ajax({
-	      url: "api/listings/" + listing.id,
-	      method: "PATCH",
-	      data: { listing: listing }
-	    });
-	  },
-	
-	  fetchAllUserListings: function () {
-	    $.get('api/users', function (listings) {
-	      ApiActions.receiveAllUserListings(listings);
-	    });
-	  },
-	
-	  fetchStarredUserListings: function () {
-	    $.get('api/starred_listings', function (listings) {
-	      ApiActions.receiveAllStarredListings(listings);
-	    });
-	  },
-	
-	  starListing: function (starred_listing) {
-	    $.ajax({
-	      url: "api/starred_listings",
-	      method: "POST",
-	      data: { starred_listing: starred_listing },
-	      success: function (starred_listing) {
-	        ApiActions.receiveStarredListing(starred_listing);
-	      }
-	    });
-	  },
-	
-	  unstarListing: function (starred_listing) {
-	    $.ajax({
-	      url: "api/starred_listings/" + starred_listing.id,
-	      method: "DELETE",
-	      data: { starred_listing: starred_listing },
-	      success: function (starred_listing) {
-	        ApiActions.receiveUnstarredListing(starred_listing);
-	      }
-	    });
-	  }
-	};
-	
-	module.exports = ApiUtil;
-
-/***/ },
-/* 234 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var AppDispatcher = __webpack_require__(230);
-	
-	var ListingConstants = __webpack_require__(229);
-	var UserConstants = __webpack_require__(235);
-	var StarredConstants = __webpack_require__(236);
-	
-	ApiActions = {
-	  receiveAllListings: function (listings) {
-	    AppDispatcher.dispatch({
-	      actionType: ListingConstants.LISTINGS_RECEIVED,
-	      listings: listings
-	    });
-	  },
-	
-	  receiveSingleListings: function (listing) {
-	    AppDispatcher.dispatch({
-	      actionType: ListingConstants.LISTINGS_RECEIVED,
-	      listings: listing
-	    });
-	  },
-	
-	  receiveDeletedListing: function (listing) {
-	    AppDispatcher.dispatch({
-	      actionType: UserConstants.USER_DELETE_LISTING,
-	      listing: listing
-	    });
-	  },
-	
-	  receiveAllUserListings: function (users_listings) {
-	    AppDispatcher.dispatch({
-	      actionType: UserConstants.USERS_RECEIVED,
-	      user_listings: users_listings
-	    });
-	  },
-	
-	  receiveAllStarredListings: function (starred_listings) {
-	    AppDispatcher.dispatch({
-	      actionType: StarredConstants.STARRED_RECEIVE,
-	      starred_listings: starred_listings
-	    });
-	  },
-	
-	  receiveStarredListing: function (starred_listing) {
-	    AppDispatcher.dispatch({
-	      actionType: StarredConstants.STARRED_DELETE_LISTING,
-	      starred_listing: starred_listing
-	    });
-	  },
-	
-	  receiveUnstarredListing: function (starred_listing) {
-	    AppDispatcher.dispatch({
-	      actionType: StarredConstants.STARRED_DELETE_LISTING,
-	      starred_listing: starred_listing
-	    });
-	  }
-	};
-	
-	module.exports = ApiActions;
-
-/***/ },
-/* 235 */
-/***/ function(module, exports) {
-
-	var UserConstants = {
-	  USERS_RECEIVED: "USERS_RECEIVED",
-	  USERS_DELETE_LISTING: "USERS_DELETE_LISTING"
-	};
-	
-	module.exports = UserConstants;
-
-/***/ },
-/* 236 */
-/***/ function(module, exports) {
-
-	var StarredConstants = {
-	  STARRED_RECEIVE: "STARRED_RECEIVE",
-	  STARRED_DELETE_LISTING: "STARRED_DELETE_LISTING"
-	};
-	
-	module.exports = StarredConstants;
-
-/***/ },
-/* 237 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var Store = __webpack_require__(212).Store;
-	var FilterConstants = __webpack_require__(238);
-	var AppDispatcher = __webpack_require__(230);
-	var FilterParamsStore = new Store(AppDispatcher);
-	
-	var _params = {};
-	
-	FilterParamsStore.params = function () {
-	  return Object.assign({}, _params);
-	};
-	
-	FilterParamsStore.reset = function () {
-	  _params = {};
-	};
-	
-	FilterParamsStore.__onDispatch = function (payload) {
-	  switch (payload.actionType) {
-	    case FilterConstants.UPDATE_CITY:
-	      _params.city = payload.city;
-	      FilterParamsStore.__emitChange();
-	      break;
-	    case FilterConstants.UPDATE_CATEGORY:
-	      _params.category = payload.category;
-	      FilterParamsStore.__emitChange();
-	      break;
-	    case FilterConstants.UPDATE_FILTERS:
-	      _params.filters = payload.filters;
-	      FilterParamsStore.__emitChange();
-	      break;
-	  }
-	};
-	
-	module.exports = FilterParamsStore;
-
-/***/ },
-/* 238 */
+/* 247 */
 /***/ function(module, exports) {
 
 	var FilterConstants = {
@@ -31465,787 +32157,7 @@
 	module.exports = FilterConstants;
 
 /***/ },
-/* 239 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(1);
-	var ReactRouter = __webpack_require__(159);
-	
-	var ListingIndex = React.createClass({
-	  displayName: 'ListingIndex',
-	
-	  render: function () {
-	    var thumbnail = "http://res.cloudinary.com/mackslist/image/upload/";
-	
-	    if (this.props.listing.images.length > 0) {
-	      thumbnail += "c_scale,h_175,w_250/" + this.props.listing.images[0].url;
-	    }
-	
-	    return React.createElement(
-	      'div',
-	      { className: 'index-items', onClick: this.props.onClick },
-	      React.createElement(
-	        'div',
-	        { className: 'panel panel-default' },
-	        React.createElement(
-	          'div',
-	          { className: 'panel-heading' },
-	          this.props.listing.title
-	        ),
-	        React.createElement(
-	          'div',
-	          { className: 'panel-body' },
-	          React.createElement('img', { src: thumbnail })
-	        ),
-	        React.createElement(
-	          'div',
-	          { 'class': 'panel-footer' },
-	          '$',
-	          this.props.listing.price
-	        )
-	      )
-	    );
-	  }
-	});
-	
-	module.exports = ListingIndex;
-
-/***/ },
-/* 240 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(1);
-	var Login = __webpack_require__(241);
-	
-	var NavBar = React.createClass({
-	  displayName: 'NavBar',
-	
-	  handleHomeClick: function () {
-	    this.props.history.pushState(null, "/");
-	  },
-	
-	  handleCreateClick: function () {
-	    this.props.history.pushState(null, "listings/new");
-	  },
-	
-	  handleSearchClick: function () {
-	    this.props.history.pushState(null, "listings/search");
-	  },
-	
-	  render: function () {
-	    return React.createElement(
-	      'div',
-	      null,
-	      React.createElement(
-	        'nav',
-	        { className: 'navbar navbar-default' },
-	        React.createElement(
-	          'div',
-	          { className: 'container-fluid' },
-	          React.createElement(
-	            'div',
-	            { className: 'navbar-header' },
-	            React.createElement(
-	              'button',
-	              { type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#bs-example-navbar-collapse-1', 'aria-expanded': 'false' },
-	              React.createElement(
-	                'span',
-	                { className: 'sr-only' },
-	                'Toggle navigation'
-	              ),
-	              React.createElement('span', { className: 'icon-bar' }),
-	              React.createElement('span', { className: 'icon-bar' }),
-	              React.createElement('span', { className: 'icon-bar' })
-	            ),
-	            React.createElement(
-	              'a',
-	              { className: 'navbar-brand', onClick: this.handleHomeClick },
-	              'MacksList'
-	            )
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'collapse navbar-collapse', id: 'bs-example-navbar-collapse-1' },
-	            React.createElement(
-	              'ul',
-	              { className: 'nav navbar-nav' },
-	              React.createElement(
-	                'li',
-	                null,
-	                React.createElement(
-	                  'a',
-	                  { onClick: this.handleHomeClick },
-	                  'Home'
-	                )
-	              ),
-	              React.createElement(
-	                'li',
-	                { className: 'active' },
-	                React.createElement(
-	                  'a',
-	                  { onClick: this.handleCreateClick },
-	                  'Create Listing ',
-	                  React.createElement(
-	                    'span',
-	                    { className: 'sr-only' },
-	                    '(current)'
-	                  )
-	                )
-	              ),
-	              React.createElement(
-	                'li',
-	                null,
-	                React.createElement(
-	                  'a',
-	                  { onClick: this.handleSearchClick },
-	                  'Search'
-	                )
-	              )
-	            ),
-	            React.createElement(Login, { history: this.props.history })
-	          )
-	        )
-	      )
-	    );
-	  }
-	});
-	
-	module.exports = NavBar;
-
-/***/ },
-/* 241 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(1);
-	
-	var Login = React.createClass({
-	  displayName: "Login",
-	
-	  handleSignOutClick: function () {
-	    $.ajax({
-	      url: "/session",
-	      method: "DELETE",
-	      success: function () {
-	        window.location = 'session/new';
-	      }
-	    });
-	  },
-	
-	  handleLoginClick: function () {
-	    $.get('session/new', function () {
-	      window.location = 'session/new';
-	    });
-	  },
-	
-	  handleSignUpClick: function () {
-	    $.get('user/new', function () {
-	      window.location = 'user/new';
-	    });
-	  },
-	
-	  handleProfileClick: function () {
-	    this.props.history.pushState(null, "/user", {});
-	  },
-	
-	  render: function () {
-	    var login;
-	    var signup;
-	    if (window.user.username) {
-	      login = React.createElement(
-	        "li",
-	        { className: "dropdown" },
-	        React.createElement(
-	          "a",
-	          { href: "#", className: "dropdown-toggle", "data-toggle": "dropdown", role: "button", "aria-haspopup": "true", "aria-expanded": "false" },
-	          window.user.username,
-	          React.createElement("span", { className: "caret" })
-	        ),
-	        React.createElement(
-	          "ul",
-	          { className: "dropdown-menu" },
-	          React.createElement(
-	            "li",
-	            null,
-	            React.createElement(
-	              "a",
-	              { onClick: this.handleProfileClick },
-	              "User Profile"
-	            )
-	          ),
-	          React.createElement(
-	            "li",
-	            { onClick: this.handleSignOutClick },
-	            React.createElement(
-	              "a",
-	              null,
-	              "Log Out"
-	            )
-	          )
-	        )
-	      );
-	    } else {
-	      login = React.createElement(
-	        "li",
-	        null,
-	        React.createElement(
-	          "a",
-	          { onClick: this.handleLoginClick },
-	          "Login"
-	        )
-	      );
-	      signup = React.createElement(
-	        "li",
-	        null,
-	        React.createElement(
-	          "a",
-	          { onClick: this.handleSignUpClick },
-	          "Sign Up"
-	        )
-	      );
-	    }
-	
-	    return React.createElement(
-	      "ul",
-	      { className: "nav navbar-nav navbar-right" },
-	      signup,
-	      login
-	    );
-	  }
-	});
-	
-	module.exports = Login;
-
-/***/ },
-/* 242 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(1);
-	
-	var Footer = React.createClass({
-	  displayName: "Footer",
-	
-	  render: function () {
-	    return React.createElement("div", { className: "footer" });
-	  }
-	
-	});
-	
-	module.exports = Footer;
-
-/***/ },
-/* 243 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(1);
-	
-	var Splash = React.createClass({
-	  displayName: "Splash",
-	
-	  render: function () {
-	    return React.createElement("div", { className: "splash-area" });
-	  }
-	});
-	
-	module.exports = Splash;
-
-/***/ },
-/* 244 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(1);
-	var ListingForm = __webpack_require__(245);
-	var NavBar = __webpack_require__(240);
-	
-	var ListingNew = React.createClass({
-	  displayName: 'ListingNew',
-	
-	  render: function () {
-	    var type = "New Listing";
-	
-	    return React.createElement(
-	      'div',
-	      null,
-	      React.createElement(NavBar, { history: this.props.history }),
-	      React.createElement(ListingForm, { location: this.props.location, history: this.props.history, type: type })
-	    );
-	  }
-	
-	});
-	
-	module.exports = ListingNew;
-
-/***/ },
-/* 245 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(1);
-	var LinkedStateMixin = __webpack_require__(246);
-	
-	var ApiUtil = __webpack_require__(233);
-	var ImageUploadButton = __webpack_require__(250);
-	
-	var ListingForm = React.createClass({
-	  displayName: 'ListingForm',
-	
-	  mixins: [LinkedStateMixin],
-	
-	  getInitialState: function () {
-	    return {
-	      id: "",
-	      title: "",
-	      description: "",
-	      price: "",
-	      address: "",
-	      city_id: "",
-	      category_id: "",
-	      latitude: "",
-	      longitude: "",
-	      images_attributes: []
-	    };
-	  },
-	
-	  storeListingImages: function (images_attributes) {
-	    var temp_imgs = [];
-	    images_attributes.forEach(function (image) {
-	      temp_imgs.push({ url: image.url.slice(61) });
-	    });
-	    this.state.images_attributes = temp_imgs;
-	  },
-	
-	  componentWillMount: function () {
-	    this.findIntialAttributes();
-	  },
-	
-	  componentDidMount: function () {
-	    this.setLatLng();
-	  },
-	
-	  setLatLng: function () {
-	    if (this.props.location) {
-	      this.state.latitude = this.props.location.query.lat;
-	      this.state.longitude = this.props.location.query.lng;
-	    }
-	  },
-	
-	  findIntialAttributes: function () {
-	    if (this.props.location.query) {
-	      Object.keys(this.state).forEach((function (key) {
-	        {
-	          this.state[key] = this.props.location.query[key];
-	        }
-	      }).bind(this));
-	    }
-	  },
-	
-	  handleClickCreate: function (event) {
-	    event.preventDefault();
-	
-	    var listing = {};
-	    Object.keys(this.state).forEach((function (key) {
-	      {
-	        listing[key] = this.state[key];
-	      }
-	    }).bind(this));
-	
-	    ApiUtil.createNewListing(listing);
-	    this.returnToProfile();
-	  },
-	
-	  handleEditClick: function (event) {
-	    event.preventDefault();
-	
-	    var listing = {};
-	    Object.keys(this.state).forEach((function (key) {
-	      {
-	        listing[key] = this.state[key];
-	      }
-	    }).bind(this));
-	    ApiUtil.editListing(listing);
-	    this.returnToProfile();
-	  },
-	
-	  returnToProfile: function () {
-	    this.props.history.pushState(null, "/user", {});
-	  },
-	
-	  render: function () {
-	    var handleSubmit;
-	    if (this.props.type === "New Listing") {
-	      handleSubmit = this.handleClickCreate;
-	    } else {
-	      handleSubmit = this.handleEditClick;
-	    }
-	
-	    return React.createElement(
-	      'div',
-	      null,
-	      React.createElement(
-	        'div',
-	        { className: 'row' },
-	        React.createElement('div', { className: 'col-md-4' }),
-	        React.createElement(
-	          'div',
-	          { className: 'col-md-4' },
-	          React.createElement(
-	            'h2',
-	            null,
-	            this.props.type
-	          ),
-	          React.createElement(
-	            'form',
-	            { onSubmit: handleSubmit },
-	            React.createElement(
-	              'label',
-	              null,
-	              'Title'
-	            ),
-	            React.createElement('input', { className: 'form-control',
-	              type: 'text',
-	              valueLink: this.linkState('title') }),
-	            React.createElement('br', null),
-	            React.createElement(
-	              'label',
-	              null,
-	              'Description'
-	            ),
-	            React.createElement('textarea', { className: 'form-control',
-	              type: 'text',
-	              valueLink: this.linkState('description') }),
-	            React.createElement('br', null),
-	            React.createElement(
-	              'label',
-	              null,
-	              'Price'
-	            ),
-	            React.createElement('input', { className: 'form-control',
-	              min: '0',
-	              type: 'number',
-	              valueLink: this.linkState('price') }),
-	            React.createElement('br', null),
-	            React.createElement(
-	              'label',
-	              null,
-	              'Address'
-	            ),
-	            React.createElement('input', { className: 'form-control',
-	              type: 'text',
-	              valueLink: this.linkState('address') }),
-	            React.createElement('br', null),
-	            React.createElement(
-	              'label',
-	              null,
-	              'City'
-	            ),
-	            React.createElement(
-	              'select',
-	              { className: 'form-control',
-	                type: 'text',
-	                valueLink: this.linkState('city_id') },
-	              React.createElement('option', null),
-	              React.createElement(
-	                'option',
-	                { value: 1 },
-	                'San Francisco'
-	              ),
-	              React.createElement(
-	                'option',
-	                { value: 2 },
-	                'Oakland'
-	              ),
-	              React.createElement(
-	                'option',
-	                { value: 3 },
-	                'Berkeley'
-	              ),
-	              React.createElement(
-	                'option',
-	                { value: 4 },
-	                'San Mateo'
-	              ),
-	              React.createElement(
-	                'option',
-	                { value: 5 },
-	                'San Jose'
-	              )
-	            ),
-	            React.createElement('br', null),
-	            React.createElement(
-	              'label',
-	              null,
-	              'Category'
-	            ),
-	            React.createElement(
-	              'select',
-	              { className: 'form-control',
-	                type: 'text',
-	                valueLink: this.linkState('category_id') },
-	              React.createElement('option', null),
-	              React.createElement(
-	                'option',
-	                { value: 1 },
-	                'Electronics'
-	              ),
-	              React.createElement(
-	                'option',
-	                { value: 2 },
-	                'Clothing'
-	              ),
-	              React.createElement(
-	                'option',
-	                { value: 3 },
-	                'Home'
-	              ),
-	              React.createElement(
-	                'option',
-	                { value: 4 },
-	                'Sports'
-	              )
-	            ),
-	            React.createElement('br', null),
-	            React.createElement(ImageUploadButton, { storeListingImages: this.storeListingImages }),
-	            React.createElement('br', null),
-	            React.createElement('input', { type: 'submit', className: 'btn btn-default', value: this.props.type })
-	          )
-	        )
-	      )
-	    );
-	  }
-	});
-	
-	module.exports = ListingForm;
-
-/***/ },
-/* 246 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(247);
-
-/***/ },
-/* 247 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule LinkedStateMixin
-	 * @typechecks static-only
-	 */
-	
-	'use strict';
-	
-	var ReactLink = __webpack_require__(248);
-	var ReactStateSetters = __webpack_require__(249);
-	
-	/**
-	 * A simple mixin around ReactLink.forState().
-	 */
-	var LinkedStateMixin = {
-	  /**
-	   * Create a ReactLink that's linked to part of this component's state. The
-	   * ReactLink will have the current value of this.state[key] and will call
-	   * setState() when a change is requested.
-	   *
-	   * @param {string} key state key to update. Note: you may want to use keyOf()
-	   * if you're using Google Closure Compiler advanced mode.
-	   * @return {ReactLink} ReactLink instance linking to the state.
-	   */
-	  linkState: function (key) {
-	    return new ReactLink(this.state[key], ReactStateSetters.createStateKeySetter(this, key));
-	  }
-	};
-	
-	module.exports = LinkedStateMixin;
-
-/***/ },
 /* 248 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ReactLink
-	 * @typechecks static-only
-	 */
-	
-	'use strict';
-	
-	/**
-	 * ReactLink encapsulates a common pattern in which a component wants to modify
-	 * a prop received from its parent. ReactLink allows the parent to pass down a
-	 * value coupled with a callback that, when invoked, expresses an intent to
-	 * modify that value. For example:
-	 *
-	 * React.createClass({
-	 *   getInitialState: function() {
-	 *     return {value: ''};
-	 *   },
-	 *   render: function() {
-	 *     var valueLink = new ReactLink(this.state.value, this._handleValueChange);
-	 *     return <input valueLink={valueLink} />;
-	 *   },
-	 *   _handleValueChange: function(newValue) {
-	 *     this.setState({value: newValue});
-	 *   }
-	 * });
-	 *
-	 * We have provided some sugary mixins to make the creation and
-	 * consumption of ReactLink easier; see LinkedValueUtils and LinkedStateMixin.
-	 */
-	
-	var React = __webpack_require__(2);
-	
-	/**
-	 * @param {*} value current value of the link
-	 * @param {function} requestChange callback to request a change
-	 */
-	function ReactLink(value, requestChange) {
-	  this.value = value;
-	  this.requestChange = requestChange;
-	}
-	
-	/**
-	 * Creates a PropType that enforces the ReactLink API and optionally checks the
-	 * type of the value being passed inside the link. Example:
-	 *
-	 * MyComponent.propTypes = {
-	 *   tabIndexLink: ReactLink.PropTypes.link(React.PropTypes.number)
-	 * }
-	 */
-	function createLinkTypeChecker(linkType) {
-	  var shapes = {
-	    value: typeof linkType === 'undefined' ? React.PropTypes.any.isRequired : linkType.isRequired,
-	    requestChange: React.PropTypes.func.isRequired
-	  };
-	  return React.PropTypes.shape(shapes);
-	}
-	
-	ReactLink.PropTypes = {
-	  link: createLinkTypeChecker
-	};
-	
-	module.exports = ReactLink;
-
-/***/ },
-/* 249 */
-/***/ function(module, exports) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ReactStateSetters
-	 */
-	
-	'use strict';
-	
-	var ReactStateSetters = {
-	  /**
-	   * Returns a function that calls the provided function, and uses the result
-	   * of that to set the component's state.
-	   *
-	   * @param {ReactCompositeComponent} component
-	   * @param {function} funcReturningState Returned callback uses this to
-	   *                                      determine how to update state.
-	   * @return {function} callback that when invoked uses funcReturningState to
-	   *                    determined the object literal to setState.
-	   */
-	  createStateSetter: function (component, funcReturningState) {
-	    return function (a, b, c, d, e, f) {
-	      var partialState = funcReturningState.call(component, a, b, c, d, e, f);
-	      if (partialState) {
-	        component.setState(partialState);
-	      }
-	    };
-	  },
-	
-	  /**
-	   * Returns a single-argument callback that can be used to update a single
-	   * key in the component's state.
-	   *
-	   * Note: this is memoized function, which makes it inexpensive to call.
-	   *
-	   * @param {ReactCompositeComponent} component
-	   * @param {string} key The key in the state that you should update.
-	   * @return {function} callback of 1 argument which calls setState() with
-	   *                    the provided keyName and callback argument.
-	   */
-	  createStateKeySetter: function (component, key) {
-	    // Memoize the setters.
-	    var cache = component.__keySetters || (component.__keySetters = {});
-	    return cache[key] || (cache[key] = createStateKeySetter(component, key));
-	  }
-	};
-	
-	function createStateKeySetter(component, key) {
-	  // Partial state is allocated outside of the function closure so it can be
-	  // reused with every call, avoiding memory allocation when this function
-	  // is called.
-	  var partialState = {};
-	  return function stateKeySetter(value) {
-	    partialState[key] = value;
-	    component.setState(partialState);
-	  };
-	}
-	
-	ReactStateSetters.Mixin = {
-	  /**
-	   * Returns a function that calls the provided function, and uses the result
-	   * of that to set the component's state.
-	   *
-	   * For example, these statements are equivalent:
-	   *
-	   *   this.setState({x: 1});
-	   *   this.createStateSetter(function(xValue) {
-	   *     return {x: xValue};
-	   *   })(1);
-	   *
-	   * @param {function} funcReturningState Returned callback uses this to
-	   *                                      determine how to update state.
-	   * @return {function} callback that when invoked uses funcReturningState to
-	   *                    determined the object literal to setState.
-	   */
-	  createStateSetter: function (funcReturningState) {
-	    return ReactStateSetters.createStateSetter(this, funcReturningState);
-	  },
-	
-	  /**
-	   * Returns a single-argument callback that can be used to update a single
-	   * key in the component's state.
-	   *
-	   * For example, these statements are equivalent:
-	   *
-	   *   this.setState({x: 1});
-	   *   this.createStateKeySetter('x')(1);
-	   *
-	   * Note: this is memoized function, which makes it inexpensive to call.
-	   *
-	   * @param {string} key The key in the state that you should update.
-	   * @return {function} callback of 1 argument which calls setState() with
-	   *                    the provided keyName and callback argument.
-	   */
-	  createStateKeySetter: function (key) {
-	    return ReactStateSetters.createStateKeySetter(this, key);
-	  }
-	};
-	
-	module.exports = ReactStateSetters;
-
-/***/ },
-/* 250 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
@@ -32278,12 +32190,11 @@
 	module.exports = ImageUploadButton;
 
 /***/ },
-/* 251 */
+/* 249 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-	var ListingForm = __webpack_require__(245);
-	var NavBar = __webpack_require__(240);
+	var ListingForm = __webpack_require__(216);
 	
 	var ListingEdit = React.createClass({
 	  displayName: 'ListingEdit',
@@ -32293,7 +32204,6 @@
 	    return React.createElement(
 	      'div',
 	      null,
-	      React.createElement(NavBar, { history: this.props.history }),
 	      React.createElement(ListingForm, { location: this.props.location, history: this.props.history, type: type })
 	    );
 	  }
@@ -32303,16 +32213,16 @@
 	module.exports = ListingEdit;
 
 /***/ },
-/* 252 */
+/* 250 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	var ReactRouter = __webpack_require__(159);
 	var History = __webpack_require__(159).History;
 	
-	var ListingStore = __webpack_require__(211);
-	var Listing = __webpack_require__(253);
-	var ApiUtil = __webpack_require__(233);
+	var ListingStore = __webpack_require__(251);
+	var Listing = __webpack_require__(252);
+	var ApiUtil = __webpack_require__(221);
 	
 	var ListingShow = React.createClass({
 	  displayName: 'ListingShow',
@@ -32372,14 +32282,43 @@
 	module.exports = ListingShow;
 
 /***/ },
-/* 253 */
+/* 251 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Store = __webpack_require__(231).Store;
+	var ListingConstants = __webpack_require__(227);
+	var AppDispatcher = __webpack_require__(223);
+	var ListingStore = new Store(AppDispatcher);
+	
+	var _listings = [];
+	
+	var resetListings = function (listings) {
+	  _listings = listings;
+	};
+	
+	ListingStore.all = function (listings) {
+	  return _listings.slice(0);
+	};
+	
+	ListingStore.__onDispatch = function (payload) {
+	  switch (payload.actionType) {
+	    case ListingConstants.LISTINGS_RECEIVED:
+	      resetListings(payload.listings);
+	      ListingStore.__emitChange();
+	      break;
+	  }
+	};
+	
+	module.exports = ListingStore;
+
+/***/ },
+/* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	
-	var NavBar = __webpack_require__(240);
-	var Map = __webpack_require__(254);
-	var StarredButton = __webpack_require__(255);
+	var Map = __webpack_require__(253);
+	var StarredButton = __webpack_require__(254);
 	
 	var Listing = React.createClass({
 	  displayName: 'Listing',
@@ -32409,7 +32348,6 @@
 	    return React.createElement(
 	      'div',
 	      null,
-	      React.createElement(NavBar, { history: this.props.history }),
 	      React.createElement(
 	        'div',
 	        { className: 'container' },
@@ -32495,14 +32433,14 @@
 	module.exports = Listing;
 
 /***/ },
-/* 254 */
+/* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
 	
-	var ListingStore = __webpack_require__(211);
-	var ApiUtil = __webpack_require__(233);
+	var ListingStore = __webpack_require__(251);
+	var ApiUtil = __webpack_require__(221);
 	
 	var Map = React.createClass({
 	  displayName: 'Map',
@@ -32567,14 +32505,14 @@
 	module.exports = Map;
 
 /***/ },
-/* 255 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	
-	var StarredStore = __webpack_require__(256);
-	var ApiUtil = __webpack_require__(233);
-	var LinkedStateMixin = __webpack_require__(246);
+	var StarredStore = __webpack_require__(255);
+	var ApiUtil = __webpack_require__(221);
+	var LinkedStateMixin = __webpack_require__(217);
 	
 	var StarButton = React.createClass({
 	  displayName: 'StarButton',
@@ -32643,12 +32581,12 @@
 	module.exports = StarButton;
 
 /***/ },
-/* 256 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Store = __webpack_require__(212).Store;
-	var StarredConstants = __webpack_require__(236);
-	var AppDispatcher = __webpack_require__(230);
+	var Store = __webpack_require__(231).Store;
+	var StarredConstants = __webpack_require__(229);
+	var AppDispatcher = __webpack_require__(223);
 	var StarredStore = new Store(AppDispatcher);
 	
 	var _starred_listings = [];
@@ -32694,13 +32632,12 @@
 	module.exports = StarredStore;
 
 /***/ },
-/* 257 */
+/* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	
-	var Map = __webpack_require__(254);
-	var NavBar = __webpack_require__(240);
+	var Map = __webpack_require__(253);
 	
 	var ListingLocation = React.createClass({
 	  displayName: 'ListingLocation',
@@ -32713,7 +32650,6 @@
 	    return React.createElement(
 	      'div',
 	      null,
-	      React.createElement(NavBar, { history: this.props.history }),
 	      React.createElement(
 	        'div',
 	        { className: 'row' },
@@ -32742,14 +32678,13 @@
 	module.exports = ListingLocation;
 
 /***/ },
-/* 258 */
+/* 257 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	
-	var NavBar = __webpack_require__(240);
-	var UserListingTable = __webpack_require__(259);
-	var UserStarredTable = __webpack_require__(261);
+	var UserListingTable = __webpack_require__(258);
+	var UserStarredTable = __webpack_require__(260);
 	
 	var User = React.createClass({
 	  displayName: 'User',
@@ -32757,38 +32692,33 @@
 	  render: function () {
 	    return React.createElement(
 	      'div',
-	      null,
-	      React.createElement(NavBar, { history: this.props.history }),
+	      { className: 'container' },
 	      React.createElement(
 	        'div',
-	        { className: 'container' },
+	        { className: 'row' },
 	        React.createElement(
 	          'div',
-	          { className: 'row' },
-	          React.createElement(
-	            'div',
-	            { className: 'col-md-6' },
-	            React.createElement(UserListingTable, { history: this.props.history })
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'col-md-6' },
-	            React.createElement(UserStarredTable, { history: this.props.history })
-	          )
+	          { className: 'col-md-6' },
+	          React.createElement(UserListingTable, { history: this.props.history })
 	        ),
 	        React.createElement(
 	          'div',
-	          { className: 'row' },
-	          React.createElement(
-	            'div',
-	            { className: 'col-md-6' },
-	            React.createElement(UserListingTable, { history: this.props.history })
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'col-md-6' },
-	            React.createElement(UserStarredTable, { history: this.props.history })
-	          )
+	          { className: 'col-md-6' },
+	          React.createElement(UserStarredTable, { history: this.props.history })
+	        )
+	      ),
+	      React.createElement(
+	        'div',
+	        { className: 'row' },
+	        React.createElement(
+	          'div',
+	          { className: 'col-md-6' },
+	          React.createElement(UserListingTable, { history: this.props.history })
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'col-md-6' },
+	          React.createElement(UserStarredTable, { history: this.props.history })
 	        )
 	      )
 	    );
@@ -32798,13 +32728,13 @@
 	module.exports = User;
 
 /***/ },
-/* 259 */
+/* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	
-	var UserStore = __webpack_require__(260);
-	var ApiUtil = __webpack_require__(233);
+	var UserStore = __webpack_require__(259);
+	var ApiUtil = __webpack_require__(221);
 	
 	var UserListingTable = React.createClass({
 	  displayName: 'UserListingTable',
@@ -32951,12 +32881,12 @@
 	module.exports = UserListingTable;
 
 /***/ },
-/* 260 */
+/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Store = __webpack_require__(212).Store;
-	var UserConstants = __webpack_require__(235);
-	var AppDispatcher = __webpack_require__(230);
+	var Store = __webpack_require__(231).Store;
+	var UserConstants = __webpack_require__(228);
+	var AppDispatcher = __webpack_require__(223);
 	var UserStore = new Store(AppDispatcher);
 	
 	var _user_listings = [];
@@ -32993,13 +32923,13 @@
 	module.exports = UserStore;
 
 /***/ },
-/* 261 */
+/* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	
-	var StarredStore = __webpack_require__(256);
-	var ApiUtil = __webpack_require__(233);
+	var StarredStore = __webpack_require__(255);
+	var ApiUtil = __webpack_require__(221);
 	
 	var UserStarredTable = React.createClass({
 	  displayName: 'UserStarredTable',
@@ -33126,18 +33056,17 @@
 	module.exports = UserStarredTable;
 
 /***/ },
-/* 262 */
+/* 261 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	
-	var ListingStore = __webpack_require__(211);
-	var FilterParamsStore = __webpack_require__(237);
-	var FilterParamsStore = __webpack_require__(237);
-	var ApiUtil = __webpack_require__(233);
-	var Filter = __webpack_require__(263);
-	var ListingIndex = __webpack_require__(239);
-	var NavBar = __webpack_require__(240);
+	var ListingStore = __webpack_require__(251);
+	var FilterParamsStore = __webpack_require__(230);
+	var FilterParamsStore = __webpack_require__(230);
+	var ApiUtil = __webpack_require__(221);
+	var Filter = __webpack_require__(262);
+	var ListingIndex = __webpack_require__(264);
 	
 	var SearchIndex = React.createClass({
 	  displayName: 'SearchIndex',
@@ -33163,7 +33092,6 @@
 	  filtersChanged: function () {
 	    var newParams = FilterParamsStore.params();
 	    this.setState({ filterParams: newParams });
-	    // FilterParamsStore.reset();
 	    ApiUtil.fetchAllListings();
 	  },
 	
@@ -33184,43 +33112,37 @@
 	
 	    return React.createElement(
 	      'div',
-	      null,
-	      React.createElement(NavBar, { history: this.props.history }),
+	      { className: 'container' },
 	      React.createElement(
 	        'div',
-	        { className: 'container' },
+	        { className: 'row' },
 	        React.createElement(
 	          'div',
-	          { className: 'row' },
+	          { className: 'col-md-3' },
+	          React.createElement(Filter, { filterParams: this.state.filterParams })
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'col-md-9' },
 	          React.createElement(
-	            'div',
-	            { className: 'col-md-3' },
-	            React.createElement(Filter, { filterParams: this.state.filterParams })
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'col-md-9' },
-	            React.createElement(
-	              'ul',
-	              null,
-	              listings
-	            )
+	            'ul',
+	            null,
+	            listings
 	          )
 	        )
 	      )
 	    );
 	  }
-	
 	});
 	
 	module.exports = SearchIndex;
 
 /***/ },
-/* 263 */
+/* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-	var FilterActions = __webpack_require__(264);
+	var FilterActions = __webpack_require__(263);
 	
 	var Filters = React.createClass({
 	  displayName: 'Filters',
@@ -33454,11 +33376,11 @@
 	module.exports = Filters;
 
 /***/ },
-/* 264 */
+/* 263 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var AppDispatcher = __webpack_require__(230);
-	var FilterConstants = __webpack_require__(238);
+	var AppDispatcher = __webpack_require__(223);
+	var FilterConstants = __webpack_require__(247);
 	
 	var FilterActions = {
 	  updateFilters: function (filters) {
@@ -33482,6 +33404,52 @@
 	};
 	
 	module.exports = FilterActions;
+
+/***/ },
+/* 264 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	var ReactRouter = __webpack_require__(159);
+	
+	var ListingIndex = React.createClass({
+	  displayName: 'ListingIndex',
+	
+	  render: function () {
+	    var thumbnail = "http://res.cloudinary.com/mackslist/image/upload/";
+	
+	    if (this.props.listing.images.length > 0) {
+	      thumbnail += "c_scale,h_175,w_250/" + this.props.listing.images[0].url;
+	    }
+	
+	    return React.createElement(
+	      'div',
+	      { className: 'index-items', onClick: this.props.onClick },
+	      React.createElement(
+	        'div',
+	        { className: 'panel panel-default' },
+	        React.createElement(
+	          'div',
+	          { className: 'panel-heading' },
+	          this.props.listing.title
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'panel-body' },
+	          React.createElement('img', { src: thumbnail })
+	        ),
+	        React.createElement(
+	          'div',
+	          { 'class': 'panel-footer' },
+	          '$',
+	          this.props.listing.price
+	        )
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = ListingIndex;
 
 /***/ }
 /******/ ]);

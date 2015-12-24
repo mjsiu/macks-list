@@ -1,60 +1,43 @@
 var React = require('react');
 
-var ListingStore = require('../../stores/listing');
-var ApiUtil = require('../../util/api_utils');
-var ListingIndex = require('../listings/listing_index');
-var NavBar = require('./navbar');
-var Footer = require('./footer');
-var Splash = require('./splash');
+var Splash = React.createClass({
 
-var Index = React.createClass({
-  getInitialState: function() {
-    return {
-      listings: ListingStore.all()
-    }
-  },
+  createCities: function() {
+    var city_names = ["San Francisco", "San Mateo", "Oakland", "San Jose"];
 
-  onChange: function () {
-    this.setState({listings: ListingStore.all() })
-  },
-
-  componentDidMount: function() {
-    this.listingListener = ListingStore.addListener(this.onChange);
-    ApiUtil.fetchAllListings();
-  },
-
-  componentWillUnmount: function () {
-    this.listingListener.remove();
-  },
-
-  handleListingClick: function (listing) {
-    this.props.history.pushState(null, "/listings/" + listing.id, {})
+    var cities = city_names.map(function(city_name){
+      return (
+        <div className="index-items">
+          <div className="panel panel-default">
+            <div className="panel-heading">{city_name}</div>
+            <div className="panel-body"><img src=""></img></div>
+            <div class="panel-footer">footer</div>
+          </div>
+        </div>
+      );
+    });
+    return cities;
   },
 
   render: function() {
-    var handleListingClick = this.handleListingClick;
-    var listings = this.state.listings.map(function(listing, idx) {
-      var boundClick = handleListingClick.bind(null,listing)
-      return <ListingIndex key={listing.id} listing={listing} onClick={boundClick}></ListingIndex>
-    });
+    var cities = this.createCities();
 
     return (
       <div>
-        <NavBar history={this.props.history}/>
 
-        <Splash/>
-        <div className="container">
-
-      <br> </br>
-      <br> </br>
-        <ul>
-          {listings}
-        </ul>
-
+      <div className="splash-area">
+        <h2>Search through popular Bay Area Cities</h2>
       </div>
-    </div>
+
+      <div className="row">
+        <div className="col-md-12">
+            {cities}
+        </div>
+      </div>
+
+     </div>
     );
   }
 });
 
-module.exports = Index;
+module.exports = Splash;

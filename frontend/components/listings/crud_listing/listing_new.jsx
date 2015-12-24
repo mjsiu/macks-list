@@ -1,6 +1,5 @@
 var React = require('react');
 var ListingForm = require('./listing_form');
-var NavBar = require('../../navigation/navbar');
 
 var ListingNew = React.createClass({
 
@@ -8,9 +7,7 @@ var ListingNew = React.createClass({
     var type = "New Listing";
 
     return (
-      <div>
-        <NavBar history={this.props.history}/>
-
+      <div className="container">
         <ListingForm location={this.props.location} history={this.props.history} type={type}/>
       </div>
     )

@@ -4,25 +4,14 @@ var ReactRouter = require('react-router');
 var Router = ReactRouter.Router;
 var Route = ReactRouter.Route;
 var IndexRoute = ReactRouter.IndexRoute;
+var App = require('./components/navigation/app');
 var Index = require('./components/navigation/index');
 var ListingNew = require('./components/listings/crud_listing/listing_new');
 var ListingEdit = require('./components/listings/crud_listing/listing_edit');
 var ListingShow = require('./components/listings/listing_show');
 var ListingLocation = require('./components/listings/crud_listing/listing_location');
 var UserShow = require('./components/user/user_show');
-var SearchListings = require('./components/search/search_index')
-
-// TODO refactor the routes
-
-var App = React.createClass({
-  render: function(){
-    return (
-        <div>
-          {this.props.children}
-        </div>
-    );
-  }
-});
+var SearchListings = require('./components/search/search_index');
 
 var routes = (
     <Route path="/" component={App}>

@@ -4,7 +4,9 @@ var Footer = React.createClass({
 
   render: function() {
     return (
-      <div className="footer"></div>
+      <div className="navbar-fixed-bottom">
+        
+      </div>
     );
   }
 
