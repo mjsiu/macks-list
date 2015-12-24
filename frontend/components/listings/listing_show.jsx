@@ -1,6 +1,5 @@
 var React = require('react');
 var ReactRouter = require('react-router');
-var History = require('react-router').History;
 
 var ListingStore = require('../../stores/listing');
 var Listing = require('./listing');
@@ -8,8 +7,6 @@ var ApiUtil = require('../../util/api_utils');
 
 
 var ListingShow = React.createClass ({
-  mixins: [History],
-
   getInitialState: function () {
    var listingId = this.props.params.listingId;
    var listing = this.findListingById(listingId) || {} ;

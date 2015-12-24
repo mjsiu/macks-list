@@ -27,6 +27,7 @@ var User = React.createClass ({
         </div>
     );
   }
+
 });
 
 module.exports = User;

@@ -38,7 +38,7 @@ var SearchIndex = React.createClass ({
   },
 
   handleListingClick: function (listing) {
-    this.props.history.pushState(null, "/listings/" + listing.id, {})
+    this.props.history.pushState(null, "/listings/" + listing.id)
   },
 
   render: function() {

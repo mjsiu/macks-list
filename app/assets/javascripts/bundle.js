@@ -24449,12 +24449,7 @@
 	      'div',
 	      null,
 	      React.createElement(NavBar, { history: this.props.history }),
-	      React.createElement(
-	        'div',
-	        null,
-	        this.props.children
-	      ),
-	      React.createElement(Footer, null)
+	      this.props.children
 	    );
 	  }
 	});
@@ -24676,7 +24671,7 @@
 	  displayName: "Footer",
 	
 	  render: function () {
-	    return React.createElement("div", { className: "navbar-fixed-bottom" });
+	    return React.createElement("div", { className: "footer" });
 	  }
 	
 	});
@@ -24688,9 +24683,10 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
+	var Footer = __webpack_require__(213);
 	
 	var Splash = React.createClass({
-	  displayName: "Splash",
+	  displayName: 'Splash',
 	
 	  createCities: function () {
 	    var city_list = [{ "name": "San Francisco", "url": "v1450936881/sanfrancisco_qpvztc.png" }, { "name": "Oakland", "url": "v1450936881/oakland_zock1c.png" }, { "name": "San Mateo", "url": "v1450936881/sanmateo_kemz9s.png" }, { "name": "San Jose", "url": "v1450936881/sanjose_rnyemn.png" }, { "name": "Marin County", "url": "v1450940342/marin_t2kc8q.png" }];
@@ -24698,20 +24694,20 @@
 	    var cities = city_list.map(function (city, idx) {
 	      var partial_url = "http://res.cloudinary.com/mackslist/image/upload/c_scale,w_350/";
 	      return React.createElement(
-	        "div",
-	        { key: idx, className: "col-centered" },
+	        'div',
+	        { key: idx, className: 'col-centered' },
 	        React.createElement(
-	          "div",
-	          { className: "panel panel-default" },
+	          'div',
+	          { className: 'panel panel-default' },
 	          React.createElement(
-	            "div",
-	            { className: "panel-heading" },
+	            'div',
+	            { className: 'panel-heading' },
 	            city["name"]
 	          ),
 	          React.createElement(
-	            "div",
-	            { className: "panel-body" },
-	            React.createElement("img", { src: partial_url + city["url"] })
+	            'div',
+	            { className: 'panel-body' },
+	            React.createElement('img', { src: partial_url + city["url"] })
 	          )
 	        )
 	      );
@@ -24725,15 +24721,15 @@
 	    var categories = category_list.map(function (category, idx) {
 	      var partial_url = "http://res.cloudinary.com/mackslist/image/upload/";
 	      return React.createElement(
-	        "div",
-	        { key: idx, className: "col-centered" },
+	        'div',
+	        { key: idx, className: 'col-centered' },
 	        React.createElement(
-	          "div",
-	          { className: "panel panel-default" },
+	          'div',
+	          { className: 'panel panel-default' },
 	          React.createElement(
-	            "div",
-	            { className: "panel-body" },
-	            React.createElement("img", { src: partial_url + category["url"] })
+	            'div',
+	            { className: 'panel-body' },
+	            React.createElement('img', { src: partial_url + category["url"] })
 	          )
 	        )
 	      );
@@ -24745,81 +24741,86 @@
 	    var categories = this.createCategories();
 	
 	    return React.createElement(
-	      "div",
-	      { className: "row-centered" },
+	      'div',
+	      { className: 'row-centered' },
 	      React.createElement(
-	        "div",
-	        { className: "splash-area1" },
+	        'div',
+	        { className: 'splash-area1' },
 	        React.createElement(
-	          "div",
-	          { className: "splash-area1-content" },
+	          'div',
+	          { className: 'splash-area1-content' },
 	          React.createElement(
-	            "h1",
+	            'h1',
 	            null,
-	            "MACKSLIST"
+	            'MACKSLIST'
 	          )
 	        )
 	      ),
 	      React.createElement(
-	        "div",
-	        { className: "splash-area2" },
+	        'div',
+	        { className: 'splash-area2' },
 	        React.createElement(
-	          "div",
-	          { className: "splash-area2-content" },
+	          'div',
+	          { className: 'splash-area2-content' },
 	          React.createElement(
-	            "h1",
+	            'h1',
 	            null,
-	            "ABOUT"
+	            'ABOUT'
 	          ),
 	          React.createElement(
-	            "p",
+	            'p',
 	            null,
-	            "\"In this article, I’d like to reacquaint you with the humble workhorse of communication that is the paragraph. Paragraphs are everywhere. In fact, at the high risk of stating the obvious, you are reading one now. Despite their ubiquity, we frequently neglect their presentation. This is a mistake. Here, we’ll refer to some time-honored typesetting conventions, with an emphasis on readability, and offer guidance on adapting them effectively for devices and screens. We’ll see that the ability to embed fonts with @font-face is not by itself a solution to all of our typographic challenges.\""
+	            '"In this article, I’d like to reacquaint you with the humble workhorse of communication that is the paragraph. Paragraphs are everywhere. In fact, at the high risk of stating the obvious, you are reading one now. Despite their ubiquity, we frequently neglect their presentation. This is a mistake. Here, we’ll refer to some time-honored typesetting conventions, with an emphasis on readability, and offer guidance on adapting them effectively for devices and screens. We’ll see that the ability to embed fonts with @font-face is not by itself a solution to all of our typographic challenges."'
 	          )
 	        )
 	      ),
-	      React.createElement("div", { className: "splash-area3" }),
+	      React.createElement('div', { className: 'splash-area3' }),
 	      React.createElement(
-	        "div",
-	        { className: "splash-area4" },
+	        'div',
+	        { className: 'splash-area4' },
 	        React.createElement(
-	          "div",
-	          { className: "container" },
-	          React.createElement("br", null),
+	          'div',
+	          { className: 'container' },
+	          React.createElement('br', null),
 	          React.createElement(
-	            "h1",
+	            'h1',
 	            null,
-	            "SEARCH"
+	            'SEARCH'
 	          ),
 	          React.createElement(
-	            "h4",
+	            'h4',
 	            null,
-	            "MAJOR BAY AREA CITIES"
+	            'MAJOR BAY AREA CITIES'
 	          ),
 	          React.createElement(
-	            "div",
+	            'div',
 	            null,
 	            cities
 	          )
 	        )
 	      ),
 	      React.createElement(
-	        "div",
-	        { className: "splash-area5" },
+	        'div',
+	        { className: 'splash-area5' },
 	        React.createElement(
-	          "div",
-	          { className: "container" },
+	          'div',
+	          { className: 'container' },
 	          React.createElement(
-	            "h1",
+	            'h1',
 	            null,
-	            "CATEGORIES"
+	            'CATEGORIES'
 	          ),
 	          React.createElement(
-	            "div",
-	            { className: "col-md-11" },
+	            'div',
+	            { className: 'col-md-11' },
 	            categories
 	          )
 	        )
+	      ),
+	      React.createElement(
+	        'div',
+	        { className: 'col-md-12' },
+	        React.createElement('div', { className: 'footer' })
 	      )
 	    );
 	  }
@@ -25331,7 +25332,6 @@
 	var ApiUtil = {
 	
 	  fetchAllListings: function () {
-	    debugger;
 	    var filter = FilterParamsStore.params();
 	    $.get('api/listings', filter, function (listings) {
 	      ApiActions.receiveAllListings(listings);
@@ -32296,7 +32296,6 @@
 
 	var React = __webpack_require__(1);
 	var ReactRouter = __webpack_require__(159);
-	var History = __webpack_require__(159).History;
 	
 	var ListingStore = __webpack_require__(251);
 	var Listing = __webpack_require__(252);
@@ -32304,8 +32303,6 @@
 	
 	var ListingShow = React.createClass({
 	  displayName: 'ListingShow',
-	
-	  mixins: [History],
 	
 	  getInitialState: function () {
 	    var listingId = this.props.params.listingId;
@@ -32394,12 +32391,15 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
+	var History = __webpack_require__(159).History;
 	
 	var Map = __webpack_require__(253);
 	var StarredButton = __webpack_require__(254);
 	
 	var Listing = React.createClass({
 	  displayName: 'Listing',
+	
+	  mixins: [History],
 	
 	  getInitialState: function () {
 	    return {
@@ -32414,7 +32414,7 @@
 	  imageCheck: function () {
 	    var partial = "http://res.cloudinary.com/mackslist/image/upload/c_scale,h_450/";
 	
-	    if (this.props.listing.images[0]) {
+	    if (this.props.listing.images) {
 	      this.setState({ primary_image: partial + this.props.listing.images[0].url });
 	    } else {
 	      this.setState({ primary_image: partial + "v1450309841/logo_k5fymd.png" });
@@ -32422,7 +32422,7 @@
 	  },
 	
 	  render: function () {
-	
+	    debugger;
 	    return React.createElement(
 	      'div',
 	      null,
@@ -32522,19 +32522,6 @@
 	
 	var Map = React.createClass({
 	  displayName: 'Map',
-	
-	  clickMapHandler: function (e) {
-	    var lat = e.latLng.lat();
-	    var lng = e.latLng.lng();
-	    var coords = {};
-	    coords.lat = lat;
-	    coords.lng = lng;
-	    this.props.onMapClick(coords);
-	  },
-	
-	  onChange: function () {
-	    this.setState({ listings: ListingStore.all() });
-	  },
 	
 	  setMap: function () {
 	    if (this.props.listing) {
@@ -32715,7 +32702,7 @@
 
 	var React = __webpack_require__(1);
 	
-	var Map = __webpack_require__(253);
+	var CreateMap = __webpack_require__(265);
 	
 	var ListingLocation = React.createClass({
 	  displayName: 'ListingLocation',
@@ -32727,26 +32714,24 @@
 	  render: function () {
 	    return React.createElement(
 	      'div',
-	      null,
+	      { className: 'container' },
 	      React.createElement(
 	        'div',
 	        { className: 'row' },
-	        React.createElement('div', { className: 'col-md-3' }),
 	        React.createElement(
 	          'div',
-	          { className: 'col-md-5' },
+	          { className: 'page-header' },
 	          React.createElement(
-	            'div',
-	            { className: 'location-map' },
-	            React.createElement(
-	              'h2',
-	              null,
-	              'Click Listing Location!'
-	            ),
-	            React.createElement(Map, { onMapClick: this.handleMapClick })
+	            'h1',
+	            null,
+	            'CLICK LISTING LOCATION'
 	          )
 	        ),
-	        React.createElement('div', { className: 'col-md-3' })
+	        React.createElement(
+	          'div',
+	          { className: 'col-md-12' },
+	          React.createElement(CreateMap, { onMapClick: this.handleMapClick })
+	        )
 	      )
 	    );
 	  }
@@ -32801,6 +32786,7 @@
 	      )
 	    );
 	  }
+	
 	});
 	
 	module.exports = User;
@@ -32819,21 +32805,29 @@
 	
 	  getInitialState: function () {
 	    return {
-	      user_listings: UserStore.all()
+	      user_listings: this.getUserListings()
 	    };
 	  },
 	
-	  onChange: function () {
-	    this.setState({ user_listings: UserStore.all() });
+	  getUserListings: function () {
+	    return UserStore.all();
+	  },
+	
+	  onListingChange: function () {
+	    this.setState({ user_listings: this.getUserListings() });
 	  },
 	
 	  componentDidMount: function () {
-	    this.userListener = UserStore.addListener(this.onChange);
+	    this.userListener = UserStore.addListener(this.onListingChange);
 	    ApiUtil.fetchAllUserListings();
 	  },
 	
 	  componentWillUnmount: function () {
 	    this.userListener.remove();
+	  },
+	
+	  handleListingClick: function (listing) {
+	    this.props.history.pushState(null, "/listings/" + listing.id, listing);
 	  },
 	
 	  handleDeleteClick: function (listing) {
@@ -32844,20 +32838,27 @@
 	    this.props.history.pushState(null, "/listings/edit/" + listing.id, listing);
 	  },
 	
-	  render: function () {
+	  createListingElements: function () {
+	    var handleListingClick = this.handleListingClick;
 	    var handleDeleteClick = this.handleDeleteClick;
 	    var handleEditClick = this.handleEditClick;
 	
-	    var user_listings = this.state.user_listings.map((function (listing, idx) {
+	    var user_listings = this.state.user_listings.map(function (listing, idx) {
+	      var boundListingClick = handleListingClick.bind(null, listing);
 	      var boundDeleteClick = handleDeleteClick.bind(null, listing);
 	      var boundEditClick = handleEditClick.bind(null, listing);
+	
 	      return React.createElement(
 	        'tr',
-	        { key: listing.id },
+	        { key: listing.id, listing: listing },
 	        React.createElement(
 	          'td',
 	          null,
-	          listing.title
+	          React.createElement(
+	            'a',
+	            { onClick: boundListingClick },
+	            listing.title
+	          )
 	        ),
 	        React.createElement(
 	          'td',
@@ -32894,7 +32895,13 @@
 	          listing.description.slice(0, 50) + "..."
 	        )
 	      );
-	    }).bind(this));
+	    });
+	
+	    return user_listings;
+	  },
+	
+	  render: function () {
+	    var user_listings = this.createListingElements();
 	
 	    return React.createElement(
 	      'div',
@@ -32953,7 +32960,6 @@
 	      )
 	    );
 	  }
-	
 	});
 	
 	module.exports = UserListingTable;
@@ -33014,16 +33020,20 @@
 	
 	  getInitialState: function () {
 	    return {
-	      starred_listings: StarredStore.all()
+	      starred_listings: this.getStarredListings()
 	    };
 	  },
 	
-	  onChange: function () {
-	    this.setState({ starred_listings: StarredStore.all() });
+	  getStarredListings: function () {
+	    return StarredStore.all();
+	  },
+	
+	  onStarredChange: function () {
+	    this.setState({ starred_listings: this.getStarredListings() });
 	  },
 	
 	  componentDidMount: function () {
-	    this.starredListener = StarredStore.addListener(this.onChange);
+	    this.starredListener = StarredStore.addListener(this.onStarredChange);
 	    ApiUtil.fetchStarredUserListings();
 	  },
 	
@@ -33031,22 +33041,33 @@
 	    this.starredListener.remove();
 	  },
 	
+	  handleListingClick: function (listing) {
+	    this.props.history.pushState(null, "/listings/" + listing.id);
+	  },
+	
 	  handleUnstarClick: function (starred_listing) {
 	    ApiUtil.unstarListing(starred_listing);
 	  },
 	
 	  render: function () {
+	    var handleListingClick = this.handleListingClick;
 	    var handleUnstarClick = this.handleUnstarClick;
 	
 	    var starred_listings = this.state.starred_listings.map(function (listing, idx) {
+	      var boundListingClick = handleListingClick.bind(null, listing);
 	      var boundUnstarClick = handleUnstarClick.bind(null, listing);
+	
 	      return React.createElement(
 	        'tr',
-	        { key: listing.id },
+	        { key: listing.id, listing: listing },
 	        React.createElement(
 	          'td',
 	          null,
-	          listing.title
+	          React.createElement(
+	            'a',
+	            { onClick: boundListingClick },
+	            listing.title
+	          )
 	        ),
 	        React.createElement(
 	          'td',
@@ -33074,6 +33095,7 @@
 	          listing.description.slice(0, 50) + "..."
 	        )
 	      );
+	      return starred_listings;
 	    });
 	
 	    return React.createElement(
@@ -33178,7 +33200,7 @@
 	  },
 	
 	  handleListingClick: function (listing) {
-	    this.props.history.pushState(null, "/listings/" + listing.id, {});
+	    this.props.history.pushState(null, "/listings/" + listing.id);
 	  },
 	
 	  render: function () {
@@ -33226,7 +33248,6 @@
 	  displayName: 'Filters',
 	
 	  cityChanged: function (e) {
-	    debugger;
 	    FilterActions.updateCity(e.target.id);
 	  },
 	
@@ -33528,6 +33549,46 @@
 	});
 	
 	module.exports = ListingIndex;
+
+/***/ },
+/* 265 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	var ReactDOM = __webpack_require__(158);
+	
+	var ListingStore = __webpack_require__(251);
+	var ApiUtil = __webpack_require__(221);
+	
+	var Map = React.createClass({
+	  displayName: 'Map',
+	
+	  clickMapHandler: function (e) {
+	    var lat = e.latLng.lat();
+	    var lng = e.latLng.lng();
+	    var coords = {};
+	    coords.lat = lat;
+	    coords.lng = lng;
+	    this.props.onMapClick(coords);
+	  },
+	
+	  componentDidMount: function () {
+	    var mapDOMNode = this.refs.map;
+	    var mapOptions = {
+	      center: { lat: 37.7758, lng: -122.435 },
+	      zoom: 13
+	    };
+	    this.map = new google.maps.Map(mapDOMNode, mapOptions);
+	    this.mapClickListener = google.maps.event.addListener(this.map, "dblclick", this.clickMapHandler);
+	  },
+	
+	  render: function () {
+	    return React.createElement('div', { className: 'create-map', ref: 'map' });
+	  }
+	
+	});
+	
+	module.exports = Map;
 
 /***/ }
 /******/ ]);

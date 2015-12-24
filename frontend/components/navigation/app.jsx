@@ -9,10 +9,9 @@ var App = React.createClass({
     return (
       <div>
         <NavBar history={this.props.history}/>
-        <div>
+
         {this.props.children}
-      </div>
-        <Footer/>
+
     </div>
     );
   }

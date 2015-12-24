@@ -17,24 +17,25 @@ User.create(username: "escobar", email: "ecobar@gmail.com", password: "password"
 
 Listing.create(title: "Limited Edition Book", description: Faker::Hipster.paragraphs(3, false),
 price: 50, address: "Powell Street, San Francisco, California", user_id:
-1, city_id: 1, category_id: 1)
+1, city_id: 1, category_id: 1, latitude: 37.774733, longitude: -122.418702)
 Listing.create(title: "Homeade Pasta", description: Faker::Hipster.paragraphs(3, false),
 price: 300, address: "3rd Street, San Mateo, California", user_id: 2, city_id: 2,
-category_id: 2)
+category_id: 2, latitude: 37.774733, longitude: -122.418702)
 Listing.create(title: "Boat", description: Faker::Hipster.paragraphs(3, false), price: 50, address:
-"Berkeley, Berkeley, California", user_id: 3, city_id: 3, category_id: 3)
+"Berkeley, Berkeley, California", user_id: 3, city_id: 3, category_id: 3,
+latitude: 37.774733, longitude: -122.418702)
 Listing.create(title: "Radio", description: Faker::Hipster.paragraphs(3, false),
 price: 100, address: "Powell Street, San Francisco, California", user_id:
-1, city_id: 3, category_id: 3)
+1, city_id: 3, category_id: 3, latitude: 37.774733, longitude: -122.418702)
 Listing.create(title: "Briefcase", description: Faker::Hipster.paragraphs(3, false),
 price: 1200, address: "Powell Street, San Francisco, California", user_id:
-1, city_id: 4, category_id: 4)
+1, city_id: 4, category_id: 4, latitude: 37.774733, longitude: -122.418702)
 Listing.create(title: "Motorcycle", description: Faker::Hipster.paragraphs(3, false),
 price: 450, address: "Powell Street, San Francisco, California", user_id:
-1, city_id: 5, category_id: 1)
+1, city_id: 5, category_id: 1, latitude: 37.774733, longitude: -122.418702)
 Listing.create(title: "Camera", description: Faker::Hipster.paragraphs(3, false),
 price: 15, address: "Powell Street, San Francisco, California", user_id:
-1, city_id: 1, category_id: 2)
+1, city_id: 1, category_id: 2, latitude: 37.774733, longitude: -122.418702)
 Listing.create(title: "Laptop", description: Faker::Hipster.paragraphs(3, false),
 price: 79, address: "Powell Street, San Francisco, California", user_id:
 1, city_id: 1, category_id: 1,

@@ -1,4 +1,5 @@
 var React = require('react');
+var Footer = require('./footer');
 
 var Splash = React.createClass({
 
@@ -98,6 +99,13 @@ var Splash = React.createClass({
               {categories}
 
           </div>
+        </div>
+
+      </div>
+
+      <div className="col-md-12">
+        <div className="footer">
+          
         </div>
 
       </div>

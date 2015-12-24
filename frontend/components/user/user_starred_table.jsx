@@ -6,16 +6,20 @@ var ApiUtil = require('../../util/api_utils');
 var UserStarredTable = React.createClass({
   getInitialState: function() {
     return {
-      starred_listings: StarredStore.all()
+      starred_listings: this.getStarredListings()
     }
   },
 
-  onChange: function() {
-    this.setState({starred_listings: StarredStore.all()});
+  getStarredListings: function() {
+    return StarredStore.all();
+  },
+
+  onStarredChange: function() {
+    this.setState({ starred_listings: this.getStarredListings() });
   },
 
   componentDidMount: function() {
-    this.starredListener = StarredStore.addListener(this.onChange);
+    this.starredListener = StarredStore.addListener(this.onStarredChange);
     ApiUtil.fetchStarredUserListings();
   },
 
@@ -23,25 +27,33 @@ var UserStarredTable = React.createClass({
     this.starredListener.remove();
   },
 
+  handleListingClick: function (listing) {
+    this.props.history.pushState(null, "/listings/" + listing.id)
+  },
+
   handleUnstarClick: function(starred_listing) {
     ApiUtil.unstarListing(starred_listing)
   },
 
   render: function() {
+    var handleListingClick = this.handleListingClick;
     var handleUnstarClick = this.handleUnstarClick;
 
     var starred_listings = this.state.starred_listings.map(function(listing,idx){
+      var boundListingClick = handleListingClick.bind(null,listing);
       var boundUnstarClick = handleUnstarClick.bind(null,listing);
+
       return (
-        <tr key={listing.id}>
-          <td>{listing.title}</td>
+        <tr key={listing.id} listing={listing}>
+          <td><a onClick={boundListingClick}>{listing.title}</a></td>
           <td><a onClick={boundUnstarClick}>Unstar</a></td>
           <td>${listing.price}</td>
           <td>{listing.create_date}</td>
           <td>{listing.description.slice(0,50) + "..."}</td>
         </tr>
-      )
-    })
+      );
+      return starred_listings;
+    });
 
     return (
       <div>

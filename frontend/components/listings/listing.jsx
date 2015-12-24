@@ -1,9 +1,12 @@
 var React = require('react');
+var History = require('react-router').History
 
 var Map = require('./map');
 var StarredButton = require('../user/star_button');
 
 var Listing = React.createClass({
+  mixins: [History],
+
   getInitialState: function() {
     return {
       primary_image: ''
@@ -17,7 +20,7 @@ var Listing = React.createClass({
   imageCheck: function() {
     var partial = "http://res.cloudinary.com/mackslist/image/upload/c_scale,h_450/";
 
-    if (this.props.listing.images[0]) {
+    if (this.props.listing.images) {
       this.setState({primary_image: partial + this.props.listing.images[0].url})
     } else {
       this.setState({primary_image: partial + "v1450309841/logo_k5fymd.png"})
@@ -25,7 +28,7 @@ var Listing = React.createClass({
   },
 
   render: function () {
-
+    debugger
     return (
       <div>
 

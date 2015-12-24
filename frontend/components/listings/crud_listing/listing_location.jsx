@@ -1,6 +1,6 @@
 var React = require('react');
 
-var Map = require('../map');
+var CreateMap = require('../create_map');
 
 var ListingLocation = React.createClass ({
 
@@ -10,16 +10,17 @@ var ListingLocation = React.createClass ({
 
   render: function(){
     return (
-      <div>
+      <div className="container">
         <div className="row">
-          <div className="col-md-3"></div>
-          <div className="col-md-5">
-          <div className="location-map">
-          <h2>Click Listing Location!</h2>
-            <Map onMapClick={this.handleMapClick}/>
+
+          <div className="page-header">
+            <h1>CLICK LISTING LOCATION</h1>
           </div>
+
+          <div className="col-md-12">
+            <CreateMap onMapClick={this.handleMapClick}/>
           </div>
-          <div className="col-md-3"></div>
+
         </div>
      </div>
     );

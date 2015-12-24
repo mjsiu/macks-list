@@ -5,20 +5,6 @@ var ListingStore = require('../../stores/listing');
 var ApiUtil = require('../../util/api_utils');
 
 var Map = React.createClass ({
-
-  clickMapHandler: function (e) {
-    var lat = e.latLng.lat();
-    var lng = e.latLng.lng();
-    var coords = {};
-    coords.lat = lat;
-    coords.lng = lng;
-    this.props.onMapClick(coords);
-  },
-
-  onChange: function () {
-    this.setState({listings: ListingStore.all() });
-  },
-
   setMap: function () {
     if (this.props.listing) {
     var map = this.map
@@ -63,7 +49,7 @@ var Map = React.createClass ({
       </div>
     );
   }
-
+  
 });
 
 module.exports = Map;
