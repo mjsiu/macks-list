@@ -28,7 +28,6 @@ var Listing = React.createClass({
   },
 
   render: function () {
-
     return (
       <div>
       <br/>

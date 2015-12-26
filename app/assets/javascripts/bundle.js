@@ -24689,7 +24689,7 @@
 	var Splash = React.createClass({
 	  displayName: 'Splash',
 	
-	  createCities: function () {
+	  createCityElements: function () {
 	    var city_list = [{ "name": "San Francisco", "url": "v1450936881/sanfrancisco_qpvztc.png" }, { "name": "Oakland", "url": "v1450936881/oakland_zock1c.png" }, { "name": "San Mateo", "url": "v1450936881/sanmateo_kemz9s.png" }, { "name": "San Jose", "url": "v1450936881/sanjose_rnyemn.png" }, { "name": "Marin County", "url": "v1450940342/marin_t2kc8q.png" }];
 	
 	    var cities = city_list.map(function (city, idx) {
@@ -24716,7 +24716,7 @@
 	    return cities;
 	  },
 	
-	  createCategories: function () {
+	  createCategoryElements: function () {
 	    var category_list = [{ "category": "Appliances", "url": "v1450981839/fridge3_1_nnofvd.png" }, { "category": "Automotive", "url": "v1450982231/car80_leqiqv.png" }, { "category": "Clothing", "url": "v1450982232/winter-clothes_hs6lj4.png" }, { "category": "Electronics", "url": "v1450982231/computer197_wjk3dj.png" }, { "category": "Farm and Garden", "url": "v1450982231/flowers12_eo6eal.png" }, { "category": "Health and Beauty", "url": "v1450982232/heart8_tnjrlb.png" }, { "category": "Home", "url": "v1450982232/home168_aqifxo.png" }, { "category": "Jewelry", "url": "v1450982231/diamond4_xqeqwg.png" }, { "category": "Misc", "url": "v1450982231/bald_qhpjiv.png" }, { "category": "Musical Instruments", "url": "v1450982232/guitars_t5zlgf.png" }, { "category": "Pets", "url": "v1450982231/dog50_g8mrlb.png" }, { "category": "Sports", "url": "v1450982232/soccer19_fn5icv.png" }];
 	
 	    var categories = category_list.map(function (category, idx) {
@@ -24739,8 +24739,8 @@
 	  },
 	
 	  render: function () {
-	    var cities = this.createCities();
-	    var categories = this.createCategories();
+	    var cities = this.createCityElements();
+	    var categories = this.createCategoryElements();
 	
 	    return React.createElement(
 	      'div',
@@ -32440,7 +32440,6 @@
 	  },
 	
 	  render: function () {
-	
 	    return React.createElement(
 	      'div',
 	      null,
@@ -33213,7 +33212,7 @@
 	var FilterParamsStore = __webpack_require__(230);
 	var ApiUtil = __webpack_require__(221);
 	var Filter = __webpack_require__(263);
-	var ListingIndex = __webpack_require__(265);
+	var ListingIndex = __webpack_require__(264);
 	
 	var SearchIndex = React.createClass({
 	  displayName: 'SearchIndex',
@@ -33260,7 +33259,10 @@
 	    var listings = this.state.listings.map(function (listing, idx) {
 	      var boundClick = handleListingClick.bind(null, listing);
 	
-	      return React.createElement(ListingIndex, { key: listing.id, listing: listing, onClick: boundClick });
+	      return React.createElement(ListingIndex, {
+	        key: listing.id,
+	        listing: listing,
+	        onClick: boundClick });
 	    });
 	
 	    return React.createElement(
@@ -33297,17 +33299,26 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-	var FilterActions = __webpack_require__(264);
+	var FilterActions = __webpack_require__(265);
 	
 	var Filters = React.createClass({
 	  displayName: 'Filters',
 	
-	  cityChanged: function (e) {
-	    FilterActions.updateCity(e.target.id);
+	  getInitialState: function () {
+	    return {
+	      city: 0,
+	      category: 0
+	    };
 	  },
 	
-	  categoryChanged: function (e) {
-	    FilterActions.updateCategory(e.target.id);
+	  cityChanged: function (city) {
+	    FilterActions.updateCity(city.id);
+	    this.setState({ city: city.id });
+	  },
+	
+	  categoryChanged: function (category) {
+	    FilterActions.updateCategory(category.id);
+	    this.setState({ category: category.id });
 	  },
 	
 	  updateFilters: function (city, category) {
@@ -33316,7 +33327,64 @@
 	    });
 	  },
 	
+	  createCityElements: function () {
+	    var cities_list = [{ "name": "All Cities", "id": 0 }, { "name": "San Francisco", "id": 1 }, { "name": "Oakland", "id": 2 }, { "name": "Berkeley", "id": 3 }, { "name": "San Mateo", "id": 4 }, { "name": "San Jose", "id": 5 }];
+	
+	    var handleCityChanged = this.cityChanged;
+	    var cities = cities_list.map((function (city, idx) {
+	      var boundCityChanged = handleCityChanged.bind(null, city);
+	      var selectedState = "list-group-item";
+	
+	      if (city.id === this.state.city) {
+	        selectedState = "list-group-item active";
+	      }
+	
+	      return React.createElement(
+	        'li',
+	        { className: selectedState },
+	        React.createElement(
+	          'a',
+	          {
+	            onClick: boundCityChanged,
+	            id: city.id },
+	          city.name
+	        )
+	      );
+	    }).bind(this));
+	    return cities;
+	  },
+	
+	  createCategoryElements: function () {
+	    var category_list = [{ "category": "All Categories", "id": 0 }, { "category": "Appliances", "id": 1 }, { "category": "Automotive", "id": 2 }, { "category": "Clothing", "id": 3 }, { "category": "Electronics", "id": 4 }, { "category": "Farm and Garden", "id": 5 }, { "category": "Health and Beauty", "id": 6 }, { "category": "Home", "id": 7 }, { "category": "Jewelry", "id": 8 }, { "category": "Misc", "id": 9 }, { "category": "Musical Instruments", "id": 10 }, { "category": "Pets", "id": 11 }, { "category": "Sports", "id": 12 }];
+	
+	    var handleCategoryChanged = this.categoryChanged;
+	    var categories = category_list.map((function (category, idx) {
+	      var boundCategoryChanged = handleCategoryChanged.bind(null, category);
+	      var selectedState = "list-group-item";
+	
+	      if (category.id === this.state.category) {
+	        selectedState = "list-group-item active";
+	      }
+	
+	      return React.createElement(
+	        'li',
+	        { className: selectedState },
+	        React.createElement(
+	          'a',
+	          {
+	            onClick: boundCategoryChanged,
+	            id: category.id },
+	          category.category
+	        )
+	      );
+	    }).bind(this));
+	    return categories;
+	  },
+	
 	  render: function () {
+	    var cities = this.createCityElements();
+	    var categories = this.createCategoryElements();
+	
 	    return React.createElement(
 	      'div',
 	      { className: 'container' },
@@ -33351,90 +33419,7 @@
 	                React.createElement(
 	                  'ul',
 	                  { className: 'list-group' },
-	                  React.createElement(
-	                    'li',
-	                    { className: 'list-group-item' },
-	                    React.createElement(
-	                      'a',
-	                      { onClick: this.cityChanged, id: 0 },
-	                      'All Cities'
-	                    ),
-	                    React.createElement(
-	                      'span',
-	                      { className: 'badge' },
-	                      '# of listings'
-	                    )
-	                  ),
-	                  React.createElement(
-	                    'li',
-	                    { className: 'list-group-item' },
-	                    React.createElement(
-	                      'a',
-	                      { onClick: this.cityChanged, id: 1 },
-	                      'San Francisco'
-	                    ),
-	                    React.createElement(
-	                      'span',
-	                      { className: 'badge' },
-	                      '# of listings'
-	                    )
-	                  ),
-	                  React.createElement(
-	                    'li',
-	                    { className: 'list-group-item' },
-	                    React.createElement(
-	                      'a',
-	                      { onClick: this.cityChanged, id: 2 },
-	                      'Oakland'
-	                    ),
-	                    React.createElement(
-	                      'span',
-	                      { className: 'badge' },
-	                      '# of listings'
-	                    )
-	                  ),
-	                  React.createElement(
-	                    'li',
-	                    { className: 'list-group-item' },
-	                    React.createElement(
-	                      'a',
-	                      { onClick: this.cityChanged, id: 3 },
-	                      'Berkeley'
-	                    ),
-	                    React.createElement(
-	                      'span',
-	                      { className: 'badge' },
-	                      '# of listings'
-	                    )
-	                  ),
-	                  React.createElement(
-	                    'li',
-	                    { className: 'list-group-item' },
-	                    React.createElement(
-	                      'a',
-	                      { onClick: this.cityChanged, id: 4 },
-	                      'San Mateo'
-	                    ),
-	                    React.createElement(
-	                      'span',
-	                      { className: 'badge' },
-	                      '# of listings'
-	                    )
-	                  ),
-	                  React.createElement(
-	                    'li',
-	                    { className: 'list-group-item' },
-	                    React.createElement(
-	                      'a',
-	                      { onClick: this.cityChanged, id: 5 },
-	                      'San Jose'
-	                    ),
-	                    React.createElement(
-	                      'span',
-	                      { className: 'badge' },
-	                      '# of listings'
-	                    )
-	                  )
+	                  cities
 	                )
 	              )
 	            )
@@ -33472,51 +33457,7 @@
 	                React.createElement(
 	                  'ul',
 	                  { className: 'list-group' },
-	                  React.createElement(
-	                    'li',
-	                    { className: 'list-group-item' },
-	                    React.createElement(
-	                      'a',
-	                      { onClick: this.categoryChanged, id: 0 },
-	                      'All Categories'
-	                    )
-	                  ),
-	                  React.createElement(
-	                    'li',
-	                    { className: 'list-group-item' },
-	                    React.createElement(
-	                      'a',
-	                      { onClick: this.categoryChanged, id: 1 },
-	                      'Electronics'
-	                    )
-	                  ),
-	                  React.createElement(
-	                    'li',
-	                    { className: 'list-group-item' },
-	                    React.createElement(
-	                      'a',
-	                      { onClick: this.categoryChanged, id: 2 },
-	                      'Clothing'
-	                    )
-	                  ),
-	                  React.createElement(
-	                    'li',
-	                    { className: 'list-group-item' },
-	                    React.createElement(
-	                      'a',
-	                      { onClick: this.categoryChanged, id: 3 },
-	                      'Home'
-	                    )
-	                  ),
-	                  React.createElement(
-	                    'li',
-	                    { className: 'list-group-item' },
-	                    React.createElement(
-	                      'a',
-	                      { onClick: this.categoryChanged, id: 4 },
-	                      'Sports'
-	                    )
-	                  )
+	                  categories
 	                )
 	              )
 	            )
@@ -33531,36 +33472,6 @@
 
 /***/ },
 /* 264 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var AppDispatcher = __webpack_require__(223);
-	var FilterConstants = __webpack_require__(247);
-	
-	var FilterActions = {
-	  updateFilters: function (filters) {
-	    AppDispatcher.dispatch({
-	      actionType: FilterConstants.UPDATE_FILTERS,
-	      bounds: bounds
-	    });
-	  },
-	  updateCity: function (value) {
-	    AppDispatcher.dispatch({
-	      actionType: FilterConstants.UPDATE_CITY,
-	      city: value
-	    });
-	  },
-	  updateCategory: function (value) {
-	    AppDispatcher.dispatch({
-	      actionType: FilterConstants.UPDATE_CATEGORY,
-	      category: value
-	    });
-	  }
-	};
-	
-	module.exports = FilterActions;
-
-/***/ },
-/* 265 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
@@ -33604,6 +33515,36 @@
 	});
 	
 	module.exports = ListingIndex;
+
+/***/ },
+/* 265 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var AppDispatcher = __webpack_require__(223);
+	var FilterConstants = __webpack_require__(247);
+	
+	var FilterActions = {
+	  updateFilters: function (filters) {
+	    AppDispatcher.dispatch({
+	      actionType: FilterConstants.UPDATE_FILTERS,
+	      bounds: bounds
+	    });
+	  },
+	  updateCity: function (value) {
+	    AppDispatcher.dispatch({
+	      actionType: FilterConstants.UPDATE_CITY,
+	      city: value
+	    });
+	  },
+	  updateCategory: function (value) {
+	    AppDispatcher.dispatch({
+	      actionType: FilterConstants.UPDATE_CATEGORY,
+	      category: value
+	    });
+	  }
+	};
+	
+	module.exports = FilterActions;
 
 /***/ }
 /******/ ]);

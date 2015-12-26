@@ -50,7 +50,13 @@ var SearchIndex = React.createClass ({
     var listings = this.state.listings.map(function(listing, idx) {
       var boundClick = handleListingClick.bind(null,listing)
 
-      return <ListingIndex key={listing.id} listing={listing} onClick={boundClick}></ListingIndex>
+      return (
+        <ListingIndex
+          key={listing.id}
+          listing={listing}
+          onClick={boundClick}>
+        </ListingIndex>
+      );
     });
 
     return (

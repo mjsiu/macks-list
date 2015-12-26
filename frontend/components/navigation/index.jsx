@@ -2,13 +2,13 @@ var React = require('react');
 var Footer = require('./footer');
 
 var Splash = React.createClass({
-  createCities: function() {
+  createCityElements: function() {
     var city_list = [
       {"name": "San Francisco", "url": "v1450936881/sanfrancisco_qpvztc.png"},
       {"name": "Oakland", "url": "v1450936881/oakland_zock1c.png"},
       {"name": "San Mateo", "url": "v1450936881/sanmateo_kemz9s.png"},
       {"name": "San Jose", "url": "v1450936881/sanjose_rnyemn.png"},
-      {"name": "Marin County", "url": "v1450940342/marin_t2kc8q.png"},
+      {"name": "Marin County", "url": "v1450940342/marin_t2kc8q.png"}
     ];
 
     var cities = city_list.map(function(city, idx){
@@ -25,7 +25,7 @@ var Splash = React.createClass({
     return cities;
   },
 
-  createCategories: function() {
+  createCategoryElements: function() {
     var category_list = [
       {"category": "Appliances", "url": "v1450981839/fridge3_1_nnofvd.png"},
       {"category": "Automotive", "url": "v1450982231/car80_leqiqv.png"},
@@ -38,7 +38,7 @@ var Splash = React.createClass({
       {"category": "Misc", "url": "v1450982231/bald_qhpjiv.png"},
       {"category": "Musical Instruments", "url": "v1450982232/guitars_t5zlgf.png"},
       {"category": "Pets", "url": "v1450982231/dog50_g8mrlb.png"},
-      {"category": "Sports", "url": "v1450982232/soccer19_fn5icv.png"},
+      {"category": "Sports", "url": "v1450982232/soccer19_fn5icv.png"}
     ];
 
     var categories = category_list.map(function(category, idx){
@@ -56,8 +56,8 @@ var Splash = React.createClass({
   },
 
   render: function() {
-    var cities = this.createCities();
-    var categories = this.createCategories();
+    var cities = this.createCityElements();
+    var categories = this.createCategoryElements();
 
     return (
       <div className="row-centered">
@@ -106,7 +106,7 @@ var Splash = React.createClass({
       </div>
     );
   }
-  
+
 });
 
 module.exports = Splash;
