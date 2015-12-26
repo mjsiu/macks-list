@@ -1,63 +1,20 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
+<%= render 'shared/navbar' %>
 
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">MacksList</a>
-    </div>
+<div class="splash-area1">
+  <div class="well bs-component sign-up">
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li><a href="<%=root_url %>">Home</a></li>
-        <li class="active"><a href="<%= root_url %>">Create Listing <span class="sr-only">(current)</span></a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Search <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">City</a></li>
-            <li><a href="#">Advanced Search</a></li>
-          </ul>
-        </li>
-      </ul>
-
-      <ul class="nav navbar-nav navbar-right">
-        <% if logged_in? %>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%=current_user.username%><span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">User Profile</a></li>
-              <li><%= link_to "Log Out", session_url, method: :delete %></li>
-            </ul>
-          </li>
-        <% else %>
-          <li><%= link_to "Sign Up", new_user_url, method: :get %></li>
-          <li><%= link_to "Login", new_session_url, method: :get %></li>
-        <% end %>
-      </ul>
-    </div>
+  <form class="form-group" action="<%=session_url%>" method="post">
+    <h2>SIGN IN</h2>
+    <%=form_token %>
+    <label for="Username">Username</label>
+    <input class="form-control" type="text" name="user[username]">
+    <br/>
+    <label for="user_password">Password</label>
+    <input class="form-control" type="password" name="user[password]">
+    <br/>
+    <input class="btn btn-default" type="submit" value="Sign In">
+    <%= render "shared/guest" %>
+  </form>
+  <a href="<%=users_url%>">Sign up for an account</a>
   </div>
-</nav>
-
-
-<h1>Sign In</h1>
-
-<form action=" <%=session_url%>" method="post">
-
-<%=form_token %>
-
-<label>
-  Username
-  <input type="text" name="user[username]" value="">
-</label>
-
-<label>
-  Password
-  <input type="password" name="user[password]" value="">
-</label>
-
-<input type="submit" value="Sign In">
-</form>
+</div>

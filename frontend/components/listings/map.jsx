@@ -24,7 +24,7 @@ var Map = React.createClass ({
       title: listing.title
     });
     marker.setMap(map);
-    marker.setIcon('http://res.cloudinary.com/mackslist/image/upload/c_scale,h_40,w_40/v1450309841/logo_k5fymd.png')
+    marker.setIcon('http://res.cloudinary.com/mackslist/image/upload/c_scale,h_35,w_35/v1450309841/logo_k5fymd.png')
 
     marker.addListener('click', function() {
       infowindow.open(map, marker);
@@ -36,7 +36,7 @@ var Map = React.createClass ({
      var mapDOMNode = this.refs.map;
      var mapOptions = {
        center: {lat: 37.7758, lng: -122.435},
-       zoom: 13
+       zoom: 12
      };
      this.map = new google.maps.Map(mapDOMNode, mapOptions);
      this.mapClickListener = google.maps.event.addListener(this.map, "dblclick", this.clickMapHandler);

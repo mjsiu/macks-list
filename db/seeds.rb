@@ -80,9 +80,6 @@ StarredListing.create(user_id: 1, listing_id: 8)
 StarredListing.create(user_id: 1, listing_id: 7)
 StarredListing.create(user_id: 1, listing_id: 6)
 
-
-
-
 # rake db:drop db:create db:migrate db:seed
 
 # heroku pg:reset DATABASE

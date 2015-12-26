@@ -90,11 +90,14 @@ var ListingForm = React.createClass({
 
     return (
       <div>
-      <div className="row">
-        <div className="col-md-4"/>
-        <div className="col-md-4">
+      <div className="container">
+        <div className="row">
+        <div className="well bs-component">
+        <div className="form-horizontal">
+        <fieldset>
+        <div className="col-md-6 col-md-offset-3">
           <h2>{this.props.type}</h2>
-          <form onSubmit={handleSubmit}>
+          <form className="form-group" onSubmit={handleSubmit}>
             <label>Title</label>
               <input className="form-control"
                      type="text"
@@ -143,7 +146,12 @@ var ListingForm = React.createClass({
             <br/>
               <input type="submit" className="btn btn-default" value={this.props.type}/>
           </form>
+
         </div>
+        </fieldset>
+      </div>
+      </div>
+      </div>
       </div>
     </div>
     )
