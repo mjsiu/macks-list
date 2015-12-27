@@ -13,7 +13,7 @@ ActiveRecord::Base.connection.reset_pk_sequence!('Listing')
 ActiveRecord::Base.connection.reset_pk_sequence!('City')
 ActiveRecord::Base.connection.reset_pk_sequence!('Category')
 
-User.create(username: "escobar", email: "ecobar@gmail.com", password: "password", city_id: 1)
+User.create(username: "Guest", email: "ecobar@gmail.com", password: "go_guest_go", city_id: 1)
 
 Listing.create(title: "Limited Edition Book", description: Faker::Hipster.paragraphs(3, false),
 price: 50, address: "Powell Street, San Francisco, California", user_id:

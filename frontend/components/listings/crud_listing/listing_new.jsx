@@ -4,7 +4,7 @@ var ListingForm = require('./listing_form');
 var ListingNew = React.createClass({
 
   render: function() {
-    var type = "New Listing";
+    var type = "NEW LISTING";
 
     return (
       <div className="container">

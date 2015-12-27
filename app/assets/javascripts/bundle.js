@@ -51,13 +51,13 @@
 	var Route = ReactRouter.Route;
 	var IndexRoute = ReactRouter.IndexRoute;
 	var App = __webpack_require__(210);
-	var Index = __webpack_require__(214);
-	var ListingNew = __webpack_require__(215);
-	var ListingEdit = __webpack_require__(249);
-	var ListingShow = __webpack_require__(250);
-	var ListingLocation = __webpack_require__(256);
-	var UserShow = __webpack_require__(258);
-	var SearchListings = __webpack_require__(262);
+	var Index = __webpack_require__(213);
+	var ListingNew = __webpack_require__(214);
+	var ListingEdit = __webpack_require__(248);
+	var ListingShow = __webpack_require__(249);
+	var ListingLocation = __webpack_require__(255);
+	var UserShow = __webpack_require__(257);
+	var SearchListings = __webpack_require__(261);
 	
 	var routes = React.createElement(
 	  Route,
@@ -24439,7 +24439,6 @@
 	var React = __webpack_require__(1);
 	
 	var NavBar = __webpack_require__(211);
-	var Footer = __webpack_require__(213);
 	
 	var App = React.createClass({
 	  displayName: 'App',
@@ -24507,7 +24506,7 @@
 	            React.createElement(
 	              'a',
 	              { className: 'navbar-brand', onClick: this.handleHomeClick },
-	              'MacksList'
+	              'mackslist'
 	            )
 	          ),
 	          React.createElement(
@@ -24668,26 +24667,8 @@
 
 	var React = __webpack_require__(1);
 	
-	var Footer = React.createClass({
-	  displayName: "Footer",
-	
-	  render: function () {
-	    return React.createElement("div", { className: "footer" });
-	  }
-	
-	});
-	
-	module.exports = Footer;
-
-/***/ },
-/* 214 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(1);
-	var Footer = __webpack_require__(213);
-	
 	var Splash = React.createClass({
-	  displayName: 'Splash',
+	  displayName: "Splash",
 	
 	  createCityElements: function () {
 	    var city_list = [{ "name": "San Francisco", "url": "v1450936881/sanfrancisco_qpvztc.png" }, { "name": "Oakland", "url": "v1450936881/oakland_zock1c.png" }, { "name": "San Mateo", "url": "v1450936881/sanmateo_kemz9s.png" }, { "name": "San Jose", "url": "v1450936881/sanjose_rnyemn.png" }, { "name": "Marin County", "url": "v1450940342/marin_t2kc8q.png" }];
@@ -24695,20 +24676,20 @@
 	    var cities = city_list.map(function (city, idx) {
 	      var partial_url = "http://res.cloudinary.com/mackslist/image/upload/c_scale,w_350/";
 	      return React.createElement(
-	        'div',
-	        { key: idx, className: 'col-centered' },
+	        "div",
+	        { key: idx, className: "col-centered" },
 	        React.createElement(
-	          'div',
-	          { className: 'panel panel-default' },
+	          "div",
+	          { className: "panel panel-default" },
 	          React.createElement(
-	            'div',
-	            { className: 'panel-heading' },
+	            "div",
+	            { className: "panel-heading" },
 	            city["name"]
 	          ),
 	          React.createElement(
-	            'div',
-	            { className: 'panel-body' },
-	            React.createElement('img', { src: partial_url + city["url"] })
+	            "div",
+	            { className: "panel-body" },
+	            React.createElement("img", { src: partial_url + city["url"] })
 	          )
 	        )
 	      );
@@ -24722,15 +24703,15 @@
 	    var categories = category_list.map(function (category, idx) {
 	      var partial_url = "http://res.cloudinary.com/mackslist/image/upload/";
 	      return React.createElement(
-	        'div',
-	        { key: idx, className: 'col-centered' },
+	        "div",
+	        { key: idx, className: "col-centered" },
 	        React.createElement(
-	          'div',
-	          { className: 'panel panel-default' },
+	          "div",
+	          { className: "panel panel-default" },
 	          React.createElement(
-	            'div',
-	            { className: 'panel-body' },
-	            React.createElement('img', { src: partial_url + category["url"] })
+	            "div",
+	            { className: "panel-body" },
+	            React.createElement("img", { src: partial_url + category["url"] })
 	          )
 	        )
 	      );
@@ -24738,91 +24719,126 @@
 	    return categories;
 	  },
 	
+	  handleCreateClick: function () {
+	    this.props.history.pushState(null, "listings/new");
+	  },
+	
+	  handleSearchClick: function () {
+	    this.props.history.pushState(null, "listings/search");
+	  },
+	
 	  render: function () {
 	    var cities = this.createCityElements();
 	    var categories = this.createCategoryElements();
 	
 	    return React.createElement(
-	      'div',
-	      { className: 'row-centered' },
+	      "div",
+	      { className: "row-centered" },
 	      React.createElement(
-	        'div',
-	        { className: 'splash-area1' },
+	        "div",
+	        { className: "splash-area1" },
 	        React.createElement(
-	          'div',
-	          { className: 'splash-area1-content' },
+	          "div",
+	          { className: "splash-area1-content" },
 	          React.createElement(
-	            'h1',
+	            "h1",
 	            null,
-	            'MACKSLIST'
+	            "MACKSLIST"
 	          )
 	        )
 	      ),
 	      React.createElement(
-	        'div',
-	        { className: 'splash-area2' },
+	        "div",
+	        { className: "splash-area2" },
 	        React.createElement(
-	          'div',
-	          { className: 'splash-area2-content' },
+	          "div",
+	          { className: "splash-area2-content" },
 	          React.createElement(
-	            'h1',
+	            "h1",
 	            null,
-	            'ABOUT'
+	            "ABOUT"
 	          ),
 	          React.createElement(
-	            'p',
+	            "p",
 	            null,
-	            '"In this article, I’d like to reacquaint you with the humble workhorse of communication that is the paragraph. Paragraphs are everywhere. In fact, at the high risk of stating the obvious, you are reading one now. Despite their ubiquity, we frequently neglect their presentation. This is a mistake. Here, we’ll refer to some time-honored typesetting conventions, with an emphasis on readability, and offer guidance on adapting them effectively for devices and screens. We’ll see that the ability to embed fonts with @font-face is not by itself a solution to all of our typographic challenges."'
+	            "MacksList is a place for people in the bay area to sell their used goods. With a varied list of supported cities and categories, you can search through your area for exactly what you are looking for. MacksList is dedicated to helping bay area locals connect and sell their goods in the easiest way possible.",
+	            React.createElement("br", null),
+	            React.createElement("br", null),
+	            "Start browsing, creating, or favoriting listings today."
 	          )
 	        )
 	      ),
-	      React.createElement('div', { className: 'splash-area3' }),
+	      React.createElement("div", { className: "splash-area3" }),
 	      React.createElement(
-	        'div',
-	        { className: 'splash-area4' },
+	        "div",
+	        { className: "splash-area4" },
 	        React.createElement(
-	          'div',
-	          { className: 'container' },
-	          React.createElement('br', null),
+	          "div",
+	          { className: "container" },
 	          React.createElement(
-	            'h1',
+	            "h1",
 	            null,
-	            'SEARCH'
+	            "SEARCH"
 	          ),
+	          React.createElement("br", null),
 	          React.createElement(
-	            'h4',
+	            "p",
 	            null,
-	            'MAJOR BAY AREA CITIES'
+	            "Major bay area cities"
 	          ),
+	          React.createElement("br", null),
 	          React.createElement(
-	            'div',
+	            "div",
 	            null,
 	            cities
 	          )
 	        )
 	      ),
 	      React.createElement(
-	        'div',
-	        { className: 'splash-area5' },
+	        "div",
+	        { className: "splash-area5" },
 	        React.createElement(
-	          'div',
-	          { className: 'container' },
+	          "div",
+	          { className: "container" },
 	          React.createElement(
-	            'h1',
+	            "h1",
 	            null,
-	            'CATEGORIES'
+	            "CATEGORIES"
 	          ),
 	          React.createElement(
-	            'div',
-	            { className: 'col-md-11' },
+	            "div",
+	            { className: "col-md-11" },
 	            categories
 	          )
 	        )
 	      ),
 	      React.createElement(
-	        'div',
-	        { className: 'col-md-12' },
-	        React.createElement('div', { className: 'footer' })
+	        "div",
+	        { className: "footer" },
+	        React.createElement(
+	          "div",
+	          { className: "container" },
+	          React.createElement("br", null),
+	          React.createElement("br", null),
+	          React.createElement("br", null),
+	          React.createElement(
+	            "h1",
+	            null,
+	            "GET STARTED"
+	          ),
+	          React.createElement("br", null),
+	          React.createElement(
+	            "button",
+	            { onClick: this.handleCreateClick, type: "button", className: "btn btn-primary" },
+	            "Create Listings"
+	          ),
+	          "  ",
+	          React.createElement(
+	            "button",
+	            { onClick: this.handleSearchClick, type: "button", className: "btn btn-primary" },
+	            "Search Listings"
+	          )
+	        )
 	      )
 	    );
 	  }
@@ -24832,17 +24848,17 @@
 	module.exports = Splash;
 
 /***/ },
-/* 215 */
+/* 214 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-	var ListingForm = __webpack_require__(216);
+	var ListingForm = __webpack_require__(215);
 	
 	var ListingNew = React.createClass({
 	  displayName: 'ListingNew',
 	
 	  render: function () {
-	    var type = "New Listing";
+	    var type = "NEW LISTING";
 	
 	    return React.createElement(
 	      'div',
@@ -24856,14 +24872,14 @@
 	module.exports = ListingNew;
 
 /***/ },
-/* 216 */
+/* 215 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-	var LinkedStateMixin = __webpack_require__(217);
+	var LinkedStateMixin = __webpack_require__(216);
 	
-	var ApiUtil = __webpack_require__(221);
-	var ImageUploadButton = __webpack_require__(248);
+	var ApiUtil = __webpack_require__(220);
+	var ImageUploadButton = __webpack_require__(247);
 	
 	var ListingForm = React.createClass({
 	  displayName: 'ListingForm',
@@ -25111,13 +25127,13 @@
 	module.exports = ListingForm;
 
 /***/ },
-/* 217 */
+/* 216 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(218);
+	module.exports = __webpack_require__(217);
 
 /***/ },
-/* 218 */
+/* 217 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -25134,8 +25150,8 @@
 	
 	'use strict';
 	
-	var ReactLink = __webpack_require__(219);
-	var ReactStateSetters = __webpack_require__(220);
+	var ReactLink = __webpack_require__(218);
+	var ReactStateSetters = __webpack_require__(219);
 	
 	/**
 	 * A simple mixin around ReactLink.forState().
@@ -25158,7 +25174,7 @@
 	module.exports = LinkedStateMixin;
 
 /***/ },
-/* 219 */
+/* 218 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -25232,7 +25248,7 @@
 	module.exports = ReactLink;
 
 /***/ },
-/* 220 */
+/* 219 */
 /***/ function(module, exports) {
 
 	/**
@@ -25341,11 +25357,11 @@
 	module.exports = ReactStateSetters;
 
 /***/ },
-/* 221 */
+/* 220 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var ApiActions = __webpack_require__(222);
-	var FilterParamsStore = __webpack_require__(230);
+	var ApiActions = __webpack_require__(221);
+	var FilterParamsStore = __webpack_require__(229);
 	
 	var ApiUtil = {
 	
@@ -25425,14 +25441,14 @@
 	module.exports = ApiUtil;
 
 /***/ },
-/* 222 */
+/* 221 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var AppDispatcher = __webpack_require__(223);
+	var AppDispatcher = __webpack_require__(222);
 	
-	var ListingConstants = __webpack_require__(227);
-	var UserConstants = __webpack_require__(228);
-	var StarredConstants = __webpack_require__(229);
+	var ListingConstants = __webpack_require__(226);
+	var UserConstants = __webpack_require__(227);
+	var StarredConstants = __webpack_require__(228);
 	
 	ApiActions = {
 	  receiveAllListings: function (listings) {
@@ -25488,15 +25504,15 @@
 	module.exports = ApiActions;
 
 /***/ },
-/* 223 */
+/* 222 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Dispatcher = __webpack_require__(224).Dispatcher;
+	var Dispatcher = __webpack_require__(223).Dispatcher;
 	
 	module.exports = new Dispatcher();
 
 /***/ },
-/* 224 */
+/* 223 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -25508,11 +25524,11 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 */
 	
-	module.exports.Dispatcher = __webpack_require__(225);
+	module.exports.Dispatcher = __webpack_require__(224);
 
 
 /***/ },
-/* 225 */
+/* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -25534,7 +25550,7 @@
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
-	var invariant = __webpack_require__(226);
+	var invariant = __webpack_require__(225);
 	
 	var _prefix = 'ID_';
 	
@@ -25749,7 +25765,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 226 */
+/* 225 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -25804,7 +25820,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 227 */
+/* 226 */
 /***/ function(module, exports) {
 
 	var ListingConstants = {
@@ -25814,7 +25830,7 @@
 	module.exports = ListingConstants;
 
 /***/ },
-/* 228 */
+/* 227 */
 /***/ function(module, exports) {
 
 	var UserConstants = {
@@ -25825,7 +25841,7 @@
 	module.exports = UserConstants;
 
 /***/ },
-/* 229 */
+/* 228 */
 /***/ function(module, exports) {
 
 	var StarredConstants = {
@@ -25836,12 +25852,12 @@
 	module.exports = StarredConstants;
 
 /***/ },
-/* 230 */
+/* 229 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Store = __webpack_require__(231).Store;
-	var FilterConstants = __webpack_require__(247);
-	var AppDispatcher = __webpack_require__(223);
+	var Store = __webpack_require__(230).Store;
+	var FilterConstants = __webpack_require__(246);
+	var AppDispatcher = __webpack_require__(222);
 	var FilterParamsStore = new Store(AppDispatcher);
 	
 	var _params = {};
@@ -25874,7 +25890,7 @@
 	module.exports = FilterParamsStore;
 
 /***/ },
-/* 231 */
+/* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -25886,15 +25902,15 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 */
 	
-	module.exports.Container = __webpack_require__(232);
-	module.exports.MapStore = __webpack_require__(235);
-	module.exports.Mixin = __webpack_require__(246);
-	module.exports.ReduceStore = __webpack_require__(236);
-	module.exports.Store = __webpack_require__(237);
+	module.exports.Container = __webpack_require__(231);
+	module.exports.MapStore = __webpack_require__(234);
+	module.exports.Mixin = __webpack_require__(245);
+	module.exports.ReduceStore = __webpack_require__(235);
+	module.exports.Store = __webpack_require__(236);
 
 
 /***/ },
-/* 232 */
+/* 231 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -25916,10 +25932,10 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var FluxStoreGroup = __webpack_require__(233);
+	var FluxStoreGroup = __webpack_require__(232);
 	
-	var invariant = __webpack_require__(226);
-	var shallowEqual = __webpack_require__(234);
+	var invariant = __webpack_require__(225);
+	var shallowEqual = __webpack_require__(233);
 	
 	var DEFAULT_OPTIONS = {
 	  pure: true,
@@ -26077,7 +26093,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 233 */
+/* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -26096,7 +26112,7 @@
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
-	var invariant = __webpack_require__(226);
+	var invariant = __webpack_require__(225);
 	
 	/**
 	 * FluxStoreGroup allows you to execute a callback on every dispatch after
@@ -26158,7 +26174,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 234 */
+/* 233 */
 /***/ function(module, exports) {
 
 	/**
@@ -26213,7 +26229,7 @@
 	module.exports = shallowEqual;
 
 /***/ },
-/* 235 */
+/* 234 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -26234,10 +26250,10 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var FluxReduceStore = __webpack_require__(236);
-	var Immutable = __webpack_require__(245);
+	var FluxReduceStore = __webpack_require__(235);
+	var Immutable = __webpack_require__(244);
 	
-	var invariant = __webpack_require__(226);
+	var invariant = __webpack_require__(225);
 	
 	/**
 	 * This is a simple store. It allows caching key value pairs. An implementation
@@ -26363,7 +26379,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 236 */
+/* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -26384,10 +26400,10 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var FluxStore = __webpack_require__(237);
+	var FluxStore = __webpack_require__(236);
 	
-	var abstractMethod = __webpack_require__(244);
-	var invariant = __webpack_require__(226);
+	var abstractMethod = __webpack_require__(243);
+	var invariant = __webpack_require__(225);
 	
 	var FluxReduceStore = (function (_FluxStore) {
 	  _inherits(FluxReduceStore, _FluxStore);
@@ -26470,7 +26486,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 237 */
+/* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -26489,11 +26505,11 @@
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
-	var _require = __webpack_require__(238);
+	var _require = __webpack_require__(237);
 	
 	var EventEmitter = _require.EventEmitter;
 	
-	var invariant = __webpack_require__(226);
+	var invariant = __webpack_require__(225);
 	
 	/**
 	 * This class should be extended by the stores in your application, like so:
@@ -26653,7 +26669,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 238 */
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -26666,14 +26682,14 @@
 	 */
 	
 	var fbemitter = {
-	  EventEmitter: __webpack_require__(239)
+	  EventEmitter: __webpack_require__(238)
 	};
 	
 	module.exports = fbemitter;
 
 
 /***/ },
-/* 239 */
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -26692,11 +26708,11 @@
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
-	var EmitterSubscription = __webpack_require__(240);
-	var EventSubscriptionVendor = __webpack_require__(242);
+	var EmitterSubscription = __webpack_require__(239);
+	var EventSubscriptionVendor = __webpack_require__(241);
 	
-	var emptyFunction = __webpack_require__(243);
-	var invariant = __webpack_require__(226);
+	var emptyFunction = __webpack_require__(242);
+	var invariant = __webpack_require__(225);
 	
 	/**
 	 * @class BaseEventEmitter
@@ -26870,7 +26886,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 240 */
+/* 239 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -26891,7 +26907,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var EventSubscription = __webpack_require__(241);
+	var EventSubscription = __webpack_require__(240);
 	
 	/**
 	 * EmitterSubscription represents a subscription with listener and context data.
@@ -26923,7 +26939,7 @@
 	module.exports = EmitterSubscription;
 
 /***/ },
-/* 241 */
+/* 240 */
 /***/ function(module, exports) {
 
 	/**
@@ -26974,7 +26990,7 @@
 	module.exports = EventSubscription;
 
 /***/ },
-/* 242 */
+/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -26993,7 +27009,7 @@
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
-	var invariant = __webpack_require__(226);
+	var invariant = __webpack_require__(225);
 	
 	/**
 	 * EventSubscriptionVendor stores a set of EventSubscriptions that are
@@ -27083,7 +27099,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 243 */
+/* 242 */
 /***/ function(module, exports) {
 
 	/**
@@ -27126,7 +27142,7 @@
 	module.exports = emptyFunction;
 
 /***/ },
-/* 244 */
+/* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -27143,7 +27159,7 @@
 	
 	'use strict';
 	
-	var invariant = __webpack_require__(226);
+	var invariant = __webpack_require__(225);
 	
 	function abstractMethod(className, methodName) {
 	   true ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Subclasses of %s must override %s() with their own implementation.', className, methodName) : invariant(false) : undefined;
@@ -27153,7 +27169,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 245 */
+/* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -32118,7 +32134,7 @@
 	}));
 
 /***/ },
-/* 246 */
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -32135,9 +32151,9 @@
 	
 	'use strict';
 	
-	var FluxStoreGroup = __webpack_require__(233);
+	var FluxStoreGroup = __webpack_require__(232);
 	
-	var invariant = __webpack_require__(226);
+	var invariant = __webpack_require__(225);
 	
 	/**
 	 * `FluxContainer` should be preferred over this mixin, but it requires using
@@ -32241,7 +32257,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 247 */
+/* 246 */
 /***/ function(module, exports) {
 
 	var FilterConstants = {
@@ -32253,7 +32269,7 @@
 	module.exports = FilterConstants;
 
 /***/ },
-/* 248 */
+/* 247 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
@@ -32286,17 +32302,17 @@
 	module.exports = ImageUploadButton;
 
 /***/ },
-/* 249 */
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-	var ListingForm = __webpack_require__(216);
+	var ListingForm = __webpack_require__(215);
 	
 	var ListingEdit = React.createClass({
 	  displayName: 'ListingEdit',
 	
 	  render: function () {
-	    var type = "Edit Listing";
+	    var type = "EDIT LISTING";
 	    return React.createElement(
 	      'div',
 	      null,
@@ -32309,15 +32325,15 @@
 	module.exports = ListingEdit;
 
 /***/ },
-/* 250 */
+/* 249 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	var ReactRouter = __webpack_require__(159);
 	
-	var ListingStore = __webpack_require__(251);
-	var Listing = __webpack_require__(252);
-	var ApiUtil = __webpack_require__(221);
+	var ListingStore = __webpack_require__(250);
+	var Listing = __webpack_require__(251);
+	var ApiUtil = __webpack_require__(220);
 	
 	var ListingShow = React.createClass({
 	  displayName: 'ListingShow',
@@ -32375,12 +32391,12 @@
 	module.exports = ListingShow;
 
 /***/ },
-/* 251 */
+/* 250 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Store = __webpack_require__(231).Store;
-	var ListingConstants = __webpack_require__(227);
-	var AppDispatcher = __webpack_require__(223);
+	var Store = __webpack_require__(230).Store;
+	var ListingConstants = __webpack_require__(226);
+	var AppDispatcher = __webpack_require__(222);
 	var ListingStore = new Store(AppDispatcher);
 	
 	var _listings = [];
@@ -32405,14 +32421,14 @@
 	module.exports = ListingStore;
 
 /***/ },
-/* 252 */
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	var History = __webpack_require__(159).History;
 	
-	var Map = __webpack_require__(253);
-	var StarredButton = __webpack_require__(254);
+	var Map = __webpack_require__(252);
+	var StarredButton = __webpack_require__(253);
 	
 	var Listing = React.createClass({
 	  displayName: 'Listing',
@@ -32453,7 +32469,7 @@
 	          { className: 'row' },
 	          React.createElement(
 	            'div',
-	            { className: 'col-md-3' },
+	            { className: 'col-md-3 col-sm-offset-1' },
 	            React.createElement(Map, { listing: this.props.listing }),
 	            React.createElement('br', null),
 	            React.createElement('br', null),
@@ -32529,14 +32545,14 @@
 	module.exports = Listing;
 
 /***/ },
-/* 253 */
+/* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
 	
-	var ListingStore = __webpack_require__(251);
-	var ApiUtil = __webpack_require__(221);
+	var ListingStore = __webpack_require__(250);
+	var ApiUtil = __webpack_require__(220);
 	
 	var Map = React.createClass({
 	  displayName: 'Map',
@@ -32588,14 +32604,14 @@
 	module.exports = Map;
 
 /***/ },
-/* 254 */
+/* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	
-	var StarredStore = __webpack_require__(255);
-	var ApiUtil = __webpack_require__(221);
-	var LinkedStateMixin = __webpack_require__(217);
+	var StarredStore = __webpack_require__(254);
+	var ApiUtil = __webpack_require__(220);
+	var LinkedStateMixin = __webpack_require__(216);
 	
 	var StarButton = React.createClass({
 	  displayName: 'StarButton',
@@ -32647,7 +32663,7 @@
 	        {
 	          onClick: this.handleStarredClick,
 	          type: 'button',
-	          className: 'btn btn-default btn-xs',
+	          className: 'btn btn-primary btn-xs',
 	          valueLink: this.linkState('starred') },
 	        'Star'
 	      );
@@ -32664,12 +32680,12 @@
 	module.exports = StarButton;
 
 /***/ },
-/* 255 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Store = __webpack_require__(231).Store;
-	var StarredConstants = __webpack_require__(229);
-	var AppDispatcher = __webpack_require__(223);
+	var Store = __webpack_require__(230).Store;
+	var StarredConstants = __webpack_require__(228);
+	var AppDispatcher = __webpack_require__(222);
 	var StarredStore = new Store(AppDispatcher);
 	
 	var _starred_listings = [];
@@ -32715,12 +32731,12 @@
 	module.exports = StarredStore;
 
 /***/ },
-/* 256 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	
-	var CreateMap = __webpack_require__(257);
+	var CreateMap = __webpack_require__(256);
 	
 	var ListingLocation = React.createClass({
 	  displayName: 'ListingLocation',
@@ -32742,7 +32758,7 @@
 	          React.createElement(
 	            'h1',
 	            null,
-	            'CLICK LISTING LOCATION'
+	            'PICK LISTING LOCATION'
 	          )
 	        ),
 	        React.createElement(
@@ -32759,14 +32775,14 @@
 	module.exports = ListingLocation;
 
 /***/ },
-/* 257 */
+/* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
 	
-	var ListingStore = __webpack_require__(251);
-	var ApiUtil = __webpack_require__(221);
+	var ListingStore = __webpack_require__(250);
+	var ApiUtil = __webpack_require__(220);
 	
 	var Map = React.createClass({
 	  displayName: 'Map',
@@ -32799,13 +32815,13 @@
 	module.exports = Map;
 
 /***/ },
-/* 258 */
+/* 257 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	
-	var UserListingTable = __webpack_require__(259);
-	var UserStarredTable = __webpack_require__(261);
+	var UserListingTable = __webpack_require__(258);
+	var UserStarredTable = __webpack_require__(260);
 	
 	var User = React.createClass({
 	  displayName: 'User',
@@ -32838,13 +32854,13 @@
 	module.exports = User;
 
 /***/ },
-/* 259 */
+/* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	
-	var UserStore = __webpack_require__(260);
-	var ApiUtil = __webpack_require__(221);
+	var UserStore = __webpack_require__(259);
+	var ApiUtil = __webpack_require__(220);
 	
 	var UserListingTable = React.createClass({
 	  displayName: 'UserListingTable',
@@ -32951,12 +32967,13 @@
 	
 	    return React.createElement(
 	      'div',
-	      null,
+	      { className: 'user-listings-table' },
 	      React.createElement(
 	        'h2',
 	        null,
-	        'Your Listings'
+	        'YOUR LISTINGS'
 	      ),
+	      React.createElement('br', null),
 	      React.createElement(
 	        'table',
 	        { className: 'table table-hover' },
@@ -33011,12 +33028,12 @@
 	module.exports = UserListingTable;
 
 /***/ },
-/* 260 */
+/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Store = __webpack_require__(231).Store;
-	var UserConstants = __webpack_require__(228);
-	var AppDispatcher = __webpack_require__(223);
+	var Store = __webpack_require__(230).Store;
+	var UserConstants = __webpack_require__(227);
+	var AppDispatcher = __webpack_require__(222);
 	var UserStore = new Store(AppDispatcher);
 	
 	var _user_listings = [];
@@ -33053,13 +33070,13 @@
 	module.exports = UserStore;
 
 /***/ },
-/* 261 */
+/* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	
-	var StarredStore = __webpack_require__(255);
-	var ApiUtil = __webpack_require__(221);
+	var StarredStore = __webpack_require__(254);
+	var ApiUtil = __webpack_require__(220);
 	
 	var UserStarredTable = React.createClass({
 	  displayName: 'UserStarredTable',
@@ -33146,12 +33163,13 @@
 	
 	    return React.createElement(
 	      'div',
-	      null,
+	      { className: 'starred-table' },
 	      React.createElement(
 	        'h2',
 	        null,
-	        'Starred Listings'
+	        'STARRED LISTINGS'
 	      ),
+	      React.createElement('br', null),
 	      React.createElement(
 	        'table',
 	        { className: 'table table-hover' },
@@ -33202,16 +33220,16 @@
 	module.exports = UserStarredTable;
 
 /***/ },
-/* 262 */
+/* 261 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	
-	var ListingStore = __webpack_require__(251);
-	var FilterParamsStore = __webpack_require__(230);
-	var FilterParamsStore = __webpack_require__(230);
-	var ApiUtil = __webpack_require__(221);
-	var Filter = __webpack_require__(263);
+	var ListingStore = __webpack_require__(250);
+	var FilterParamsStore = __webpack_require__(229);
+	var FilterParamsStore = __webpack_require__(229);
+	var ApiUtil = __webpack_require__(220);
+	var Filter = __webpack_require__(262);
 	var ListingIndex = __webpack_require__(264);
 	
 	var SearchIndex = React.createClass({
@@ -33295,11 +33313,11 @@
 	module.exports = SearchIndex;
 
 /***/ },
-/* 263 */
+/* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-	var FilterActions = __webpack_require__(265);
+	var FilterActions = __webpack_require__(263);
 	
 	var Filters = React.createClass({
 	  displayName: 'Filters',
@@ -33471,6 +33489,36 @@
 	module.exports = Filters;
 
 /***/ },
+/* 263 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var AppDispatcher = __webpack_require__(222);
+	var FilterConstants = __webpack_require__(246);
+	
+	var FilterActions = {
+	  updateFilters: function (filters) {
+	    AppDispatcher.dispatch({
+	      actionType: FilterConstants.UPDATE_FILTERS,
+	      bounds: bounds
+	    });
+	  },
+	  updateCity: function (value) {
+	    AppDispatcher.dispatch({
+	      actionType: FilterConstants.UPDATE_CITY,
+	      city: value
+	    });
+	  },
+	  updateCategory: function (value) {
+	    AppDispatcher.dispatch({
+	      actionType: FilterConstants.UPDATE_CATEGORY,
+	      category: value
+	    });
+	  }
+	};
+	
+	module.exports = FilterActions;
+
+/***/ },
 /* 264 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -33515,36 +33563,6 @@
 	});
 	
 	module.exports = ListingIndex;
-
-/***/ },
-/* 265 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var AppDispatcher = __webpack_require__(223);
-	var FilterConstants = __webpack_require__(247);
-	
-	var FilterActions = {
-	  updateFilters: function (filters) {
-	    AppDispatcher.dispatch({
-	      actionType: FilterConstants.UPDATE_FILTERS,
-	      bounds: bounds
-	    });
-	  },
-	  updateCity: function (value) {
-	    AppDispatcher.dispatch({
-	      actionType: FilterConstants.UPDATE_CITY,
-	      city: value
-	    });
-	  },
-	  updateCategory: function (value) {
-	    AppDispatcher.dispatch({
-	      actionType: FilterConstants.UPDATE_CATEGORY,
-	      category: value
-	    });
-	  }
-	};
-	
-	module.exports = FilterActions;
 
 /***/ }
 /******/ ]);

@@ -146,7 +146,6 @@ var ListingForm = React.createClass({
             <br/>
               <input type="submit" className="btn btn-default" value={this.props.type}/>
           </form>
-
         </div>
         </fieldset>
       </div>

@@ -35,7 +35,7 @@ var Listing = React.createClass({
 
       <div className="container">
         <div className="row">
-          <div className="col-md-3">
+          <div className="col-md-3 col-sm-offset-1">
             <Map listing={this.props.listing}></Map>
             <br></br>
             <br></br>

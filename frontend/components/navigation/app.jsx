@@ -1,7 +1,6 @@
 var React = require('react');
 
 var NavBar = require('./navbar');
-var Footer = require('./footer');
 
 var App = React.createClass({
 
@@ -14,7 +13,7 @@ var App = React.createClass({
       </div>
     );
   }
-  
+
 });
 
 module.exports = App;

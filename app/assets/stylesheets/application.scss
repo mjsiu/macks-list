@@ -29,6 +29,26 @@
   */
  /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
+ .starred-table > h2 {
+   text-align: center;
+ }
+
+ .user-listings-table > h2 {
+   text-align: center;
+ }
+
+ .col-md-6 > h2 {
+   text-align: center;
+ }
+
+ .footer {
+   position: absolute;
+   height: 350px;
+   background-color: #3e3f3a;
+   width: 100%;
+   color: #FFFFFF;
+ }
+
  .sign-up {
    position: absolute;
    top: 15%;
@@ -105,7 +125,7 @@
   position: absolute;
   top: 35%;
   left: 25%;
-  font-size: 25px;
+  font-size: 30px;
   text-align: center;
   width: 50%;
 }
@@ -131,7 +151,7 @@
  background: url('http://res.cloudinary.com/mackslist/image/upload/v1450939246/sf2_qwpsqj.jpg')
  no-repeat center center;
  -webkit-background-size: cover;
- -moz-background-size: cover;
+ -moz-background-sie: cover;
  -o-background-size: cover;
  background-size: cover;
 }
@@ -142,8 +162,23 @@
  margin-left: 0;
  margin-right: 0;
  max-width: 1920px;
- height: 900px;
- background-color: 	#D8D8D8;
+ height: 1000px;
+ background-color: #EDEDED;
+}
+
+.splash-area4 > .container {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+}
+
+.splash-area4 > .container > p {
+  font-size: 30px;
+}
+
+.splash-area4 > .container > h1 {
+  font-weight: 500;
+  font-size: 60px;
 }
 
 .splash-area5 > .container > h1 {
@@ -168,7 +203,7 @@
  margin-left: 0;
  margin-right: 0;
  max-width: 1920px;
- height: 900px;
+ height: 1000px;
  background-color: 	#FFFFFF;
 }
 
@@ -1304,12 +1339,12 @@ textarea {
  line-height: inherit;
 }
 a {
- color: #93c54b;
+ color: #325d88;
  text-decoration: none;
 }
 a:hover,
 a:focus {
- color: #79a736;
+ color: #325d88;
  text-decoration: underline;
 }
 a:focus {
@@ -5157,7 +5192,7 @@ a.badge:focus {
 .list-group-item.active > .badge,
 .nav-pills > .active > a > .badge {
  color: #ffffff;
- background-color: #93c54b;
+ background-color: #EBEBEB;
 }
 .list-group-item > .badge {
  float: right;
@@ -5517,7 +5552,7 @@ button.list-group-item {
 .list-group-item.active:focus {
  z-index: 2;
  color: #3e3f3a;
- background-color: #f8f5f0;
+ background-color: #EBEBEB;
  border-color: #dfd7ca;
 }
 .list-group-item.active .list-group-item-heading,
@@ -7116,5 +7151,5 @@ input:focus,
 .panel-default .panel-heading,
 .panel-default .panel-title,
 .panel-default .panel-footer {
- color: #98978b;
+ color: #000000;
 }

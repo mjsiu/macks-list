@@ -1,6 +1,6 @@
 <form class="guest-auth" action="<%= session_url %>" method="post">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <input type="hidden" name=user[username] value="escobar">
-    <input type="hidden" name=user[password] value="password">
+    <input type="hidden" name=user[username] value="Guest">
+    <input type="hidden" name=user[password] value="go_guest_go">
     <input  class="btn btn-default" type="submit" value="Guest Login">
 </form>
