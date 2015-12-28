@@ -1,5 +1,5 @@
-var React = require('react');
-var ListingForm = require('./listing_form');
+var React = require('react'),
+    ListingForm = require('./listing_form');
 
 var ListingEdit = React.createClass({
 

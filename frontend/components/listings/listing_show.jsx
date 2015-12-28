@@ -1,9 +1,8 @@
-var React = require('react');
-var ReactRouter = require('react-router');
-
-var ListingStore = require('../../stores/listing');
-var Listing = require('./listing');
-var ApiUtil = require('../../util/api_utils');
+var React = require('react'),
+    ReactRouter = require('react-router'),
+    ListingStore = require('../../stores/listing'),
+    Listing = require('./listing'),
+    ApiUtil = require('../../util/api_utils');
 
 
 var ListingShow = React.createClass ({

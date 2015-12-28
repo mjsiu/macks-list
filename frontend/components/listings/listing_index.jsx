@@ -1,5 +1,5 @@
-var React = require('react');
-var ReactRouter = require('react-router');
+var React = require('react'),
+    ReactRouter = require('react-router');
 
 var ListingIndex = React.createClass({
 

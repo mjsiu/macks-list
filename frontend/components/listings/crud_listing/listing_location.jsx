@@ -1,6 +1,5 @@
-var React = require('react');
-
-var CreateMap = require('../create_map');
+var React = require('react'),
+    CreateMap = require('../create_map');
 
 var ListingLocation = React.createClass ({
 

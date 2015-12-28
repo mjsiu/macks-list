@@ -1,8 +1,7 @@
-var React = require('react');
-var History = require('react-router').History
-
-var Map = require('./map');
-var StarredButton = require('../user/star_button');
+var React = require('react'),
+    History = require('react-router').History,
+    Map = require('./map'),
+    StarredButton = require('../user/star_button');
 
 var Listing = React.createClass({
   mixins: [History],

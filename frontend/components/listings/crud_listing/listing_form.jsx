@@ -1,8 +1,7 @@
-var React = require('react');
-var LinkedStateMixin = require('react-addons-linked-state-mixin');
-
-var ApiUtil = require('../../../util/api_utils');
-var ImageUploadButton = require('./image_upload_button');
+var React = require('react'),
+    LinkedStateMixin = require('react-addons-linked-state-mixin'),
+    ApiUtil = require('../../../util/api_utils'),
+    ImageUploadButton = require('./image_upload_button');
 
 var ListingForm = React.createClass({
   mixins: [LinkedStateMixin],
@@ -89,7 +88,7 @@ var ListingForm = React.createClass({
     }
 
     return (
-      <div>
+
       <div className="container">
         <div className="row">
         <div className="well bs-component">
@@ -152,7 +151,7 @@ var ListingForm = React.createClass({
       </div>
       </div>
       </div>
-    </div>
+
     )
   }
 });

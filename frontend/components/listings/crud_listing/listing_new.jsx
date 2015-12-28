@@ -1,8 +1,7 @@
-var React = require('react');
-var ListingForm = require('./listing_form');
+var React = require('react'),
+    ListingForm = require('./listing_form');
 
 var ListingNew = React.createClass({
-
   render: function() {
     var type = "NEW LISTING";
 

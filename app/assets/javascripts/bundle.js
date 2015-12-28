@@ -24851,8 +24851,8 @@
 /* 214 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var React = __webpack_require__(1);
-	var ListingForm = __webpack_require__(215);
+	var React = __webpack_require__(1),
+	    ListingForm = __webpack_require__(215);
 	
 	var ListingNew = React.createClass({
 	  displayName: 'ListingNew',
@@ -24875,11 +24875,10 @@
 /* 215 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var React = __webpack_require__(1);
-	var LinkedStateMixin = __webpack_require__(216);
-	
-	var ApiUtil = __webpack_require__(220);
-	var ImageUploadButton = __webpack_require__(247);
+	var React = __webpack_require__(1),
+	    LinkedStateMixin = __webpack_require__(216),
+	    ApiUtil = __webpack_require__(220),
+	    ImageUploadButton = __webpack_require__(247);
 	
 	var ListingForm = React.createClass({
 	  displayName: 'ListingForm',
@@ -24975,145 +24974,141 @@
 	
 	    return React.createElement(
 	      'div',
-	      null,
+	      { className: 'container' },
 	      React.createElement(
 	        'div',
-	        { className: 'container' },
+	        { className: 'row' },
 	        React.createElement(
 	          'div',
-	          { className: 'row' },
+	          { className: 'well bs-component' },
 	          React.createElement(
 	            'div',
-	            { className: 'well bs-component' },
+	            { className: 'form-horizontal' },
 	            React.createElement(
-	              'div',
-	              { className: 'form-horizontal' },
+	              'fieldset',
+	              null,
 	              React.createElement(
-	                'fieldset',
-	                null,
+	                'div',
+	                { className: 'col-md-6 col-md-offset-3' },
 	                React.createElement(
-	                  'div',
-	                  { className: 'col-md-6 col-md-offset-3' },
+	                  'h2',
+	                  null,
+	                  this.props.type
+	                ),
+	                React.createElement(
+	                  'form',
+	                  { className: 'form-group', onSubmit: handleSubmit },
 	                  React.createElement(
-	                    'h2',
+	                    'label',
 	                    null,
-	                    this.props.type
+	                    'Title'
+	                  ),
+	                  React.createElement('input', { className: 'form-control',
+	                    type: 'text',
+	                    valueLink: this.linkState('title') }),
+	                  React.createElement('br', null),
+	                  React.createElement(
+	                    'label',
+	                    null,
+	                    'Description'
+	                  ),
+	                  React.createElement('textarea', { className: 'form-control',
+	                    type: 'text',
+	                    valueLink: this.linkState('description') }),
+	                  React.createElement('br', null),
+	                  React.createElement(
+	                    'label',
+	                    null,
+	                    'Price'
+	                  ),
+	                  React.createElement('input', { className: 'form-control',
+	                    min: '0',
+	                    type: 'number',
+	                    valueLink: this.linkState('price') }),
+	                  React.createElement('br', null),
+	                  React.createElement(
+	                    'label',
+	                    null,
+	                    'Address'
+	                  ),
+	                  React.createElement('input', { className: 'form-control',
+	                    type: 'text',
+	                    valueLink: this.linkState('address') }),
+	                  React.createElement('br', null),
+	                  React.createElement(
+	                    'label',
+	                    null,
+	                    'City'
 	                  ),
 	                  React.createElement(
-	                    'form',
-	                    { className: 'form-group', onSubmit: handleSubmit },
-	                    React.createElement(
-	                      'label',
-	                      null,
-	                      'Title'
-	                    ),
-	                    React.createElement('input', { className: 'form-control',
+	                    'select',
+	                    { className: 'form-control',
 	                      type: 'text',
-	                      valueLink: this.linkState('title') }),
-	                    React.createElement('br', null),
+	                      valueLink: this.linkState('city_id') },
+	                    React.createElement('option', null),
 	                    React.createElement(
-	                      'label',
-	                      null,
-	                      'Description'
+	                      'option',
+	                      { value: 1 },
+	                      'San Francisco'
 	                    ),
-	                    React.createElement('textarea', { className: 'form-control',
+	                    React.createElement(
+	                      'option',
+	                      { value: 2 },
+	                      'Oakland'
+	                    ),
+	                    React.createElement(
+	                      'option',
+	                      { value: 3 },
+	                      'Berkeley'
+	                    ),
+	                    React.createElement(
+	                      'option',
+	                      { value: 4 },
+	                      'San Mateo'
+	                    ),
+	                    React.createElement(
+	                      'option',
+	                      { value: 5 },
+	                      'San Jose'
+	                    )
+	                  ),
+	                  React.createElement('br', null),
+	                  React.createElement(
+	                    'label',
+	                    null,
+	                    'Category'
+	                  ),
+	                  React.createElement(
+	                    'select',
+	                    { className: 'form-control',
 	                      type: 'text',
-	                      valueLink: this.linkState('description') }),
-	                    React.createElement('br', null),
+	                      valueLink: this.linkState('category_id') },
+	                    React.createElement('option', null),
 	                    React.createElement(
-	                      'label',
-	                      null,
-	                      'Price'
-	                    ),
-	                    React.createElement('input', { className: 'form-control',
-	                      min: '0',
-	                      type: 'number',
-	                      valueLink: this.linkState('price') }),
-	                    React.createElement('br', null),
-	                    React.createElement(
-	                      'label',
-	                      null,
-	                      'Address'
-	                    ),
-	                    React.createElement('input', { className: 'form-control',
-	                      type: 'text',
-	                      valueLink: this.linkState('address') }),
-	                    React.createElement('br', null),
-	                    React.createElement(
-	                      'label',
-	                      null,
-	                      'City'
+	                      'option',
+	                      { value: 1 },
+	                      'Electronics'
 	                    ),
 	                    React.createElement(
-	                      'select',
-	                      { className: 'form-control',
-	                        type: 'text',
-	                        valueLink: this.linkState('city_id') },
-	                      React.createElement('option', null),
-	                      React.createElement(
-	                        'option',
-	                        { value: 1 },
-	                        'San Francisco'
-	                      ),
-	                      React.createElement(
-	                        'option',
-	                        { value: 2 },
-	                        'Oakland'
-	                      ),
-	                      React.createElement(
-	                        'option',
-	                        { value: 3 },
-	                        'Berkeley'
-	                      ),
-	                      React.createElement(
-	                        'option',
-	                        { value: 4 },
-	                        'San Mateo'
-	                      ),
-	                      React.createElement(
-	                        'option',
-	                        { value: 5 },
-	                        'San Jose'
-	                      )
-	                    ),
-	                    React.createElement('br', null),
-	                    React.createElement(
-	                      'label',
-	                      null,
-	                      'Category'
+	                      'option',
+	                      { value: 2 },
+	                      'Clothing'
 	                    ),
 	                    React.createElement(
-	                      'select',
-	                      { className: 'form-control',
-	                        type: 'text',
-	                        valueLink: this.linkState('category_id') },
-	                      React.createElement('option', null),
-	                      React.createElement(
-	                        'option',
-	                        { value: 1 },
-	                        'Electronics'
-	                      ),
-	                      React.createElement(
-	                        'option',
-	                        { value: 2 },
-	                        'Clothing'
-	                      ),
-	                      React.createElement(
-	                        'option',
-	                        { value: 3 },
-	                        'Home'
-	                      ),
-	                      React.createElement(
-	                        'option',
-	                        { value: 4 },
-	                        'Sports'
-	                      )
+	                      'option',
+	                      { value: 3 },
+	                      'Home'
 	                    ),
-	                    React.createElement('br', null),
-	                    React.createElement(ImageUploadButton, { storeListingImages: this.storeListingImages }),
-	                    React.createElement('br', null),
-	                    React.createElement('input', { type: 'submit', className: 'btn btn-default', value: this.props.type })
-	                  )
+	                    React.createElement(
+	                      'option',
+	                      { value: 4 },
+	                      'Sports'
+	                    )
+	                  ),
+	                  React.createElement('br', null),
+	                  React.createElement(ImageUploadButton, { storeListingImages: this.storeListingImages }),
+	                  React.createElement('br', null),
+	                  React.createElement('input', { type: 'submit', className: 'btn btn-default', value: this.props.type })
 	                )
 	              )
 	            )
@@ -32305,8 +32300,8 @@
 /* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var React = __webpack_require__(1);
-	var ListingForm = __webpack_require__(215);
+	var React = __webpack_require__(1),
+	    ListingForm = __webpack_require__(215);
 	
 	var ListingEdit = React.createClass({
 	  displayName: 'ListingEdit',
@@ -32328,12 +32323,11 @@
 /* 249 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var React = __webpack_require__(1);
-	var ReactRouter = __webpack_require__(159);
-	
-	var ListingStore = __webpack_require__(250);
-	var Listing = __webpack_require__(251);
-	var ApiUtil = __webpack_require__(220);
+	var React = __webpack_require__(1),
+	    ReactRouter = __webpack_require__(159),
+	    ListingStore = __webpack_require__(250),
+	    Listing = __webpack_require__(251),
+	    ApiUtil = __webpack_require__(220);
 	
 	var ListingShow = React.createClass({
 	  displayName: 'ListingShow',
@@ -32424,11 +32418,10 @@
 /* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var React = __webpack_require__(1);
-	var History = __webpack_require__(159).History;
-	
-	var Map = __webpack_require__(252);
-	var StarredButton = __webpack_require__(253);
+	var React = __webpack_require__(1),
+	    History = __webpack_require__(159).History,
+	    Map = __webpack_require__(252),
+	    StarredButton = __webpack_require__(253);
 	
 	var Listing = React.createClass({
 	  displayName: 'Listing',
@@ -32548,11 +32541,10 @@
 /* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var React = __webpack_require__(1);
-	var ReactDOM = __webpack_require__(158);
-	
-	var ListingStore = __webpack_require__(250);
-	var ApiUtil = __webpack_require__(220);
+	var React = __webpack_require__(1),
+	    ReactDOM = __webpack_require__(158),
+	    ListingStore = __webpack_require__(250),
+	    ApiUtil = __webpack_require__(220);
 	
 	var Map = React.createClass({
 	  displayName: 'Map',
@@ -32734,9 +32726,8 @@
 /* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var React = __webpack_require__(1);
-	
-	var CreateMap = __webpack_require__(256);
+	var React = __webpack_require__(1),
+	    CreateMap = __webpack_require__(256);
 	
 	var ListingLocation = React.createClass({
 	  displayName: 'ListingLocation',
@@ -32778,11 +32769,10 @@
 /* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var React = __webpack_require__(1);
-	var ReactDOM = __webpack_require__(158);
-	
-	var ListingStore = __webpack_require__(250);
-	var ApiUtil = __webpack_require__(220);
+	var React = __webpack_require__(1),
+	    ReactDOM = __webpack_require__(158),
+	    ListingStore = __webpack_require__(250),
+	    ApiUtil = __webpack_require__(220);
 	
 	var Map = React.createClass({
 	  displayName: 'Map',
@@ -33522,8 +33512,8 @@
 /* 264 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var React = __webpack_require__(1);
-	var ReactRouter = __webpack_require__(159);
+	var React = __webpack_require__(1),
+	    ReactRouter = __webpack_require__(159);
 	
 	var ListingIndex = React.createClass({
 	  displayName: 'ListingIndex',
