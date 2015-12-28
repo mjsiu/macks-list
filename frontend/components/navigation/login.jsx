@@ -42,7 +42,7 @@ var Login = React.createClass({
           </li>);
     } else {
       login = (
-        <li><a onClick={this.handleLoginClick}>Login</a></li>
+        <li><a onClick={this.handleLoginClick}>Sign In</a></li>
       )
       signup = (
         <li><a onClick={this.handleSignUpClick}>Sign Up</a></li>

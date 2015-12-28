@@ -23,7 +23,9 @@ var Error = React.createClass({
 
   render: function() {
     return (
-      <div className="form-error">{this.state.error}</div>
+      <div className="form-error">
+        {this.state.error}
+      </div>
     );
   }
 });

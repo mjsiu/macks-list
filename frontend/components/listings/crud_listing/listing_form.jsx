@@ -145,6 +145,8 @@ var ListingForm = React.createClass({
               <ImageUploadButton storeListingImages={this.storeListingImages}/>
             <br/>
               <input type="submit" className="btn btn-default" value={this.props.type}/>
+              <br/>
+              <br/>
               <Error/>
           </form>
         </div>

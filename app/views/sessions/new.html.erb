@@ -13,8 +13,20 @@
     <input class="form-control" type="password" name="user[password]">
     <br/>
     <input class="btn btn-default" type="submit" value="Sign In">
-    <%= render "shared/guest" %>
   </form>
+  <%= render "shared/guest" %>
+  <br/>
+
+  <div class="login-error">
+    <% if flash[:errors] %>
+      <% flash[:errors].each do |error| %>
+        <p>
+          <%= error %>
+        </p>
+      <% end %>
+    <% end %>
+  </div>
+
   <a href="<%=new_user_url%>">Sign up for an account</a>
   </div>
 </div>

@@ -24636,7 +24636,7 @@
 	        React.createElement(
 	          "a",
 	          { onClick: this.handleLoginClick },
-	          "Login"
+	          "Sign In"
 	        )
 	      );
 	      signup = React.createElement(
@@ -25110,6 +25110,8 @@
 	                  React.createElement(ImageUploadButton, { storeListingImages: this.storeListingImages }),
 	                  React.createElement('br', null),
 	                  React.createElement('input', { type: 'submit', className: 'btn btn-default', value: this.props.type }),
+	                  React.createElement('br', null),
+	                  React.createElement('br', null),
 	                  React.createElement(Error, null)
 	                )
 	              )

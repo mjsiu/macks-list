@@ -29,6 +29,18 @@
   */
  /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
+ .signup-error {
+   color: #A80000;
+ }
+
+ .login-error {
+   color: #A80000;
+ }
+
+ .form-error {
+   color: #A80000;
+ }
+
  .starred-table > h2 {
    text-align: center;
  }
@@ -2843,7 +2855,7 @@ fieldset[disabled] .form-control {
 textarea.form-control {
  height: auto;
  resize: none;
- height: 200px;
+ height: 155px;
 }
 input[type="search"] {
  -webkit-appearance: none;

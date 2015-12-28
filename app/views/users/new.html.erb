@@ -29,6 +29,16 @@
     <br/>
     <input class="btn btn-default" type="submit" value="Sign Up">
     <br/>
+    <br/>
+    <div class="signup-error">
+      <% if flash[:errors] %>
+        <% flash[:errors].each do |error| %>
+          <p>
+            <%= error %>
+          </p>
+        <% end %>
+      <% end %>
+    </div>
     <a href="<%=new_session_url%>">Back to sign in</a>
   </form>
 </div>
