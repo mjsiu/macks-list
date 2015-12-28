@@ -36,15 +36,14 @@ var Listing = React.createClass({
         <div className="row">
           <div className="col-md-3 col-sm-offset-1">
             <Map listing={this.props.listing}></Map>
-            <br></br>
-            <br></br>
-
+            <br/>
+            <StarredButton id="star-button" listing={this.props.listing}/>
+            <br/>
             <div className="panel-group">
               <div className="panel panel-default">
                 <div className="panel-heading">
                   <h4 className="panel-title">
                     <a data-toggle="collapse" href="#collapse1">{this.props.listing.title}</a>
-                      <span class="badge"><StarredButton listing={this.props.listing}/></span>
                   </h4>
                 </div>
 
@@ -52,6 +51,8 @@ var Listing = React.createClass({
                   <ul className="list-group">
                     <li className="list-group-item">${this.props.listing.price}</li>
                     <li className="list-group-item">{this.props.listing.address}</li>
+                    <li className="list-group-item">{this.props.listing.email}</li>
+                    <li className="list-group-item">Created {this.props.listing.create_date} ago</li>
                   </ul>
                 </div>
               </div>

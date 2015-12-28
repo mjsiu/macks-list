@@ -7,5 +7,4 @@ class Listing < ActiveRecord::Base
 
   validates :title, :description, :price, :address,
   :latitude, :longitude, :user_id, :city_id, presence: true
-
 end

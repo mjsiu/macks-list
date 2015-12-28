@@ -29,6 +29,15 @@
   */
  /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
+.btn-sm > p {
+   font-size: 25px;
+   margin: auto;
+ }
+
+ .star-button {
+   text-align: center;
+ }
+
  .signup-error {
    color: #A80000;
  }
@@ -234,8 +243,8 @@
 }
 
 .map {
- width: 250px;
- height: 250px;
+ width: 300px;
+ height: 300px;
 }
 
 .create-map {

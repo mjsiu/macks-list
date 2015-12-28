@@ -14,7 +14,7 @@ json.array! @listings do |listing|
   json.user_id listing.user_id
   json.create_date distance_of_time_in_words_to_now(listing.created_at)
   json.archived listing.archived
-
+  json.email User.find(listing.user_id).email
 
   json.images listing.images do |image|
     json.id image.id

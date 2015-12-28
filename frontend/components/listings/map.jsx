@@ -28,7 +28,9 @@ var Map = React.createClass ({
     marker.addListener('click', function() {
       infowindow.open(map, marker);
     });
+
     }
+    // map.setCenter(new google.maps.LatLng(listing.latitude, listing.longitude))
   },
 
   componentDidMount: function(){

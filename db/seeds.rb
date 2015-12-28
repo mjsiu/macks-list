@@ -19,10 +19,10 @@ Listing.create(title: "Limited Edition Book", description: Faker::Hipster.paragr
 price: 50, address: "Powell Street, San Francisco, California", user_id:
 1, city_id: 1, category_id: 1, latitude: 37.774733, longitude: -122.418702)
 Listing.create(title: "Homeade Pasta", description: Faker::Hipster.paragraphs(3, false),
-price: 300, address: "3rd Street, San Mateo, California", user_id: 2, city_id: 2,
+price: 300, address: "3rd Street, San Mateo, California", user_id: 1, city_id: 2,
 category_id: 2, latitude: 37.774733, longitude: -122.418702)
 Listing.create(title: "Boat", description: Faker::Hipster.paragraphs(3, false), price: 50, address:
-"Berkeley, Berkeley, California", user_id: 3, city_id: 3, category_id: 3,
+"Berkeley, Berkeley, California", user_id: 1, city_id: 3, category_id: 3,
 latitude: 37.774733, longitude: -122.418702)
 Listing.create(title: "Radio", description: Faker::Hipster.paragraphs(3, false),
 price: 100, address: "Powell Street, San Francisco, California", user_id:
