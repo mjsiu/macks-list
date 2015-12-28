@@ -52,7 +52,15 @@ ApiActions = {
       actionType: StarredConstants.STARRED_DELETE_LISTING,
       starred_listing: starred_listing
     });
+  },
+
+  formError: function(error) {
+    AppDispatcher.dispatch({
+      actionType:ErrorConstants.ERROR_ERROR,
+      error: error
+    });
   }
+
 }
 
 module.exports = ApiActions;

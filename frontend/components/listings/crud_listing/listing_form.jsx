@@ -1,7 +1,8 @@
 var React = require('react'),
     LinkedStateMixin = require('react-addons-linked-state-mixin'),
     ApiUtil = require('../../../util/api_utils'),
-    ImageUploadButton = require('./image_upload_button');
+    ImageUploadButton = require('./image_upload_button'),
+    Error = require('./error');
 
 var ListingForm = React.createClass({
   mixins: [LinkedStateMixin],
@@ -59,9 +60,9 @@ var ListingForm = React.createClass({
     Object.keys(this.state).forEach(function (key) {
       { listing[key] = this.state[key]; }
     }.bind(this));
-
-    ApiUtil.createNewListing(listing);
-    this.returnToProfile();
+    debugger
+    ApiUtil.createNewListing(listing, this.returnToProfile);
+    // this.returnToProfile();
   },
 
   handleEditClick: function(event) {
@@ -76,12 +77,12 @@ var ListingForm = React.createClass({
   },
 
   returnToProfile: function(){
-    this.props.history.pushState(null, "/user", {});
+    this.props.history.pushState(null, "/user");
   },
 
   render: function() {
     var handleSubmit;
-    if (this.props.type === "New Listing") {
+    if (this.props.type === "NEW LISTING") {
       handleSubmit = this.handleClickCreate;
     } else {
       handleSubmit = this.handleEditClick;
@@ -144,6 +145,7 @@ var ListingForm = React.createClass({
               <ImageUploadButton storeListingImages={this.storeListingImages}/>
             <br/>
               <input type="submit" className="btn btn-default" value={this.props.type}/>
+              <Error/>
           </form>
         </div>
         </fieldset>

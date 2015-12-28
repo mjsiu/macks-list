@@ -15,11 +15,17 @@ var ApiUtil = {
     ApiActions.receiveAllListings([target_listing]);
   },
 
-  createNewListing: function(listing){
+  createNewListing: function(listing, callback){
     $.ajax({
       url: "api/listings",
       method: "POST",
-      data: { listing: listing }
+      data: { listing: listing },
+      success: function (listing) {
+        callback();
+      },
+      error: function(error) {
+        ApiActions.formError(error);
+      }
     });
   },
 
