@@ -24741,6 +24741,12 @@
 	          "div",
 	          { className: "splash-area1-content" },
 	          React.createElement(
+	            "div",
+	            { id: "cf" },
+	            React.createElement("img", { className: "bottom", src: "http://res.cloudinary.com/mackslist/image/upload/v1451340441/Golden-Gate-Wallpaper-L_15MBP_wowf6t.jpg" }),
+	            React.createElement("img", { className: "top", src: "http://res.cloudinary.com/mackslist/image/upload/c_scale,w_1920/v1450937792/sanfran_ck911l.jpg" })
+	          ),
+	          React.createElement(
 	            "h1",
 	            null,
 	            "MACKSLIST"

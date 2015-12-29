@@ -29,6 +29,23 @@
   */
  /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
+#cf {
+  position:relative;
+}
+
+#cf img {
+  position:absolute;
+  left:0;
+  -webkit-transition: opacity 1.5s ease-in-out;
+  -moz-transition: opacity 1.5s ease-in-out;
+  -o-transition: opacity 1.5s ease-in-out;
+  transition: opacity 1.5s ease-in-out;
+}
+
+#cf img.top:hover {
+  opacity:0;
+}
+
 .btn-sm > p {
    font-size: 25px;
    margin: auto;
@@ -126,7 +143,7 @@
  margin-right: 0;
  max-width: 1920px;
  height: 975px;
- background: url('http://res.cloudinary.com/mackslist/image/upload/v1450937916/sf_cxayxy.jpg')
+ background: url('http://res.cloudinary.com/mackslist/image/upload/c_scale,w_1920/v1450937792/sanfran_ck911l.jpg')
  no-repeat center center;
  -webkit-background-size: cover;
  -moz-background-size: cover;
@@ -5725,7 +5742,7 @@ button.list-group-item-danger.active:focus {
  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 .panel-body {
- padding: 15px;
+ overflow: hidden;
 }
 .panel-heading {
  padding: 10px 15px;

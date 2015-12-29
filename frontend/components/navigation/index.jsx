@@ -69,8 +69,14 @@ var Splash = React.createClass({
     return (
       <div className="row-centered">
 
+
         <div className="splash-area1">
           <div className="splash-area1-content">
+            <div id="cf">
+              <img className="bottom" src="http://res.cloudinary.com/mackslist/image/upload/v1451340441/Golden-Gate-Wallpaper-L_15MBP_wowf6t.jpg" />
+
+            <img className="top" src="http://res.cloudinary.com/mackslist/image/upload/c_scale,w_1920/v1450937792/sanfran_ck911l.jpg" />
+            </div>
             <h1>MACKSLIST</h1>
           </div>
         </div>
