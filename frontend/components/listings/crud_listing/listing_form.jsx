@@ -60,7 +60,6 @@ var ListingForm = React.createClass({
     Object.keys(this.state).forEach(function (key) {
       { listing[key] = this.state[key]; }
     }.bind(this));
-    debugger
     ApiUtil.createNewListing(listing, this.returnToProfile);
     // this.returnToProfile();
   },
@@ -80,6 +79,30 @@ var ListingForm = React.createClass({
     this.props.history.pushState(null, "/user");
   },
 
+  createCategoryElements: function() {
+    var category_list = [
+      {"category": "Appliances", "id": 1},
+      {"category": "Automotive", "id": 2},
+      {"category": "Clothing", "id": 3},
+      {"category": "Electronics", "id": 4},
+      {"category": "Farm and Garden", "id": 5},
+      {"category": "Health and Beauty", "id": 6},
+      {"category": "Home", "id": 7},
+      {"category": "Jewelry", "id": 8},
+      {"category": "Misc", "id": 9},
+      {"category": "Musical Instruments", "id": 10},
+      {"category": "Pets", "id": 11},
+      {"category": "Sports", "id": 12}
+    ];
+
+    var categories = category_list.map(function(category, idx){
+      return (
+        <option key={idx} value={category.id}>{category.category}</option>
+      )
+    });
+    return categories;
+  },
+
   render: function() {
     var handleSubmit;
     if (this.props.type === "NEW LISTING") {
@@ -87,6 +110,8 @@ var ListingForm = React.createClass({
     } else {
       handleSubmit = this.handleEditClick;
     }
+
+    var categories = this.createCategoryElements();
 
     return (
 
@@ -136,10 +161,7 @@ var ListingForm = React.createClass({
                      type="text"
                      valueLink={this.linkState('category_id')}>
                      <option></option>
-                     <option value={1}>Electronics</option>
-                     <option value={2}>Clothing</option>
-                     <option value={3}>Home</option>
-                     <option value={4}>Sports</option>
+                     {categories}
               </select>
             <br/>
               <ImageUploadButton storeListingImages={this.storeListingImages}/>
