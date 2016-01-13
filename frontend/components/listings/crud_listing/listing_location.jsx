@@ -9,22 +9,25 @@ var ListingLocation = React.createClass ({
 
   render: function(){
     return (
-      <div className="container">
-        <div className="row">
-
-          <div className="page-header">
-            <h1>PICK LISTING LOCATION</h1>
-          </div>
-
-          <div className="col-md-12">
-            <CreateMap onMapClick={this.handleMapClick}/>
-          </div>
-
-        </div>
-     </div>
+      <div className="col-md-12">
+        <CreateMap onMapClick={this.handleMapClick}/>
+      </div>
     );
   }
 
 });
 
 module.exports = ListingLocation;
+// <div className="container">
+//   <div className="row">
+//
+//     <div className="page-header">
+//       <h1>PICK LISTING LOCATION</h1>
+//     </div>
+//
+//     <div className="col-md-12">
+//       <CreateMap onMapClick={this.handleMapClick}/>
+//     </div>
+//
+//   </div>
+// </div>
