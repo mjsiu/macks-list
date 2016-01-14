@@ -62,7 +62,7 @@ var Splash = React.createClass({
               goods in the easiest way possible.
               <br/>
               <br/>
-              Start browsing, creating, or favoriting listings today.
+              Start browsing, creating, or favoriting listings today. 
             </p>
           </div>
         </div>
