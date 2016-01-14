@@ -39,7 +39,7 @@ var Footer = React.createClass({
 
             <div>
               <i className="fa fa-envelope"></i>
-              <p><a href="mailto:support@company.com">mackslist@company.com</a></p>
+              <p><a href="mailto:support@company.com">mackslist@gmail.com</a></p>
             </div>
 
           </div>

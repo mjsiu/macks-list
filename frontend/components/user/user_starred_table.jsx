@@ -57,7 +57,7 @@ var UserStarredTable = React.createClass({
 
     return (
       <div className="starred-table">
-        <h2>STARRED LISTINGS</h2>
+        <h2>Starred Listings</h2>
         <br/>
         <table className="table table-hover">
           <thead>

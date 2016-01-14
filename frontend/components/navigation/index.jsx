@@ -12,16 +12,16 @@ var Splash = React.createClass({
     ];
 
     var cities = city_list.map(function(city, idx){
-      var partial_url = "http://res.cloudinary.com/mackslist/image/upload/c_scale,w_350/";
+      var partial_url = "http://res.cloudinary.com/mackslist/image/upload/c_scale,w_225/";
       return (
         <div key={idx} className="col-centered">
           <div className="panel panel-default">
             <div className="panel-heading">{city["name"]}</div>
-            <div className="panel-body"><img src={partial_url + city["url"] }></img></div>
+            <div className="panel-body" onClick={this.handleSearchClick}><img src={partial_url + city["url"] }></img></div>
           </div>
         </div>
       );
-    });
+    }.bind(this));
     return cities;
   },
 
@@ -53,16 +53,16 @@ var Splash = React.createClass({
 
         <div className="splash-area2">
           <div className="splash-area2-content">
-            <h1>ABOUT</h1>
+            <h1>About</h1>
             <p>
-              MacksList is a place for people in the bay area to sell their
+              ｢ MacksList is a place for people in the bay area to sell their
               used goods. With a varied list of supported cities and categories,
               you can search through your area for exactly what you are looking for.
               MacksList is dedicated to helping bay area locals connect and sell their
               goods in the easiest way possible.
               <br/>
               <br/>
-              Start browsing, creating, or favoriting listings today. 
+              Start browsing, creating, or favoriting listings today. ｣
             </p>
           </div>
         </div>
@@ -70,22 +70,12 @@ var Splash = React.createClass({
         <div className="splash-area3"/>
 
         <div className="splash-area4">
-          <div className="container">
-          <h1>SEARCH</h1>
-          <br/>
-            <div>
+            <div className="col-md-12">
                 {cities}
             </div>
-              <br/>
-              <br/>
-              <button onClick={this.handleCreateClick} type="button" className="btn btn-primary">Create Listings</button>  <button onClick={this.handleSearchClick} type="button" className="btn btn-primary">Search Listings</button>
-          </div>
+
         </div>
-
-
-
         <Footer/>
-
       </div>
     );
   }

@@ -24486,7 +24486,7 @@
 	      null,
 	      React.createElement(
 	        'nav',
-	        { className: 'navbar navbar-default' },
+	        { className: 'navbar navbar-default navbar-fixed-top' },
 	        React.createElement(
 	          'div',
 	          { className: 'container-fluid' },
@@ -24655,8 +24655,8 @@
 	  createCityElements: function () {
 	    var city_list = [{ "name": "San Francisco", "url": "v1450936881/sanfrancisco_qpvztc.png" }, { "name": "Oakland", "url": "v1450936881/oakland_zock1c.png" }, { "name": "San Mateo", "url": "v1450936881/sanmateo_kemz9s.png" }, { "name": "San Jose", "url": "v1450936881/sanjose_rnyemn.png" }, { "name": "Marin County", "url": "v1450940342/marin_t2kc8q.png" }];
 	
-	    var cities = city_list.map(function (city, idx) {
-	      var partial_url = "http://res.cloudinary.com/mackslist/image/upload/c_scale,w_350/";
+	    var cities = city_list.map((function (city, idx) {
+	      var partial_url = "http://res.cloudinary.com/mackslist/image/upload/c_scale,w_225/";
 	      return React.createElement(
 	        'div',
 	        { key: idx, className: 'col-centered' },
@@ -24670,12 +24670,12 @@
 	          ),
 	          React.createElement(
 	            'div',
-	            { className: 'panel-body' },
+	            { className: 'panel-body', onClick: this.handleSearchClick },
 	            React.createElement('img', { src: partial_url + city["url"] })
 	          )
 	        )
 	      );
-	    });
+	    }).bind(this));
 	    return cities;
 	  },
 	
@@ -24721,15 +24721,15 @@
 	          React.createElement(
 	            'h1',
 	            null,
-	            'ABOUT'
+	            'About'
 	          ),
 	          React.createElement(
 	            'p',
 	            null,
-	            'MacksList is a place for people in the bay area to sell their used goods. With a varied list of supported cities and categories, you can search through your area for exactly what you are looking for. MacksList is dedicated to helping bay area locals connect and sell their goods in the easiest way possible.',
+	            '｢ MacksList is a place for people in the bay area to sell their used goods. With a varied list of supported cities and categories, you can search through your area for exactly what you are looking for. MacksList is dedicated to helping bay area locals connect and sell their goods in the easiest way possible.',
 	            React.createElement('br', null),
 	            React.createElement('br', null),
-	            'Start browsing, creating, or favoriting listings today.'
+	            'Start browsing, creating, or favoriting listings today. ｣'
 	          )
 	        )
 	      ),
@@ -24739,31 +24739,8 @@
 	        { className: 'splash-area4' },
 	        React.createElement(
 	          'div',
-	          { className: 'container' },
-	          React.createElement(
-	            'h1',
-	            null,
-	            'SEARCH'
-	          ),
-	          React.createElement('br', null),
-	          React.createElement(
-	            'div',
-	            null,
-	            cities
-	          ),
-	          React.createElement('br', null),
-	          React.createElement('br', null),
-	          React.createElement(
-	            'button',
-	            { onClick: this.handleCreateClick, type: 'button', className: 'btn btn-primary' },
-	            'Create Listings'
-	          ),
-	          '  ',
-	          React.createElement(
-	            'button',
-	            { onClick: this.handleSearchClick, type: 'button', className: 'btn btn-primary' },
-	            'Search Listings'
-	          )
+	          { className: 'col-md-12' },
+	          cities
 	        )
 	      ),
 	      React.createElement(Footer, null)
@@ -24794,7 +24771,7 @@
 	  displayName: 'ListingNew',
 	
 	  render: function () {
-	    var type = "NEW LISTING";
+	    var type = "New Listing";
 	
 	    return React.createElement(
 	      'div',
@@ -24915,7 +24892,7 @@
 	
 	  render: function () {
 	    var handleSubmit;
-	    if (this.props.type === "NEW LISTING") {
+	    if (this.props.type === "New Listing") {
 	      handleSubmit = this.handleClickCreate;
 	    } else {
 	      handleSubmit = this.handleEditClick;
@@ -32799,7 +32776,7 @@
 	          React.createElement(
 	            'h1',
 	            null,
-	            'PICK LISTING LOCATION'
+	            'Pick a Listing'
 	          )
 	        ),
 	        React.createElement(
@@ -32985,7 +32962,7 @@
 	      React.createElement(
 	        'h2',
 	        null,
-	        'YOUR LISTINGS'
+	        'Your Listings'
 	      ),
 	      React.createElement('br', null),
 	      React.createElement(
@@ -33181,7 +33158,7 @@
 	      React.createElement(
 	        'h2',
 	        null,
-	        'STARRED LISTINGS'
+	        'Starred Listings'
 	      ),
 	      React.createElement('br', null),
 	      React.createElement(
@@ -33711,7 +33688,7 @@
 	            React.createElement(
 	              "a",
 	              { href: "mailto:support@company.com" },
-	              "mackslist@company.com"
+	              "mackslist@gmail.com"
 	            )
 	          )
 	        )

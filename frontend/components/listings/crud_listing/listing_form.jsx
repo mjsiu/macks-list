@@ -105,7 +105,7 @@ var ListingForm = React.createClass({
 
   render: function() {
     var handleSubmit;
-    if (this.props.type === "NEW LISTING") {
+    if (this.props.type === "New Listing") {
       handleSubmit = this.handleClickCreate;
     } else {
       handleSubmit = this.handleEditClick;

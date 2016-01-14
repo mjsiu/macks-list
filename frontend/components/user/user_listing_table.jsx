@@ -69,7 +69,7 @@ var UserListingTable = React.createClass({
 
     return (
       <div className="user-listings-table">
-        <h2>YOUR LISTINGS</h2>
+        <h2>Your Listings</h2>
         <br/>
         <table className="table table-hover">
           <thead>

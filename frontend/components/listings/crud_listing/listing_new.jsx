@@ -3,7 +3,7 @@ var React = require('react'),
 
 var ListingNew = React.createClass({
   render: function() {
-    var type = "NEW LISTING";
+    var type = "New Listing";
 
     return (
       <div className="container">

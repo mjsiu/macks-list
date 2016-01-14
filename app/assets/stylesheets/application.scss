@@ -35,7 +35,7 @@
 	box-sizing: border-box;
 	width: 100%;
 	text-align: left;
-	font: bold 16px sans-serif;
+	// font: bold 16px sans-serif;
 
 	padding: 55px 50px;
 }
@@ -57,7 +57,7 @@
 
 .footer-distributed h3{
 	color:  #ffffff;
-	font: normal 36px 'Cookie';
+	// font: normal 36px 'Cookie';
 	margin: 0;
 }
 
@@ -149,7 +149,6 @@
 	display: block;
 	color:  #ffffff;
 	font-size: 14px;
-	font-weight: bold;
 	margin-bottom: 20px;
 }
 
@@ -383,20 +382,31 @@ animation-direction: alternate;
  background-size: cover;
 }
 
+.splash-area3 > h1 {
+  position: absolute;
+  text-align: center;
+  font-weight: 500;
+  font-size: 60px;
+  color: white;
+  top: 50%;
+  left: 45%;
+}
+
 .splash-area4 {
  position: relative;
  display: block;
  margin-left: 0;
  margin-right: 0;
  max-width: 1920px;
- height: 1000px;
+ height: 350px;
  background-color: #EDEDED;
 }
 
 .splash-area4 > .container {
   position: absolute;
-  top: 10%;
-  left: 10%;
+  top: 20%;
+  float: left;
+  margin: 0, auto;
 }
 
 .splash-area4 > .container > p {
@@ -406,6 +416,10 @@ animation-direction: alternate;
 .splash-area4 > .container > h1 {
   font-weight: 500;
   font-size: 60px;
+}
+
+.splash-area4 > .col-md-12 {
+  top: 20%;
 }
 
 .splash-area5 > .container > h1 {
@@ -472,11 +486,11 @@ animation-direction: alternate;
  position:relative;
  display: inline-block;
 }
-
-.index-items:hover {
- transform: scale(1.05);
- z-index:999;
-}
+//
+// .index-items:hover {
+//  transform: scale(1.05);
+//  z-index:999;
+// }
 html {
  -ms-text-size-adjust: 100%;
  -webkit-text-size-adjust: 100%;
@@ -484,6 +498,7 @@ html {
 }
 body {
  margin: 0;
+ padding: 45px 0 0 0;
 }
 article,
 aside,
@@ -7228,13 +7243,13 @@ button.close {
  font-size: 11px;
  line-height: 22px;
  font-weight: 500;
- text-transform: uppercase;
+ // text-transform: uppercase;
 }
 .navbar .nav > li > a {
- font-size: 11px;
+ font-size: 13px;
  line-height: 22px;
  font-weight: 500;
- text-transform: uppercase;
+ // text-transform: uppercase;
 }
 .navbar-form input,
 .navbar-form .form-control {
@@ -7245,7 +7260,7 @@ button.close {
  font-size: 11px;
  line-height: 22px;
  font-weight: 500;
- text-transform: uppercase;
+ // text-transform: uppercase;
 }
 .btn:hover {
  border-color: transparent;
@@ -7268,10 +7283,10 @@ input:focus,
  box-shadow: none;
 }
 .nav {
- font-size: 11px;
+ font-size: 13px;
  line-height: 22px;
  font-weight: 500;
- text-transform: uppercase;
+ // text-transform: uppercase;
 }
 .nav .open > a,
 .nav .open > a:hover,
@@ -7303,7 +7318,7 @@ input:focus,
  font-size: 11px;
  line-height: 22px;
  font-weight: 500;
- text-transform: uppercase;
+ // text-transform: uppercase;
  border: 1px solid #dfd7ca;
 }
 .breadcrumb a {
@@ -7313,13 +7328,13 @@ input:focus,
  font-size: 11px;
  line-height: 22px;
  font-weight: 500;
- text-transform: uppercase;
+ // text-transform: uppercase;
 }
 .pager {
  font-size: 11px;
  line-height: 22px;
  font-weight: 500;
- text-transform: uppercase;
+ // text-transform: uppercase;
 }
 .pager li > a {
  color: #98978b;
@@ -7328,7 +7343,7 @@ input:focus,
  font-size: 11px;
  line-height: 22px;
  font-weight: 500;
- text-transform: uppercase;
+ // text-transform: uppercase;
 }
 .alert a,
 .alert .alert-link {
@@ -7366,14 +7381,14 @@ input:focus,
  font-size: 11px;
  line-height: 22px;
  font-weight: 500;
- text-transform: uppercase;
+ // text-transform: uppercase;
  color: #fff;
 }
 .panel .panel-footer {
  font-size: 11px;
  line-height: 22px;
  font-weight: 500;
- text-transform: uppercase;
+ // text-transform: uppercase;
 }
 .panel-default .panel-heading,
 .panel-default .panel-title,
