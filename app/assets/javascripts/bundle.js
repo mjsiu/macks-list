@@ -24480,6 +24480,7 @@
 	  },
 	
 	  render: function () {
+	
 	    return React.createElement(
 	      'div',
 	      null,
@@ -24491,61 +24492,22 @@
 	          { className: 'container-fluid' },
 	          React.createElement(
 	            'div',
-	            { className: 'navbar-header' },
-	            React.createElement(
-	              'button',
-	              { type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#bs-example-navbar-collapse-1', 'aria-expanded': 'false' },
-	              React.createElement(
-	                'span',
-	                { className: 'sr-only' },
-	                'Toggle navigation'
-	              ),
-	              React.createElement('span', { className: 'icon-bar' }),
-	              React.createElement('span', { className: 'icon-bar' }),
-	              React.createElement('span', { className: 'icon-bar' })
-	            ),
-	            React.createElement(
-	              'a',
-	              { className: 'navbar-brand', onClick: this.handleHomeClick },
-	              'mackslist'
-	            )
-	          ),
-	          React.createElement(
-	            'div',
 	            { className: 'collapse navbar-collapse', id: 'bs-example-navbar-collapse-1' },
 	            React.createElement(
 	              'ul',
 	              { className: 'nav navbar-nav' },
 	              React.createElement(
 	                'li',
-	                null,
+	                { className: 'active' },
 	                React.createElement(
 	                  'a',
 	                  { onClick: this.handleHomeClick },
-	                  'Home'
-	                )
-	              ),
-	              React.createElement(
-	                'button',
-	                { type: 'button', 'class': 'btn btn-info btn-lg', 'data-toggle': 'modal', 'data-target': '#myModal' },
-	                'Open Modal'
-	              ),
-	              React.createElement(
-	                'div',
-	                { id: 'myModal', className: 'modal fade', role: 'dialog' },
-	                React.createElement(
-	                  'div',
-	                  { className: 'modal-dialog' },
-	                  React.createElement(
-	                    'div',
-	                    { className: 'modal-content' },
-	                    React.createElement(ListingLocation, null)
-	                  )
+	                  'MacksList'
 	                )
 	              ),
 	              React.createElement(
 	                'li',
-	                { className: 'active' },
+	                null,
 	                React.createElement(
 	                  'a',
 	                  { onClick: this.handleCreateClick },
@@ -24685,9 +24647,10 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
+	var Footer = __webpack_require__(269);
 	
 	var Splash = React.createClass({
-	  displayName: "Splash",
+	  displayName: 'Splash',
 	
 	  createCityElements: function () {
 	    var city_list = [{ "name": "San Francisco", "url": "v1450936881/sanfrancisco_qpvztc.png" }, { "name": "Oakland", "url": "v1450936881/oakland_zock1c.png" }, { "name": "San Mateo", "url": "v1450936881/sanmateo_kemz9s.png" }, { "name": "San Jose", "url": "v1450936881/sanjose_rnyemn.png" }, { "name": "Marin County", "url": "v1450940342/marin_t2kc8q.png" }];
@@ -24695,47 +24658,25 @@
 	    var cities = city_list.map(function (city, idx) {
 	      var partial_url = "http://res.cloudinary.com/mackslist/image/upload/c_scale,w_350/";
 	      return React.createElement(
-	        "div",
-	        { key: idx, className: "col-centered" },
+	        'div',
+	        { key: idx, className: 'col-centered' },
 	        React.createElement(
-	          "div",
-	          { className: "panel panel-default" },
+	          'div',
+	          { className: 'panel panel-default' },
 	          React.createElement(
-	            "div",
-	            { className: "panel-heading" },
+	            'div',
+	            { className: 'panel-heading' },
 	            city["name"]
 	          ),
 	          React.createElement(
-	            "div",
-	            { className: "panel-body" },
-	            React.createElement("img", { src: partial_url + city["url"] })
+	            'div',
+	            { className: 'panel-body' },
+	            React.createElement('img', { src: partial_url + city["url"] })
 	          )
 	        )
 	      );
 	    });
 	    return cities;
-	  },
-	
-	  createCategoryElements: function () {
-	    var category_list = [{ "category": "Appliances", "url": "v1450981839/fridge3_1_nnofvd.png" }, { "category": "Automotive", "url": "v1450982231/car80_leqiqv.png" }, { "category": "Clothing", "url": "v1450982232/winter-clothes_hs6lj4.png" }, { "category": "Electronics", "url": "v1450982231/computer197_wjk3dj.png" }, { "category": "Farm and Garden", "url": "v1450982231/flowers12_eo6eal.png" }, { "category": "Health and Beauty", "url": "v1450982232/heart8_tnjrlb.png" }, { "category": "Home", "url": "v1450982232/home168_aqifxo.png" }, { "category": "Jewelry", "url": "v1450982231/diamond4_xqeqwg.png" }, { "category": "Misc", "url": "v1450982231/bald_qhpjiv.png" }, { "category": "Musical Instruments", "url": "v1450982232/guitars_t5zlgf.png" }, { "category": "Pets", "url": "v1450982231/dog50_g8mrlb.png" }, { "category": "Sports", "url": "v1450982232/soccer19_fn5icv.png" }];
-	
-	    var categories = category_list.map(function (category, idx) {
-	      var partial_url = "http://res.cloudinary.com/mackslist/image/upload/";
-	      return React.createElement(
-	        "div",
-	        { key: idx, className: "col-centered" },
-	        React.createElement(
-	          "div",
-	          { className: "panel panel-default" },
-	          React.createElement(
-	            "div",
-	            { className: "panel-body" },
-	            React.createElement("img", { src: partial_url + category["url"] })
-	          )
-	        )
-	      );
-	    });
-	    return categories;
 	  },
 	
 	  handleCreateClick: function () {
@@ -24748,129 +24689,99 @@
 	
 	  render: function () {
 	    var cities = this.createCityElements();
-	    var categories = this.createCategoryElements();
 	
 	    return React.createElement(
-	      "div",
-	      { className: "row-centered" },
+	      'div',
+	      { className: 'row-centered' },
 	      React.createElement(
-	        "div",
-	        { className: "splash-area1" },
+	        'div',
+	        { className: 'splash-area1' },
 	        React.createElement(
-	          "div",
-	          { className: "splash-area1-content" },
+	          'div',
+	          { className: 'splash-area1-content' },
 	          React.createElement(
-	            "div",
-	            { id: "cf" },
-	            React.createElement("img", { className: "bottom", src: "http://res.cloudinary.com/mackslist/image/upload/v1451340441/Golden-Gate-Wallpaper-L_15MBP_wowf6t.jpg" }),
-	            React.createElement("img", { className: "top", src: "http://res.cloudinary.com/mackslist/image/upload/c_scale,w_1920/v1450937792/sanfran_ck911l.jpg" })
+	            'div',
+	            { id: 'cf3' },
+	            React.createElement('img', { className: 'bottom', src: 'http://res.cloudinary.com/mackslist/image/upload/c_scale,h_1050,w_1663/v1451340441/Golden-Gate-Wallpaper-L_15MBP_wowf6t.jpg' }),
+	            React.createElement('img', { className: 'top', src: 'http://res.cloudinary.com/mackslist/image/upload/c_scale,h_1050,w_1663/v1450937916/sf_cxayxy.jpg' })
 	          ),
 	          React.createElement(
-	            "h1",
+	            'h1',
 	            null,
-	            "MACKSLIST"
+	            'MACKSLIST'
 	          )
 	        )
 	      ),
 	      React.createElement(
-	        "div",
-	        { className: "splash-area2" },
+	        'div',
+	        { className: 'splash-area2' },
 	        React.createElement(
-	          "div",
-	          { className: "splash-area2-content" },
+	          'div',
+	          { className: 'splash-area2-content' },
 	          React.createElement(
-	            "h1",
+	            'h1',
 	            null,
-	            "ABOUT"
+	            'ABOUT'
 	          ),
 	          React.createElement(
-	            "p",
+	            'p',
 	            null,
-	            "MacksList is a place for people in the bay area to sell their used goods. With a varied list of supported cities and categories, you can search through your area for exactly what you are looking for. MacksList is dedicated to helping bay area locals connect and sell their goods in the easiest way possible.",
-	            React.createElement("br", null),
-	            React.createElement("br", null),
-	            "Start browsing, creating, or favoriting listings today."
+	            'MacksList is a place for people in the bay area to sell their used goods. With a varied list of supported cities and categories, you can search through your area for exactly what you are looking for. MacksList is dedicated to helping bay area locals connect and sell their goods in the easiest way possible.',
+	            React.createElement('br', null),
+	            React.createElement('br', null),
+	            'Start browsing, creating, or favoriting listings today.'
 	          )
 	        )
 	      ),
-	      React.createElement("div", { className: "splash-area3" }),
+	      React.createElement('div', { className: 'splash-area3' }),
 	      React.createElement(
-	        "div",
-	        { className: "splash-area4" },
+	        'div',
+	        { className: 'splash-area4' },
 	        React.createElement(
-	          "div",
-	          { className: "container" },
+	          'div',
+	          { className: 'container' },
 	          React.createElement(
-	            "h1",
+	            'h1',
 	            null,
-	            "SEARCH"
+	            'SEARCH'
 	          ),
-	          React.createElement("br", null),
+	          React.createElement('br', null),
 	          React.createElement(
-	            "p",
-	            null,
-	            "Major bay area cities"
-	          ),
-	          React.createElement("br", null),
-	          React.createElement(
-	            "div",
+	            'div',
 	            null,
 	            cities
+	          ),
+	          React.createElement('br', null),
+	          React.createElement('br', null),
+	          React.createElement(
+	            'button',
+	            { onClick: this.handleCreateClick, type: 'button', className: 'btn btn-primary' },
+	            'Create Listings'
+	          ),
+	          '  ',
+	          React.createElement(
+	            'button',
+	            { onClick: this.handleSearchClick, type: 'button', className: 'btn btn-primary' },
+	            'Search Listings'
 	          )
 	        )
 	      ),
-	      React.createElement(
-	        "div",
-	        { className: "splash-area5" },
-	        React.createElement(
-	          "div",
-	          { className: "container" },
-	          React.createElement(
-	            "h1",
-	            null,
-	            "CATEGORIES"
-	          ),
-	          React.createElement(
-	            "div",
-	            { className: "col-md-11" },
-	            categories
-	          )
-	        )
-	      ),
-	      React.createElement(
-	        "div",
-	        { className: "footer" },
-	        React.createElement(
-	          "div",
-	          { className: "container" },
-	          React.createElement("br", null),
-	          React.createElement("br", null),
-	          React.createElement("br", null),
-	          React.createElement(
-	            "h1",
-	            null,
-	            "GET STARTED"
-	          ),
-	          React.createElement("br", null),
-	          React.createElement(
-	            "button",
-	            { onClick: this.handleCreateClick, type: "button", className: "btn btn-primary" },
-	            "Create Listings"
-	          ),
-	          "  ",
-	          React.createElement(
-	            "button",
-	            { onClick: this.handleSearchClick, type: "button", className: "btn btn-primary" },
-	            "Search Listings"
-	          )
-	        )
-	      )
+	      React.createElement(Footer, null)
 	    );
 	  }
 	
 	});
 	
 	module.exports = Splash;
+	
+	// <div className="footer">
+	//   <div className="container">
+	//     <br/>
+	//     <br/>
+	//     <br/>
+	
+	//   </div>
+	// </div>
 
 /***/ },
 /* 214 */
@@ -32878,8 +32789,25 @@
 	  render: function () {
 	    return React.createElement(
 	      'div',
-	      { className: 'col-md-12' },
-	      React.createElement(CreateMap, { onMapClick: this.handleMapClick })
+	      { className: 'container' },
+	      React.createElement(
+	        'div',
+	        { className: 'row' },
+	        React.createElement(
+	          'div',
+	          { className: 'page-header' },
+	          React.createElement(
+	            'h1',
+	            null,
+	            'PICK LISTING LOCATION'
+	          )
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'col-md-12' },
+	          React.createElement(CreateMap, { onMapClick: this.handleMapClick })
+	        )
+	      )
 	    );
 	  }
 	
@@ -33688,6 +33616,149 @@
 	});
 	
 	module.exports = Map;
+
+/***/ },
+/* 268 */,
+/* 269 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	
+	var Footer = React.createClass({
+	  displayName: "Footer",
+	
+	  render: function () {
+	
+	    return React.createElement(
+	      "footer",
+	      { className: "footer-distributed" },
+	      React.createElement(
+	        "div",
+	        { className: "footer-left" },
+	        React.createElement(
+	          "h3",
+	          null,
+	          "MacksList"
+	        ),
+	        React.createElement(
+	          "p",
+	          { className: "footer-links" },
+	          React.createElement(
+	            "a",
+	            { href: "#" },
+	            "Home "
+	          ),
+	          "·",
+	          React.createElement(
+	            "a",
+	            { href: "#" },
+	            "About "
+	          ),
+	          "·",
+	          React.createElement(
+	            "a",
+	            { href: "#" },
+	            "Faq "
+	          ),
+	          "·",
+	          React.createElement(
+	            "a",
+	            { href: "#" },
+	            "Contact"
+	          )
+	        ),
+	        React.createElement(
+	          "p",
+	          { className: "footer-company-name" },
+	          "MacksList © 2015"
+	        )
+	      ),
+	      React.createElement(
+	        "div",
+	        { className: "footer-center" },
+	        React.createElement(
+	          "div",
+	          null,
+	          React.createElement("i", { className: "fa fa-map-marker" }),
+	          React.createElement(
+	            "p",
+	            null,
+	            React.createElement(
+	              "span",
+	              null,
+	              "123 Rainbow Road"
+	            ),
+	            " San Francisco, CA"
+	          )
+	        ),
+	        React.createElement(
+	          "div",
+	          null,
+	          React.createElement("i", { className: "fa fa-phone" }),
+	          React.createElement(
+	            "p",
+	            null,
+	            "+1-650-438-9141"
+	          )
+	        ),
+	        React.createElement(
+	          "div",
+	          null,
+	          React.createElement("i", { className: "fa fa-envelope" }),
+	          React.createElement(
+	            "p",
+	            null,
+	            React.createElement(
+	              "a",
+	              { href: "mailto:support@company.com" },
+	              "mackslist@company.com"
+	            )
+	          )
+	        )
+	      ),
+	      React.createElement(
+	        "div",
+	        { className: "footer-right" },
+	        React.createElement(
+	          "p",
+	          { className: "footer-company-about" },
+	          React.createElement(
+	            "span",
+	            null,
+	            "About the future"
+	          ),
+	          "MacksList is always looking to expand and continue growing. Expect new features in the future!"
+	        ),
+	        React.createElement(
+	          "div",
+	          { className: "footer-icons" },
+	          React.createElement(
+	            "a",
+	            { href: "#" },
+	            React.createElement("i", { className: "fa fa-facebook" })
+	          ),
+	          React.createElement(
+	            "a",
+	            { href: "#" },
+	            React.createElement("i", { className: "fa fa-twitter" })
+	          ),
+	          React.createElement(
+	            "a",
+	            { href: "#" },
+	            React.createElement("i", { className: "fa fa-linkedin" })
+	          ),
+	          React.createElement(
+	            "a",
+	            { href: "#" },
+	            React.createElement("i", { className: "fa fa-github" })
+	          )
+	        )
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = Footer;
 
 /***/ }
 /******/ ]);

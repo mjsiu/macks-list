@@ -25,8 +25,8 @@ You can visit the project at https://mackslist.org.
 
 
 ## Design Docs
-[Schema][schema]
-[Design Doc][design]
+* [Schema][schema]
+* [Design Doc][design]
 
 [schema]: https://docs.google.com/spreadsheets/d/1KnhgUhN-IOz86nop6256eKNmh3myQn5JpoEqpfmv9Ys/edit?usp=sharing
 [design]: ./docs/devREADME.md

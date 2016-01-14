@@ -1,4 +1,5 @@
 var React = require('react');
+var Footer = require('./footer.jsx');
 
 var Splash = React.createClass({
   createCityElements: function() {
@@ -24,35 +25,6 @@ var Splash = React.createClass({
     return cities;
   },
 
-  createCategoryElements: function() {
-    var category_list = [
-      {"category": "Appliances", "url": "v1450981839/fridge3_1_nnofvd.png"},
-      {"category": "Automotive", "url": "v1450982231/car80_leqiqv.png"},
-      {"category": "Clothing", "url": "v1450982232/winter-clothes_hs6lj4.png"},
-      {"category": "Electronics", "url": "v1450982231/computer197_wjk3dj.png"},
-      {"category": "Farm and Garden", "url": "v1450982231/flowers12_eo6eal.png"},
-      {"category": "Health and Beauty", "url": "v1450982232/heart8_tnjrlb.png"},
-      {"category": "Home", "url": "v1450982232/home168_aqifxo.png"},
-      {"category": "Jewelry", "url": "v1450982231/diamond4_xqeqwg.png"},
-      {"category": "Misc", "url": "v1450982231/bald_qhpjiv.png"},
-      {"category": "Musical Instruments", "url": "v1450982232/guitars_t5zlgf.png"},
-      {"category": "Pets", "url": "v1450982231/dog50_g8mrlb.png"},
-      {"category": "Sports", "url": "v1450982232/soccer19_fn5icv.png"}
-    ];
-
-    var categories = category_list.map(function(category, idx){
-      var partial_url = "http://res.cloudinary.com/mackslist/image/upload/";
-      return (
-        <div key={idx} className="col-centered">
-          <div className="panel panel-default">
-
-            <div className="panel-body"><img src={partial_url + category["url"] }></img></div>
-          </div>
-        </div>
-      );
-    });
-    return categories;
-  },
 
   handleCreateClick: function () {
     this.props.history.pushState(null, "listings/new");
@@ -64,7 +36,6 @@ var Splash = React.createClass({
 
   render: function() {
     var cities = this.createCityElements();
-    var categories = this.createCategoryElements();
 
     return (
       <div className="row-centered">
@@ -72,10 +43,9 @@ var Splash = React.createClass({
 
         <div className="splash-area1">
           <div className="splash-area1-content">
-            <div id="cf">
-              <img className="bottom" src="http://res.cloudinary.com/mackslist/image/upload/v1451340441/Golden-Gate-Wallpaper-L_15MBP_wowf6t.jpg" />
-
-            <img className="top" src="http://res.cloudinary.com/mackslist/image/upload/c_scale,w_1920/v1450937792/sanfran_ck911l.jpg" />
+            <div id="cf3">
+              <img className="bottom" src="http://res.cloudinary.com/mackslist/image/upload/c_scale,h_1050,w_1663/v1451340441/Golden-Gate-Wallpaper-L_15MBP_wowf6t.jpg" />
+              <img className="top" src="http://res.cloudinary.com/mackslist/image/upload/c_scale,h_1050,w_1663/v1450937916/sf_cxayxy.jpg" />
             </div>
             <h1>MACKSLIST</h1>
           </div>
@@ -103,33 +73,19 @@ var Splash = React.createClass({
           <div className="container">
           <h1>SEARCH</h1>
           <br/>
-          <p>Major bay area cities</p>
-          <br/>
             <div>
                 {cities}
             </div>
+              <br/>
+              <br/>
+              <button onClick={this.handleCreateClick} type="button" className="btn btn-primary">Create Listings</button>  <button onClick={this.handleSearchClick} type="button" className="btn btn-primary">Search Listings</button>
           </div>
         </div>
 
-        <div className="splash-area5">
-            <div className="container">
-            <h1>CATEGORIES</h1>
-            <div className="col-md-11">
-                {categories}
-            </div>
-          </div>
-        </div>
 
-        <div className="footer">
-          <div className="container">
-            <br/>
-            <br/>
-            <br/>
-            <h1>GET STARTED</h1>
-            <br/>
-            <button onClick={this.handleCreateClick} type="button" className="btn btn-primary">Create Listings</button>  <button onClick={this.handleSearchClick} type="button" className="btn btn-primary">Search Listings</button>
-          </div>
-        </div>
+
+        <Footer/>
+
       </div>
     );
   }
@@ -137,3 +93,12 @@ var Splash = React.createClass({
 });
 
 module.exports = Splash;
+
+// <div className="footer">
+//   <div className="container">
+//     <br/>
+//     <br/>
+//     <br/>
+
+//   </div>
+// </div>
