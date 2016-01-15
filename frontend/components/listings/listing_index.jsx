@@ -16,7 +16,7 @@ var ListingIndex = React.createClass({
         <div className="panel panel-default">
           <div className="panel-heading">{this.props.listing.title}</div>
           <div className="panel-body"><img src={thumbnail}></img></div>
-          <div class="panel-footer">${this.props.listing.price}</div>
+          <div className="panel-footer">${this.props.listing.price}</div>
         </div>
 
       </div>

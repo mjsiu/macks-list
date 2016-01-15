@@ -45,7 +45,7 @@ var Filters = React.createClass({
       }
 
       return (
-         <li className={selectedState}>
+         <li key={city.id} className={selectedState}>
           <a
             onClick={boundCityChanged}
             id={city.id}>{city.name}
@@ -83,7 +83,7 @@ var Filters = React.createClass({
       }
 
       return (
-         <li className={selectedState}>
+         <li key={category.id} className={selectedState}>
           <a
             onClick={boundCategoryChanged}
             id={category.id}>{category.category}

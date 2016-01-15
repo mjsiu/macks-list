@@ -33521,7 +33521,7 @@
 	
 	      return React.createElement(
 	        'li',
-	        { className: selectedState },
+	        { key: city.id, className: selectedState },
 	        React.createElement(
 	          'a',
 	          {
@@ -33548,7 +33548,7 @@
 	
 	      return React.createElement(
 	        'li',
-	        { className: selectedState },
+	        { key: category.id, className: selectedState },
 	        React.createElement(
 	          'a',
 	          {
@@ -33715,7 +33715,7 @@
 	        ),
 	        React.createElement(
 	          'div',
-	          { 'class': 'panel-footer' },
+	          { className: 'panel-footer' },
 	          '$',
 	          this.props.listing.price
 	        )
