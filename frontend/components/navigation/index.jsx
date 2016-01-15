@@ -12,9 +12,9 @@ var Splash = React.createClass({
     ];
 
     var cities = city_list.map(function(city, idx){
-      var partial_url = "http://res.cloudinary.com/mackslist/image/upload/c_scale,w_225/";
+      var partial_url = "http://res.cloudinary.com/mackslist/image/upload/c_scale,w_235/";
       return (
-        <div key={idx} className="col-centered">
+        <div key={idx} className="col-centered city-items">
           <div className="panel panel-default">
             <div className="panel-heading">{city["name"]}</div>
             <div className="panel-body" onClick={this.handleSearchClick}><img src={partial_url + city["url"] }></img></div>

@@ -13,7 +13,7 @@ var ListingLocation = React.createClass ({
         <div className="row">
 
           <div className="page-header">
-            <h1>Pick a Listing</h1>
+            <h1>Click Listing Location</h1>
           </div>
 
           <div className="col-md-12">

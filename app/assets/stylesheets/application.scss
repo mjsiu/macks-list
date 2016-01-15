@@ -485,12 +485,14 @@ animation-direction: alternate;
  text-align: center;
  position:relative;
  display: inline-block;
+ cursor: pointer;
 }
 //
-// .index-items:hover {
-//  transform: scale(1.05);
-//  z-index:999;
-// }
+.city-items:hover {
+ transform: scale(1.05);
+ z-index:999;
+ cursor: pointer;
+}
 html {
  -ms-text-size-adjust: 100%;
  -webkit-text-size-adjust: 100%;
@@ -536,6 +538,7 @@ a {
 a:active,
 a:hover {
  outline: 0;
+ cursor: pointer;
 }
 abbr[title] {
  border-bottom: 1px dotted;

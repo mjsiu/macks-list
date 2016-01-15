@@ -24656,10 +24656,10 @@
 	    var city_list = [{ "name": "San Francisco", "url": "v1450936881/sanfrancisco_qpvztc.png" }, { "name": "Oakland", "url": "v1450936881/oakland_zock1c.png" }, { "name": "San Mateo", "url": "v1450936881/sanmateo_kemz9s.png" }, { "name": "San Jose", "url": "v1450936881/sanjose_rnyemn.png" }, { "name": "Marin County", "url": "v1450940342/marin_t2kc8q.png" }];
 	
 	    var cities = city_list.map((function (city, idx) {
-	      var partial_url = "http://res.cloudinary.com/mackslist/image/upload/c_scale,w_225/";
+	      var partial_url = "http://res.cloudinary.com/mackslist/image/upload/c_scale,w_235/";
 	      return React.createElement(
 	        'div',
-	        { key: idx, className: 'col-centered' },
+	        { key: idx, className: 'col-centered city-items' },
 	        React.createElement(
 	          'div',
 	          { className: 'panel panel-default' },
@@ -32776,7 +32776,7 @@
 	          React.createElement(
 	            'h1',
 	            null,
-	            'Pick a Listing'
+	            'Click Listing Location'
 	          )
 	        ),
 	        React.createElement(
