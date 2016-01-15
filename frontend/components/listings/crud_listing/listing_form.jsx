@@ -61,7 +61,6 @@ var ListingForm = React.createClass({
       { listing[key] = this.state[key]; }
     }.bind(this));
     ApiUtil.createNewListing(listing, this.returnToProfile);
-    // this.returnToProfile();
   },
 
   handleEditClick: function(event) {

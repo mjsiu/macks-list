@@ -43,31 +43,13 @@ var Splash = React.createClass({
 
         <div className="splash-area1">
           <div className="splash-area1-content">
-            <div id="cf3">
-              <img className="bottom" src="http://res.cloudinary.com/mackslist/image/upload/c_scale,h_1050,w_1663/v1451340441/Golden-Gate-Wallpaper-L_15MBP_wowf6t.jpg" />
+
               <img className="top" src="http://res.cloudinary.com/mackslist/image/upload/c_scale,h_1050,w_1663/v1450937916/sf_cxayxy.jpg" />
-            </div>
+
             <h1>MACKSLIST</h1>
           </div>
         </div>
 
-        <div className="splash-area2">
-          <div className="splash-area2-content">
-            <h1>About</h1>
-            <p>
-              ｢ MacksList is a place for people in the bay area to sell their
-              used goods. With a varied list of supported cities and categories,
-              you can search through your area for exactly what you are looking for.
-              MacksList is dedicated to helping bay area locals connect and sell their
-              goods in the easiest way possible.
-              <br/>
-              <br/>
-              Start browsing, creating, or favoriting listings today. ｣
-            </p>
-          </div>
-        </div>
-
-        <div className="splash-area3"/>
 
         <div className="splash-area4">
             <div className="col-md-12">
@@ -75,6 +57,20 @@ var Splash = React.createClass({
             </div>
 
         </div>
+
+        <div className="splash-area3">
+          <div className="splash-area3-content">
+          <h1>About</h1>
+          <p>
+            ｢ MacksList is a place for people in the bay area to sell their
+            used goods. With a varied list of supported cities and categories,
+            you can search through your area for exactly what you are looking for.
+            MacksList is dedicated to helping bay area locals connect and sell their
+            goods in the easiest way possible. Start browsing, creating, or favoriting listings today. ｣
+          </p>
+        </div>
+      </div>
+
         <Footer/>
       </div>
     );

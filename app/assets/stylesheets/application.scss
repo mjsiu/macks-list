@@ -339,21 +339,22 @@ animation-direction: alternate;
  background-size: cover;
 }
 
-.splash-area2-content > h1 {
+.splash-area3-content > h1 {
   position: absolute;
   top: 20%;
   width: 100%;
   font-weight: 500;
-  font-size: 60px;
+  font-size: 35px;
 }
 
-.splash-area2-content > p {
+.splash-area3-content > p {
   position: absolute;
   top: 35%;
   left: 25%;
-  font-size: 30px;
+  font-size: 20px;
   text-align: center;
   width: 50%;
+  text-align: justify;
 }
 
 .splash-area2 {
@@ -363,7 +364,7 @@ animation-direction: alternate;
  margin-right: 0;
  text-align: center;
  max-width: 1920px;
- height: 1025px;
+ height: 700px;
  background-color: #FFFFFF;
 }
 
@@ -373,8 +374,8 @@ animation-direction: alternate;
  margin-left: 0;
  margin-right: 0;
  max-width: 1920px;
- height: 600px;
- background: url('http://res.cloudinary.com/mackslist/image/upload/v1450939246/sf2_qwpsqj.jpg')
+ height: 60vh;
+ background: url('http://res.cloudinary.com/mackslist/image/upload/c_scale,h_1050,w_1663/v1451340441/Golden-Gate-Wallpaper-L_15MBP_wowf6t.jpg')
  no-repeat center center;
  -webkit-background-size: cover;
  -moz-background-sie: cover;
@@ -382,14 +383,13 @@ animation-direction: alternate;
  background-size: cover;
 }
 
-.splash-area3 > h1 {
+.splash-area3 > p {
   position: absolute;
+  top: 35%;
+  left: 25%;
+  font-size: 30px;
   text-align: center;
-  font-weight: 500;
-  font-size: 60px;
-  color: white;
-  top: 50%;
-  left: 45%;
+  width: 50%;
 }
 
 .splash-area4 {

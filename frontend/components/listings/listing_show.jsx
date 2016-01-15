@@ -32,7 +32,7 @@ var ListingShow = React.createClass ({
   },
 
   componentWillUnmount: function () {
-    this.listingListener.remove();
+    // this.listingListener.remove();
   },
 
   listingChanged: function () {
