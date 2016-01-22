@@ -32689,23 +32689,18 @@
 	                  React.createElement(
 	                    'li',
 	                    { className: 'list-group-item' },
+	                    this.props.listing.title
+	                  ),
+	                  React.createElement(
+	                    'li',
+	                    { className: 'list-group-item' },
 	                    '$',
 	                    this.props.listing.price
 	                  ),
 	                  React.createElement(
 	                    'li',
 	                    { className: 'list-group-item' },
-	                    'Morbi leo risus'
-	                  ),
-	                  React.createElement(
-	                    'li',
-	                    { className: 'list-group-item' },
-	                    'Porta ac consectetur ac'
-	                  ),
-	                  React.createElement(
-	                    'li',
-	                    { className: 'list-group-item' },
-	                    'Vestibulum at eros'
+	                    this.props.listing.address
 	                  )
 	                )
 	              )

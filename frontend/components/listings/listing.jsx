@@ -43,10 +43,9 @@ var Listing = React.createClass({
                 <div id="collapse1">
                   <ul className="list-group">
                     <li className="list-group-item"></li>
+                    <li className="list-group-item">{this.props.listing.title}</li>
                     <li className="list-group-item">${this.props.listing.price}</li>
-                    <li className="list-group-item">Morbi leo risus</li>
-                    <li className="list-group-item">Porta ac consectetur ac</li>
-                    <li className="list-group-item">Vestibulum at eros</li>
+                    <li className="list-group-item">{this.props.listing.address}</li>
                   </ul>
                 </div>
             </div>
