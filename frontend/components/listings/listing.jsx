@@ -32,30 +32,23 @@ var Listing = React.createClass({
       <br/>
       <br/>
 
-      <div className="container">
+      <div className="container index">
         <div className="row">
           <div className="col-md-3 col-sm-offset-1">
             <Map listing={this.props.listing}></Map>
             <br/>
             <StarredButton id="star-button" listing={this.props.listing}/>
             <br/>
-            <div className="panel-group">
-              <div className="panel panel-default">
-                <div className="panel-heading">
-                  <h4 className="panel-title">
-                    <a data-toggle="collapse" href="#collapse1">{this.props.listing.title}</a>
-                  </h4>
-                </div>
-
-                <div id="collapse1" className="panel-collapse collapse-in">
+            <div>
+                <div id="collapse1">
                   <ul className="list-group">
+                    <li className="list-group-item"></li>
                     <li className="list-group-item">${this.props.listing.price}</li>
-                    <li className="list-group-item">{this.props.listing.address}</li>
-                    <li className="list-group-item">{this.props.listing.email}</li>
-                    <li className="list-group-item">Created {this.props.listing.create_date} ago</li>
+                    <li className="list-group-item">Morbi leo risus</li>
+                    <li className="list-group-item">Porta ac consectetur ac</li>
+                    <li className="list-group-item">Vestibulum at eros</li>
                   </ul>
                 </div>
-              </div>
             </div>
           </div>
 

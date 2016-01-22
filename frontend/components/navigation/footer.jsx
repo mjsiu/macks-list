@@ -12,16 +12,6 @@ var Footer = React.createClass({
 
             <h3>MacksList</h3>
 
-            <p className="footer-links">
-              <a href="#">Home </a>
-              ·
-              <a href="#">About </a>
-              ·
-              <a href="#">Faq </a>
-              ·
-              <a href="#">Contact</a>
-            </p>
-
             <p className="footer-company-name">MacksList &copy; 2015</p>
           </div>
 
@@ -29,7 +19,7 @@ var Footer = React.createClass({
 
             <div>
               <i className="fa fa-map-marker"></i>
-              <p><span>123 Rainbow Road</span> San Francisco, CA</p>
+              <p><span>817 Hawthorne Way</span> Millbrae, CA</p>
             </div>
 
             <div>
@@ -39,7 +29,7 @@ var Footer = React.createClass({
 
             <div>
               <i className="fa fa-envelope"></i>
-              <p><a href="mailto:support@company.com">mackslist@gmail.com</a></p>
+              <p><a href="mailto:support@company.com">msiu23@gmail.com</a></p>
             </div>
 
           </div>
@@ -53,10 +43,10 @@ var Footer = React.createClass({
 
             <div className="footer-icons">
 
-              <a href="#"><i className="fa fa-facebook"></i></a>
-              <a href="#"><i className="fa fa-twitter"></i></a>
-              <a href="#"><i className="fa fa-linkedin"></i></a>
-              <a href="#"><i className="fa fa-github"></i></a>
+              <a href="http://mjsiu.github.io/" target="_blank"><i className="fa fa-user"></i></a>
+              <a href="https://www.linkedin.com/profile/preview?locale=en_US&trk=prof-0-sb-preview-primary-button" target="_blank"><i className="fa fa-linkedin"></i></a>
+              <a href="https://www.github.com/mjsiu" target="_blank"><i className="fa fa-github"></i></a>
+              <a href="https://www.facebook.com/mack.siu" target="_blank"><i className="fa fa-facebook"></i></a>
 
             </div>
 

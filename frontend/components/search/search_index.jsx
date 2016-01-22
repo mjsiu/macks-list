@@ -59,6 +59,10 @@ var SearchIndex = React.createClass ({
       );
     });
 
+    if (listings.length === 0) {
+      listings = <h1>No Results Found</h1>
+    }
+
     return (
       <div className="container">
         <br/>

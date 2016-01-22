@@ -31750,7 +31750,6 @@
 	        React.createElement(
 	          'div',
 	          { className: 'splash-area1-content' },
-	          React.createElement('img', { className: 'top', src: 'http://res.cloudinary.com/mackslist/image/upload/c_scale,h_1050,w_1663/v1450937916/sf_cxayxy.jpg' }),
 	          React.createElement(
 	            'h1',
 	            null,
@@ -31760,7 +31759,7 @@
 	      ),
 	      React.createElement(
 	        'div',
-	        { className: 'splash-area4' },
+	        { className: 'splash-area2' },
 	        React.createElement(
 	          'div',
 	          { className: 'col-md-12' },
@@ -31826,33 +31825,6 @@
 	        ),
 	        React.createElement(
 	          "p",
-	          { className: "footer-links" },
-	          React.createElement(
-	            "a",
-	            { href: "#" },
-	            "Home "
-	          ),
-	          "·",
-	          React.createElement(
-	            "a",
-	            { href: "#" },
-	            "About "
-	          ),
-	          "·",
-	          React.createElement(
-	            "a",
-	            { href: "#" },
-	            "Faq "
-	          ),
-	          "·",
-	          React.createElement(
-	            "a",
-	            { href: "#" },
-	            "Contact"
-	          )
-	        ),
-	        React.createElement(
-	          "p",
 	          { className: "footer-company-name" },
 	          "MacksList © 2015"
 	        )
@@ -31870,9 +31842,9 @@
 	            React.createElement(
 	              "span",
 	              null,
-	              "123 Rainbow Road"
+	              "817 Hawthorne Way"
 	            ),
-	            " San Francisco, CA"
+	            " Millbrae, CA"
 	          )
 	        ),
 	        React.createElement(
@@ -31895,7 +31867,7 @@
 	            React.createElement(
 	              "a",
 	              { href: "mailto:support@company.com" },
-	              "mackslist@gmail.com"
+	              "msiu23@gmail.com"
 	            )
 	          )
 	        )
@@ -31918,23 +31890,23 @@
 	          { className: "footer-icons" },
 	          React.createElement(
 	            "a",
-	            { href: "#" },
-	            React.createElement("i", { className: "fa fa-facebook" })
+	            { href: "http://mjsiu.github.io/", target: "_blank" },
+	            React.createElement("i", { className: "fa fa-user" })
 	          ),
 	          React.createElement(
 	            "a",
-	            { href: "#" },
-	            React.createElement("i", { className: "fa fa-twitter" })
-	          ),
-	          React.createElement(
-	            "a",
-	            { href: "#" },
+	            { href: "https://www.linkedin.com/profile/preview?locale=en_US&trk=prof-0-sb-preview-primary-button", target: "_blank" },
 	            React.createElement("i", { className: "fa fa-linkedin" })
 	          ),
 	          React.createElement(
 	            "a",
-	            { href: "#" },
+	            { href: "https://www.github.com/mjsiu", target: "_blank" },
 	            React.createElement("i", { className: "fa fa-github" })
+	          ),
+	          React.createElement(
+	            "a",
+	            { href: "https://www.facebook.com/mack.siu", target: "_blank" },
+	            React.createElement("i", { className: "fa fa-facebook" })
 	          )
 	        )
 	      )
@@ -32693,7 +32665,7 @@
 	      React.createElement('br', null),
 	      React.createElement(
 	        'div',
-	        { className: 'container' },
+	        { className: 'container index' },
 	        React.createElement(
 	          'div',
 	          { className: 'row' },
@@ -32706,52 +32678,34 @@
 	            React.createElement('br', null),
 	            React.createElement(
 	              'div',
-	              { className: 'panel-group' },
+	              null,
 	              React.createElement(
 	                'div',
-	                { className: 'panel panel-default' },
+	                { id: 'collapse1' },
 	                React.createElement(
-	                  'div',
-	                  { className: 'panel-heading' },
+	                  'ul',
+	                  { className: 'list-group' },
+	                  React.createElement('li', { className: 'list-group-item' }),
 	                  React.createElement(
-	                    'h4',
-	                    { className: 'panel-title' },
-	                    React.createElement(
-	                      'a',
-	                      { 'data-toggle': 'collapse', href: '#collapse1' },
-	                      this.props.listing.title
-	                    )
-	                  )
-	                ),
-	                React.createElement(
-	                  'div',
-	                  { id: 'collapse1', className: 'panel-collapse collapse-in' },
+	                    'li',
+	                    { className: 'list-group-item' },
+	                    '$',
+	                    this.props.listing.price
+	                  ),
 	                  React.createElement(
-	                    'ul',
-	                    { className: 'list-group' },
-	                    React.createElement(
-	                      'li',
-	                      { className: 'list-group-item' },
-	                      '$',
-	                      this.props.listing.price
-	                    ),
-	                    React.createElement(
-	                      'li',
-	                      { className: 'list-group-item' },
-	                      this.props.listing.address
-	                    ),
-	                    React.createElement(
-	                      'li',
-	                      { className: 'list-group-item' },
-	                      this.props.listing.email
-	                    ),
-	                    React.createElement(
-	                      'li',
-	                      { className: 'list-group-item' },
-	                      'Created ',
-	                      this.props.listing.create_date,
-	                      ' ago'
-	                    )
+	                    'li',
+	                    { className: 'list-group-item' },
+	                    'Morbi leo risus'
+	                  ),
+	                  React.createElement(
+	                    'li',
+	                    { className: 'list-group-item' },
+	                    'Porta ac consectetur ac'
+	                  ),
+	                  React.createElement(
+	                    'li',
+	                    { className: 'list-group-item' },
+	                    'Vestibulum at eros'
 	                  )
 	                )
 	              )
@@ -33444,6 +33398,14 @@
 	        listing: listing,
 	        onClick: boundClick });
 	    });
+	
+	    if (listings.length === 0) {
+	      listings = React.createElement(
+	        'h1',
+	        null,
+	        'No Results Found'
+	      );
+	    }
 	
 	    return React.createElement(
 	      'div',

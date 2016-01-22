@@ -43,15 +43,12 @@ var Splash = React.createClass({
 
         <div className="splash-area1">
           <div className="splash-area1-content">
-
-              <img className="top" src="http://res.cloudinary.com/mackslist/image/upload/c_scale,h_1050,w_1663/v1450937916/sf_cxayxy.jpg" />
-
             <h1>MACKSLIST</h1>
           </div>
         </div>
 
 
-        <div className="splash-area4">
+        <div className="splash-area2">
             <div className="col-md-12">
                 {cities}
             </div>
