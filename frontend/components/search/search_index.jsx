@@ -60,7 +60,7 @@ var SearchIndex = React.createClass ({
     });
 
     if (listings.length === 0) {
-      listings = <h1>No Results Found</h1>
+      listings = <h1 id="noresults">No Results Found</h1>
     }
 
     return (
@@ -68,17 +68,11 @@ var SearchIndex = React.createClass ({
         <br/>
         <br/>
 
-        <div className="row row-centered">
-          <div className="col-md-3">
-            <Filter filterParams={this.state.filterParams}/>
-          </div>
-
-          <div className="col-md-9">
-            <ul>
-              {listings}
-            </ul>
-          </div>
+        <div className="search-buttons">
+          <Filter filterParams={this.state.filterParams}/>
         </div>
+        <div>{listings}</div>
+
       </div>
     );
   }

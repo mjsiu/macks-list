@@ -3,6 +3,7 @@
 
 json.array! @listings do |listing|
   json.title listing.title
+  json.user listing.user.email
   json.description listing.description
   json.price listing.price
   json.address listing.address

@@ -100,42 +100,24 @@ var Filters = React.createClass({
 
     return (
       <div className="container">
-        <div className="row">
-        <div className="col-md-3">
-        <div className="panel-group">
-          <div className="panel panel-default">
-            <div className="panel-heading">
-              <h4 className="panel-title">
-                <a data-toggle="collapse" href="#collapse1">City</a>
-              </h4>
-            </div>
-            <div id="collapse1" className="panel-collapse collapse-in">
-              <ul className="list-group">
-                {cities}
-              </ul>
-            </div>
-          </div>
-        </div>
-        </div>
+        <div className="row search-buttons">
+
+        <div className="dropdown">
+          <button className="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Cities
+          <span className="caret"></span></button>
+          <ul className="dropdown-menu">
+            {cities}
+          </ul>
         </div>
 
-        <div className="row">
-        <div className="col-md-3">
-        <div className="panel-group">
-          <div className="panel panel-default">
-            <div className="panel-heading">
-              <h4 className="panel-title">
-                <a data-toggle="collapse" href="#collapse1">Category</a>
-              </h4>
-            </div>
-            <div id="collapse1" className="panel-collapse collapse-in">
-              <ul className="list-group">
-                {categories}
-              </ul>
-            </div>
-          </div>
+        <div className="dropdown">
+          <button className="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Categories
+          <span className="caret"></span></button>
+          <ul className="dropdown-menu">
+            {categories}
+          </ul>
         </div>
-        </div>
+
         </div>
       </div>
     );

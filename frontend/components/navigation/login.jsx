@@ -51,8 +51,7 @@ var Login = React.createClass({
 
     return (
       <ul className="nav navbar-nav navbar-right">
-        {signup}
-        {login}
+        {signup} {login}
       </ul>
     );
   }

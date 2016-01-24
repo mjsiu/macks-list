@@ -24635,6 +24635,7 @@
 	      "ul",
 	      { className: "nav navbar-nav navbar-right" },
 	      signup,
+	      " ",
 	      login
 	    );
 	  }
@@ -32665,62 +32666,14 @@
 	      React.createElement('br', null),
 	      React.createElement(
 	        'div',
-	        { className: 'container index' },
+	        { className: 'container' },
 	        React.createElement(
 	          'div',
 	          { className: 'row' },
 	          React.createElement(
-	            'div',
-	            { className: 'col-md-3 col-sm-offset-1' },
-	            React.createElement(Map, { listing: this.props.listing }),
-	            React.createElement('br', null),
-	            React.createElement(StarredButton, { id: 'star-button', listing: this.props.listing }),
-	            React.createElement('br', null),
-	            React.createElement(
-	              'div',
-	              null,
-	              React.createElement(
-	                'div',
-	                { id: 'collapse1' },
-	                React.createElement(
-	                  'ul',
-	                  { className: 'list-group' },
-	                  React.createElement('li', { className: 'list-group-item' }),
-	                  React.createElement(
-	                    'li',
-	                    { className: 'list-group-item' },
-	                    this.props.listing.title
-	                  ),
-	                  React.createElement(
-	                    'li',
-	                    { className: 'list-group-item' },
-	                    '$',
-	                    this.props.listing.price
-	                  ),
-	                  React.createElement(
-	                    'li',
-	                    { className: 'list-group-item' },
-	                    this.props.listing.address
-	                  )
-	                )
-	              )
-	            )
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'col-md-6' },
-	            React.createElement(
-	              'div',
-	              { className: 'listing-image' },
-	              React.createElement('img', { src: this.state.primary_image })
-	            ),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement(
-	              'div',
-	              null,
-	              this.props.listing.description
-	            )
+	            'span',
+	            null,
+	            'Create date:'
 	          )
 	        )
 	      )
@@ -33397,7 +33350,7 @@
 	    if (listings.length === 0) {
 	      listings = React.createElement(
 	        'h1',
-	        null,
+	        { id: 'noresults' },
 	        'No Results Found'
 	      );
 	    }
@@ -33409,21 +33362,13 @@
 	      React.createElement('br', null),
 	      React.createElement(
 	        'div',
-	        { className: 'row row-centered' },
-	        React.createElement(
-	          'div',
-	          { className: 'col-md-3' },
-	          React.createElement(Filter, { filterParams: this.state.filterParams })
-	        ),
-	        React.createElement(
-	          'div',
-	          { className: 'col-md-9' },
-	          React.createElement(
-	            'ul',
-	            null,
-	            listings
-	          )
-	        )
+	        { className: 'search-buttons' },
+	        React.createElement(Filter, { filterParams: this.state.filterParams })
+	      ),
+	      React.createElement(
+	        'div',
+	        null,
+	        listings
 	      )
 	    );
 	  }
@@ -33527,77 +33472,35 @@
 	      { className: 'container' },
 	      React.createElement(
 	        'div',
-	        { className: 'row' },
+	        { className: 'row search-buttons' },
 	        React.createElement(
 	          'div',
-	          { className: 'col-md-3' },
+	          { className: 'dropdown' },
 	          React.createElement(
-	            'div',
-	            { className: 'panel-group' },
-	            React.createElement(
-	              'div',
-	              { className: 'panel panel-default' },
-	              React.createElement(
-	                'div',
-	                { className: 'panel-heading' },
-	                React.createElement(
-	                  'h4',
-	                  { className: 'panel-title' },
-	                  React.createElement(
-	                    'a',
-	                    { 'data-toggle': 'collapse', href: '#collapse1' },
-	                    'City'
-	                  )
-	                )
-	              ),
-	              React.createElement(
-	                'div',
-	                { id: 'collapse1', className: 'panel-collapse collapse-in' },
-	                React.createElement(
-	                  'ul',
-	                  { className: 'list-group' },
-	                  cities
-	                )
-	              )
-	            )
+	            'button',
+	            { className: 'btn btn-default dropdown-toggle', type: 'button', 'data-toggle': 'dropdown' },
+	            'Cities',
+	            React.createElement('span', { className: 'caret' })
+	          ),
+	          React.createElement(
+	            'ul',
+	            { className: 'dropdown-menu' },
+	            cities
 	          )
-	        )
-	      ),
-	      React.createElement(
-	        'div',
-	        { className: 'row' },
+	        ),
 	        React.createElement(
 	          'div',
-	          { className: 'col-md-3' },
+	          { className: 'dropdown' },
 	          React.createElement(
-	            'div',
-	            { className: 'panel-group' },
-	            React.createElement(
-	              'div',
-	              { className: 'panel panel-default' },
-	              React.createElement(
-	                'div',
-	                { className: 'panel-heading' },
-	                React.createElement(
-	                  'h4',
-	                  { className: 'panel-title' },
-	                  React.createElement(
-	                    'a',
-	                    { 'data-toggle': 'collapse', href: '#collapse1' },
-	                    'Category'
-	                  )
-	                )
-	              ),
-	              React.createElement(
-	                'div',
-	                { id: 'collapse1', className: 'panel-collapse collapse-in' },
-	                React.createElement(
-	                  'ul',
-	                  { className: 'list-group' },
-	                  categories
-	                )
-	              )
-	            )
+	            'button',
+	            { className: 'btn btn-default dropdown-toggle', type: 'button', 'data-toggle': 'dropdown' },
+	            'Categories',
+	            React.createElement('span', { className: 'caret' })
+	          ),
+	          React.createElement(
+	            'ul',
+	            { className: 'dropdown-menu' },
+	            categories
 	          )
 	        )
 	      )
@@ -33662,17 +33565,14 @@
 	        { className: 'panel panel-default' },
 	        React.createElement(
 	          'div',
-	          { className: 'panel-heading' },
-	          this.props.listing.title
-	        ),
-	        React.createElement(
-	          'div',
 	          { className: 'panel-body' },
 	          React.createElement('img', { src: thumbnail })
 	        ),
 	        React.createElement(
 	          'div',
 	          { className: 'panel-footer' },
+	          this.props.listing.title,
+	          React.createElement('br', null),
 	          '$',
 	          this.props.listing.price
 	        )

@@ -29,6 +29,21 @@
   */
  /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
+#noresults {
+  position: absolute;
+
+}
+
+.listings {
+  text-align: center;
+  float: left;
+}
+
+.search-buttons .dropdown .btn {
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 25px;
+}
  .container .index {
    background-color: black;
  }
@@ -349,7 +364,7 @@ animation-direction: alternate;
  margin-left: 0;
  margin-right: 0;
  width: 100%;
- height: 350px;
+ height: 30vh;
  background-color: #EDEDED;
 }
 
