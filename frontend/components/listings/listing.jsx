@@ -35,10 +35,11 @@ var Listing = React.createClass({
           <div className="col-md-12">
           <div className="create-date">Created: {this.props.listing.create_date} ago</div>
           <div className="social-icons">
-            Share:
-            <a href="https://instagram.com" target="_blank"><i className="fa fa-instagram"></i></a>
-            <a href="https://www.facebook.com/" target="_blank"><i className="fa fa-facebook"></i></a>
-            <a href="https://www.twitter.com/" target="_blank"><i className="fa fa-twitter"></i></a>
+            Share: &nbsp;
+            <a href="https://instagram.com" target="_blank"><i className="fa fa-instagram"></i></a>&nbsp;
+            <a href="https://www.facebook.com/" target="_blank"><i className="fa fa-facebook"></i></a>&nbsp;
+            <a href="https://www.twitter.com/" target="_blank"><i className="fa fa-twitter"></i></a>&nbsp;
+
         </div>
       </div>
     </div>

@@ -32058,7 +32058,7 @@
 	
 	    return React.createElement(
 	      'div',
-	      { className: 'container' },
+	      { className: 'container form' },
 	      React.createElement(
 	        'div',
 	        { className: 'row' },
@@ -32172,8 +32172,7 @@
 	                  ),
 	                  React.createElement('br', null),
 	                  React.createElement(ImageUploadButton, { storeListingImages: this.storeListingImages }),
-	                  React.createElement('br', null),
-	                  React.createElement('input', { type: 'submit', className: 'btn btn-default', value: this.props.type }),
+	                  React.createElement('input', { type: 'submit', className: 'btn btn-default submit', value: this.props.type }),
 	                  React.createElement('br', null),
 	                  React.createElement('br', null),
 	                  React.createElement(Error, null)
@@ -32680,22 +32679,25 @@
 	          React.createElement(
 	            'div',
 	            { className: 'social-icons' },
-	            'Share:',
+	            'Share:  ',
 	            React.createElement(
 	              'a',
 	              { href: 'https://instagram.com', target: '_blank' },
 	              React.createElement('i', { className: 'fa fa-instagram' })
 	            ),
+	            ' ',
 	            React.createElement(
 	              'a',
 	              { href: 'https://www.facebook.com/', target: '_blank' },
 	              React.createElement('i', { className: 'fa fa-facebook' })
 	            ),
+	            ' ',
 	            React.createElement(
 	              'a',
 	              { href: 'https://www.twitter.com/', target: '_blank' },
 	              React.createElement('i', { className: 'fa fa-twitter' })
-	            )
+	            ),
+	            ' '
 	          )
 	        )
 	      ),

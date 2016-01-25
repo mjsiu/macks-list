@@ -33,6 +33,18 @@
   position: absolute;
 }
 
+.container.form {
+  width: 1000px;
+}
+
+.upload-form {
+  float: left;
+}
+
+.btn.btn-default.submit {
+  float: right;
+}
+
 .fa {
   color: black;
 }
@@ -4719,8 +4731,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
  .container-fluid > .navbar-header,
  .container > .navbar-collapse,
  .container-fluid > .navbar-collapse {
-   margin-right: 0;
-   margin-left: 0;
+   margin-right: 15vw;
+   margin-left: 15vw;
  }
 }
 .navbar-static-top {

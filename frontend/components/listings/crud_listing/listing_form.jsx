@@ -114,7 +114,7 @@ var ListingForm = React.createClass({
 
     return (
 
-      <div className="container">
+      <div className="container form">
         <div className="row">
         <div className="well bs-component">
         <div className="form-horizontal">
@@ -164,8 +164,8 @@ var ListingForm = React.createClass({
               </select>
             <br/>
               <ImageUploadButton storeListingImages={this.storeListingImages}/>
-            <br/>
-              <input type="submit" className="btn btn-default" value={this.props.type}/>
+
+              <input type="submit" className="btn btn-default submit" value={this.props.type}/>
               <br/>
               <br/>
               <Error/>
