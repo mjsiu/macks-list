@@ -31973,6 +31973,11 @@
 	
 	  storeListingImages: function (images_attributes) {
 	    var temp_imgs = [];
+	
+	    if (images_attributes.length === 0) {
+	      images_attributes.push({ url: "v1450309841/logo_k5fymd.png" });
+	    }
+	
 	    images_attributes.forEach(function (image) {
 	      temp_imgs.push({ url: image.url.slice(61) });
 	    });
@@ -32597,7 +32602,7 @@
 	  },
 	
 	  componentWillUnmount: function () {
-	    // this.listingListener.remove();
+	    this.listingListener.remove();
 	  },
 	
 	  listingChanged: function () {
@@ -32672,7 +32677,8 @@
 	          React.createElement(
 	            'div',
 	            { className: 'create-date' },
-	            'Created: ',
+	            React.createElement(StarredButton, { id: 'star-button', listing: this.props.listing }),
+	            ' Created: ',
 	            this.props.listing.create_date,
 	            ' ago'
 	          ),
@@ -32721,6 +32727,13 @@
 	            '$',
 	            this.props.listing.price
 	          ),
+	          React.createElement(
+	            'span',
+	            null,
+	            this.props.listing.user
+	          ),
+	          React.createElement('br', null),
+	          React.createElement('br', null),
 	          React.createElement('br', null),
 	          this.props.listing.description
 	        ),
@@ -32847,11 +32860,11 @@
 	        {
 	          onClick: this.handleUnstarClick,
 	          type: 'button',
-	          className: 'btn btn-primary btn-sm' },
+	          className: 'btn btn-default btn-sm' },
 	        React.createElement(
-	          'p',
+	          'span',
 	          null,
-	          '★'
+	          'Unstar'
 	        )
 	      );
 	    } else {
@@ -32860,12 +32873,12 @@
 	        {
 	          onClick: this.handleStarredClick,
 	          type: 'button',
-	          className: 'btn btn-primary btn-sm',
+	          className: 'btn btn-default btn-sm',
 	          valueLink: this.linkState('starred') },
 	        React.createElement(
-	          'p',
+	          'span',
 	          null,
-	          '☆'
+	          'Star'
 	        )
 	      );
 	    }
@@ -32946,7 +32959,7 @@
 	  render: function () {
 	    return React.createElement(
 	      'div',
-	      { className: 'container' },
+	      { className: 'container user-page' },
 	      React.createElement('br', null),
 	      React.createElement('br', null),
 	      React.createElement(
@@ -32954,12 +32967,12 @@
 	        { className: 'row' },
 	        React.createElement(
 	          'div',
-	          { className: 'col-md-6' },
+	          { className: 'col-md-12' },
 	          React.createElement(UserListingTable, { history: this.props.history })
 	        ),
 	        React.createElement(
 	          'div',
-	          { className: 'col-md-6' },
+	          { className: 'col-md-12' },
 	          React.createElement(UserStarredTable, { history: this.props.history })
 	        )
 	      )
@@ -33071,7 +33084,7 @@
 	        React.createElement(
 	          'td',
 	          null,
-	          listing.description.slice(0, 50) + "..."
+	          listing.description.slice(0, 75) + "..."
 	        )
 	      );
 	    });
@@ -33272,7 +33285,7 @@
 	        React.createElement(
 	          'td',
 	          null,
-	          listing.description.slice(0, 50) + "..."
+	          listing.description.slice(0, 75) + "..."
 	        )
 	      );
 	      return starred_listings;

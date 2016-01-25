@@ -49,7 +49,7 @@ var UserStarredTable = React.createClass({
           <td><a onClick={boundUnstarClick}>Unstar</a></td>
           <td>${listing.price}</td>
           <td>{listing.create_date}</td>
-          <td>{listing.description.slice(0,50) + "..."}</td>
+          <td>{listing.description.slice(0,75) + "..."}</td>
         </tr>
       );
       return starred_listings;

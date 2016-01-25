@@ -33,7 +33,9 @@ var Listing = React.createClass({
       <br/>
           <div className="row">
           <div className="col-md-12">
-          <div className="create-date">Created: {this.props.listing.create_date} ago</div>
+            <div className="create-date"><StarredButton id="star-button" listing={this.props.listing}/> Created: {this.props.listing.create_date} ago</div>
+
+
           <div className="social-icons">
             Share: &nbsp;
             <a href="https://instagram.com" target="_blank"><i className="fa fa-instagram"></i></a>&nbsp;
@@ -52,6 +54,10 @@ var Listing = React.createClass({
             <br/>
               <h1>{this.props.listing.title}</h1>
               <h3>${this.props.listing.price}</h3>
+              <span>{this.props.listing.user}</span>
+
+              <br/>
+              <br/>
               <br/>
               {this.props.listing.description}
 

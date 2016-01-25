@@ -7,16 +7,16 @@ var User = React.createClass ({
 
   render: function() {
     return (
-      <div className="container">
+      <div className="container user-page">
         <br/>
         <br/>
 
         <div className="row">
-          <div className="col-md-6">
+          <div className="col-md-12">
             <UserListingTable history={this.props.history}/>
           </div>
 
-          <div className="col-md-6">
+          <div className="col-md-12">
             <UserStarredTable history={this.props.history}/>
           </div>
         </div>

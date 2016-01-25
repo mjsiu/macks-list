@@ -24,6 +24,11 @@ var ListingForm = React.createClass({
 
   storeListingImages: function (images_attributes) {
     var temp_imgs = [];
+
+    if (images_attributes.length === 0) {
+      images_attributes.push({url: "v1450309841/logo_k5fymd.png"})
+    }
+
     images_attributes.forEach(function(image){
       temp_imgs.push({url: image.url.slice(61)});
     });

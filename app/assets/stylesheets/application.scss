@@ -33,6 +33,10 @@
   position: absolute;
 }
 
+.container.user-page {
+  width: 1000px;
+}
+
 .container.form {
   width: 1000px;
 }
@@ -276,10 +280,6 @@ animation-direction: alternate;
 .btn-sm > p {
    font-size: 25px;
    margin: auto;
- }
-
- .star-button {
-   text-align: center;
  }
 
  .signup-error {
@@ -4050,19 +4050,19 @@ tbody.collapse.in {
  clear: both;
  font-weight: normal;
  line-height: 1.42857143;
- color: #98978b;
+ color: black;
  white-space: nowrap;
 }
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
  text-decoration: none;
- color: #98978b;
+ color: #black;
  background-color: #f8f5f0;
 }
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
 .dropdown-menu > .active > a:focus {
- color: #98978b;
+ color: #black;
  text-decoration: none;
  outline: 0;
  background-color: #f8f5f0;
@@ -5743,10 +5743,8 @@ a.thumbnail.active {
 .list-group-item {
  position: relative;
  display: block;
- padding: 10px 15px;
  margin-bottom: -1px;
  background-color: #ffffff;
- border: 1px solid #dfd7ca;
 }
 .list-group-item:first-child {
  border-top-right-radius: 4px;
@@ -5799,7 +5797,7 @@ button.list-group-item {
 .list-group-item.active:focus {
  z-index: 2;
  color: #3e3f3a;
- background-color: #EBEBEB;
+ background-color: #f8f5f0;
  border-color: #dfd7ca;
 }
 .list-group-item.active .list-group-item-heading,
@@ -7345,7 +7343,7 @@ input:focus,
  color: #98978b;
 }
 .dropdown-menu > li > a {
- font-size: 11px;
+ font-size: 13px;
  line-height: 22px;
  font-weight: 500;
  // text-transform: uppercase;
@@ -7371,7 +7369,7 @@ input:focus,
  box-shadow: none;
 }
 .list-group-item {
- padding: 16px 24px;
+
 }
 .well {
  -webkit-box-shadow: none;

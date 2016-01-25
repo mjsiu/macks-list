@@ -32,6 +32,7 @@ gem 'faker'
 gem 'newrelic_rpm'
 
 gem 'bootstrap-sass'
+gem 'seed_dump'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

@@ -56,7 +56,7 @@ var UserListingTable = React.createClass({
         <td><a onClick={boundDeleteClick}>Delete</a></td>
         <td>{listing.create_date}</td>
         <td>${listing.price}</td>
-        <td>{listing.description.slice(0,50) + "..."}</td>
+        <td>{listing.description.slice(0,75) + "..."}</td>
       </tr>
       );
     });

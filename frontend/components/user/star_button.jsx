@@ -43,17 +43,17 @@ var StarButton = React.createClass({
       <button
         onClick={this.handleUnstarClick}
         type="button"
-        className="btn btn-primary btn-sm">
-        <p>&#x2605;</p>
+        className="btn btn-default btn-sm">
+        <span>Unstar</span>
       </button>
     } else {
       button =
       <button
         onClick={this.handleStarredClick}
         type="button"
-        className="btn btn-primary btn-sm"
+        className="btn btn-default btn-sm"
         valueLink={this.linkState('starred')}>
-        <p>&#x2606;</p>
+        <span>Star</span>
       </button>
     }
 
