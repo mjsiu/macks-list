@@ -32649,7 +32649,7 @@
 	  },
 	
 	  imageCheck: function () {
-	    var partial = "http://res.cloudinary.com/mackslist/image/upload/c_scale,h_450/";
+	    var partial = "http://res.cloudinary.com/mackslist/image/upload/c_scale,w_450/";
 	
 	    if (this.props.listing.images) {
 	      this.setState({ primary_image: partial + this.props.listing.images[0].url });
@@ -32661,20 +32661,71 @@
 	  render: function () {
 	    return React.createElement(
 	      'div',
-	      null,
+	      { className: 'container listing' },
 	      React.createElement('br', null),
 	      React.createElement('br', null),
 	      React.createElement(
 	        'div',
-	        { className: 'container' },
+	        { className: 'row' },
 	        React.createElement(
 	          'div',
-	          { className: 'row' },
+	          { className: 'col-md-12' },
 	          React.createElement(
-	            'span',
-	            null,
-	            'Create date:'
+	            'div',
+	            { className: 'create-date' },
+	            'Created: ',
+	            this.props.listing.create_date,
+	            ' ago'
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'social-icons' },
+	            'Share:',
+	            React.createElement(
+	              'a',
+	              { href: 'https://instagram.com', target: '_blank' },
+	              React.createElement('i', { className: 'fa fa-instagram' })
+	            ),
+	            React.createElement(
+	              'a',
+	              { href: 'https://www.facebook.com/', target: '_blank' },
+	              React.createElement('i', { className: 'fa fa-facebook' })
+	            ),
+	            React.createElement(
+	              'a',
+	              { href: 'https://www.twitter.com/', target: '_blank' },
+	              React.createElement('i', { className: 'fa fa-twitter' })
+	            )
 	          )
+	        )
+	      ),
+	      React.createElement('br', null),
+	      React.createElement(
+	        'div',
+	        { className: 'row' },
+	        React.createElement(
+	          'div',
+	          { className: 'col-md-6' },
+	          React.createElement(Map, { listing: this.props.listing }),
+	          React.createElement('br', null),
+	          React.createElement(
+	            'h1',
+	            null,
+	            this.props.listing.title
+	          ),
+	          React.createElement(
+	            'h3',
+	            null,
+	            '$',
+	            this.props.listing.price
+	          ),
+	          React.createElement('br', null),
+	          this.props.listing.description
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'col-md-6' },
+	          React.createElement('img', { src: this.state.primary_image })
 	        )
 	      )
 	    );

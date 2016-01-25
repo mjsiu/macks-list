@@ -17,7 +17,7 @@ var Listing = React.createClass({
   },
 
   imageCheck: function() {
-    var partial = "http://res.cloudinary.com/mackslist/image/upload/c_scale,h_450/";
+    var partial = "http://res.cloudinary.com/mackslist/image/upload/c_scale,w_450/";
 
     if (this.props.listing.images) {
       this.setState({primary_image: partial + this.props.listing.images[0].url})
@@ -28,15 +28,43 @@ var Listing = React.createClass({
 
   render: function () {
     return (
-      <div>
+      <div className="container listing">
       <br/>
       <br/>
-
-      <div className="container">
-        <div className="row">
-          <span>Create date:</span>
+          <div className="row">
+          <div className="col-md-12">
+          <div className="create-date">Created: {this.props.listing.create_date} ago</div>
+          <div className="social-icons">
+            Share:
+            <a href="https://instagram.com" target="_blank"><i className="fa fa-instagram"></i></a>
+            <a href="https://www.facebook.com/" target="_blank"><i className="fa fa-facebook"></i></a>
+            <a href="https://www.twitter.com/" target="_blank"><i className="fa fa-twitter"></i></a>
         </div>
       </div>
+    </div>
+        <br/>
+
+        <div className="row">
+
+          <div className="col-md-6">
+            <Map listing={this.props.listing}></Map>
+            <br/>
+              <h1>{this.props.listing.title}</h1>
+              <h3>${this.props.listing.price}</h3>
+              <br/>
+              {this.props.listing.description}
+
+          </div>
+
+        <div className="col-md-6">
+          <img src={this.state.primary_image}/>
+        </div>
+
+
+
+
+      </div>
+
     </div>
     );
   }

@@ -13,7 +13,6 @@ var ListingIndex = React.createClass({
     return (
       <div className="index-items" onClick={this.props.onClick}>
         <div className="panel panel-default">
-
           <div className="panel-body"><img src={thumbnail}></img></div>
           <div className="panel-footer">
             {this.props.listing.title}

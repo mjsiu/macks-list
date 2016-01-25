@@ -31,12 +31,14 @@
 
 #noresults {
   position: absolute;
-
 }
 
-.listings {
-  text-align: center;
-  float: left;
+.fa {
+  color: black;
+}
+
+.container.listing {
+  width: 900px;
 }
 
 .search-buttons .dropdown .btn {
@@ -44,9 +46,15 @@
   margin-right: 10px;
   margin-bottom: 25px;
 }
- .container .index {
-   background-color: black;
- }
+
+.social-icons {
+  float: right;
+}
+
+.create-date {
+  float: left;
+  font-style: italic;
+}
 
  .footer-distributed{
 	background-color: #3e3f3a;
