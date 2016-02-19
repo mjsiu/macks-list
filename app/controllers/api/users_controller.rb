@@ -4,6 +4,4 @@ class Api::UsersController < ApplicationController
     @user_listings = current_user.listings
   end
 
-
-
 end
